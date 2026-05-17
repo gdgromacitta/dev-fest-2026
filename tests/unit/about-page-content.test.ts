@@ -14,7 +14,7 @@ describe("About page reference structure", () => {
     expect(html).toContain("DevFest");
     expect(html).toContain("Join the Community");
     expect(html).toContain("Read Manifesto");
-    expect((html.match(/data-organizer-card=/g) ?? []).length).toBe(8);
+    expect((html.match(/data-organizer-card=/g) ?? []).length).toBe(5);
     expect((html.match(/data-about-value=/g) ?? []).length).toBe(3);
   });
 

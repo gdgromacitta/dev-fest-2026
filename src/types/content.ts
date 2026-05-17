@@ -50,3 +50,9 @@ export type Venue = {
   accessibilityInfo: string[];
   directions: string[];
 };
+
+export type Sponsor = {
+  name: string;
+  url: string;
+  tier: "gold" | "silver" | "bronze" | "community";
+};
