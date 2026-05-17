@@ -12,8 +12,8 @@ describe("root page — landing page", () => {
     const html = renderHomePage();
 
     expect(html).toContain("DevFest 2026");
-    expect(html).toContain("Milan");
-    expect(html).toContain("November 15, 2026");
+    expect(html).toContain("Roma");
+    expect(html).toContain("TBA");
   });
 
   test("renders the venue summary section with a link to /venue", () => {
@@ -26,7 +26,7 @@ describe("root page — landing page", () => {
   test("renders the meet-the-team section with all organizer cards", () => {
     const html = renderHomePage();
 
-    expect((html.match(/data-organizer-card=/g) ?? []).length).toBe(8);
+    expect((html.match(/data-organizer-card=/g) ?? []).length).toBe(5);
   });
 
   test("sponsor section is absent from DOM when sponsors array is empty", () => {

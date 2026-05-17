@@ -2,92 +2,43 @@ import type { TeamMember } from "@/src/types/content";
 
 export const team: TeamMember[] = [
   {
-    name: "Alex Rivera",
-    role: "Lead Organizer",
-    bioShort: "Shapes the overall event direction and keeps the community vision consistent.",
+    name: "Davide Passafaro",
+    role: "Organizer",
+    bioShort: "Co-organizer of GDG Roma Città, passionate about building inclusive developer communities.",
     photo: "https://placehold.co/160x160",
-    links: [
-      { label: "Website", url: "#" },
-      { label: "Share", url: "#" }
-    ],
+    links: [],
     accentColor: "#75a7f3"
   },
   {
-    name: "Jordan Smith",
-    role: "Operations Manager",
-    bioShort: "Keeps logistics, vendors, and registration moving without friction.",
+    name: "Giorgio Galassi",
+    role: "Organizer",
+    bioShort: "Co-organizer of GDG Roma Città, freelance developer and community builder.",
     photo: "https://placehold.co/160x160",
-    links: [
-      { label: "Website", url: "#" },
-      { label: "Share", url: "#" }
-    ],
+    links: [],
     accentColor: "#f58b7f"
   },
   {
-    name: "Taylor Chen",
-    role: "Technical Lead",
-    bioShort: "Owns technical production, stage flow, and live demo readiness.",
+    name: "Eleonora Biancone",
+    role: "Organizer",
+    bioShort: "Co-organizer of GDG Roma Città, working at BIP and advocating for diverse tech communities.",
     photo: "https://placehold.co/160x160",
-    links: [
-      { label: "Website", url: "#" },
-      { label: "Share", url: "#" }
-    ],
+    links: [],
     accentColor: "#d4b16a"
   },
   {
-    name: "Morgan Lee",
-    role: "Community Coordinator",
-    bioShort: "Supports speakers, volunteers, and local members throughout the event.",
+    name: "Ryan Jherome Burgos",
+    role: "Organizer",
+    bioShort: "Co-organizer of GDG Roma Città, Frontend Software Engineer and community contributor.",
     photo: "https://placehold.co/160x160",
-    links: [
-      { label: "Website", url: "#" },
-      { label: "Share", url: "#" }
-    ],
+    links: [],
     accentColor: "#7fbf8d"
   },
   {
-    name: "Casey Wright",
-    role: "Design Lead",
-    bioShort: "Creates the brand system and visual assets used across the conference.",
+    name: "Giulio Alfieri",
+    role: "Organizer",
+    bioShort: "Co-organizer of GDG Roma Città, dedicated to growing the local developer ecosystem.",
     photo: "https://placehold.co/160x160",
-    links: [
-      { label: "Website", url: "#" },
-      { label: "Share", url: "#" }
-    ],
+    links: [],
     accentColor: "#86a8f4"
-  },
-  {
-    name: "Riley Davis",
-    role: "Sponsorships",
-    bioShort: "Coordinates sponsor relationships and on-site partner activations.",
-    photo: "https://placehold.co/160x160",
-    links: [
-      { label: "Website", url: "#" },
-      { label: "Share", url: "#" }
-    ],
-    accentColor: "#f2997d"
-  },
-  {
-    name: "Skyler Quinn",
-    role: "Volunteers",
-    bioShort: "Runs volunteer onboarding, shift planning, and event-day support.",
-    photo: "https://placehold.co/160x160",
-    links: [
-      { label: "Website", url: "#" },
-      { label: "Share", url: "#" }
-    ],
-    accentColor: "#d0b475"
-  },
-  {
-    name: "Jamie Lo",
-    role: "Social Media",
-    bioShort: "Captures event moments and keeps attendees engaged before and during DevFest.",
-    photo: "https://placehold.co/160x160",
-    links: [
-      { label: "Website", url: "#" },
-      { label: "Share", url: "#" }
-    ],
-    accentColor: "#8db69b"
   }
 ];
-

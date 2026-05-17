@@ -6,12 +6,12 @@ import { venue } from "@/src/content/venue";
 import { TeamCard } from "@/src/components/about/team-card";
 
 export const metadata: Metadata = {
-  title: "DevFest 2026 · Milan — Home",
+  title: "DevFest 2026 · Roma — Home",
   description:
-    "DevFest 2026 by GDG Milan — November 15, 2026. A full-day developer conference covering AI, Web, Cloud, and Mobile. Join us at Innovation Hub Main Hall.",
+    "DevFest 2026 by GDG Roma Città — A full-day developer conference on AI, Web, Cloud, and Mobile at Università degli Studi Roma Tre.",
   openGraph: {
-    title: "DevFest 2026 · Milan",
-    description: "Join us on November 15, 2026 for a day of talks, workshops, and community.",
+    title: "DevFest 2026 · Roma",
+    description: "Join GDG Roma Città for a day of talks, workshops, and community.",
     type: "website"
   }
 };
@@ -19,11 +19,11 @@ export const metadata: Metadata = {
 /** Canonical event info — swap real values here when confirmed. */
 const eventInfo = {
   title: "DevFest 2026",
-  subtitle: "Milan",
-  date: "November 15, 2026",
-  location: "Milan, Italy",
+  subtitle: "Roma",
+  date: "TBA",
+  location: "Roma, Italy",
   description:
-    "A full-day developer conference organized by GDG Milan, bringing the global DevFest experience to Northern Italy. Talks, workshops, and networking across AI, Web, Cloud, and Mobile.",
+    "A full-day developer conference organized by GDG Roma Città — a community of 495+ developers passionate about technology and innovation. Talks, workshops, and networking across AI, Web, Cloud, and Mobile.",
   registerHref: "#",
   agendaHref: "/agenda"
 } as const;
@@ -42,7 +42,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-4xl space-y-8">
           <div className="space-y-2">
             <span className="inline-flex rounded-full bg-[#e8f0fe] px-3 py-1 text-[0.64rem] font-semibold tracking-[0.16em] text-[#5f8ee7] uppercase">
-              GDG Milan
+              GDG Roma Città
             </span>
           </div>
 
