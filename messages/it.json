@@ -1,3 +1,77 @@
 {
-  "placeholder": "ok"
+  "nav": {
+    "home": "Home",
+    "venue": "Sede",
+    "menuAriaLabel": "Menu",
+    "langToggleAriaLabel": "Switch to English"
+  },
+  "footer": {
+    "privacy": "Privacy",
+    "cookies": "Cookie"
+  },
+  "home": {
+    "gdgBadge": "GDG Roma Città",
+    "eventTitle": "DevFest Roma",
+    "eventSubtitle": "2026",
+    "eventDate": "10 Ottobre 2026",
+    "eventLocation": "Roma, Italia",
+    "eventDescription": "Una conferenza per sviluppatori di un'intera giornata, organizzata da GDG Roma Città — una community di 495+ sviluppatori appassionati di tecnologia e innovazione. Tre track paralleli su AI/ML, Architettura, Cloud e molto altro. Tema: Build, Secure, Scale — Sviluppatori e Builder nell'Era Agente.",
+    "registerCta": "Registrati",
+    "sponsorsHeading": "I nostri Sponsor",
+    "sponsorsDescription": "DevFest Roma è reso possibile grazie al generoso supporto dei nostri partner.",
+    "venueBadge": "Sede",
+    "venueDetailsCta": "Dettagli sede e mappa",
+    "openInMapsCta": "Apri in Google Maps",
+    "cfpBadge": "Call for Papers — Aperta",
+    "cfpHeading": "Presenta il tuo Talk",
+    "cfpDescription": "Cerchiamo speaker di tutti i livelli di esperienza. Condividi la tua conoscenza sulle nuove sfide che gli sviluppatori affrontano nell'era agente — niente marketing, solo contenuti reali e case study.",
+    "topicsHeading": "Argomenti",
+    "topic1": "AI/ML — GenAI, Workflow Agente, LLM Ops",
+    "topic2": "Architettura — Design Pattern, Microservizi, Clean Architecture",
+    "topic3": "Backend, Cloud, DevOps, Frontend",
+    "topic4": "Soft Skills e Sviluppo della Carriera",
+    "topic5": "Mobile, Cybersecurity, IoT e altro",
+    "speakerBenefitsHeading": "Benefit per Speaker",
+    "benefit1": "Ingresso gratuito all'evento",
+    "benefit2": "Cena esclusiva per speaker",
+    "benefit3": "Merchandising dell'evento",
+    "benefit4": "Supporto organizzativo completo",
+    "submitProposalCta": "Invia una Proposta",
+    "cfpDeadlineLabel": "Scadenza:",
+    "cfpDeadlineDate": "31 Luglio 2026",
+    "teamHeading": "I nostri Organizzatori",
+    "teamSubtext": "I volontari appassionati dietro DevFest Roma che lavorano per creare un'esperienza inclusiva e ad alto impatto per tutti.",
+    "learnMoreCta": "Scopri il team"
+  },
+  "venue": {
+    "heading": "Sede e Location",
+    "intro": "Unisciti a noi al cuore dell'innovazione per DevFest Roma. Trova tutti i dettagli necessari per raggiungere la sede e orientarti comodamente.",
+    "mapAriaLabel": "Area mappa",
+    "addressLabel": "Indirizzo Sede",
+    "openInMapsCta": "Apri in Google Maps",
+    "dateLabel": "Data",
+    "timeLabel": "Orario",
+    "howToGetHereLabel": "Come raggiungerci",
+    "publicTransportHeading": "Trasporto Pubblico",
+    "parkingHeading": "Parcheggio e Auto",
+    "accessibilityHeading": "Accessibilità"
+  },
+  "about": {
+    "eyebrow": "COMUNITÀ FOCUSED",
+    "aboutTitle": "About GDG\nDevFest Roma",
+    "aboutDescription": "La nostra missione è riunire gli sviluppatori locali per imparare, condividere e connettersi attraverso le tecnologie Google e gli eventi guidati dalla community. DevFest è una conferenza globale decentralizzata ospitata dai Google Developer Group.",
+    "joinCta": "Unisciti alla Comunità",
+    "manifestoCta": "Leggi il Manifesto",
+    "teamHeading": "I nostri Organizzatori",
+    "teamSubtext": "I volontari appassionati dietro DevFest Roma che lavorano per creare un'esperienza inclusiva e ad alto impatto per tutti.",
+    "value_innovation_title": "Innovazione",
+    "value_innovation_description": "Scopri le ultime novità in AI, Cloud, Mobile e Web direttamente dagli esperti Google.",
+    "value_community_title": "Comunità",
+    "value_community_description": "Unisciti a migliaia di sviluppatori in un ambiente fondato sulla collaborazione e la crescita reciproca.",
+    "value_globalImpact_title": "Impatto Globale",
+    "value_globalImpact_description": "Fai parte del più grande evento della community di sviluppatori al mondo, che raggiunge oltre 100 paesi."
+  },
+  "teamCard": {
+    "portraitAlt": "ritratto di {name}"
+  }
 }

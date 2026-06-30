@@ -2,9 +2,11 @@ import type { TeamMember } from "@/src/types/content";
 
 type TeamCardProps = {
   member: TeamMember;
+  /** Localised alt text for the portrait image. Defaults to "{name} portrait". */
+  portraitAlt?: string;
 };
 
-export function TeamCard({ member }: TeamCardProps) {
+export function TeamCard({ member, portraitAlt }: TeamCardProps) {
   return (
     <article
       data-organizer-card={member.name}
@@ -12,7 +14,7 @@ export function TeamCard({ member }: TeamCardProps) {
     >
       <img
         src={member.photo}
-        alt={`${member.name} portrait`}
+        alt={portraitAlt ?? `${member.name} portrait`}
         width={84}
         height={84}
         className="mx-auto h-[84px] w-[84px] rounded-full object-cover"

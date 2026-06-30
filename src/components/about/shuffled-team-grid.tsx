@@ -18,6 +18,12 @@ function shuffle<T>(arr: readonly T[]): T[] {
 
 type ShuffledTeamGridProps = {
   members: TeamMember[];
+  /**
+   * Optional function that computes the portrait alt text for a member.
+   * Callers in a locale context can pass a translated formatter here.
+   * Defaults to "{name} portrait" when omitted.
+   */
+  getPortraitAlt?: (name: string) => string;
 };
 
 /**
@@ -27,7 +33,7 @@ type ShuffledTeamGridProps = {
  * and the first client render are identical (no hydration mismatch). After
  * hydration, the useEffect fires and re-renders with a shuffled order.
  */
-export function ShuffledTeamGrid({ members }: ShuffledTeamGridProps) {
+export function ShuffledTeamGrid({ members, getPortraitAlt }: ShuffledTeamGridProps) {
   const [ordered, setOrdered] = useState<TeamMember[]>(members);
 
   useEffect(() => {
@@ -37,7 +43,11 @@ export function ShuffledTeamGrid({ members }: ShuffledTeamGridProps) {
   return (
     <>
       {ordered.map((member) => (
-        <TeamCard key={member.name} member={member} />
+        <TeamCard
+          key={member.name}
+          member={member}
+          portraitAlt={getPortraitAlt ? getPortraitAlt(member.name) : `${member.name} portrait`}
+        />
       ))}
     </>
   );
