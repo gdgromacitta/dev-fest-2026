@@ -1,6 +1,6 @@
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import AgendaPage from "@/app/agenda/page";
+import AgendaPage from "@/app/[locale]/agenda/page";
 
 globalThis.React = React;
 
