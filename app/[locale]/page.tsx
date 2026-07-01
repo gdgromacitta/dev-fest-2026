@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { team } from "@/src/content/team";
 import { sponsors } from "@/src/content/sponsors";
 import { venue } from "@/src/content/venue";
-import { TeamCard } from "@/src/components/about/team-card";
+import { ShuffledTeamGrid } from "@/src/components/about/shuffled-team-grid";
 
 export const metadata: Metadata = {
   title: "DevFest Roma 2026 — Home",
@@ -16,19 +17,19 @@ export const metadata: Metadata = {
   }
 };
 
-/** Canonical event info — swap real values here when confirmed. */
-const eventInfo = {
-  title: "DevFest Roma",
-  subtitle: "2026",
-  date: "October 10, 2026",
-  location: "Roma, Italy",
-  description:
-    "A full-day developer conference organized by GDG Roma Città — a community of 495+ developers passionate about technology and innovation. Three concurrent tracks across AI/ML, Architecture, Cloud, and more. Theme: Build, Secure, Scale — Developers and Builders in the Agentic Era.",
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+/** Register CTA and agenda link targets — not translatable copy. */
+const eventLinks = {
   registerHref: "#",
   agendaHref: "/agenda"
 } as const;
 
-export default function HomePage() {
+export default async function HomePage({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "home" });
   const hasSponsors = sponsors.length > 0;
 
   return (
@@ -44,49 +45,49 @@ export default function HomePage() {
         <div className="space-y-8">
           <div className="space-y-2">
             <span className="inline-flex rounded-full bg-[#e8f0fe] px-3 py-1 text-[0.64rem] font-semibold tracking-[0.16em] text-[#5f8ee7] uppercase">
-              GDG Roma Città
+              {t("gdgBadge")}
             </span>
           </div>
 
           <h1
             id="event-heading"
             className="m-0 text-[3.4rem] font-semibold leading-[0.94] tracking-[-0.05em] text-slate-950 md:text-[4.5rem]"
-            data-event-title={eventInfo.title}
+            data-event-title={t("eventTitle")}
           >
-            {eventInfo.title}
+            {t("eventTitle")}
             <br />
-            <span className="text-[#4d8cff]">{eventInfo.subtitle}</span>
+            <span className="text-[#4d8cff]">{t("eventSubtitle")}</span>
           </h1>
 
           <div className="flex flex-wrap gap-4 text-sm font-semibold text-slate-600">
             <span
               className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-[#f5f6f8] px-4 py-2"
-              data-event-date={eventInfo.date}
+              data-event-date={t("eventDate")}
             >
               <span aria-hidden="true" className="h-2 w-2 rounded-full bg-[#34a853]" />
-              {eventInfo.date}
+              {t("eventDate")}
             </span>
             <span
               className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-[#f5f6f8] px-4 py-2"
-              data-event-location={eventInfo.location}
+              data-event-location={t("eventLocation")}
             >
               <span aria-hidden="true" className="h-2 w-2 rounded-full bg-[#ea4335]" />
-              {eventInfo.location}
+              {t("eventLocation")}
             </span>
           </div>
 
-          <p className="m-0 max-w-2xl text-lg leading-8 text-slate-500">{eventInfo.description}</p>
+          <p className="m-0 max-w-2xl text-lg leading-8 text-slate-500">{t("eventDescription")}</p>
 
           <div className="flex flex-wrap gap-3">
             <a
-              href={eventInfo.registerHref}
+              href={eventLinks.registerHref}
               className="focus-ring inline-flex rounded-lg bg-[#4d8cff] px-6 py-3 text-sm font-semibold text-white shadow-[0_10px_20px_rgba(77,140,255,0.18)] transition-colors duration-200 hover:bg-[#3e7ff0]"
             >
-              Register Now
+              {t("registerCta")}
             </a>
             {/* Restore once agenda is live:
             <Link
-              href={eventInfo.agendaHref}
+              href={eventLinks.agendaHref}
               className="focus-ring inline-flex rounded-lg border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-colors duration-200 hover:border-slate-300 hover:text-slate-950"
             >
               View Agenda
@@ -112,11 +113,11 @@ export default function HomePage() {
                   id="sponsors-heading"
                   className="m-0 text-[2rem] font-semibold tracking-[-0.04em] text-slate-900"
                 >
-                  Our Sponsors
+                  {t("sponsorsHeading")}
                 </h2>
                 <div className="mx-auto h-1 w-16 rounded-full bg-[#fbbc04]" />
                 <p className="mx-auto max-w-lg text-sm leading-6 text-slate-500">
-                  DevFest Roma is made possible thanks to the generous support of our partners.
+                  {t("sponsorsDescription")}
                 </p>
               </div>
 
@@ -156,7 +157,7 @@ export default function HomePage() {
             <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
               <div className="space-y-4">
                 <span className="inline-flex rounded-full bg-[#fce8e6] px-3 py-1 text-[0.64rem] font-semibold tracking-[0.16em] text-[#c5442b] uppercase">
-                  Venue
+                  {t("venueBadge")}
                 </span>
                 <h2
                   id="venue-heading"
@@ -177,7 +178,7 @@ export default function HomePage() {
                   className="focus-ring inline-flex rounded-xl bg-[#eef4ff] px-6 py-3 text-sm font-semibold text-[#4d8cff] transition-colors duration-200 hover:bg-[#dce9ff]"
                   data-venue-cta="true"
                 >
-                  Venue details &amp; map
+                  {t("venueDetailsCta")}
                 </Link>
                 <a
                   href={venue.mapsLinkUrl}
@@ -185,7 +186,7 @@ export default function HomePage() {
                   rel="noreferrer noopener"
                   className="focus-ring inline-flex rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-600 transition-colors duration-200 hover:border-slate-300 hover:text-slate-900"
                 >
-                  Open in Google Maps
+                  {t("openInMapsCta")}
                 </a>
               </div>
             </div>
@@ -204,38 +205,38 @@ export default function HomePage() {
           <div className="rounded-[2.5rem] bg-white px-8 py-14 shadow-[0_1px_0_rgba(15,23,42,0.05)] ring-1 ring-slate-100">
             <div className="space-y-4">
               <span className="inline-flex rounded-full bg-[#e6f4ea] px-3 py-1 text-[0.64rem] font-semibold tracking-[0.16em] text-[#34a853] uppercase">
-                Call for Papers — Open
+                {t("cfpBadge")}
               </span>
               <h2
                 id="cfp-heading"
                 className="m-0 text-[2rem] font-semibold tracking-[-0.04em] text-slate-900"
               >
-                Submit Your Talk
+                {t("cfpHeading")}
               </h2>
               <p className="m-0 max-w-2xl text-lg leading-8 text-slate-500">
-                We&apos;re looking for speakers across all experience levels. Share your knowledge on the new challenges developers face in the agentic era — no marketing, just real content and case studies.
+                {t("cfpDescription")}
               </p>
             </div>
 
             <div className="mt-8 grid gap-6 md:grid-cols-2">
               <div className="space-y-3">
-                <h3 className="text-sm font-semibold uppercase tracking-widest text-slate-400">Topics</h3>
+                <h3 className="text-sm font-semibold uppercase tracking-widest text-slate-400">{t("topicsHeading")}</h3>
                 <ul className="space-y-2 text-sm text-slate-600">
-                  <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#4d8cff]" />AI/ML — GenAI, Agentic Workflows, LLM Ops</li>
-                  <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#4d8cff]" />Architecture — Design Patterns, Microservices, Clean Architecture</li>
-                  <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#4d8cff]" />Backend, Cloud, DevOps, Frontend</li>
-                  <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#4d8cff]" />Soft Skills &amp; Career Development</li>
-                  <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#4d8cff]" />Mobile, Cybersecurity, IoT &amp; more</li>
+                  <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#4d8cff]" />{t("topic1")}</li>
+                  <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#4d8cff]" />{t("topic2")}</li>
+                  <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#4d8cff]" />{t("topic3")}</li>
+                  <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#4d8cff]" />{t("topic4")}</li>
+                  <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#4d8cff]" />{t("topic5")}</li>
                 </ul>
               </div>
 
               <div className="space-y-3">
-                <h3 className="text-sm font-semibold uppercase tracking-widest text-slate-400">Speaker Benefits</h3>
+                <h3 className="text-sm font-semibold uppercase tracking-widest text-slate-400">{t("speakerBenefitsHeading")}</h3>
                 <ul className="space-y-2 text-sm text-slate-600">
-                  <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#34a853]" />Free event admission</li>
-                  <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#34a853]" />Exclusive speaker dinner</li>
-                  <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#34a853]" />Event merchandise</li>
-                  <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#34a853]" />Full organizational support</li>
+                  <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#34a853]" />{t("benefit1")}</li>
+                  <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#34a853]" />{t("benefit2")}</li>
+                  <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#34a853]" />{t("benefit3")}</li>
+                  <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#34a853]" />{t("benefit4")}</li>
                 </ul>
               </div>
             </div>
@@ -247,10 +248,10 @@ export default function HomePage() {
                 rel="noreferrer noopener"
                 className="focus-ring inline-flex rounded-lg bg-[#34a853] px-6 py-3 text-sm font-semibold text-white shadow-[0_10px_20px_rgba(52,168,83,0.18)] transition-colors duration-200 hover:bg-[#2d9647]"
               >
-                Submit a Proposal
+                {t("submitProposalCta")}
               </a>
               <span className="text-sm text-slate-400">
-                Deadline: <strong className="text-slate-600">July 31, 2026</strong>
+                {t("cfpDeadlineLabel")} <strong className="text-slate-600">{t("cfpDeadlineDate")}</strong>
               </span>
             </div>
           </div>
@@ -270,24 +271,22 @@ export default function HomePage() {
                 id="team-heading"
                 className="m-0 text-[2.35rem] font-semibold tracking-[-0.04em] text-slate-900"
               >
-                Meet the Organizers
+                {t("teamHeading")}
               </h2>
               <div className="mx-auto h-1 w-16 rounded-full bg-[#4d8cff]" />
               <p className="mx-auto max-w-xl text-sm leading-6 text-slate-500">
-                The passionate volunteers behind DevFest Roma working to create an inclusive and high-impact experience for everyone.
+                {t("teamSubtext")}
               </p>
             </div>
             <div className="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              {team.map((member) => (
-                <TeamCard key={member.name} member={member} />
-              ))}
+              <ShuffledTeamGrid members={team} />
             </div>
             <div className="mt-10 text-center">
               <Link
                 href="/about"
                 className="focus-ring inline-flex rounded-lg border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition-colors duration-200 hover:border-slate-300 hover:text-slate-950"
               >
-                Learn more about the team
+                {t("learnMoreCta")}
               </Link>
             </div>
           </div>

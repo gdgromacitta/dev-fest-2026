@@ -1,60 +1,65 @@
+// `role` (per card), tab labels, and `featuredSpeaker.about` are translated
+// content and live in messages/{locale}.json under the `speakerShowcase.*`
+// namespace: `speakerShowcase.cards.<id>.role`, `speakerShowcase.tabs.<tabId>`,
+// and `speakerShowcase.featured.about`, keyed by the stable `id`/`tabId`
+// below.
 type SpeakerShowcaseCard = {
+  id: string;
   name: string;
-  role: string;
   company: string;
   photo: string;
   selected?: boolean;
 };
 
-export const speakerShowcaseTabs = ["All Speakers", "Web & Mobile", "Cloud & AI", "Design", "Firebase"] as const;
+export const speakerShowcaseTabs = ["all", "webMobile", "cloudAi", "design", "firebase"] as const;
 
 export const speakerShowcaseCards: SpeakerShowcaseCard[] = [
   {
+    id: "alice-johnson",
     name: "Alice Johnson",
-    role: "Web Engineer",
     company: "Google",
     photo: "https://placehold.co/280x320/2b3140/f2c3a7?text=%20"
   },
   {
+    id: "bob-brown",
     name: "Bob Brown",
-    role: "Cloud Architect",
     company: "Google",
     photo: "https://placehold.co/280x320/21384d/cfd8e3?text=%20"
   },
   {
+    id: "charlie-davis",
     name: "Charlie Davis",
-    role: "Staff Software Engineer",
     company: "Uber",
     photo: "https://placehold.co/280x320/13253b/f0d0b2?text=%20",
     selected: true
   },
   {
+    id: "david-smith",
     name: "David Smith",
-    role: "CDE, Angular",
     company: "Google",
     photo: "https://placehold.co/280x320/315777/e1d6ca?text=%20"
   },
   {
+    id: "eve-wilson",
     name: "Eve Wilson",
-    role: "UX Researcher",
     company: "Google",
     photo: "https://placehold.co/280x320/e3d6d0/fff7f2?text=%20"
   },
   {
+    id: "frank-miller",
     name: "Frank Miller",
-    role: "CTO",
     company: "Google",
     photo: "https://placehold.co/280x320/202d3b/cfd5dc?text=%20"
   },
   {
+    id: "grace-lee",
     name: "Grace Lee",
-    role: "Lead Designer",
     company: "Google",
     photo: "https://placehold.co/280x320/1a1f2a/f1e2d7?text=%20"
   },
   {
+    id: "henry-zhang",
     name: "Henry Zhang",
-    role: "Android Engineer",
     company: "Google",
     photo: "https://placehold.co/280x320/27344a/e4ebf5?text=%20"
   }
@@ -65,8 +70,6 @@ export const featuredSpeaker = {
   title: "Staff Software Engineer @ Uber",
   badge: "Web Expert",
   photo: "https://placehold.co/360x420/213024/e2c2a4?text=%20",
-  about:
-    "Charlie is a Staff Engineer at Uber where she leads the web performance infrastructure team. With over 12 years of experience in the industry, she has been a vocal advocate for accessible web patterns and modern CSS architecture. She is a frequent contributor to open-source and loves building tools that make developers' lives easier.",
   sessions: [
     {
       date: "OCT 24",

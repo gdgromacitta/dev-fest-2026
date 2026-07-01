@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import { getLocale } from "next-intl/server";
 import "./globals.css";
-import { Header } from "@/src/components/layout/header";
-import { Footer } from "@/src/components/layout/footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -25,18 +24,17 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+// Root layout — owns <html> and <body>.
+// Uses getLocale() from next-intl/server so the lang attribute
+// reflects the active locale set by the middleware.
+// The locale layout at app/[locale]/layout.tsx wraps children
+// with NextIntlClientProvider, Header, and Footer.
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const locale = await getLocale();
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className={poppins.className}>
-        <a href="#main-content" className="focus-ring sr-only rounded bg-white px-3 py-2">
-          Skip to content
-        </a>
-        <Header />
-        <div className="page-shell" id="main-content">
-          {children}
-        </div>
-        <Footer />
+        {children}
       </body>
     </html>
   );

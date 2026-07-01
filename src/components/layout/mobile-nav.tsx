@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/src/i18n/navigation";
 import { navLinks } from "@/src/content/nav-links";
 
 type MobileNavProps = {
@@ -8,6 +9,8 @@ type MobileNavProps = {
 };
 
 export function MobileNav({ open }: MobileNavProps) {
+  const t = useTranslations("nav");
+
   return (
     <nav
       id="mobile-nav"
@@ -17,8 +20,11 @@ export function MobileNav({ open }: MobileNavProps) {
       <ul className="m-0 flex list-none flex-col gap-2 p-0">
         {navLinks.map((link) => (
           <li key={link.href}>
-            <Link className="focus-ring block rounded-md px-3 py-2 text-sm font-medium hover:bg-slate-100" href={link.href}>
-              {link.label}
+            <Link
+              className="focus-ring block rounded-md px-3 py-2 text-sm font-medium hover:bg-slate-100"
+              href={link.href}
+            >
+              {t(link.key)}
             </Link>
           </li>
         ))}
