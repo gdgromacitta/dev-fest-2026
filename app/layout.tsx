@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { getLocale } from "next-intl/server";
 import "./globals.css";
-import { Header } from "@/src/components/layout/header";
-import { Footer } from "@/src/components/layout/footer";
 import { ServiceWorkerRegistration } from "@/src/components/pwa/service-worker-registration";
 
 const poppins = Poppins({
@@ -38,14 +36,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   return (
     <html lang={locale}>
       <body className={poppins.className}>
-        <a href="#main-content" className="focus-ring sr-only rounded bg-white px-3 py-2">
-          Skip to content
-        </a>
-        <Header />
-        <div className="page-shell" id="main-content">
-          {children}
-        </div>
-        <Footer />
+        {children}
         <ServiceWorkerRegistration />
       </body>
     </html>
