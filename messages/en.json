@@ -54,7 +54,19 @@
     "howToGetHereLabel": "How to get here",
     "publicTransportHeading": "Public Transport",
     "parkingHeading": "Parking & Driving",
-    "accessibilityHeading": "Accessibility"
+    "accessibilityHeading": "Accessibility",
+    "notes": {
+      "date": "October 10, 2026",
+      "time": "9:00 AM - 6:00 PM"
+    },
+    "directions": {
+      "publicTransport": "The venue is best reached by public transport. Use Google Maps with the address Via Vito Volterra 60, Roma to find the best route from your starting point. Trastevere and Ostiense railway stations are the closest major hubs.",
+      "parking": "No dedicated event parking is available. Limited street parking may be found in the surrounding area. Carpooling or public transport is strongly recommended."
+    },
+    "accessibility": {
+      "info": "Accessibility details for the venue will be confirmed closer to the event. If you have specific needs, please reach out to the organizers in advance.",
+      "commitment": "We are committed to making DevFest Roma 2026 an inclusive experience for all attendees."
+    }
   },
   "about": {
     "eyebrow": "A COMMUNITY FOCUSED",

@@ -54,7 +54,19 @@
     "howToGetHereLabel": "Come raggiungerci",
     "publicTransportHeading": "Trasporto Pubblico",
     "parkingHeading": "Parcheggio e Auto",
-    "accessibilityHeading": "Accessibilità"
+    "accessibilityHeading": "Accessibilità",
+    "notes": {
+      "date": "10 Ottobre 2026",
+      "time": "9:00 - 18:00"
+    },
+    "directions": {
+      "publicTransport": "La sede è facilmente raggiungibile con i mezzi pubblici. Usa Google Maps con l'indirizzo Via Vito Volterra 60, Roma per trovare il percorso migliore dal tuo punto di partenza. Le stazioni ferroviarie di Trastevere e Ostiense sono gli snodi principali più vicini.",
+      "parking": "Non è disponibile un parcheggio dedicato all'evento. Nelle vicinanze si può trovare parcheggio limitato su strada. Si consiglia vivamente il car pooling o l'uso dei mezzi pubblici."
+    },
+    "accessibility": {
+      "info": "I dettagli sull'accessibilità della sede verranno confermati più vicino alla data dell'evento. Se hai esigenze specifiche, contatta in anticipo gli organizzatori.",
+      "commitment": "Ci impegniamo a rendere DevFest Roma 2026 un'esperienza inclusiva per tutti i partecipanti."
+    }
   },
   "about": {
     "eyebrow": "COMUNITÀ FOCUSED",

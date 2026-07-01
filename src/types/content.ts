@@ -45,9 +45,6 @@ export type Venue = {
   city: string;
   mapEmbedUrl: string;
   mapsLinkUrl: string;
-  notes: string[];
-  accessibilityInfo: string[];
-  directions: string[];
 };
 
 export type Sponsor = {
