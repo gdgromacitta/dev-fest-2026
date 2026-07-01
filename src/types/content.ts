@@ -4,21 +4,20 @@ export type SocialLink = {
 };
 
 export type TeamMember = {
+  id: string;
   name: string;
-  role: string;
-  bioShort: string;
   photo: string;
   links: SocialLink[];
   accentColor?: string;
 };
 
+// `bioShort` and `bioLong` are translated content and live in
+// messages/{locale}.json under the `speakers.<id>.*` namespace, keyed by `id`.
 export type Speaker = {
   id: string;
   name: string;
   title: string;
   company: string;
-  bioShort: string;
-  bioLong: string;
   photo: string;
   links: SocialLink[];
   sessions: string[];
@@ -27,10 +26,10 @@ export type Speaker = {
 
 export type SessionLevel = "beginner" | "intermediate" | "advanced";
 
+// `title` and `abstract` are translated content and live in
+// messages/{locale}.json under the `sessions.<id>.*` namespace, keyed by `id`.
 export type Session = {
   id: string;
-  title: string;
-  abstract: string;
   start: string;
   end: string;
   track: string;
@@ -46,9 +45,6 @@ export type Venue = {
   city: string;
   mapEmbedUrl: string;
   mapsLinkUrl: string;
-  notes: string[];
-  accessibilityInfo: string[];
-  directions: string[];
 };
 
 export type Sponsor = {

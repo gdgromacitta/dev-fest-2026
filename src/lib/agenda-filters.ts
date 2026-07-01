@@ -27,7 +27,11 @@ export function filterSessions(items: Session[], filters: AgendaFilters) {
       return false;
     }
     if (normalizedQuery) {
-      const haystack = `${session.title} ${session.abstract} ${session.tags.join(" ")}`.toLowerCase();
+      // `title`/`abstract` are translated content (see `sessions.<id>.*` in
+      // messages/{locale}.json) and are not part of the locale-invariant
+      // `Session` data model, so the query only matches locale-invariant
+      // fields here.
+      const haystack = `${session.id} ${session.tags.join(" ")}`.toLowerCase();
       if (!haystack.includes(normalizedQuery)) {
         return false;
       }

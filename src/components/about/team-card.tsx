@@ -1,10 +1,17 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import type { TeamMember } from "@/src/types/content";
 
 type TeamCardProps = {
   member: TeamMember;
+  /** Localised alt text for the portrait image. Defaults to "{name} portrait". */
+  portraitAlt?: string;
 };
 
-export function TeamCard({ member }: TeamCardProps) {
+export function TeamCard({ member, portraitAlt }: TeamCardProps) {
+  const t = useTranslations("team");
+
   return (
     <article
       data-organizer-card={member.name}
@@ -12,7 +19,7 @@ export function TeamCard({ member }: TeamCardProps) {
     >
       <img
         src={member.photo}
-        alt={`${member.name} portrait`}
+        alt={portraitAlt ?? `${member.name} portrait`}
         width={84}
         height={84}
         className="mx-auto h-[84px] w-[84px] rounded-full object-cover"
@@ -20,8 +27,9 @@ export function TeamCard({ member }: TeamCardProps) {
       <div className="mt-4 space-y-1">
         <h3 className="m-0 text-[1.02rem] font-semibold tracking-[-0.03em] text-slate-900">{member.name}</h3>
         <p className="m-0 text-[0.7rem] font-semibold uppercase tracking-[0.08em]" style={{ color: member.accentColor ?? "#1a73e8" }}>
-          {member.role}
+          {t(`${member.id}.role`)}
         </p>
+        <p className="m-0 text-[0.78rem] leading-5 text-slate-500">{t(`${member.id}.bioShort`)}</p>
       </div>
       <div className="mt-4 flex items-center justify-center gap-3 text-slate-400">
         {member.links.map((link) => (

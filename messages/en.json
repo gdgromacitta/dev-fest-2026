@@ -1,0 +1,194 @@
+{
+  "nav": {
+    "home": "Home",
+    "venue": "Venue",
+    "menuAriaLabel": "Menu",
+    "langToggleAriaLabel": "Cambia in italiano"
+  },
+  "footer": {
+    "privacy": "Privacy",
+    "cookies": "Cookie"
+  },
+  "home": {
+    "gdgBadge": "GDG Roma Città",
+    "eventTitle": "DevFest Roma",
+    "eventSubtitle": "2026",
+    "eventDate": "October 10, 2026",
+    "eventLocation": "Roma, Italy",
+    "eventDescription": "A full-day developer conference organized by GDG Roma Città — a community of 495+ developers passionate about technology and innovation. Three concurrent tracks across AI/ML, Architecture, Cloud, and more. Theme: Build, Secure, Scale — Developers and Builders in the Agentic Era.",
+    "registerCta": "Register Now",
+    "sponsorsHeading": "Our Sponsors",
+    "sponsorsDescription": "DevFest Roma is made possible thanks to the generous support of our partners.",
+    "venueBadge": "Venue",
+    "venueDetailsCta": "Venue details & map",
+    "openInMapsCta": "Open in Google Maps",
+    "cfpBadge": "Call for Papers — Open",
+    "cfpHeading": "Submit Your Talk",
+    "cfpDescription": "We're looking for speakers across all experience levels. Share your knowledge on the new challenges developers face in the agentic era — no marketing, just real content and case studies.",
+    "topicsHeading": "Topics",
+    "topic1": "AI/ML — GenAI, Agentic Workflows, LLM Ops",
+    "topic2": "Architecture — Design Patterns, Microservices, Clean Architecture",
+    "topic3": "Backend, Cloud, DevOps, Frontend",
+    "topic4": "Soft Skills & Career Development",
+    "topic5": "Mobile, Cybersecurity, IoT & more",
+    "speakerBenefitsHeading": "Speaker Benefits",
+    "benefit1": "Free event admission",
+    "benefit2": "Exclusive speaker dinner",
+    "benefit3": "Event merchandise",
+    "benefit4": "Full organizational support",
+    "submitProposalCta": "Submit a Proposal",
+    "cfpDeadlineLabel": "Deadline:",
+    "cfpDeadlineDate": "July 31, 2026",
+    "teamHeading": "Meet the Organizers",
+    "teamSubtext": "The passionate volunteers behind DevFest Roma working to create an inclusive and high-impact experience for everyone.",
+    "learnMoreCta": "Learn more about the team"
+  },
+  "venue": {
+    "heading": "Venue & Location",
+    "intro": "Join us at the heart of innovation for DevFest Roma. Find all the details you need to reach the venue and navigate the space comfortably.",
+    "mapAriaLabel": "Map area",
+    "addressLabel": "Venue Address",
+    "openInMapsCta": "Open in Google Maps",
+    "dateLabel": "Date",
+    "timeLabel": "Time",
+    "howToGetHereLabel": "How to get here",
+    "publicTransportHeading": "Public Transport",
+    "parkingHeading": "Parking & Driving",
+    "accessibilityHeading": "Accessibility",
+    "notes": {
+      "date": "October 10, 2026",
+      "time": "9:00 AM - 6:00 PM"
+    },
+    "directions": {
+      "publicTransport": "The venue is best reached by public transport. Use Google Maps with the address Via Vito Volterra 60, Roma to find the best route from your starting point. Trastevere and Ostiense railway stations are the closest major hubs.",
+      "parking": "No dedicated event parking is available. Limited street parking may be found in the surrounding area. Carpooling or public transport is strongly recommended."
+    },
+    "accessibility": {
+      "info": "Accessibility details for the venue will be confirmed closer to the event. If you have specific needs, please reach out to the organizers in advance.",
+      "commitment": "We are committed to making DevFest Roma 2026 an inclusive experience for all attendees."
+    }
+  },
+  "about": {
+    "eyebrow": "A COMMUNITY FOCUSED",
+    "aboutTitle": "About GDG\nDevFest Roma",
+    "aboutDescription": "Our mission is to bring together local developers to learn, share, and connect through Google technologies and community-driven events. DevFest is a global decentralized conference hosted by Google Developer Groups.",
+    "joinCta": "Join the Community",
+    "manifestoCta": "Read Manifesto",
+    "teamHeading": "Meet the Organizers",
+    "teamSubtext": "The passionate volunteers behind DevFest Roma working to create an inclusive and high-impact experience for everyone.",
+    "value_innovation_title": "Innovation",
+    "value_innovation_description": "Discover the latest in AI, Cloud, Mobile, and Web technologies directly from Google experts.",
+    "value_community_title": "Community",
+    "value_community_description": "Join thousands of developers in an environment built on collaboration and mutual growth.",
+    "value_globalImpact_title": "Global Impact",
+    "value_globalImpact_description": "Be part of the world's largest developer community event reaching over 100 countries."
+  },
+  "teamCard": {
+    "portraitAlt": "{name} portrait"
+  },
+  "team": {
+    "davide-passafaro": {
+      "role": "Organizer",
+      "bioShort": "Co-organizer of GDG Roma Città, passionate about building inclusive developer communities."
+    },
+    "giorgio-galassi": {
+      "role": "Organizer",
+      "bioShort": "Co-organizer of GDG Roma Città, freelance developer and community builder."
+    },
+    "eleonora-biancone": {
+      "role": "Organizer",
+      "bioShort": "Co-organizer of GDG Roma Città, working at BIP and advocating for diverse tech communities."
+    },
+    "ryan-jherome-burgos": {
+      "role": "Organizer",
+      "bioShort": "Co-organizer of GDG Roma Città, Frontend Software Engineer and community contributor."
+    },
+    "giulio-alfieri": {
+      "role": "Organizer",
+      "bioShort": "Co-organizer of GDG Roma Città, dedicated to growing the local developer ecosystem."
+    }
+  },
+  "speakers": {
+    "s-ada": {
+      "bioShort": "Connects AI, web, and community trends through practical developer education.",
+      "bioLong": "Sarah leads community keynotes and developer enablement programs, helping teams understand how emerging Google technologies fit into real product work."
+    },
+    "s-milo": {
+      "bioShort": "Helps teams build polished mobile interfaces with resilient UI architecture.",
+      "bioLong": "James works with engineering teams adopting Flutter for real products, focusing on adaptive interface patterns and maintainable component systems."
+    },
+    "s-nora": {
+      "bioShort": "Designs resilient cloud platforms for teams operating at scale.",
+      "bioLong": "Elena focuses on Kubernetes platform architecture, progressive delivery, and operations models that keep microservice systems understandable."
+    },
+    "s-lina": {
+      "bioShort": "Builds practical AI workflows with a focus on evaluation and product safety.",
+      "bioLong": "Maya helps product and engineering teams ship AI features responsibly, with emphasis on API ergonomics, observability, and developer onboarding."
+    },
+    "s-omar": {
+      "bioShort": "Explores emerging browser capabilities and AI-assisted interaction models.",
+      "bioLong": "David focuses on modern web platform features, performance engineering, and applied AI tooling for browser experiences."
+    }
+  },
+  "speakerCard": {
+    "viewDetails": "View details"
+  },
+  "speakerShowcase": {
+    "heading": "Meet our Featured Speakers",
+    "intro": "Join industry leaders and community experts as they share insights on Web, Cloud, AI and Mobile development.",
+    "sortedAZ": "Sorted A-Z",
+    "viewBio": "View Bio",
+    "selected": "Selected",
+    "about": "About",
+    "scheduledSessions": "Scheduled Sessions",
+    "tabs": {
+      "all": "All Speakers",
+      "webMobile": "Web & Mobile",
+      "cloudAi": "Cloud & AI",
+      "design": "Design",
+      "firebase": "Firebase"
+    },
+    "cards": {
+      "alice-johnson": { "role": "Web Engineer" },
+      "bob-brown": { "role": "Cloud Architect" },
+      "charlie-davis": { "role": "Staff Software Engineer" },
+      "david-smith": { "role": "CDE, Angular" },
+      "eve-wilson": { "role": "UX Researcher" },
+      "frank-miller": { "role": "CTO" },
+      "grace-lee": { "role": "Lead Designer" },
+      "henry-zhang": { "role": "Android Engineer" }
+    },
+    "featured": {
+      "about": "Charlie is a Staff Engineer at Uber where she leads the web performance infrastructure team. With over 12 years of experience in the industry, she has been a vocal advocate for accessible web patterns and modern CSS architecture. She is a frequent contributor to open-source and loves building tools that make developers' lives easier."
+    }
+  },
+  "sessions": {
+    "sess-101": {
+      "title": "The Future of Tech: AI, Web and Beyond",
+      "abstract": "A keynote exploring how the next wave of Google technologies is reshaping product teams and developer workflows."
+    },
+    "sess-102": {
+      "title": "Building Adaptive UIs with Flutter",
+      "abstract": "A practical intro to building responsive mobile interfaces with production-minded design systems."
+    },
+    "sess-205": {
+      "title": "Scalable Microservices with GKE",
+      "abstract": "Patterns for designing resilient cloud services with Kubernetes, observability, and safe rollout paths."
+    },
+    "sess-301": {
+      "title": "Getting Started with Gemini API",
+      "abstract": "An intro to building practical AI experiences with Gemini, evaluation basics, and production guardrails."
+    },
+    "sess-401": {
+      "title": "Modern Web: From WebAssembly to AI Browsing",
+      "abstract": "A tour through the latest browser capabilities, web runtimes, and AI-assisted interaction patterns."
+    }
+  },
+  "agenda": {
+    "heading": "Event Agenda",
+    "intro": "Join us for a day of deep dives into the latest Google technologies. Filter by track or level to build your perfect schedule.",
+    "lunchBreak": "Lunch Break & Networking",
+    "saveSessionAriaLabel": "Save {title}",
+    "noSessionsMatch": "No sessions match the current filters."
+  }
+}

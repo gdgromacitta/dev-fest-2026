@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import type { Session } from "@/src/types/content";
 import { speakers } from "@/src/content/speakers";
 
@@ -56,11 +57,15 @@ const getSpeakerMeta = (speakerId: string) => {
 };
 
 export function SessionList({ sessions }: SessionListProps) {
+  const tSessions = useTranslations("sessions");
+  const tAgenda = useTranslations("agenda");
+
   return (
     <section className="space-y-6" aria-live="polite">
       {sessions.map((session, index) => {
         const slot = formatSlot(session.start);
         const speaker = getSpeakerMeta(session.speakerIds[0] ?? "");
+        const title = tSessions(`${session.id}.title`);
 
         return (
           <div key={session.id} className="grid gap-4 md:grid-cols-[4.5rem_minmax(0,1fr)] md:items-start">
@@ -89,7 +94,7 @@ export function SessionList({ sessions }: SessionListProps) {
                       </span>
                     </div>
                     <h3 className="m-0 text-[1.95rem] font-semibold leading-tight tracking-[-0.045em] text-slate-900 md:text-[1.8rem]">
-                      {session.title}
+                      {title}
                     </h3>
                     <div className="flex items-center gap-3 text-sm text-slate-500">
                       <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f4d4b0] text-[0.65rem] font-semibold text-slate-700">
@@ -105,7 +110,7 @@ export function SessionList({ sessions }: SessionListProps) {
                   </div>
                   <button
                     type="button"
-                    aria-label={`Save ${session.title}`}
+                    aria-label={tAgenda("saveSessionAriaLabel", { title })}
                     className={`focus-ring mt-2 rounded-lg p-2 ${index === 2 ? "bg-[#e7f0ff] text-[#4d8cff]" : "text-slate-400"}`}
                   >
                     <svg aria-hidden="true" viewBox="0 0 20 20" className="h-4 w-4 fill-current">
@@ -123,7 +128,7 @@ export function SessionList({ sessions }: SessionListProps) {
                 </div>
                 <div className="relative pl-6">
                   <div className="rounded-2xl border border-dashed border-[#c8d8ff] bg-[#f7fbff] px-5 py-4 text-center text-lg font-semibold text-[#4d8cff]">
-                    Lunch Break &amp; Networking
+                    {tAgenda("lunchBreak")}
                   </div>
                 </div>
               </>
@@ -131,7 +136,7 @@ export function SessionList({ sessions }: SessionListProps) {
           </div>
         );
       })}
-      {!sessions.length ? <p className="text-sm text-slate-600">No sessions match the current filters.</p> : null}
+      {!sessions.length ? <p className="text-sm text-slate-600">{tAgenda("noSessionsMatch")}</p> : null}
     </section>
   );
 }

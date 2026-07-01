@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import type { Speaker } from "@/src/types/content";
 import { Card } from "@/src/components/ui/card";
 
@@ -7,6 +10,9 @@ type SpeakerCardProps = {
 };
 
 export function SpeakerCard({ speaker, onOpen }: SpeakerCardProps) {
+  const t = useTranslations("speakers");
+  const tCard = useTranslations("speakerCard");
+
   return (
     <Card as="article" className="h-full space-y-3" id={speaker.id}>
       <div>
@@ -15,13 +21,13 @@ export function SpeakerCard({ speaker, onOpen }: SpeakerCardProps) {
           {speaker.title} at {speaker.company}
         </p>
       </div>
-      <p className="m-0 text-sm text-slate-700">{speaker.bioShort}</p>
+      <p className="m-0 text-sm text-slate-700">{t(`${speaker.id}.bioShort`)}</p>
       <button
         type="button"
         className="focus-ring rounded-md bg-gblue px-3 py-2 text-sm font-semibold text-white"
         onClick={onOpen}
       >
-        View details
+        {tCard("viewDetails")}
       </button>
     </Card>
   );
