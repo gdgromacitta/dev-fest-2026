@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { getSessionsBySpeaker } from "@/src/lib/content";
 import type { Speaker } from "@/src/types/content";
 
@@ -8,6 +11,7 @@ type SpeakerDialogProps = {
 };
 
 export function SpeakerDialog({ speaker, onClose }: SpeakerDialogProps) {
+  const t = useTranslations("speakers");
   const speakerSessions = getSessionsBySpeaker(speaker.id);
 
   return (
@@ -24,7 +28,7 @@ export function SpeakerDialog({ speaker, onClose }: SpeakerDialogProps) {
             Close
           </button>
         </div>
-        <p className="m-0 text-sm text-slate-700">{speaker.bioLong}</p>
+        <p className="m-0 text-sm text-slate-700">{t(`${speaker.id}.bioLong`)}</p>
         <section>
           <h3 className="m-0 text-sm font-semibold uppercase text-slate-500">Sessions</h3>
           <ul className="mb-0 mt-2 space-y-1 pl-5">

@@ -107,5 +107,59 @@
       "role": "Organizer",
       "bioShort": "Co-organizer of GDG Roma Città, dedicated to growing the local developer ecosystem."
     }
+  },
+  "speakers": {
+    "s-ada": {
+      "bioShort": "Connects AI, web, and community trends through practical developer education.",
+      "bioLong": "Sarah leads community keynotes and developer enablement programs, helping teams understand how emerging Google technologies fit into real product work."
+    },
+    "s-milo": {
+      "bioShort": "Helps teams build polished mobile interfaces with resilient UI architecture.",
+      "bioLong": "James works with engineering teams adopting Flutter for real products, focusing on adaptive interface patterns and maintainable component systems."
+    },
+    "s-nora": {
+      "bioShort": "Designs resilient cloud platforms for teams operating at scale.",
+      "bioLong": "Elena focuses on Kubernetes platform architecture, progressive delivery, and operations models that keep microservice systems understandable."
+    },
+    "s-lina": {
+      "bioShort": "Builds practical AI workflows with a focus on evaluation and product safety.",
+      "bioLong": "Maya helps product and engineering teams ship AI features responsibly, with emphasis on API ergonomics, observability, and developer onboarding."
+    },
+    "s-omar": {
+      "bioShort": "Explores emerging browser capabilities and AI-assisted interaction models.",
+      "bioLong": "David focuses on modern web platform features, performance engineering, and applied AI tooling for browser experiences."
+    }
+  },
+  "speakerCard": {
+    "viewDetails": "View details"
+  },
+  "speakerShowcase": {
+    "heading": "Meet our Featured Speakers",
+    "intro": "Join industry leaders and community experts as they share insights on Web, Cloud, AI and Mobile development.",
+    "sortedAZ": "Sorted A-Z",
+    "viewBio": "View Bio",
+    "selected": "Selected",
+    "about": "About",
+    "scheduledSessions": "Scheduled Sessions",
+    "tabs": {
+      "all": "All Speakers",
+      "webMobile": "Web & Mobile",
+      "cloudAi": "Cloud & AI",
+      "design": "Design",
+      "firebase": "Firebase"
+    },
+    "cards": {
+      "alice-johnson": { "role": "Web Engineer" },
+      "bob-brown": { "role": "Cloud Architect" },
+      "charlie-davis": { "role": "Staff Software Engineer" },
+      "david-smith": { "role": "CDE, Angular" },
+      "eve-wilson": { "role": "UX Researcher" },
+      "frank-miller": { "role": "CTO" },
+      "grace-lee": { "role": "Lead Designer" },
+      "henry-zhang": { "role": "Android Engineer" }
+    },
+    "featured": {
+      "about": "Charlie is a Staff Engineer at Uber where she leads the web performance infrastructure team. With over 12 years of experience in the industry, she has been a vocal advocate for accessible web patterns and modern CSS architecture. She is a frequent contributor to open-source and loves building tools that make developers' lives easier."
+    }
   }
 }

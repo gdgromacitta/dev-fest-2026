@@ -1,21 +1,33 @@
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import SpeakersPage from "@/app/[locale]/speakers/page";
+import { NextIntlClientProvider } from "next-intl";
+import { SpeakersPageContent } from "@/src/components/speakers/speakers-page-content";
+import messages from "@/messages/it.json";
 
 globalThis.React = React;
 
-const renderSpeakersPage = () => renderToStaticMarkup(SpeakersPage());
+// SpeakersPageContent is a client component (it calls useTranslations),
+// which requires a NextIntlClientProvider ancestor — normally supplied by
+// the locale layout, which isn't part of this unit render.
+const renderSpeakersPage = () =>
+  renderToStaticMarkup(
+    React.createElement(NextIntlClientProvider, {
+      locale: "it",
+      messages,
+      children: React.createElement(SpeakersPageContent)
+    })
+  );
 
 describe("Speakers page reference structure", () => {
   test("renders the screenshot-scoped hero, speaker wall, and featured panel", () => {
     const html = renderSpeakersPage();
 
-    expect(html).toContain("Meet our Featured Speakers");
-    expect(html).toContain("All Speakers");
-    expect(html).toContain("Web &amp; Mobile");
-    expect(html).toContain("Cloud &amp; AI");
+    expect(html).toContain(messages.speakerShowcase.heading);
+    expect(html).toContain(messages.speakerShowcase.tabs.all);
+    expect(html).toContain(messages.speakerShowcase.tabs.webMobile.replace("&", "&amp;"));
+    expect(html).toContain(messages.speakerShowcase.tabs.cloudAi.replace("&", "&amp;"));
     expect(html).toContain("Charlie Davis");
-    expect(html).toContain("Scheduled Sessions");
+    expect(html).toContain(messages.speakerShowcase.scheduledSessions);
     expect((html.match(/data-showcase-speaker=/g) ?? []).length).toBe(8);
   });
 });

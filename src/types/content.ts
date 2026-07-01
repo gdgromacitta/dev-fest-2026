@@ -11,13 +11,13 @@ export type TeamMember = {
   accentColor?: string;
 };
 
+// `bioShort` and `bioLong` are translated content and live in
+// messages/{locale}.json under the `speakers.<id>.*` namespace, keyed by `id`.
 export type Speaker = {
   id: string;
   name: string;
   title: string;
   company: string;
-  bioShort: string;
-  bioLong: string;
   photo: string;
   links: SocialLink[];
   sessions: string[];
