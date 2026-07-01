@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { getLocale } from "next-intl/server";
 import "./globals.css";
+import { ServiceWorkerRegistration } from "@/src/components/pwa/service-worker-registration";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -12,6 +13,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "DevFest Roma by GDG Roma Città",
   description: "Official DevFest Roma website with agenda, speakers, and venue details.",
+  manifest: "/manifest.json",
   openGraph: {
     title: "DevFest Roma by GDG Roma Città",
     description: "Discover sessions, speakers, and venue information for DevFest Roma.",
@@ -35,6 +37,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
     <html lang={locale}>
       <body className={poppins.className}>
         {children}
+        <ServiceWorkerRegistration />
       </body>
     </html>
   );
