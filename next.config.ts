@@ -7,7 +7,7 @@ import type { NextConfig } from "next";
 const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
 const nextConfig: NextConfig = {
-  basePath: "https://alfiuzzo89.github.io/dev-fest-2026/",
+  basePath: "/dev-fest-2026",
   output: "export",
   images: {
     unoptimized: true
