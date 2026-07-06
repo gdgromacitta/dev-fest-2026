@@ -31,7 +31,7 @@ const renderHomePage = async () => {
   const element = await HomePage({ params: Promise.resolve({ locale: "it" }) });
 
   return renderToStaticMarkup(
-    React.createElement(NextIntlClientProvider, { locale: "it", messages, children: element })
+    React.createElement(NextIntlClientProvider, { locale: "it", messages, timeZone: "Europe/Rome", children: element })
   );
 };
 
