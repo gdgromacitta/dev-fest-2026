@@ -1,5 +1,5 @@
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Header } from "@/src/components/layout/header";
 import { Footer } from "@/src/components/layout/footer";
@@ -25,6 +25,10 @@ export default async function LocaleLayout({ children, params }: Props) {
   if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
     notFound();
   }
+
+  // Enable static rendering — tells next-intl to read locale from params
+  // instead of headers(), which is required for output: "export".
+  setRequestLocale(locale);
 
   const messages = await getMessages();
 

@@ -13,6 +13,7 @@ globalThis.React = React;
 // Vitest). Mock it with a minimal translator backed by the same it.json
 // messages used elsewhere in this test, scoped to the requested namespace.
 vi.mock("next-intl/server", () => ({
+  setRequestLocale: () => {},
   getTranslations:
     async ({ namespace }: { locale: string; namespace: string }) => {
       const allMessages = messages as unknown as Record<string, Record<string, string>>;

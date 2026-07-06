@@ -7,22 +7,9 @@ import type { NextConfig } from "next";
 const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
 const nextConfig: NextConfig = {
+  output: "export",
   images: {
     unoptimized: true
-  },
-  async redirects() {
-    // Pre-launch redirects — keep the site locked to Home and Venue.
-    // After the locale restructure these paths are locale-prefixed.
-    // The next-intl middleware redirects /about → /it/about first,
-    // then these config redirects send /it/about → /it/ etc.
-    return [
-      { source: "/it/about",    destination: "/it", permanent: false },
-      { source: "/it/agenda",   destination: "/it", permanent: false },
-      { source: "/it/speakers", destination: "/it", permanent: false },
-      { source: "/en/about",    destination: "/en", permanent: false },
-      { source: "/en/agenda",   destination: "/en", permanent: false },
-      { source: "/en/speakers", destination: "/en", permanent: false },
-    ];
   },
 };
 

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { venue } from "@/src/content/venue";
 
 export const metadata: Metadata = {
@@ -13,6 +13,7 @@ type Props = {
 
 export default async function VenuePage({ params }: Props) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "venue" });
 
   return (

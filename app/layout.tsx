@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import { getLocale } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 import "./globals.css";
 import { ServiceWorkerRegistration } from "@/src/components/pwa/service-worker-registration";
 
@@ -27,14 +27,13 @@ export const metadata: Metadata = {
 };
 
 // Root layout — owns <html> and <body>.
-// Uses getLocale() from next-intl/server so the lang attribute
-// reflects the active locale set by the middleware.
 // The locale layout at app/[locale]/layout.tsx wraps children
 // with NextIntlClientProvider, Header, and Footer.
-export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const locale = await getLocale();
+// We use the default locale here; each [locale] layout sets the
+// correct locale via setRequestLocale() for its subtree.
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang={locale}>
+    <html lang={routing.defaultLocale}>
       <body className={poppins.className}>
         {children}
         <ServiceWorkerRegistration />
