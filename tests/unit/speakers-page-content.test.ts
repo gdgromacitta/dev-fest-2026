@@ -14,6 +14,7 @@ const renderSpeakersPage = () =>
     React.createElement(NextIntlClientProvider, {
       locale: "it",
       messages,
+      timeZone: "Europe/Rome",
       children: React.createElement(SpeakersPageContent)
     })
   );

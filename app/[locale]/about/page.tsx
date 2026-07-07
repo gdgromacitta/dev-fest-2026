@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { aboutHero, aboutValues } from "@/src/content/about";
 import { team } from "@/src/content/team";
 import { TeamCard } from "@/src/components/about/team-card";
@@ -15,6 +15,7 @@ type Props = {
 
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "about" });
 
   // `aboutTitle` combines both heading lines separated by "\n" so the second

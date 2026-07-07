@@ -31,6 +31,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
   return {
     locale,
     messages,
+    timeZone: "Europe/Rome",
     onError(error) {
       // Missing translations are handled by `getMessageFallback` below and
       // shouldn't be noisy in the console. Anything else (formatting

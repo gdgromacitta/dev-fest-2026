@@ -14,6 +14,7 @@ globalThis.React = React;
 // The venue namespace has nested keys (e.g. "notes.date"), so the lookup
 // walks the dotted path instead of a flat dictionary access.
 vi.mock("next-intl/server", () => ({
+  setRequestLocale: () => {},
   getTranslations:
     async ({ namespace }: { locale: string; namespace: string }) => {
       const allMessages = messages as unknown as Record<string, unknown>;
