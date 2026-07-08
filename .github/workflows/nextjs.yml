@@ -31,7 +31,26 @@ jobs:
         
       - name: Build Next.js site
         run: npx next build
-        
+
+      - name: Copy default locale to root
+        run: |
+          # Copy the Italian homepage as index.html at root
+          cp ./out/it.html ./out/index.html
+          # Copy Italian subpages to root-level directories
+          for dir in ./out/it/*/; do
+            if [ -d "$dir" ]; then
+              dirname=$(basename "$dir")
+              mkdir -p "./out/$dirname"
+              cp -r "$dir"* "./out/$dirname/"
+            fi
+          done
+          for file in ./out/it/*.html; do
+            if [ -f "$file" ]; then
+              filename=$(basename "$file")
+              cp "$file" "./out/$filename" 2>/dev/null || true
+            fi
+          done
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
