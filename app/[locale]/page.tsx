@@ -23,7 +23,7 @@ type Props = {
 
 /** Register CTA and agenda link targets — not translatable copy. */
 const eventLinks = {
-  registerHref: "#",
+  registerHref: "https://gdg.community.dev/events/details/google-gdg-roma-citta-presents-devfest-roma-2026/",
   agendaHref: "/agenda"
 } as const;
 
