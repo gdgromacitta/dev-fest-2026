@@ -14,6 +14,7 @@ const renderAgendaPage = () =>
     React.createElement(NextIntlClientProvider, {
       locale: "it",
       messages,
+      timeZone: "Europe/Rome",
       children: React.createElement(AgendaPageContent)
     })
   );

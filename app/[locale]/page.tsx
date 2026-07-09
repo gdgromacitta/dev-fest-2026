@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { team } from "@/src/content/team";
 import { sponsors } from "@/src/content/sponsors";
 import { venue } from "@/src/content/venue";
@@ -29,6 +29,7 @@ const eventLinks = {
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "home" });
   const hasSponsors = sponsors.length > 0;
 

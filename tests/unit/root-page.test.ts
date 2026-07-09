@@ -14,6 +14,7 @@ globalThis.React = React;
 // Vitest). Mock it with a minimal translator backed by the same it.json
 // messages used elsewhere in this test, scoped to the requested namespace.
 vi.mock("next-intl/server", () => ({
+  setRequestLocale: () => {},
   getTranslations:
     async ({ namespace }: { locale: string; namespace: string }) => {
       const allMessages = messages as unknown as Record<string, Record<string, string>>;
@@ -31,7 +32,7 @@ const renderHomePage = async () => {
   const element = await HomePage({ params: Promise.resolve({ locale: "it" }) });
 
   return renderToStaticMarkup(
-    React.createElement(NextIntlClientProvider, { locale: "it", messages, children: element })
+    React.createElement(NextIntlClientProvider, { locale: "it", messages, timeZone: "Europe/Rome", children: element })
   );
 };
 
