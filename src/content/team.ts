@@ -37,5 +37,40 @@ export const team: TeamMember[] = [
     photo: "/team/giulio_alfieri.webp",
     links: [],
     accentColor: "#86a8f4"
+  },
+  {
+    id: "ivano-scifoni",
+    name: "Ivano Scifoni",
+    photo: "/team/ivano_scifoni.webp",
+    links: [],
+    accentColor: "#75a7f3"
+  },
+  {
+    id: "serena-sensini",
+    name: "Serena Sensini",
+    photo: "/team/serena_sensini.webp",
+    links: [],
+    accentColor: "#f58b7f"
+  },
+  {
+    id: "egon-ferri",
+    name: "Egon Ferri",
+    photo: "/team/egon_ferri.webp",
+    links: [],
+    accentColor: "#d4b16a"
+  },
+  {
+    id: "andrea-della-porta",
+    name: "Andrea Della Porta",
+    photo: "/team/andrea_della_porta.webp",
+    links: [],
+    accentColor: "#7fbf8d"
+  },
+  {
+    id: "camillo-bucciarelli",
+    name: "Camillo Bucciarelli",
+    photo: "/team/camillo_bucciarelli.webp",
+    links: [],
+    accentColor: "#86a8f4"
   }
 ];
