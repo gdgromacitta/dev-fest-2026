@@ -47,10 +47,10 @@ describe("About page reference structure", () => {
     expect((html.match(/data-about-value=/g) ?? []).length).toBe(3);
   });
 
-  test("renders the GDG logo as a file reference, not an inlined data uri", async () => {
+  test("renders the DevFest logo as a file reference, not an inlined data uri", async () => {
     const html = await renderAboutPage();
 
-    expect(html).toContain("/logos/gdg-roma-light.svg");
+    expect(html).toContain("/logos/devfest-roma-horizontal.svg");
     expect(html).not.toContain("data:image/svg+xml");
   });
 });
