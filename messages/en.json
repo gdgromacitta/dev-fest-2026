@@ -89,43 +89,43 @@
   },
   "team": {
     "davide-passafaro": {
-      "role": "Organizer",
+      "role": "Freelance Software Engineer & Angular GDE",
       "bioShort": "Co-organizer of GDG Roma Città, passionate about building inclusive developer communities."
     },
     "giorgio-galassi": {
-      "role": "Organizer",
+      "role": "Senior Frontend Engineer (Freelance)",
       "bioShort": "Co-organizer of GDG Roma Città, freelance developer and community builder."
     },
     "eleonora-biancone": {
-      "role": "Organizer",
+      "role": "Scrum Master",
       "bioShort": "Co-organizer of GDG Roma Città, working at BIP and advocating for diverse tech communities."
     },
     "ryan-jherome-burgos": {
-      "role": "Organizer",
+      "role": "Senior Software Engineer",
       "bioShort": "Co-organizer of GDG Roma Città, Frontend Software Engineer and community contributor."
     },
     "giulio-alfieri": {
-      "role": "Organizer",
+      "role": "Web Developer",
       "bioShort": "Co-organizer of GDG Roma Città, dedicated to growing the local developer ecosystem."
     },
     "andrea-della-porta": {
-      "role": "Organizer",
+      "role": "Manager Mobile",
       "bioShort": "DevFest Rome 2026 team member. Mobile Developer."
     },
     "serena-sensini": {
-      "role": "Organizer",
+      "role": "Innovation Leader",
       "bioShort": "DevFest Rome 2026 team member. Dedicated to the growth of the local developer ecosystem."
     },
     "egon-ferri": {
-      "role": "Organizer",
+      "role": "AI engineer",
       "bioShort": "AI engineer, fullstack vibecoder, PyData Roma Capitale Organizer, GDG Rome City supporter."
     },
     "ivano-scifoni": {
-      "role": "Organizer",
+      "role": "Cloud Architect",
       "bioShort": "SharpCoding Community Leader, GDG Rome City supporter, Delivery Lead, innovation enthusiast."
     },
     "camillo-bucciarelli": {
-      "role": "Organizer",
+      "role": "Industrialization Architect",
       "bioShort": "Architect at Sopra Steria, instructor at ITS Lanciano, and speaker."
     }
   },
