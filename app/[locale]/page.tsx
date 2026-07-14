@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Link } from "@/src/i18n/navigation";
 import { team } from "@/src/content/team";
 import { sponsors } from "@/src/content/sponsors";
 import { venue } from "@/src/content/venue";

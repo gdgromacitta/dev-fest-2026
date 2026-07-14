@@ -31,25 +31,13 @@ jobs:
         
       - name: Build Next.js site
         run: npx next build
-
-      - name: Copy default locale to root
-        run: |
-          # Copy the Italian homepage as index.html at root
-          cp ./out/it.html ./out/index.html
-          # Copy Italian subpages to root-level directories
-          for dir in ./out/it/*/; do
-            if [ -d "$dir" ]; then
-              dirname=$(basename "$dir")
-              mkdir -p "./out/$dirname"
-              cp -r "$dir"* "./out/$dirname/"
-            fi
-          done
-          for file in ./out/it/*.html; do
-            if [ -f "$file" ]; then
-              filename=$(basename "$file")
-              cp "$file" "./out/$filename" 2>/dev/null || true
-            fi
-          done
+        # `app/page.tsx` (the true, unprefixed "/" route) redirects to the
+        # default locale on its own, baked into `out/index.html` by
+        # `next build`. `out/it/...` and `out/en/...` are the real
+        # locale-prefixed content. No post-build copy step is needed
+        # anymore to make the default locale reachable at the root —
+        # routing.localePrefix is now "always", so there is no unprefixed
+        # locale content route to fake via copying files.
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

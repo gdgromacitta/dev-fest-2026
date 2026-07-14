@@ -23,6 +23,18 @@ vi.mock("next-intl/server", () => ({
     }
 }));
 
+// `@/src/i18n/navigation`'s locale-aware `Link` (used by HomePage's "Venue
+// Details" CTA, so it correctly resolves to /it/venue or /en/venue instead
+// of an unprefixed — now 404ing — /venue) is built on next-intl's
+// `createNavigation`, which imports `next/navigation` — a module Next.js
+// resolves via its own webpack aliasing at runtime/build time, but Vitest's
+// Node environment cannot resolve on its own. Mock it with a plain anchor,
+// matching the next-intl/server mocking pattern above.
+vi.mock("@/src/i18n/navigation", () => ({
+  Link: ({ href, children, ...props }: { href: string; children?: React.ReactNode }) =>
+    React.createElement("a", { href, ...props }, children)
+}));
+
 // HomePage is an async server component (it calls getTranslations, which
 // resolves locale from params) and also renders client components
 // (e.g. TeamCard) that call useTranslations, which requires a
