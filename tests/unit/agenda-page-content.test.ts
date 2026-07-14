@@ -1,10 +1,22 @@
 import React from "react";
+import { vi } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 import { NextIntlClientProvider } from "next-intl";
 import { AgendaPageContent } from "@/src/components/agenda/agenda-page-content";
 import messages from "@/messages/it.json";
 
 globalThis.React = React;
+
+// `@/src/i18n/navigation`'s locale-aware `Link` (used by SessionList to
+// deep-link to /speakers#<id>) is built on next-intl's `createNavigation`,
+// which imports `next/navigation` — a module Next.js resolves via its own
+// webpack aliasing at runtime/build time, but Vitest's Node environment
+// cannot resolve on its own. Mock it with a plain anchor, matching the
+// `next-intl/server` mocking pattern already used in these tests.
+vi.mock("@/src/i18n/navigation", () => ({
+  Link: ({ href, children, ...props }: { href: string; children?: React.ReactNode }) =>
+    React.createElement("a", { href, ...props }, children)
+}));
 
 // AgendaPageContent is a client component (it calls useTranslations),
 // which requires a NextIntlClientProvider ancestor — normally supplied by
