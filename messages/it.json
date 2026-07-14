@@ -8,7 +8,7 @@
   "footer": {
     "privacy": "Privacy",
     "cookies": "Cookie",
-    "poweredBy": "Offerto da"
+    "poweredBy": "Organizzato da"
   },
   "home": {
     "gdgBadge": "GDG Roma Città",
@@ -110,7 +110,7 @@
     },
     "andrea-della-porta": {
       "role": "Manager Mobile",
-      "bioShort": "Team Member della DevFest Roma 2026. Sviluppatore Mobile"
+      "bioShort": "Team Member della DevFest Roma 2026. Sviluppatore Mobile."
     },
     "serena-sensini": {
       "role": "Innovation Leader",
@@ -118,7 +118,7 @@
     },
     "egon-ferri": {
       "role": "AI engineer",
-      "bioShort": "Team Member della DevFest Roma 2026. dedicato alla crescita dell'ecosistema di sviluppatori locale."
+      "bioShort": "AI engineer, fullstack vibecoder, PyData Roma Capitale Organizer, GDG Rome City supporter."
     },
     "ivano-scifoni": {
       "role": "Cloud Architect",
@@ -126,7 +126,7 @@
     },
     "camillo-bucciarelli": {
       "role": "Industrialization Architect",
-      "bioShort": "Team Member della DevFest Roma 2026. dedicato alla crescita dell'ecosistema di sviluppatori locale."
+      "bioShort": "Architect in Sopra Steria, docente ITS Lanciano e speaker"
     }
   },
   "speakers": {
