@@ -4,9 +4,7 @@ export function Footer() {
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 py-8 text-sm text-slate-600 md:flex-row md:items-center md:justify-between">
         <img src="/logos/gdg-roma-horizontal-light.svg" alt="GDG Roma Città" className="h-6 w-auto" />
         <div className="flex gap-4">
-          <a className="focus-ring rounded-sm" href="mailto:hello@gdg.dev">hello@gdg.dev</a>
-          <a className="focus-ring rounded-sm" href="#">Privacy</a>
-          <a className="focus-ring rounded-sm" href="#">Cookies</a>
+          <a className="focus-ring rounded-sm" href="mailto:gdgroma.citta@gmail.com">gdgroma.citta@gmail.com</a>
         </div>
       </div>
     </footer>

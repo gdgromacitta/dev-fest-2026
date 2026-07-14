@@ -15,7 +15,7 @@
     "eventSubtitle": "2026",
     "eventDate": "10 Ottobre 2026",
     "eventLocation": "Roma, Italia",
-    "eventDescription": "Una conferenza per sviluppatori di un'intera giornata, organizzata da GDG Roma Città — una community di 495+ sviluppatori appassionati di tecnologia e innovazione. Tre track paralleli su AI/ML, Architettura, Cloud e molto altro. Tema: Build, Secure, Scale — Sviluppatori e Builder nell'Era Agente.",
+    "eventDescription": "Una conferenza per sviluppatori di un'intera giornata, organizzata da GDG Roma Città — una community di 500+ sviluppatori appassionati di tecnologia e innovazione. Tre track paralleli su AI/ML, Architettura, Cloud e molto altro. Tema: Build, Secure, Scale — Sviluppatori e Builder nell'Era Agente.",
     "registerCta": "Registrati",
     "sponsorsHeading": "I nostri Sponsor",
     "sponsorsDescription": "DevFest Roma è reso possibile grazie al generoso supporto dei nostri partner.",
@@ -88,43 +88,43 @@
   },
   "team": {
     "davide-passafaro": {
-      "role": "Organizzatore",
+      "role": "Freelance Software Engineer & Angular GDE",
       "bioShort": "Co-organizzatore di GDG Roma Città, appassionato di costruire community di sviluppatori inclusive."
     },
     "giorgio-galassi": {
-      "role": "Organizzatore",
+      "role": "Senior Frontend Engineer (Freelance)",
       "bioShort": "Co-organizzatore di GDG Roma Città, sviluppatore freelance e community builder."
     },
     "eleonora-biancone": {
-      "role": "Organizzatrice",
+      "role": "Scrum Master",
       "bioShort": "Co-organizzatrice di GDG Roma Città, lavora in BIP e promuove community tech diversificate."
     },
     "ryan-jherome-burgos": {
-      "role": "Organizzatore",
+      "role": "Senior Software Engineer",
       "bioShort": "Co-organizzatore di GDG Roma Città, Frontend Software Engineer e contributore della community."
     },
     "giulio-alfieri": {
-      "role": "Organizzatore",
+      "role": "Web Developer",
       "bioShort": "Co-organizzatore di GDG Roma Città, dedicato alla crescita dell'ecosistema di sviluppatori locale."
     },
     "andrea-della-porta": {
-      "role": "Organizzatore",
+      "role": "Manager Mobile",
       "bioShort": "Team Member della DevFest Roma 2026. Sviluppatore Mobile"
     },
     "serena-sensini": {
-      "role": "Organizzatrice",
+      "role": "Innovation Leader",
       "bioShort": "Team Member della DevFest Roma 2026. Dedicato alla crescita dell'ecosistema di sviluppatori locale."
     },
     "egon-ferri": {
-      "role": "Organizzatore",
+      "role": "AI engineer",
       "bioShort": "Team Member della DevFest Roma 2026. dedicato alla crescita dell'ecosistema di sviluppatori locale."
     },
     "ivano-scifoni": {
-      "role": "Organizzatore",
+      "role": "Cloud Architect",
       "bioShort": "Comunity Leader di SharpCoding, Sostenitore di GDG Roma Città, Delivery Lead, Appassionato di innovazione"
     },
     "camillo-bucciarelli": {
-      "role": "Organizzatore",
+      "role": "Industrialization Architect",
       "bioShort": "Team Member della DevFest Roma 2026. dedicato alla crescita dell'ecosistema di sviluppatori locale."
     }
   },
