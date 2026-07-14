@@ -1,12 +1,20 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import "./globals.css";
 import { ServiceWorkerRegistration } from "@/src/components/pwa/service-worker-registration";
 
+// Restyling design: Poppins for display/headings, Inter for body copy.
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["600", "700"],
+  variable: "--font-poppins",
+  display: "swap"
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
   display: "swap"
 });
 
@@ -34,7 +42,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang={routing.defaultLocale}>
-      <body className={poppins.className}>
+      <body className={`${inter.variable} ${poppins.variable} font-sans`}>
         {children}
         <ServiceWorkerRegistration />
       </body>

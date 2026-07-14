@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --bg: #f8fafc;
+  --bg: #ffffff;
   --surface: #ffffff;
-  --text: #111827;
-  --muted: #6b7280;
-  --google-blue: #1a73e8;
-  --google-red: #ea4335;
-  --google-yellow: #fbbc05;
-  --google-green: #34a853;
+  --text: oklch(0.22 0.02 260);
+  --muted: oklch(0.45 0.02 260);
+  --google-blue: oklch(0.56 0.19 258);
+  --google-red: oklch(0.6 0.19 25);
+  --google-yellow: oklch(0.78 0.15 95);
+  --google-green: oklch(0.56 0.15 148);
 }
 
 * {
@@ -21,7 +21,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: radial-gradient(circle at top right, #eef6ff, var(--bg) 40%);
+  background: var(--bg);
   color: var(--text);
 }
 
@@ -30,10 +30,31 @@ a {
   text-decoration: none;
 }
 
-.page-shell {
-  margin: 0 auto;
-  max-width: 1120px;
-  padding: 1.5rem 1rem 3rem;
+@layer base {
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  /* Pill buttons from the restyling design */
+  .btn-primary {
+    @apply focus-ring inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-base font-semibold text-white transition-colors duration-200 hover:bg-primary-deep;
+  }
+  .btn-outline {
+    @apply focus-ring inline-flex items-center justify-center rounded-full border-[1.5px] border-line-strong px-8 py-4 text-base font-semibold text-ink transition-colors duration-200 hover:border-ink;
+  }
+  .btn-dark {
+    @apply focus-ring inline-flex items-center justify-center rounded-full bg-ink px-8 py-4 text-base font-semibold text-white transition-colors duration-200 hover:bg-muted;
+  }
+  .eyebrow {
+    @apply text-[13px] font-semibold uppercase tracking-[0.08em];
+  }
+  .chip {
+    @apply inline-flex rounded-full px-4 py-2 text-[13px] font-semibold;
+  }
 }
 
 .focus-ring:focus-visible {

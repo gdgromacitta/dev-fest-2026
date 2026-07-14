@@ -2,6 +2,11 @@
   "nav": {
     "home": "Home",
     "venue": "Sede",
+    "agenda": "Agenda",
+    "speakers": "Speaker",
+    "sponsors": "Sponsor",
+    "faq": "FAQ",
+    "registerCta": "Registrati",
     "menuAriaLabel": "Menu",
     "langToggleAriaLabel": "Switch to English"
   },
@@ -18,6 +23,33 @@
     "eventLocation": "Roma, Italia",
     "eventDescription": "Una conferenza per sviluppatori di un'intera giornata, organizzata da GDG Roma Città — una community di 500+ sviluppatori appassionati di tecnologia e innovazione. Tre track paralleli su AI/ML, Architettura, Cloud e molto altro. Tema: Build, Secure, Scale — Sviluppatori e Builder nell'Era Agente.",
     "registerCta": "Registrati",
+    "agendaCta": "Scopri il programma",
+    "cfpTag1": "AI/ML",
+    "cfpTag2": "Architettura",
+    "cfpTag3": "Cloud & DevOps",
+    "cfpTag4": "Frontend",
+    "cfpTag5": "Mobile & Security",
+    "programBadge": "Programma",
+    "programHeading": "Una giornata, tre track",
+    "programSubtext": "Sessioni in parallelo dalla mattina alla sera. Il programma completo sarà pubblicato a settembre.",
+    "track1Title": "AI/ML",
+    "track1Topics": "GenAI · Workflow Agente · LLM Ops",
+    "track2Title": "Architettura",
+    "track2Topics": "Design Pattern · Microservizi · Clean Architecture",
+    "track3Title": "Cloud & DevOps",
+    "track3Topics": "Backend · Infrastruttura · Sicurezza",
+    "speakersBadge": "Speaker",
+    "speakersHeading": "Chi sale sul palco",
+    "speakersSubtext": "Gli speaker verranno annunciati ad agosto, alla chiusura della Call for Papers.",
+    "speakerTba": "Speaker TBA",
+    "faqBadge": "FAQ",
+    "faqHeading": "Domande frequenti",
+    "faq1Question": "L'evento è gratuito?",
+    "faq1Answer": "Sì, la partecipazione è gratuita grazie al supporto degli sponsor.",
+    "faq2Question": "Dove si svolge DevFest Roma?",
+    "faq2Answer": "Università degli Studi Roma Tre, Via Vito Volterra 60, Roma.",
+    "faq3Question": "Come propongo un talk?",
+    "faq3Answer": "Invia una proposta su Sessionize entro il 31 luglio 2026.",
     "sponsorsHeading": "I nostri Sponsor",
     "sponsorsDescription": "DevFest Roma è reso possibile grazie al generoso supporto dei nostri partner.",
     "venueBadge": "Sede",
@@ -45,14 +77,16 @@
     "learnMoreCta": "Scopri il team"
   },
   "venue": {
+    "badge": "Sede",
     "heading": "Sede e Location",
     "intro": "Unisciti a noi al cuore dell'innovazione per DevFest Roma. Trova tutti i dettagli necessari per raggiungere la sede e orientarti comodamente.",
     "mapAriaLabel": "Area mappa",
-    "addressLabel": "Indirizzo Sede",
+    "addressLabel": "Indirizzo",
     "openInMapsCta": "Apri in Google Maps",
+    "registerCta": "Registrati all'evento",
     "dateLabel": "Data",
     "timeLabel": "Orario",
-    "howToGetHereLabel": "Come raggiungerci",
+    "howToGetHereLabel": "Come arrivare",
     "publicTransportHeading": "Trasporto Pubblico",
     "parkingHeading": "Parcheggio e Auto",
     "accessibilityHeading": "Accessibilità",
@@ -69,8 +103,25 @@
       "commitment": "Ci impegniamo a rendere DevFest Roma 2026 un'esperienza inclusiva per tutti i partecipanti."
     }
   },
+  "sponsorsPage": {
+    "badge": "Sponsor",
+    "heroTitle": "Grazie a chi rende possibile DevFest Roma",
+    "heroDescription": "DevFest Roma è gratuito grazie al supporto delle aziende che credono nella nostra community.",
+    "becomeSponsorCta": "Diventa Sponsor",
+    "goldLabel": "Gold",
+    "silverLabel": "Silver",
+    "bronzeLabel": "Bronze",
+    "communityLabel": "Community",
+    "comingSoonNote": "Gli sponsor 2026 saranno annunciati a breve.",
+    "whyHeading": "Perché sponsorizzare",
+    "benefit1": "Visibilità su 500+ sviluppatori appassionati",
+    "benefit2": "Accesso diretto a talenti tech per il recruiting",
+    "benefit3": "Booth e speaking slot dedicati",
+    "benefit4": "Presenza su sito, social e materiali dell'evento",
+    "ctaCardTitle": "Richiedi il prospetto sponsor",
+    "ctaCardDescription": "Scrivici per ricevere i pacchetti di sponsorizzazione disponibili e i relativi benefit."
+  },
   "about": {
-    "eyebrow": "COMUNITÀ FOCUSED",
     "aboutTitle": "About GDG\nDevFest Roma",
     "aboutDescription": "La nostra missione è riunire gli sviluppatori locali per imparare, condividere e connettersi attraverso le tecnologie Google e gli eventi guidati dalla community. DevFest è una conferenza globale decentralizzata ospitata dai Google Developer Group.",
     "joinCta": "Unisciti alla Comunità",
@@ -170,14 +221,30 @@
       "firebase": "Firebase"
     },
     "cards": {
-      "alice-johnson": { "role": "Ingegnere Web" },
-      "bob-brown": { "role": "Architetto Cloud" },
-      "charlie-davis": { "role": "Staff Software Engineer" },
-      "david-smith": { "role": "CDE, Angular" },
-      "eve-wilson": { "role": "UX Researcher" },
-      "frank-miller": { "role": "CTO" },
-      "grace-lee": { "role": "Lead Designer" },
-      "henry-zhang": { "role": "Ingegnere Android" }
+      "alice-johnson": {
+        "role": "Ingegnere Web"
+      },
+      "bob-brown": {
+        "role": "Architetto Cloud"
+      },
+      "charlie-davis": {
+        "role": "Staff Software Engineer"
+      },
+      "david-smith": {
+        "role": "CDE, Angular"
+      },
+      "eve-wilson": {
+        "role": "UX Researcher"
+      },
+      "frank-miller": {
+        "role": "CTO"
+      },
+      "grace-lee": {
+        "role": "Lead Designer"
+      },
+      "henry-zhang": {
+        "role": "Ingegnere Android"
+      }
     },
     "featured": {
       "about": "Charlie è una Staff Engineer presso Uber, dove guida il team dell'infrastruttura per le performance web. Con oltre 12 anni di esperienza nel settore, è una sostenitrice convinta dei pattern web accessibili e dell'architettura CSS moderna. Contribuisce spesso a progetti open-source e ama costruire strumenti che semplificano la vita degli sviluppatori."
@@ -206,10 +273,29 @@
     }
   },
   "agenda": {
-    "heading": "Agenda dell'Evento",
-    "intro": "Unisciti a noi per una giornata di approfondimenti sulle ultime tecnologie Google. Filtra per track o livello per costruire il tuo programma ideale.",
+    "badge": "Programma",
+    "heading": "Agenda DevFest Roma 2026",
+    "intro": "Il programma completo sarà pubblicato a settembre. Ecco un'anteprima dei track in parallelo.",
+    "track1": "AI/ML",
+    "track2": "Architettura",
+    "track3": "Cloud & DevOps",
+    "registration": "Registrazione e welcome coffee",
+    "keynote": "Keynote di apertura — Build, Secure, Scale",
+    "sessionTba": "Sessione TBA",
+    "cfpTitle": "Vuoi essere sul palco?",
+    "cfpSubtext": "La Call for Papers chiude il 31 luglio 2026.",
+    "cfpCta": "Invia una Proposta",
     "lunchBreak": "Pausa Pranzo & Networking",
     "saveSessionAriaLabel": "Salva {title}",
     "noSessionsMatch": "Nessuna sessione corrisponde ai filtri correnti."
+  },
+  "speakersPage": {
+    "badge": "Speaker",
+    "heading": "I nostri Speaker",
+    "intro": "Gli speaker verranno annunciati a partire da agosto, non appena si chiuderà la Call for Papers.",
+    "speakerTba": "Speaker TBA",
+    "cfpTitle": "Vuoi essere uno dei nostri speaker?",
+    "cfpSubtext": "La Call for Papers chiude il 31 luglio 2026.",
+    "cfpCta": "Invia una Proposta"
   }
 }

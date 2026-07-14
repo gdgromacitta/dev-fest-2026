@@ -38,13 +38,13 @@ const renderVenuePage = async () => {
 };
 
 describe("Venue page reference structure", () => {
-  test("renders the screenshot-scoped venue hero and details layout", async () => {
+  test("renders the design-scoped venue hero and details layout", async () => {
     const html = await renderVenuePage();
 
-    expect(html).toContain("Sede e Location");
-    expect(html).toContain("Indirizzo Sede");
-    expect(html).toContain("Come raggiungerci");
+    expect(html).toContain("Indirizzo");
+    expect(html).toContain("Come arrivare");
     expect(html).toContain("Università degli Studi Roma Tre");
+    expect(html).toContain("Registrati all&#x27;evento");
     expect(html).toContain("10 Ottobre 2026");
     expect(html).toContain("9:00 - 18:00");
   });

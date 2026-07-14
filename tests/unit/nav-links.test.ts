@@ -1,13 +1,13 @@
 import { navLinks } from "@/src/content/nav-links";
 
 describe("navLinks", () => {
-  test("contains exactly 2 entries", () => {
-    expect(navLinks).toHaveLength(2);
+  test("contains exactly 6 entries", () => {
+    expect(navLinks).toHaveLength(6);
   });
 
-  test("hrefs are exactly '/' and '/venue'", () => {
+  test("hrefs match the restyling design nav order", () => {
     const hrefs = navLinks.map((link) => link.href);
 
-    expect(hrefs).toEqual(["/", "/venue"]);
+    expect(hrefs).toEqual(["/", "/venue", "/agenda", "/speakers", "/sponsors", "/#faq"]);
   });
 });

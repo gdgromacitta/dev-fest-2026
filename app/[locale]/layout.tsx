@@ -38,9 +38,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         Skip to content
       </a>
       <Header />
-      <div className="page-shell" id="main-content">
-        {children}
-      </div>
+      <div id="main-content">{children}</div>
       <Footer />
     </NextIntlClientProvider>
   );
