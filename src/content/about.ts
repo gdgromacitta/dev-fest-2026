@@ -4,7 +4,7 @@
 export const aboutHero = {
   primaryCta: { href: "#" },
   secondaryCta: { href: "#" },
-  visual: "/logos/gdg-roma-light.svg"
+  visual: "/logos/devfest-roma-horizontal.svg"
 };
 
 // `title`/`description` for each value are translated content and live in

@@ -21,7 +21,7 @@ export function Header() {
     <header role="banner" className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3">
         <Link href="/" className="focus-ring rounded-md px-2 py-1">
-          <img src="/logos/gdg-roma-horizontal-light.svg" alt="GDG Roma Città" className="h-7 w-auto" />
+          <img src="/logos/devfest-roma-horizontal.svg" alt="DevFest Roma" className="h-7 w-auto" />
         </Link>
         <div className="flex items-center gap-2">
           <button

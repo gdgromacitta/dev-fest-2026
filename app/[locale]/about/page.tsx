@@ -54,7 +54,7 @@ export default async function AboutPage({ params }: Props) {
         </div>
         <div className="mx-auto w-full max-w-[30rem]">
           <div className="overflow-hidden rounded-2xl bg-white p-10 shadow-[0_22px_36px_rgba(15,23,42,0.12)]">
-            <img src={aboutHero.visual} alt="GDG Roma Città" className="block h-auto w-full" />
+            <img src={aboutHero.visual} alt="DevFest Roma" className="block h-auto w-full" />
           </div>
         </div>
       </section>
