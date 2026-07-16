@@ -6,7 +6,7 @@ export const features = {
   sponsors: true,
   about: true,
   cfp: true,
-  programTracks: true,
+  programTracks: false,
   speakersPreview: false,
   faq: true,
   team: true
