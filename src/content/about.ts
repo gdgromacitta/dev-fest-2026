@@ -9,8 +9,9 @@ export const aboutHero = {
 
 // `title`/`description` for each value are translated content and live in
 // messages/{locale}.json under `about.value_<key>_title` / `value_<key>_description`.
+// Dot/soft pairs use the restyling design's accent tokens (tailwind.config.ts).
 export const aboutValues = [
-  { key: "innovation", color: "#7ba8ff" },
-  { key: "community", color: "#f28b82" },
-  { key: "globalImpact", color: "#84c98f" }
+  { key: "innovation", dot: "bg-primary", soft: "bg-primary-soft" },
+  { key: "community", dot: "bg-accent-red", soft: "bg-accent-red-soft" },
+  { key: "globalImpact", dot: "bg-accent-green", soft: "bg-accent-green-soft" }
 ] as const;

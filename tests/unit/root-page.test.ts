@@ -4,6 +4,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { NextIntlClientProvider } from "next-intl";
 import HomePage from "@/app/[locale]/page";
 import { venue } from "@/src/content/venue";
+import { team } from "@/src/content/team";
 import { sponsors } from "@/src/content/sponsors";
 import messages from "@/messages/it.json";
 
@@ -68,7 +69,7 @@ describe("root page — landing page", () => {
   test("renders the meet-the-team section with all organizer cards", async () => {
     const html = await renderHomePage();
 
-    expect((html.match(/data-organizer-card=/g) ?? []).length).toBe(5);
+    expect((html.match(/data-organizer-card=/g) ?? []).length).toBe(team.length);
   });
 
   test("renders a Become a Sponsor CTA banner when sponsors array is empty", async () => {

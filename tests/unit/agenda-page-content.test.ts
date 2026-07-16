@@ -37,7 +37,7 @@ describe("Agenda page reference structure", () => {
 
     // React escapes apostrophes in text nodes as `&#x27;`.
     expect(html).toContain(messages.agenda.heading.replace("'", "&#x27;"));
-    expect(html).toContain(messages.agenda.intro);
+    expect(html).toContain(messages.agenda.intro.replace("'", "&#x27;"));
     // Track names, level names, and toolbar labels are fixed English
     // taxonomy terms out of scope for translation.
     expect(html).toContain("Tracks:");

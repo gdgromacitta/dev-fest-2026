@@ -3,6 +3,7 @@ import { vi } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 import { NextIntlClientProvider } from "next-intl";
 import AboutPage from "@/app/[locale]/about/page";
+import { team } from "@/src/content/team";
 import messages from "@/messages/it.json";
 
 globalThis.React = React;
@@ -43,7 +44,7 @@ describe("About page reference structure", () => {
     expect(html).toContain("DevFest");
     expect(html).toContain("Unisciti alla Comunità");
     expect(html).toContain("Leggi il Manifesto");
-    expect((html.match(/data-organizer-card=/g) ?? []).length).toBe(5);
+    expect((html.match(/data-organizer-card=/g) ?? []).length).toBe(team.length);
     expect((html.match(/data-about-value=/g) ?? []).length).toBe(3);
   });
 

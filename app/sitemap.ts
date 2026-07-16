@@ -1,6 +1,14 @@
 import type { MetadataRoute } from "next";
 
-const routes = ["/", "/about", "/agenda", "/speakers", "/venue"];
+import { features } from "@/src/content/features";
+
+const routes = [
+  "/",
+  "/about",
+  ...(features.agenda ? ["/agenda"] : []),
+  ...(features.speakers ? ["/speakers"] : []),
+  "/venue"
+];
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
