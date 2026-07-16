@@ -4,7 +4,7 @@ import { Link } from "@/src/i18n/navigation";
 import { team } from "@/src/content/team";
 import { sponsors } from "@/src/content/sponsors";
 import { venue } from "@/src/content/venue";
-import { registerUrl, cfpUrl } from "@/src/content/nav-links";
+import { registerUrl, cfpUrl, sponsorFormUrl } from "@/src/content/nav-links";
 import { ShuffledTeamGrid } from "@/src/components/about/shuffled-team-grid";
 import { features } from "@/src/content/features";
 
@@ -57,7 +57,7 @@ const speakerSlots = [
 const eventLinks = {
   registerHref: "https://gdg.community.dev/events/details/google-gdg-roma-citta-presents-devfest-roma-2026/",
   agendaHref: "/agenda",
-  sponsorFormHref: "https://docs.google.com/forms/d/e/1FAIpQLScracoBDSFefwj54UCV_r1Um7oD-c3Y1NBVE16WHFwJRCckFw/viewform"
+  sponsorFormHref: sponsorFormUrl
 } as const;
 
 export default async function HomePage({ params }: Props) {
@@ -90,7 +90,9 @@ export default async function HomePage({ params }: Props) {
           <p className="m-0 max-w-2xl text-lg leading-relaxed text-muted">{t("eventDescription")}</p>
           <div className="mt-2 flex flex-wrap gap-3.5">
             <a href={registerUrl} className="btn-primary">{t("registerCta")}</a>
-            <Link href="/agenda" className="btn-outline">{t("agendaCta")}</Link>
+            {features.agenda && (
+              <Link href="/agenda" className="btn-outline">{t("agendaCta")}</Link>
+            )}
           </div>
           <div className="mt-4 flex gap-2.5">
             {heroBars.map((bar) => (
@@ -100,94 +102,7 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      {/* ── 2. Sponsors — CTA banner when empty, logo list + CTA when populated ── */}
-      <section
-        aria-labelledby="sponsors-heading"
-        className="px-4 md:px-10"
-        data-section="sponsors"
-      >
-        <div className="mx-auto max-w-4xl">
-          <div className="rounded-[2.5rem] bg-[#f3f4f6] px-8 py-14">
-            {hasSponsors ? (
-              <>
-                <div className="space-y-4 text-center">
-                  <h2
-                    id="sponsors-heading"
-                    className="m-0 text-[2rem] font-semibold tracking-[-0.04em] text-slate-900"
-                  >
-                    {t("sponsorsHeading")}
-                  </h2>
-                  <div className="mx-auto h-1 w-16 rounded-full bg-[#fbbc04]" />
-                  <p className="mx-auto max-w-lg text-sm leading-6 text-slate-500">
-                    {t("sponsorsDescription")}
-                  </p>
-                </div>
-
-                <ul
-                  role="list"
-                  className="mt-10 flex flex-wrap justify-center gap-4"
-                  aria-label="Sponsors list"
-                >
-                  {sponsors.map((sponsor) => (
-                    <li key={sponsor.name}>
-                      <a
-                        href={sponsor.url}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        className="focus-ring inline-flex items-center rounded-2xl border border-slate-200 bg-white px-6 py-4 text-sm font-semibold text-slate-800 shadow-[0_1px_0_rgba(15,23,42,0.05)] transition-colors duration-200 hover:border-slate-300 hover:text-slate-950"
-                        data-sponsor-name={sponsor.name}
-                        data-sponsor-tier={sponsor.tier}
-                      >
-                        {sponsor.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-10 flex justify-center">
-                  <a
-                    href={eventLinks.sponsorFormHref}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="focus-ring inline-flex rounded-lg bg-[#4d8cff] px-6 py-3 text-sm font-semibold text-white shadow-[0_10px_20px_rgba(77,140,255,0.18)] transition-colors duration-200 hover:bg-[#3e7ff0]"
-                    data-sponsor-cta="true"
-                  >
-                    {t("sponsorsCtaButton")}
-                  </a>
-                </div>
-              </>
-            ) : (
-              <div className="mx-auto max-w-2xl space-y-5 text-center">
-                <span className="inline-flex rounded-full bg-[#e8f0fe] px-3 py-1 text-[0.64rem] font-semibold tracking-[0.16em] text-[#4d8cff] uppercase">
-                  {t("sponsorsCtaBadge")}
-                </span>
-                <h2
-                  id="sponsors-heading"
-                  className="m-0 text-[2rem] font-semibold tracking-[-0.04em] text-slate-900"
-                >
-                  {t("sponsorsCtaHeading")}
-                </h2>
-                <p className="mx-auto max-w-lg text-sm leading-6 text-slate-500">
-                  {t("sponsorsCtaDescription")}
-                </p>
-                <div className="flex justify-center pt-2">
-                  <a
-                    href={eventLinks.sponsorFormHref}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="focus-ring inline-flex rounded-lg bg-[#4d8cff] px-6 py-3 text-sm font-semibold text-white shadow-[0_10px_20px_rgba(77,140,255,0.18)] transition-colors duration-200 hover:bg-[#3e7ff0]"
-                    data-sponsor-cta="true"
-                  >
-                    {t("sponsorsCtaButton")}
-                  </a>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 3. Venue strip ────────────────────────────────────── */}
+      {/* ── 2. Venue strip ────────────────────────────────────── */}
       <section aria-labelledby="venue-heading" className="border-b border-line-soft" data-section="venue-summary">
         <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-6 px-4 py-9 md:flex-row md:items-center md:justify-between md:px-16">
           <div>
@@ -293,6 +208,58 @@ export default async function HomePage({ params }: Props) {
         </section>
       )}
 
+
+      {/* ── 6. Sponsors — tinted band between speakers and FAQ (design 1a) ── */}
+      <section aria-labelledby="sponsors-heading" className="bg-tint" data-section="sponsors">
+        <div className="mx-auto w-full max-w-[1440px] px-4 py-16 md:px-16 md:py-24">
+          {hasSponsors && (
+            <>
+              <div className="eyebrow mb-2.5 text-primary">{t("sponsorsCtaBadge")}</div>
+              <h2 id="sponsors-heading" className="m-0 text-3xl font-bold text-ink md:text-[2.375rem]">
+                {t("sponsorsHeading")}
+              </h2>
+              <ul role="list" className="m-0 mt-11 flex list-none flex-wrap gap-5 p-0" aria-label="Sponsors list">
+                {sponsors.map((sponsor) => (
+                  <li key={sponsor.name}>
+                    <a
+                      href={sponsor.url}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="focus-ring flex h-16 min-w-[180px] items-center justify-center rounded-[10px] border border-line bg-white px-6 text-[15px] font-semibold text-ink transition-colors duration-200 hover:border-line-strong"
+                      data-sponsor-name={sponsor.name}
+                      data-sponsor-tier={sponsor.tier}
+                    >
+                      {sponsor.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+          {/* Dark CTA banner from design 1a — always shown, sole sponsor CTA on the page */}
+          <div className={`flex flex-col gap-6 rounded-[20px] bg-ink px-8 py-9 md:flex-row md:items-center md:justify-between md:px-10 ${hasSponsors ? "mt-11" : ""}`}>
+            <div>
+              {hasSponsors ? (
+                <div className="mb-1.5 text-[22px] font-bold text-white">{t("sponsorsCtaHeading")}</div>
+              ) : (
+                <h2 id="sponsors-heading" className="m-0 mb-1.5 text-[22px] font-bold text-white">
+                  {t("sponsorsCtaHeading")}
+                </h2>
+              )}
+              <p className="m-0 text-[15px] text-white/70">{t("sponsorsCtaDescription")}</p>
+            </div>
+            <a
+              href={eventLinks.sponsorFormHref}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="focus-ring inline-flex items-center justify-center self-start whitespace-nowrap rounded-full bg-white px-8 py-4 text-base font-semibold text-ink transition-colors duration-200 hover:bg-tint md:self-auto"
+              data-sponsor-cta="true"
+            >
+              {t("sponsorsCtaButton")}
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* ── 7. FAQ ───────────────────────────────────────────── */}
       {features.faq && (

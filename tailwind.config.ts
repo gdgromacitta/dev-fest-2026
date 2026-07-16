@@ -32,7 +32,8 @@ const config: Config = {
           "green-soft": "oklch(0.95 0.03 148)",
           "green-deep": "oklch(0.4 0.13 148)",
           "gray-soft": "oklch(0.95 0.01 260)",
-          "gray-deep": "oklch(0.4 0.02 260)"
+          "gray-deep": "oklch(0.4 0.02 260)",
+          bronze: "oklch(0.5 0.03 60)"
         },
         // Legacy Google palette — still referenced by pre-restyle components.
         gblue: "#1A73E8",
