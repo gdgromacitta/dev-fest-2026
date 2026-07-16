@@ -30,7 +30,13 @@ jobs:
         run: npm ci # Change to 'yarn install --frozen-lockfile' or 'pnpm install' if not using npm
         
       - name: Build Next.js site
-        run: npx next build
+        run: npm run build
+        env:
+          SESSIONIZE_API_URL: ${{ secrets.SESSIONIZE_API_URL }}
+        # `npm run build` (not `npx next build`) so the `prebuild` npm
+        # lifecycle hook fires and fetches agenda/speaker data from
+        # Sessionize first — see scripts/fetch-sessionize.mjs. Falls back to
+        # committed content if SESSIONIZE_API_URL is unset or unreachable.
         # `app/page.tsx` (the true, unprefixed "/" route) redirects to the
         # default locale on its own, baked into `out/index.html` by
         # `next build`. `out/it/...` and `out/en/...` are the real

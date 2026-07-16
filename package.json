@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "npm run fetch:content",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "fetch:content": "node scripts/fetch-sessionize.mjs",
     "test": "vitest run tests/unit",
     "test:watch": "vitest tests/unit"
   },
