@@ -4,7 +4,11 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { NextIntlClientProvider } from "next-intl";
 import HomePage from "@/app/[locale]/page";
 import { venue } from "@/src/content/venue";
+<<<<<<< HEAD
 import { team } from "@/src/content/team";
+=======
+import { sponsors } from "@/src/content/sponsors";
+>>>>>>> origin/main
 import messages from "@/messages/it.json";
 
 globalThis.React = React;
@@ -71,9 +75,35 @@ describe("root page — landing page", () => {
     expect((html.match(/data-organizer-card=/g) ?? []).length).toBe(team.length);
   });
 
-  test("sponsor section is absent from DOM when sponsors array is empty", async () => {
+  test("renders a Become a Sponsor CTA banner when sponsors array is empty", async () => {
     const html = await renderHomePage();
 
-    expect(html).not.toContain('data-section="sponsors"');
+    expect(html).toContain('data-section="sponsors"');
+    expect(html).toContain(messages.home.sponsorsCtaHeading);
+    expect(html).toContain(messages.home.sponsorsCtaDescription);
+    expect((html.match(/data-sponsor-cta="true"/g) ?? []).length).toBe(1);
+    expect(html).toContain(
+      `href="https://docs.google.com/forms/d/e/1FAIpQLScracoBDSFefwj54UCV_r1Um7oD-c3Y1NBVE16WHFwJRCckFw/viewform"`
+    );
+    expect(html).toContain('rel="noreferrer noopener"');
+  });
+
+  test("renders sponsor logos plus a Become a Sponsor CTA button when sponsors array is populated", async () => {
+    // src/content/sponsors.ts is empty in this repo today; temporarily
+    // populate the live array (rather than editing the content file) to
+    // exercise the populated-state markup, then restore it.
+    sponsors.push({ name: "Test Sponsor", url: "https://example.com", tier: "gold" });
+
+    try {
+      const html = await renderHomePage();
+
+      expect(html).toContain('data-section="sponsors"');
+      expect(html).toContain('data-sponsor-name="Test Sponsor"');
+      expect(html).toContain(messages.home.sponsorsHeading);
+      expect((html.match(/data-sponsor-cta="true"/g) ?? []).length).toBe(1);
+      expect(html).toContain(messages.home.sponsorsCtaButton);
+    } finally {
+      sponsors.length = 0;
+    }
   });
 });

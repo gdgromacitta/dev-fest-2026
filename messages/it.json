@@ -13,7 +13,7 @@
   "footer": {
     "privacy": "Privacy",
     "cookies": "Cookie",
-    "poweredBy": "Offerto da"
+    "poweredBy": "Organizzato da"
   },
   "home": {
     "gdgBadge": "GDG Roma Città",
@@ -52,6 +52,10 @@
     "faq3Answer": "Invia una proposta su Sessionize entro il 31 luglio 2026.",
     "sponsorsHeading": "I nostri Sponsor",
     "sponsorsDescription": "DevFest Roma è reso possibile grazie al generoso supporto dei nostri partner.",
+    "sponsorsCtaBadge": "Sponsorizzazioni",
+    "sponsorsCtaHeading": "Diventa Sponsor",
+    "sponsorsCtaDescription": "Collabora con DevFest Roma per entrare in contatto con oltre 500 sviluppatori e sostenere la nostra community. Contattaci per scoprire le opportunità di sponsorizzazione.",
+    "sponsorsCtaButton": "Diventa Sponsor",
     "venueBadge": "Sede",
     "venueDetailsCta": "Dettagli sede e mappa",
     "openInMapsCta": "Apri in Google Maps",
@@ -161,15 +165,15 @@
     },
     "andrea-della-porta": {
       "role": "Manager Mobile",
-      "bioShort": "Team Member della DevFest Roma 2026. Sviluppatore Mobile"
+      "bioShort": "Team Member della DevFest Roma 2026. Sviluppatore Mobile."
     },
     "serena-sensini": {
       "role": "Innovation Leader",
-      "bioShort": "Team Member della DevFest Roma 2026. Dedicato alla crescita dell'ecosistema di sviluppatori locale."
+      "bioShort": "CTO @ Welyk, Innovation Leader @ Dedalus, Founder @ TheRedCode.it"
     },
     "egon-ferri": {
       "role": "AI engineer",
-      "bioShort": "Team Member della DevFest Roma 2026. dedicato alla crescita dell'ecosistema di sviluppatori locale."
+      "bioShort": "AI engineer, fullstack vibecoder, PyData Roma Capitale Organizer, GDG Rome City supporter."
     },
     "ivano-scifoni": {
       "role": "Cloud Architect",
@@ -177,7 +181,7 @@
     },
     "camillo-bucciarelli": {
       "role": "Industrialization Architect",
-      "bioShort": "Team Member della DevFest Roma 2026. dedicato alla crescita dell'ecosistema di sviluppatori locale."
+      "bioShort": "Architect in Sopra Steria, docente ITS Lanciano e speaker"
     }
   },
   "speakers": {
