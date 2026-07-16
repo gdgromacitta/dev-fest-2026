@@ -4,11 +4,8 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { NextIntlClientProvider } from "next-intl";
 import HomePage from "@/app/[locale]/page";
 import { venue } from "@/src/content/venue";
-<<<<<<< HEAD
 import { team } from "@/src/content/team";
-=======
 import { sponsors } from "@/src/content/sponsors";
->>>>>>> origin/main
 import messages from "@/messages/it.json";
 
 globalThis.React = React;

@@ -23,7 +23,6 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 
-<<<<<<< HEAD
 const heroBars = ["bg-primary", "bg-accent-red", "bg-accent-yellow", "bg-accent-green"];
 
 const cfpTags = [
@@ -53,14 +52,13 @@ const speakerSlots = [
   { label: "Mobile", chip: "bg-accent-yellow-soft text-accent-yellow-deep" },
   { label: "Frontend", chip: "bg-accent-red-soft text-accent-red-deep" }
 ];
-=======
+
 /** Register CTA, agenda, and sponsor form link targets — not translatable copy. */
 const eventLinks = {
   registerHref: "https://gdg.community.dev/events/details/google-gdg-roma-citta-presents-devfest-roma-2026/",
   agendaHref: "/agenda",
   sponsorFormHref: "https://docs.google.com/forms/d/e/1FAIpQLScracoBDSFefwj54UCV_r1Um7oD-c3Y1NBVE16WHFwJRCckFw/viewform"
 } as const;
->>>>>>> origin/main
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
@@ -102,66 +100,6 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-<<<<<<< HEAD
-      {/* ── 2. Venue strip ────────────────────────────────────── */}
-      <section aria-labelledby="venue-heading" className="border-b border-line-soft" data-section="venue-summary">
-        <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-6 px-4 py-9 md:flex-row md:items-center md:justify-between md:px-16">
-          <div>
-            <div className="eyebrow mb-1.5 text-primary">{t("venueBadge")}</div>
-            <h2 id="venue-heading" className="m-0 text-2xl font-semibold text-ink">{venue.name}</h2>
-            <p className="m-0 mt-1 text-[15px] text-muted">
-              {venue.address}, {venue.city}
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/venue"
-              className="btn-outline !px-6 !py-3 !text-sm"
-              data-venue-cta="true"
-            >
-              {t("venueDetailsCta")}
-            </Link>
-            <a href={venue.mapsLinkUrl} target="_blank" rel="noreferrer noopener" className="btn-outline !px-6 !py-3 !text-sm">
-              {t("openInMapsCta")}
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 3. Call for Papers ───────────────────────────────── */}
-      {/* Remove this section after July 31 2026 when CFP closes */}
-      {features.cfp && (
-        <section aria-labelledby="cfp-heading" data-section="cfp">
-          <div className="mx-auto grid w-full max-w-[1440px] gap-12 px-4 py-16 md:grid-cols-2 md:gap-[72px] md:px-16 md:py-24">
-            <div>
-              <div className="eyebrow mb-2.5 text-accent-red">{t("cfpBadge")}</div>
-              <h2 id="cfp-heading" className="m-0 mb-4 text-3xl font-bold text-ink md:text-[2.375rem]">
-                {t("cfpHeading")}
-              </h2>
-              <p className="m-0 mb-6 text-base leading-relaxed text-muted">{t("cfpDescription")}</p>
-              <div className="mb-7 flex flex-wrap gap-2">
-                {cfpTags.map((tag) => (
-                  <span key={tag.key} className={`chip ${tag.className}`}>{t(tag.key)}</span>
-                ))}
-              </div>
-              <div className="flex flex-wrap items-center gap-5">
-                <a href={cfpUrl} target="_blank" rel="noreferrer noopener" className="btn-dark">
-                  {t("submitProposalCta")}
-                </a>
-                <span className="text-sm text-muted">
-                  {t("cfpDeadlineLabel")} <strong className="text-ink">{t("cfpDeadlineDate")}</strong>
-                </span>
-              </div>
-            </div>
-            <div className="flex flex-col justify-center gap-4 rounded-[20px] bg-tint p-9">
-              {benefits.map((benefit) => (
-                <div key={benefit.key} className="flex items-start gap-3">
-                  <span aria-hidden="true" className={`mt-[7px] h-[9px] w-[9px] flex-none rounded-full ${benefit.dot}`} />
-                  <span className="text-[15.5px] text-ink">{t(benefit.key)}</span>
-                </div>
-              ))}
-            </div>
-=======
       {/* ── 2. Sponsors — CTA banner when empty, logo list + CTA when populated ── */}
       <section
         aria-labelledby="sponsors-heading"
@@ -245,12 +183,73 @@ export default async function HomePage({ params }: Props) {
                 </div>
               </div>
             )}
->>>>>>> origin/main
           </div>
         </div>
       </section>
 
-      {/* ── 4. Program tracks ────────────────────────────────── */}
+      {/* ── 3. Venue strip ────────────────────────────────────── */}
+      <section aria-labelledby="venue-heading" className="border-b border-line-soft" data-section="venue-summary">
+        <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-6 px-4 py-9 md:flex-row md:items-center md:justify-between md:px-16">
+          <div>
+            <div className="eyebrow mb-1.5 text-primary">{t("venueBadge")}</div>
+            <h2 id="venue-heading" className="m-0 text-2xl font-semibold text-ink">{venue.name}</h2>
+            <p className="m-0 mt-1 text-[15px] text-muted">
+              {venue.address}, {venue.city}
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/venue"
+              className="btn-outline !px-6 !py-3 !text-sm"
+              data-venue-cta="true"
+            >
+              {t("venueDetailsCta")}
+            </Link>
+            <a href={venue.mapsLinkUrl} target="_blank" rel="noreferrer noopener" className="btn-outline !px-6 !py-3 !text-sm">
+              {t("openInMapsCta")}
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4. Call for Papers ───────────────────────────────── */}
+      {/* Remove this section after July 31 2026 when CFP closes */}
+      {features.cfp && (
+        <section aria-labelledby="cfp-heading" data-section="cfp">
+          <div className="mx-auto grid w-full max-w-[1440px] gap-12 px-4 py-16 md:grid-cols-2 md:gap-[72px] md:px-16 md:py-24">
+            <div>
+              <div className="eyebrow mb-2.5 text-accent-red">{t("cfpBadge")}</div>
+              <h2 id="cfp-heading" className="m-0 mb-4 text-3xl font-bold text-ink md:text-[2.375rem]">
+                {t("cfpHeading")}
+              </h2>
+              <p className="m-0 mb-6 text-base leading-relaxed text-muted">{t("cfpDescription")}</p>
+              <div className="mb-7 flex flex-wrap gap-2">
+                {cfpTags.map((tag) => (
+                  <span key={tag.key} className={`chip ${tag.className}`}>{t(tag.key)}</span>
+                ))}
+              </div>
+              <div className="flex flex-wrap items-center gap-5">
+                <a href={cfpUrl} target="_blank" rel="noreferrer noopener" className="btn-dark">
+                  {t("submitProposalCta")}
+                </a>
+                <span className="text-sm text-muted">
+                  {t("cfpDeadlineLabel")} <strong className="text-ink">{t("cfpDeadlineDate")}</strong>
+                </span>
+              </div>
+            </div>
+            <div className="flex flex-col justify-center gap-4 rounded-[20px] bg-tint p-9">
+              {benefits.map((benefit) => (
+                <div key={benefit.key} className="flex items-start gap-3">
+                  <span aria-hidden="true" className={`mt-[7px] h-[9px] w-[9px] flex-none rounded-full ${benefit.dot}`} />
+                  <span className="text-[15.5px] text-ink">{t(benefit.key)}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── 5. Program tracks ────────────────────────────────── */}
       {features.programTracks && (
         <section aria-labelledby="program-heading" className="bg-tint" data-section="program">
           <div className="mx-auto w-full max-w-[1440px] px-4 py-16 md:px-16 md:py-24">
@@ -272,7 +271,7 @@ export default async function HomePage({ params }: Props) {
         </section>
       )}
 
-      {/* ── 5. Speakers preview ──────────────────────────────── */}
+      {/* ── 6. Speakers preview ──────────────────────────────── */}
       {features.speakersPreview && (
         <section aria-labelledby="speakers-heading" data-section="speakers-preview">
           <div className="mx-auto w-full max-w-[1440px] px-4 py-16 md:px-16 md:py-24">
@@ -294,30 +293,6 @@ export default async function HomePage({ params }: Props) {
         </section>
       )}
 
-      {/* ── 6. Sponsors — completely absent when array is empty ── */}
-      {hasSponsors && (
-        <section aria-labelledby="sponsors-heading" className="bg-tint" data-section="sponsors">
-          <div className="mx-auto w-full max-w-[1440px] px-4 py-16 md:px-16 md:py-[72px]">
-            <div className="eyebrow mb-6 text-muted">{t("sponsorsHeading")}</div>
-            <ul role="list" className="m-0 flex list-none flex-wrap gap-5 p-0" aria-label="Sponsors list">
-              {sponsors.map((sponsor) => (
-                <li key={sponsor.name}>
-                  <a
-                    href={sponsor.url}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="focus-ring inline-flex items-center rounded-[10px] border border-line bg-white px-8 py-4 text-sm font-semibold text-ink transition-colors duration-200 hover:border-line-strong"
-                    data-sponsor-name={sponsor.name}
-                    data-sponsor-tier={sponsor.tier}
-                  >
-                    {sponsor.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
 
       {/* ── 7. FAQ ───────────────────────────────────────────── */}
       {features.faq && (
