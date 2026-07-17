@@ -37,6 +37,8 @@ export function ShuffledTeamGrid({ members, getPortraitAlt }: ShuffledTeamGridPr
   const [ordered, setOrdered] = useState<TeamMember[]>(members);
 
   useEffect(() => {
+    // This post-hydration update intentionally preserves deterministic server HTML.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setOrdered(shuffle(members));
   }, [members]);
 
