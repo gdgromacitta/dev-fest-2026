@@ -4,11 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:guide": "uv --project services/devfest-guide-api --cache-dir services/devfest-guide-api/.uv-cache run --env-file .env uvicorn devfest_guide.web:app --app-dir services/devfest-guide-api --port 8000",
+    "dev:all": "concurrently -k -n web,guide -c blue,green \"npm run dev\" \"npm run dev:guide\"",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "typecheck": "tsc --noEmit --incremental false",
     "test": "vitest run tests/unit",
-    "test:watch": "vitest tests/unit"
+    "test:watch": "vitest tests/unit",
+    "test:guide": "uv --project services/devfest-guide-api --cache-dir services/devfest-guide-api/.uv-cache run pytest -c services/devfest-guide-api/pyproject.toml"
   },
   "dependencies": {
     "next": "^16.2.10",
@@ -22,6 +26,7 @@
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.5.4",
+    "concurrently": "^9.2.1",
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.2.10",
     "postcss": "^8.5.19",

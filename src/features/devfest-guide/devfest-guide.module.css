@@ -1,0 +1,611 @@
+.overlay {
+  --guide-bg: #ffffff;
+  --guide-surface: #f6f8fc;
+  --guide-text: #202124;
+  --guide-muted: #5f6368;
+  --guide-line: #dadce0;
+  --google-blue: #4285f4;
+  --google-red: #ea4335;
+  --google-yellow: #fbbc04;
+  --google-green: #34a853;
+  --wolf-outline: #27303a;
+  --wolf-fur: #9ca7b5;
+  --wolf-fur-shade: #7f8b99;
+  --wolf-cream: #f2eee5;
+  --wolf-muzzle: #fffaf0;
+  --wolf-ear: #e6a5a8;
+  --wolf-paw: #707a86;
+  --wolf-eye: #202124;
+  --wolf-nose: #25282d;
+  --wolf-mouth: #f0757d;
+  --wolf-blush: #ef9da2;
+
+  position: fixed;
+  right: 1rem;
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+  color: var(--guide-text);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  pointer-events: none;
+}
+
+.panel {
+  display: flex;
+  width: min(24rem, calc(100vw - 2rem));
+  height: min(32rem, calc(100dvh - 10rem));
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--guide-line);
+  border-radius: 1.25rem;
+  background: var(--guide-bg);
+  box-shadow:
+    0 18px 50px rgb(32 33 36 / 18%),
+    0 3px 10px rgb(32 33 36 / 10%);
+  pointer-events: auto;
+}
+
+.panelHeader {
+  position: relative;
+  display: flex;
+  min-height: 4.75rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 0.3rem solid var(--google-blue);
+  border-bottom: 1px solid var(--guide-line);
+  background: var(--guide-bg);
+  padding: 1rem 1rem 0.8rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.2rem;
+  color: var(--google-blue);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  color: var(--guide-text);
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.iconButton,
+.actionButton {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  cursor: pointer;
+}
+
+.iconButton {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  background: var(--guide-surface);
+  color: var(--guide-text);
+}
+
+.iconButton:hover {
+  background: #e8eaed;
+}
+
+.iconButton svg,
+.actionButton svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  background: var(--guide-surface);
+}
+
+.message {
+  width: fit-content;
+  max-width: 88%;
+  margin-bottom: 0.7rem;
+  border: 1px solid var(--guide-line);
+  border-radius: 1rem;
+  padding: 0.65rem 0.8rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.assistantMessage {
+  margin-right: auto;
+  border-bottom-left-radius: 0.3rem;
+  background: var(--guide-bg);
+  color: var(--guide-text);
+}
+
+.userMessage {
+  margin-left: auto;
+  border-color: var(--google-blue);
+  border-bottom-right-radius: 0.3rem;
+  background: var(--google-blue);
+  color: white;
+}
+
+.limit {
+  margin: 0.85rem 0 0;
+  border-left: 3px solid var(--google-red);
+  padding-left: 0.7rem;
+  color: var(--guide-muted);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.form {
+  border-top: 1px solid var(--guide-line);
+  background: var(--guide-bg);
+  padding: 0.8rem;
+}
+
+.composer {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.55rem;
+}
+
+.textarea {
+  min-height: 3rem;
+  flex: 1;
+  resize: none;
+  border: 1px solid var(--guide-line);
+  border-radius: 0.85rem;
+  background: var(--guide-bg);
+  color: var(--guide-text);
+  font: inherit;
+  font-size: 0.86rem;
+  line-height: 1.4;
+  padding: 0.65rem 0.75rem;
+}
+
+.textarea::placeholder {
+  color: var(--guide-muted);
+}
+
+.textarea:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+.actionButton {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  color: white;
+}
+
+.sendButton {
+  background: var(--google-blue);
+}
+
+.sendButton:hover {
+  background: #1967d2;
+}
+
+.stopButton {
+  background: var(--google-red);
+}
+
+.stopButton svg {
+  fill: currentColor;
+}
+
+.actionButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.38;
+}
+
+.privacy {
+  margin: 0.5rem 0 0;
+  color: var(--guide-muted);
+  font-size: 0.65rem;
+  line-height: 1.35;
+}
+
+.launcher {
+  position: relative;
+  width: 9rem;
+  height: 8rem;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 180ms ease;
+  pointer-events: auto;
+}
+
+.launcher:hover,
+.launcher:focus-visible {
+  transform: translateY(-0.25rem);
+}
+
+.launcherLabel {
+  position: absolute;
+  top: 0;
+  left: -0.5rem;
+  border: 1px solid var(--guide-line);
+  border-radius: 999px;
+  background: var(--guide-bg);
+  box-shadow: 0 3px 10px rgb(32 33 36 / 12%);
+  color: var(--guide-text);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.55rem;
+  text-transform: uppercase;
+}
+
+.iconButton:focus-visible,
+.actionButton:focus-visible,
+.textarea:focus-visible,
+.launcher:focus-visible {
+  outline: 3px solid var(--google-blue);
+  outline-offset: 2px;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+.wolf {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.shadow {
+  fill: var(--wolf-outline);
+  opacity: 0.14;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: shadowFloat 4.4s ease-in-out infinite;
+}
+
+.figure {
+  transform-origin: 101px 165px;
+  animation: breathe 4.4s ease-in-out infinite;
+}
+
+.headGroup,
+.leftArmGroup,
+.rightArmGroup,
+.tailGroup,
+.legs,
+.leftEar,
+.rightEar {
+  transform-box: fill-box;
+}
+
+.headGroup {
+  transform-origin: center bottom;
+}
+
+.leftArmGroup {
+  transform-origin: right top;
+}
+
+.rightArmGroup {
+  transform-origin: left top;
+}
+
+.tailGroup {
+  transform-origin: left center;
+  animation: tailWag 3.8s ease-in-out infinite;
+}
+
+.leftEar,
+.rightEar {
+  transform-origin: center bottom;
+}
+
+.pupils {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.eyelids {
+  fill: none;
+  stroke: var(--wolf-eye);
+  stroke-width: 2.8;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: blink 6.8s ease-in-out infinite;
+}
+
+.mouthOpen {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.thoughts,
+.successMarks {
+  opacity: 0;
+}
+
+.hover .headGroup {
+  transform: rotate(3deg) translateY(-1px);
+}
+
+.hover .leftEar {
+  transform: rotate(-4deg);
+}
+
+.hover .rightEar {
+  transform: rotate(4deg);
+}
+
+.thinking .headGroup {
+  animation: ponder 1.8s ease-in-out infinite;
+}
+
+.thinking .baseEyes {
+  opacity: 0;
+}
+
+.thinking .eyelids {
+  animation: none;
+  transform: scaleY(1);
+}
+
+.thinking .thoughts {
+  animation: thoughts 1.2s steps(3, end) infinite;
+}
+
+.speaking .figure {
+  animation: talkBob 560ms ease-in-out infinite;
+}
+
+.speaking .tailGroup {
+  animation-duration: 1.1s;
+}
+
+.speaking .mouthLine {
+  opacity: 0;
+}
+
+.speaking .mouthOpen {
+  opacity: 1;
+  animation: speak 320ms steps(2, end) infinite;
+}
+
+.success .leftArmGroup {
+  animation: cheerLeft 620ms ease-in-out 2;
+}
+
+.success .rightArmGroup {
+  animation: cheerRight 620ms ease-in-out 2;
+}
+
+.success .tailGroup {
+  animation: happyTail 420ms ease-in-out 4;
+}
+
+.success .successMarks {
+  animation: celebrate 620ms steps(2, end) 2;
+}
+
+.error .headGroup {
+  transform: translateY(3px) rotate(-3deg);
+}
+
+.error .leftEar {
+  transform: rotate(14deg);
+}
+
+.error .rightEar {
+  transform: rotate(-14deg);
+}
+
+.error .tailGroup {
+  animation: none;
+  transform: rotate(-8deg) translateY(4px);
+}
+
+.error .mouthLine {
+  d: path("M99 84Q93 78 87 83M99 84Q105 78 111 83");
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: translateY(0) scaleY(1);
+  }
+  50% {
+    transform: translateY(-3px) scaleY(1.012);
+  }
+}
+
+@keyframes shadowFloat {
+  0%,
+  100% {
+    opacity: 0.14;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 0.08;
+    transform: scaleX(0.87);
+  }
+}
+
+@keyframes tailWag {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes happyTail {
+  0%,
+  100% {
+    transform: rotate(-7deg);
+  }
+  50% {
+    transform: rotate(12deg);
+  }
+}
+
+@keyframes blink {
+  0%,
+  43%,
+  47%,
+  50%,
+  53%,
+  100% {
+    transform: scaleY(0);
+  }
+  45%,
+  51% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes ponder {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(3deg) translateY(-1px);
+  }
+}
+
+@keyframes thoughts {
+  0% {
+    opacity: 0.15;
+    transform: translateY(2px);
+  }
+  66%,
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes talkBob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes speak {
+  0%,
+  100% {
+    transform: scale(1, 0.55);
+  }
+  50% {
+    transform: scale(0.82, 1.3);
+  }
+}
+
+@keyframes cheerLeft {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(8deg) translateY(-4px);
+  }
+}
+
+@keyframes cheerRight {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(-8deg) translateY(-4px);
+  }
+}
+
+@keyframes celebrate {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (min-width: 640px) {
+  .overlay {
+    right: 1.5rem;
+  }
+
+  .launcher {
+    width: 10rem;
+    height: 9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .launcher,
+  .shadow,
+  .figure,
+  .tailGroup,
+  .eyelids,
+  .thinking .headGroup,
+  .thinking .thoughts,
+  .speaking .figure,
+  .speaking .mouthOpen,
+  .success .leftArmGroup,
+  .success .rightArmGroup,
+  .success .tailGroup,
+  .success .successMarks {
+    animation: none;
+    transition: none;
+  }
+
+  .pupils {
+    transition: none;
+  }
+
+  .thinking .thoughts,
+  .success .successMarks {
+    opacity: 1;
+  }
+
+  .speaking .mouthOpen {
+    transform: scaleY(0.8);
+  }
+}
