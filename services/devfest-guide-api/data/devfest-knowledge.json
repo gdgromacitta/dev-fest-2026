@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-24",
+  "event": {
+    "name": "DevFest Roma 2026",
+    "organizer": "GDG Roma Città",
+    "date": "2026-10-10",
+    "time": {
+      "start": "09:00",
+      "end": "18:00",
+      "timezone": "Europe/Rome"
+    },
+    "location": "Roma, Italy",
+    "attendance": "500+ developers",
+    "format": {
+      "it": "Conferenza gratuita per sviluppatori di un'intera giornata con tre track parallele.",
+      "en": "A free full-day developer conference with three concurrent tracks."
+    },
+    "theme": {
+      "it": "Build, Secure, Scale — Sviluppatori e Builder nell'Era Agente",
+      "en": "Build, Secure, Scale — Developers and Builders in the Agentic Era"
+    },
+    "description": {
+      "it": "DevFest Roma riunisce la community locale per imparare, condividere e connettersi attraverso contenuti tecnici e casi reali.",
+      "en": "DevFest Roma brings the local community together to learn, share, and connect through technical content and real-world cases."
+    },
+    "program_status": {
+      "it": "Il programma completo sarà pubblicato a settembre. Speaker e sessioni non sono ancora annunciati.",
+      "en": "The full program will be published in September. Speakers and sessions have not been announced yet."
+    }
+  },
+  "cfp": {
+    "deadline": "2026-07-31",
+    "submission_url": "https://sessionize.com/devfest-roma-2026/",
+    "description": {
+      "it": "La Call for Papers accetta proposte da speaker di ogni livello su contenuti tecnici e casi reali, senza marketing.",
+      "en": "The Call for Papers welcomes proposals from speakers at every experience level, focused on technical content and real-world cases rather than marketing."
+    },
+    "speaker_benefits": {
+      "it": [
+        "Ingresso gratuito all'evento",
+        "Cena esclusiva per speaker",
+        "Merchandising dell'evento",
+        "Supporto organizzativo completo"
+      ],
+      "en": [
+        "Free event admission",
+        "Exclusive speaker dinner",
+        "Event merchandise",
+        "Full organizational support"
+      ]
+    }
+  },
+  "tracks": [
+    {
+      "name": "AI/ML",
+      "topics": ["GenAI", "Agentic Workflows", "LLM Ops"]
+    },
+    {
+      "name": {
+        "it": "Architettura",
+        "en": "Architecture"
+      },
+      "topics": ["Design Patterns", "Microservices", "Clean Architecture"]
+    },
+    {
+      "name": "Cloud & DevOps",
+      "topics": ["Backend", "Infrastructure", "Security"]
+    },
+    {
+      "name": "Frontend"
+    },
+    {
+      "name": "Mobile & Security"
+    }
+  ],
+  "venue": {
+    "name": "Università degli Studi Roma Tre",
+    "department": {
+      "it": "Dipartimento di Ingegneria Civile, Informatica e Tecnologie Aeronautiche",
+      "en": "Department of Civil, Computer Science and Aeronautical Technologies Engineering"
+    },
+    "address": "Via Vito Volterra, 60",
+    "city": "Roma, Italy",
+    "maps_url": "https://maps.google.com/?q=Via+Vito+Volterra+60,+Roma,+Italia",
+    "public_transport": {
+      "it": "La sede è facilmente raggiungibile con i mezzi pubblici. Trastevere e Ostiense sono gli snodi ferroviari principali più vicini.",
+      "en": "The venue is best reached by public transport. Trastevere and Ostiense are the closest major railway hubs."
+    },
+    "parking": {
+      "it": "Non è disponibile un parcheggio dedicato. Il parcheggio su strada è limitato; sono consigliati mezzi pubblici o car pooling.",
+      "en": "There is no dedicated event parking. Street parking is limited; public transport or carpooling is recommended."
+    },
+    "accessibility": {
+      "it": "I dettagli sull'accessibilità saranno confermati più vicino all'evento. Per esigenze specifiche è consigliato contattare in anticipo gli organizzatori.",
+      "en": "Accessibility details will be confirmed closer to the event. Visitors with specific needs should contact the organizers in advance."
+    }
+  },
+  "official_links": [
+    {
+      "kind": "registration",
+      "label": {
+        "it": "Registrazione ufficiale",
+        "en": "Official registration"
+      },
+      "url": "https://gdg.community.dev/events/details/google-gdg-roma-citta-presents-devfest-roma-2026/"
+    },
+    {
+      "kind": "cfp",
+      "label": {
+        "it": "Call for Papers",
+        "en": "Call for Papers"
+      },
+      "url": "https://sessionize.com/devfest-roma-2026/"
+    },
+    {
+      "kind": "maps",
+      "label": {
+        "it": "Sede su Google Maps",
+        "en": "Venue on Google Maps"
+      },
+      "url": "https://maps.google.com/?q=Via+Vito+Volterra+60,+Roma,+Italia"
+    },
+    {
+      "kind": "sponsorship",
+      "label": {
+        "it": "Modulo sponsor",
+        "en": "Sponsorship form"
+      },
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScracoBDSFefwj54UCV_r1Um7oD-c3Y1NBVE16WHFwJRCckFw/viewform"
+    },
+    {
+      "kind": "contact",
+      "label": {
+        "it": "Email organizzatori",
+        "en": "Organizer email"
+      },
+      "url": "mailto:gdgroma.citta@gmail.com"
+    }
+  ],
+  "organizers": [
+    {
+      "id": "davide-passafaro",
+      "name": "Davide Passafaro",
+      "role": "Freelance Software Engineer & Angular GDE",
+      "published": true
+    },
+    {
+      "id": "giorgio-galassi",
+      "name": "Giorgio Galassi",
+      "role": "Senior Frontend Engineer (Freelance)",
+      "published": true
+    },
+    {
+      "id": "eleonora-biancone",
+      "name": "Eleonora Biancone",
+      "role": "Scrum Master",
+      "published": true
+    },
+    {
+      "id": "ryan-jherome-burgos",
+      "name": "Ryan Jherome Burgos",
+      "role": "Senior Software Engineer",
+      "published": true
+    },
+    {
+      "id": "giulio-alfieri",
+      "name": "Giulio Alfieri",
+      "role": "Web Developer",
+      "published": true
+    },
+    {
+      "id": "ivano-scifoni",
+      "name": "Ivano Scifoni",
+      "role": "Cloud Architect",
+      "published": true
+    },
+    {
+      "id": "serena-sensini",
+      "name": "Serena Sensini",
+      "role": "Innovation Leader",
+      "published": true
+    },
+    {
+      "id": "egon-ferri",
+      "name": "Egon Ferri",
+      "role": "AI Engineer",
+      "published": true
+    },
+    {
+      "id": "andrea-della-porta",
+      "name": "Andrea Della Porta",
+      "role": "Mobile Manager",
+      "published": true
+    },
+    {
+      "id": "camillo-bucciarelli",
+      "name": "Camillo Bucciarelli",
+      "role": "Industrialization Architect",
+      "published": true
+    }
+  ],
+  "speakers": [],
+  "sessions": [],
+  "guide": {
+    "name": "Lupetta",
+    "species": {
+      "it": "Una lupetta originale di DevFest Roma",
+      "en": "An original DevFest Roma wolf mascot"
+    },
+    "role": {
+      "it": "Guida read-only al sito di DevFest Roma 2026",
+      "en": "Read-only guide to the DevFest Roma 2026 website"
+    },
+    "personality": {
+      "it": "Calorosa, energica, curiosa, orientata alla community e onesta sui propri limiti.",
+      "en": "Warm, energetic, curious, community-minded, and honest about her limitations."
+    },
+    "limitations": {
+      "it": [
+        "Conosce soltanto le informazioni pubbliche esposte dai suoi tool",
+        "Non può registrare visitatori o inviare proposte",
+        "Non ricorda le conversazioni dopo un refresh",
+        "Non parla a nome di Google"
+      ],
+      "en": [
+        "She only knows public information exposed by her tools",
+        "She cannot register visitors or submit proposals",
+        "She does not remember conversations after a refresh",
+        "She does not speak on behalf of Google"
+      ]
+    }
+  }
+}
