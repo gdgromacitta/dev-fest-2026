@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { aboutHero, aboutValues } from "@/src/content/about";
 import { team } from "@/src/content/team";
-import { TeamCard } from "@/src/components/about/team-card";
+import { ShuffledTeamGrid } from "@/src/components/about/shuffled-team-grid";
 import { features } from "@/src/content/features";
 
 export const metadata: Metadata = {
@@ -64,9 +64,7 @@ export default async function AboutPage({ params }: Props) {
           </h2>
           <p className="m-0 max-w-2xl text-base text-muted">{t("teamSubtext")}</p>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-            {team.map((member) => (
-              <TeamCard key={member.id} member={member} />
-            ))}
+            <ShuffledTeamGrid members={team} />
           </div>
         </div>
       </section>

@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@config "../tailwind.config.ts";
+@import "tailwindcss";
 
 :root {
   --bg: #ffffff;
@@ -25,12 +24,12 @@ body {
   color: var(--text);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 @layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
   h1,
   h2,
   h3 {
@@ -41,13 +40,13 @@ a {
 @layer components {
   /* Pill buttons from the restyling design */
   .btn-primary {
-    @apply focus-ring inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-base font-semibold text-white transition-colors duration-200 hover:bg-primary-deep;
+    @apply inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-base font-semibold text-white transition-colors duration-200 hover:bg-primary-deep;
   }
   .btn-outline {
-    @apply focus-ring inline-flex items-center justify-center rounded-full border-[1.5px] border-line-strong px-8 py-4 text-base font-semibold text-ink transition-colors duration-200 hover:border-ink;
+    @apply inline-flex items-center justify-center rounded-full border-[1.5px] border-line-strong px-8 py-4 text-base font-semibold text-ink transition-colors duration-200 hover:border-ink;
   }
   .btn-dark {
-    @apply focus-ring inline-flex items-center justify-center rounded-full bg-ink px-8 py-4 text-base font-semibold text-white transition-colors duration-200 hover:bg-muted;
+    @apply inline-flex items-center justify-center rounded-full bg-ink px-8 py-4 text-base font-semibold text-white transition-colors duration-200 hover:bg-muted;
   }
   .eyebrow {
     @apply text-[13px] font-semibold uppercase tracking-[0.08em];
@@ -57,7 +56,10 @@ a {
   }
 }
 
-.focus-ring:focus-visible {
+.focus-ring:focus-visible,
+.btn-primary:focus-visible,
+.btn-outline:focus-visible,
+.btn-dark:focus-visible {
   outline: 3px solid var(--google-blue);
   outline-offset: 2px;
 }
