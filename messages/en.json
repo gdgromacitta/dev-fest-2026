@@ -15,6 +15,28 @@
     "cookies": "Cookie",
     "poweredBy": "Powered by"
   },
+  "devfestGuide": {
+    "eyebrow": "DevFest guide",
+    "title": "Ask Lupetta",
+    "intro": "Hi! I'm Lupetta, the DevFest Roma 2026 guide. I can help with the date, venue, CFP, program, and official event information.",
+    "launcherLabel": "Ask Lupetta",
+    "open": "Open the DevFest guide",
+    "close": "Close Lupetta's chat",
+    "send": "Send message to Lupetta",
+    "stop": "Stop Lupetta's response",
+    "inputLabel": "Message for Lupetta",
+    "placeholder": "Ask something about DevFest…",
+    "thinking": "Sniffing through the official information…",
+    "thinkingAnnouncement": "Lupetta is checking the official information.",
+    "responseAnnouncement": "Lupetta: {response}",
+    "stoppedAnnouncement": "Lupetta's response was stopped.",
+    "limitReached": "You reached this conversation's limit. Reload the page to start again.",
+    "conversationComplete": "Conversation complete",
+    "privacy": "Messages are processed by OpenAI. Telemetry does not record chat content.",
+    "errors": {
+      "unavailable": "My nose has temporarily lost the trail. Please try again shortly."
+    }
+  },
   "home": {
     "gdgBadge": "GDG Roma Città",
     "eventTitle": "DevFest Roma",

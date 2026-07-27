@@ -9,5 +9,8 @@ export const features = {
   programTracks: false,
   speakersPreview: false,
   faq: true,
-  team: true
+  team: true,
+  devfestGuide:
+    process.env.NODE_ENV === "development" ||
+    process.env.NEXT_PUBLIC_DEVFEST_GUIDE_ENABLED === "true"
 };

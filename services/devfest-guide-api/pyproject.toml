@@ -1,0 +1,22 @@
+[project]
+name = "devfest-guide-api"
+version = "0.1.0"
+description = "Read-only Pydantic AI guide for DevFest Roma 2026"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.117.1,<1",
+  "httpx>=0.28.1,<1",
+  "logfire[fastapi]>=4,<5",
+  "pydantic>=2,<3",
+  "pydantic-ai-slim[openai]>=2,<3",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.4,<9",
+  "uvicorn>=0.35,<1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

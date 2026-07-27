@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "api/index.py": {
+      "includeFiles": "data/devfest-knowledge.json",
+      "excludeFiles": "{tests/**,**/test_*.py}",
+      "maxDuration": 60
+    }
+  }
+}

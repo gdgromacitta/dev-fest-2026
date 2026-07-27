@@ -15,6 +15,28 @@
     "cookies": "Cookie",
     "poweredBy": "Organizzato da"
   },
+  "devfestGuide": {
+    "eyebrow": "Guida DevFest",
+    "title": "Chiedi a Lupetta",
+    "intro": "Ciao! Sono Lupetta, la guida di DevFest Roma 2026. Posso aiutarti con data, sede, CFP, programma e informazioni ufficiali dell'evento.",
+    "launcherLabel": "Chiedi a Lupetta",
+    "open": "Apri la guida DevFest",
+    "close": "Chiudi la chat di Lupetta",
+    "send": "Invia messaggio a Lupetta",
+    "stop": "Ferma la risposta di Lupetta",
+    "inputLabel": "Messaggio per Lupetta",
+    "placeholder": "Chiedi qualcosa sulla DevFest…",
+    "thinking": "Fiuto le informazioni ufficiali…",
+    "thinkingAnnouncement": "Lupetta sta cercando tra le informazioni ufficiali.",
+    "responseAnnouncement": "Lupetta: {response}",
+    "stoppedAnnouncement": "La risposta di Lupetta è stata fermata.",
+    "limitReached": "Hai raggiunto il limite di questa conversazione. Ricarica la pagina per ricominciare.",
+    "conversationComplete": "Conversazione completata",
+    "privacy": "I messaggi sono elaborati da OpenAI. La telemetria non registra il contenuto della chat.",
+    "errors": {
+      "unavailable": "Il mio fiuto si è momentaneamente perso. Riprova tra poco."
+    }
+  },
   "home": {
     "gdgBadge": "GDG Roma Città",
     "eventTitle": "DevFest Roma",

@@ -7,6 +7,10 @@
 /node_modules
 /.pnp
 .pnp.js
+**/.venv/
+**/.uv-cache/
+**/__pycache__/
+*.py[cod]
 
 # testing
 /coverage
