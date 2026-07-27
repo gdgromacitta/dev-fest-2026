@@ -8,13 +8,13 @@
   --google-red: #ea4335;
   --google-yellow: #fbbc04;
   --google-green: #34a853;
-  --wolf-outline: #27303a;
-  --wolf-fur: #9ca7b5;
-  --wolf-fur-shade: #7f8b99;
-  --wolf-cream: #f2eee5;
-  --wolf-muzzle: #fffaf0;
-  --wolf-ear: #e6a5a8;
-  --wolf-paw: #707a86;
+  --wolf-outline: #344354;
+  --wolf-fur: #9cabb9;
+  --wolf-fur-shade: #728496;
+  --wolf-cream: #f5f0e7;
+  --wolf-muzzle: #fffdf8;
+  --wolf-ear: #e8a8ad;
+  --wolf-paw: #617285;
   --wolf-eye: #202124;
   --wolf-nose: #25282d;
   --wolf-mouth: #f0757d;
@@ -226,8 +226,8 @@
 
 .launcher {
   position: relative;
-  width: 9rem;
-  height: 8rem;
+  width: 8.5rem;
+  height: 7.75rem;
   border: 0;
   padding: 0;
   background: transparent;
@@ -243,8 +243,9 @@
 
 .launcherLabel {
   position: absolute;
-  top: 0;
-  left: -0.5rem;
+  z-index: 2;
+  top: -0.55rem;
+  left: 0.1rem;
   border: 1px solid var(--guide-line);
   border-radius: 999px;
   background: var(--guide-bg);
@@ -255,6 +256,19 @@
   letter-spacing: 0.08em;
   padding: 0.35rem 0.55rem;
   text-transform: uppercase;
+}
+
+.launcherLabel::after {
+  position: absolute;
+  right: 1rem;
+  bottom: -0.28rem;
+  width: 0.52rem;
+  height: 0.52rem;
+  border-right: 1px solid var(--guide-line);
+  border-bottom: 1px solid var(--guide-line);
+  background: var(--guide-bg);
+  content: "";
+  transform: rotate(45deg);
 }
 
 .iconButton:focus-visible,
@@ -291,7 +305,7 @@
 }
 
 .figure {
-  transform-origin: 101px 165px;
+  transform-origin: 111px 185px;
   animation: breathe 4.4s ease-in-out infinite;
 }
 
@@ -331,6 +345,11 @@
   transform-box: fill-box;
   transform-origin: center;
   transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.googleBadge {
+  transform-box: fill-box;
+  transform-origin: center;
 }
 
 .eyelids {
@@ -433,7 +452,7 @@
 }
 
 .error .mouthLine {
-  d: path("M99 84Q93 78 87 83M99 84Q105 78 111 83");
+  d: path("M111 96Q104 89 97 95M111 96Q118 89 125 95");
 }
 
 @keyframes breathe {
@@ -573,8 +592,13 @@
   }
 
   .launcher {
-    width: 10rem;
-    height: 9rem;
+    width: 10.5rem;
+    height: 9.5rem;
+  }
+
+  .launcherLabel {
+    top: 0.15rem;
+    left: -3.2rem;
   }
 }
 
