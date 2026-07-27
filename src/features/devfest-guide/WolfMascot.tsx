@@ -22,168 +22,214 @@ export function WolfMascot({ state, pointerX = 0, pointerY = 0 }: WolfMascotProp
 
   return (
     <svg
-      viewBox="0 0 200 180"
+      viewBox="0 0 220 200"
       aria-hidden="true"
       focusable="false"
       className={`${styles.wolf} ${stateClassName}`}
     >
-      <ellipse className={styles.shadow} cx="103" cy="170" rx="53" ry="6" />
+      <ellipse className={styles.shadow} cx="111" cy="190" rx="56" ry="6" />
 
       <g
         className={styles.figure}
         stroke="var(--wolf-outline)"
-        strokeWidth="3.2"
+        strokeWidth="3"
         strokeLinecap="round"
         strokeLinejoin="round"
       >
         <g className={styles.tailGroup}>
           <path
-            d="M137 111C158 99 176 104 180 119C184 135 169 148 151 143C162 137 165 126 157 121C151 117 145 119 139 124Z"
+            d="M145 126C165 106 191 113 197 134C203 156 183 174 157 166C173 159 179 148 173 139C168 132 158 134 149 145Z"
             fill="var(--wolf-fur-shade)"
           />
           <path
-            d="M173 132C168 142 158 146 151 143C158 138 162 133 162 127C167 128 171 130 173 132Z"
+            d="M190 150C185 162 170 170 157 166C169 160 176 153 177 145C183 145 187 147 190 150Z"
             fill="var(--wolf-cream)"
             stroke="none"
+          />
+          <path
+            d="M145 126C165 106 191 113 197 134C203 156 183 174 157 166"
+            fill="none"
           />
         </g>
 
         <g className={styles.legs}>
           <path
-            d="M76 137C74 148 72 159 76 167C79 172 91 171 92 166C91 162 86 161 83 159L88 139Z"
+            d="M81 155C78 167 77 180 82 187C87 191 100 189 100 183C98 178 92 178 89 175L94 156Z"
             fill="var(--wolf-fur-shade)"
           />
           <path
-            d="M120 137C123 149 125 159 121 167C118 172 106 171 105 166C106 162 111 161 114 159L109 139Z"
+            d="M139 155C142 168 143 180 138 187C133 191 120 189 120 183C122 178 128 178 131 175L126 156Z"
             fill="var(--wolf-fur)"
           />
+          <path d="M82 184Q90 181 98 184" fill="none" stroke="var(--wolf-paw)" />
+          <path d="M122 184Q130 181 138 184" fill="none" stroke="var(--wolf-paw)" />
         </g>
 
         <path
           className={styles.body}
-          d="M66 92C74 80 87 75 101 76C117 76 132 85 138 100L136 129C130 144 115 150 99 149C82 149 68 141 63 127L62 105C62 100 63 96 66 92Z"
+          d="M72 112C80 97 94 90 111 90C130 90 146 99 153 115L153 157C146 174 130 181 111 181C91 181 75 173 68 157L68 124C68 119 69 115 72 112Z"
           fill="var(--wolf-fur)"
         />
 
-        <g className={styles.shirt}>
-          <path
-            d="M72 92C78 85 86 82 97 82C110 81 122 85 130 94L134 125C128 137 116 142 99 142C83 142 72 136 66 125L68 99Z"
-            fill="white"
-          />
-          <path d="M69 96L80 85L88 92L77 105Z" fill="var(--google-blue)" stroke="none" />
-          <path d="M130 96L119 85L111 92L122 105Z" fill="var(--google-red)" stroke="none" />
-          <g className={styles.shirtMark} stroke="none">
-            <path d="M85 108L94 99L100 105L91 114Z" fill="var(--google-blue)" />
-            <path d="M94 99L103 108L97 114L88 105Z" fill="var(--google-red)" />
-            <path d="M103 108L112 117L106 123L97 114Z" fill="var(--google-yellow)" />
-            <path d="M94 117L103 108L109 114L100 123Z" fill="var(--google-green)" />
-          </g>
-        </g>
-
         <g className={styles.leftArmGroup}>
           <path
-            d="M69 97C58 101 51 113 52 127C53 138 59 146 66 145C72 143 72 137 68 132C64 127 65 119 72 114Z"
+            d="M77 111C62 115 54 129 55 145C56 159 64 169 73 168C80 166 81 158 76 153C71 146 72 137 82 130Z"
             fill="var(--wolf-fur-shade)"
           />
           <path
-            d="M65 143C60 147 61 153 66 154C71 154 74 149 70 144Z"
+            d="M72 165C66 169 67 177 73 178C80 177 83 170 78 165Z"
             fill="var(--wolf-paw)"
           />
         </g>
 
         <g className={styles.rightArmGroup}>
           <path
-            d="M130 97C143 101 149 113 147 127C146 138 140 146 133 145C127 143 127 137 131 132C135 127 134 119 127 114Z"
+            d="M146 111C161 115 169 129 167 145C166 159 158 169 149 168C142 166 141 158 146 153C151 146 150 137 140 130Z"
             fill="var(--wolf-fur)"
           />
           <path
-            d="M134 143C139 147 138 153 133 154C128 154 125 149 129 144Z"
+            d="M150 165C156 169 155 177 149 178C142 177 139 170 144 165Z"
             fill="var(--wolf-paw)"
           />
+        </g>
+
+        <g className={styles.shirt}>
+          <path
+            d="M78 110L92 96C102 91 121 91 132 97L146 110L137 128L132 121L136 164C130 171 122 174 111 174C99 174 90 171 84 164L89 121L82 128L70 115Z"
+            fill="white"
+          />
+          <path d="M78 110L92 96L96 108L82 128L70 115Z" fill="var(--google-blue)" stroke="none" />
+          <path d="M132 97L146 110L137 128L124 108Z" fill="var(--google-red)" stroke="none" />
+          <path
+            d="M98 96Q111 104 125 97L121 108Q111 113 101 108Z"
+            fill="var(--guide-surface)"
+            stroke="var(--guide-line)"
+            strokeWidth="1.8"
+          />
+          <path
+            d="M92 116Q111 122 130 116"
+            fill="none"
+            stroke="var(--guide-line)"
+            strokeWidth="1.4"
+          />
+          <g
+            className={styles.googleBadge}
+            transform="translate(96.6 123) scale(1.2)"
+            stroke="none"
+          >
+            <path
+              d="M23.49 12.27C23.49 11.48 23.42 10.73 23.3 10H12V14.51H18.47C18.19 15.96 17.37 17.19 16.07 18.04V20.98H19.95C22.23 18.88 23.49 15.78 23.49 12.27Z"
+              fill="var(--google-blue)"
+            />
+            <path
+              d="M12 24C15.24 24 17.96 22.93 19.95 21.09L16.07 18.15C14.99 18.87 13.61 19.3 12 19.3C8.87 19.3 6.22 17.19 5.27 14.35H1.25V17.39C3.24 21.34 7.31 24 12 24Z"
+              fill="var(--google-green)"
+            />
+            <path
+              d="M5.27 14.35C5.03 13.63 4.9 12.84 4.9 12C4.9 11.18 5.04 10.39 5.27 9.65V6.61H1.25C0.45 8.2 0 10.03 0 12C0 13.93 0.46 15.76 1.25 17.39L5.27 14.35Z"
+              fill="var(--google-yellow)"
+            />
+            <path
+              d="M12 4.7C13.76 4.7 15.34 5.31 16.59 6.5L20.03 3.06C17.95 1.12 15.24 0 12 0C7.31 0 3.24 2.66 1.25 6.61L5.27 9.65C6.22 6.81 8.87 4.7 12 4.7Z"
+              fill="var(--google-red)"
+            />
+          </g>
         </g>
 
         <g className={styles.headGroup}>
           <path
             className={styles.leftEar}
-            d="M66 47L61 17C60 12 65 10 69 14L86 33Z"
+            d="M77 47L61 11C59 6 64 3 68 7L94 28Z"
             fill="var(--wolf-fur-shade)"
           />
-          <path d="M68 39L66 23L78 36Z" fill="var(--wolf-ear)" stroke="none" />
+          <path d="M75 37L66 17L85 31Z" fill="var(--wolf-ear)" stroke="none" />
           <path
             className={styles.rightEar}
-            d="M132 47L139 18C140 13 135 10 131 14L113 33Z"
+            d="M145 47L162 11C164 6 159 3 155 7L128 28Z"
             fill="var(--wolf-fur)"
           />
-          <path d="M130 39L134 23L121 36Z" fill="var(--wolf-ear)" stroke="none" />
+          <path d="M147 37L157 17L137 31Z" fill="var(--wolf-ear)" stroke="none" />
 
           <path
             className={styles.head}
-            d="M67 47C73 34 85 28 99 28C114 28 127 36 132 49C139 59 136 75 129 84C122 96 111 102 98 102C84 102 72 96 66 85C58 75 58 58 67 47Z"
+            d="M72 47C80 27 94 20 111 20C131 20 147 31 154 49C163 60 163 79 157 93L162 101L151 104C141 117 126 124 110 124C93 124 79 117 70 104L60 101L65 93C60 76 62 58 72 47Z"
             fill="var(--wolf-fur)"
           />
           <path
             className={styles.faceCream}
-            d="M70 59C75 45 85 40 97 44C105 39 118 45 124 57C130 69 124 86 113 94C104 101 90 99 81 92C71 84 66 70 70 59Z"
+            d="M73 61C77 45 91 39 104 45L111 53L119 45C134 39 149 50 152 66C156 84 145 103 129 112C119 118 103 117 93 111C77 102 68 80 73 61Z"
+            fill="var(--wolf-cream)"
+            stroke="none"
+          />
+          <path
+            d="M101 25Q111 19 121 25L117 47L111 58L105 47Z"
             fill="var(--wolf-cream)"
             stroke="none"
           />
           <path
             className={styles.muzzle}
-            d="M80 73C84 64 91 62 98 67C105 62 113 65 117 74C121 84 111 94 99 95C86 95 76 85 80 73Z"
+            d="M88 79C92 69 102 67 111 74C120 67 131 70 135 80C140 92 129 105 111 106C94 106 83 93 88 79Z"
             fill="var(--wolf-muzzle)"
             stroke="none"
           />
 
           <g className={styles.baseEyes}>
-            <ellipse cx="86" cy="61" rx="6" ry="6.5" fill="white" stroke="none" />
-            <ellipse cx="111" cy="61" rx="6" ry="6.5" fill="white" stroke="none" />
+            <ellipse cx="93" cy="65" rx="7.5" ry="8" fill="white" stroke="none" />
+            <ellipse cx="129" cy="65" rx="7.5" ry="8" fill="white" stroke="none" />
             <g
               className={styles.pupils}
               style={{ transform: `translate(${eyeX}px, ${eyeY}px)` }}
             >
-              <circle cx="86" cy="62" r="3" fill="var(--wolf-eye)" stroke="none" />
-              <circle cx="111" cy="62" r="3" fill="var(--wolf-eye)" stroke="none" />
-              <circle cx="85" cy="60.7" r="1" fill="white" stroke="none" />
-              <circle cx="110" cy="60.7" r="1" fill="white" stroke="none" />
+              <circle cx="93" cy="66" r="4" fill="var(--wolf-eye)" stroke="none" />
+              <circle cx="129" cy="66" r="4" fill="var(--wolf-eye)" stroke="none" />
+              <circle cx="91.7" cy="64.2" r="1.3" fill="white" stroke="none" />
+              <circle cx="127.7" cy="64.2" r="1.3" fill="white" stroke="none" />
             </g>
           </g>
 
           <path
-            className={styles.eyelids}
-            d="M80 62Q86 68 92 62M105 62Q111 68 117 62"
+            className={styles.brows}
+            d="M85 55Q93 51 101 55M121 55Q129 51 137 55"
+            fill="none"
+            stroke="var(--wolf-outline)"
+            strokeWidth="2"
           />
           <path
-            d="M94 74Q99 70 104 74Q101 80 99 80Q96 80 94 74Z"
+            className={styles.eyelids}
+            d="M85 66Q93 73 101 66M121 66Q129 73 137 66"
+          />
+          <path
+            d="M105 82Q111 77 117 82Q115 89 111 89Q107 89 105 82Z"
             fill="var(--wolf-nose)"
             stroke="none"
           />
           <path
             className={styles.mouthLine}
-            d="M99 80Q95 86 90 82M99 80Q104 86 109 82"
+            d="M111 89Q106 97 99 92M111 89Q116 97 123 92"
             fill="none"
             stroke="var(--wolf-nose)"
             strokeWidth="2.2"
           />
           <ellipse
             className={styles.mouthOpen}
-            cx="99"
-            cy="84"
-            rx="7"
-            ry="4"
+            cx="111"
+            cy="95"
+            rx="7.5"
+            ry="4.5"
             fill="var(--wolf-mouth)"
             stroke="var(--wolf-nose)"
             strokeWidth="1.8"
           />
-          <ellipse cx="78" cy="76" rx="4" ry="2" fill="var(--wolf-blush)" stroke="none" />
-          <ellipse cx="120" cy="76" rx="4" ry="2" fill="var(--wolf-blush)" stroke="none" />
+          <ellipse cx="82" cy="86" rx="5" ry="2.4" fill="var(--wolf-blush)" stroke="none" />
+          <ellipse cx="141" cy="86" rx="5" ry="2.4" fill="var(--wolf-blush)" stroke="none" />
         </g>
       </g>
 
       <g className={styles.thoughts} aria-hidden="true">
-        <circle cx="137" cy="48" r="4" fill="var(--google-blue)" />
-        <circle cx="148" cy="36" r="5" fill="var(--google-yellow)" />
+        <circle cx="160" cy="55" r="4" fill="var(--google-blue)" />
+        <circle cx="173" cy="42" r="5" fill="var(--google-yellow)" />
         <path
-          d="M162 20L166 14L170 20L177 21L172 26L173 33L166 30L160 33L161 26L156 21Z"
+          d="M188 23L192 17L196 23L203 24L198 29L199 36L192 33L186 36L187 29L182 24Z"
           fill="var(--google-red)"
         />
       </g>
@@ -195,8 +241,8 @@ export function WolfMascot({ state, pointerX = 0, pointerY = 0 }: WolfMascotProp
         strokeWidth="3"
         strokeLinecap="round"
       >
-        <path d="M42 75L32 69M46 64L42 54" stroke="var(--google-yellow)" />
-        <path d="M154 77L164 70M151 65L157 55" stroke="var(--google-blue)" />
+        <path d="M46 92L34 86M51 79L47 67" stroke="var(--google-yellow)" />
+        <path d="M174 94L187 87M170 80L176 68" stroke="var(--google-blue)" />
       </g>
     </svg>
   );
