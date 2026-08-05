@@ -19,6 +19,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://devfest2026.gdgromacitta.it"),
   title: "DevFest Roma by GDG Roma Città",
   description: "Official DevFest Roma website with agenda, speakers, and venue details.",
   manifest: "/manifest.json",

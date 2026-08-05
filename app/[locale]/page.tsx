@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "DevFest Roma 2026",
     description: "Join GDG Roma Città for a day of talks, workshops, and community.",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "DevFest Roma 2026", type: "image/png" }],
     type: "website"
   }
 };
