@@ -4,6 +4,7 @@ import { features } from "@/src/content/features";
 
 const allNavLinks: { href: string; label: string; key: string }[] = [
   { href: "/", label: "Home", key: "home" },
+  { href: "/about", label: "About", key: "about" },
   { href: "/venue", label: "Venue", key: "venue" },
   { href: "/agenda", label: "Agenda", key: "agenda" },
   { href: "/speakers", label: "Speakers", key: "speakers" },

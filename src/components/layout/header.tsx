@@ -73,7 +73,7 @@ export function Header() {
         </div>
       </div>
       <div className="mx-auto w-full max-w-[1440px] px-4 md:px-16">
-        <MobileNav open={open} />
+        <MobileNav open={open} onNavigate={() => setOpen(false)} />
       </div>
     </header>
   );

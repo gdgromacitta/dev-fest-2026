@@ -6,9 +6,10 @@ import { navLinks } from "@/src/content/nav-links";
 
 type MobileNavProps = {
   open: boolean;
+  onNavigate: () => void;
 };
 
-export function MobileNav({ open }: MobileNavProps) {
+export function MobileNav({ open, onNavigate }: MobileNavProps) {
   const t = useTranslations("nav");
 
   return (
@@ -23,6 +24,7 @@ export function MobileNav({ open }: MobileNavProps) {
             <Link
               className="focus-ring block rounded-md px-3 py-2 text-sm font-medium hover:bg-slate-100"
               href={link.href}
+              onClick={onNavigate}
             >
               {t(link.key)}
             </Link>
