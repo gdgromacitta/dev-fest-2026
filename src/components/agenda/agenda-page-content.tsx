@@ -6,10 +6,23 @@ import { sessions } from "@/src/content/sessions";
 import { defaultAgendaFilters, filterSessions } from "@/src/lib/agenda-filters";
 import { FilterToolbar } from "@/src/components/agenda/filter-toolbar";
 import { SessionList } from "@/src/components/agenda/session-list";
+import { roomsFrom } from "@/src/lib/agenda-rooms";
 
+// Preferred display order; any track the data has that isn't listed here
+// (Sessionize category names differ per event) is appended rather than dropped.
 const trackOrder = ["Mobile", "Web", "Cloud", "AI"];
-const tracks = trackOrder.filter((track) => sessions.some((session) => session.track === track));
+const tracks = [...new Set(sessions.map((session) => session.track).filter(Boolean))].sort(
+  (a, b) => {
+    const ia = trackOrder.indexOf(a);
+    const ib = trackOrder.indexOf(b);
+    return (ia === -1 ? trackOrder.length : ia) - (ib === -1 ? trackOrder.length : ib) || a.localeCompare(b);
+  }
+);
 const levels = ["beginner", "intermediate", "advanced"] as const;
+// Room columns, in the order the rooms first appear in the schedule. Derived
+// from every session (not the filtered set) so the grid keeps its shape while
+// filters narrow what's shown.
+const rooms = roomsFrom(sessions);
 
 export function AgendaPageContent() {
   const t = useTranslations("agenda");
@@ -24,7 +37,7 @@ export function AgendaPageContent() {
           <p className="m-0 max-w-4xl text-lg leading-8 text-slate-500">{t("intro")}</p>
         </section>
         <FilterToolbar filters={filters} tracks={tracks} levels={levels} onFiltersChange={setFilters} />
-        <SessionList sessions={visibleSessions} />
+        <SessionList sessions={visibleSessions} rooms={rooms} />
       </div>
     </div>
   );

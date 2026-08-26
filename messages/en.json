@@ -232,14 +232,30 @@
       "firebase": "Firebase"
     },
     "cards": {
-      "alice-johnson": { "role": "Web Engineer" },
-      "bob-brown": { "role": "Cloud Architect" },
-      "charlie-davis": { "role": "Staff Software Engineer" },
-      "david-smith": { "role": "CDE, Angular" },
-      "eve-wilson": { "role": "UX Researcher" },
-      "frank-miller": { "role": "CTO" },
-      "grace-lee": { "role": "Lead Designer" },
-      "henry-zhang": { "role": "Android Engineer" }
+      "alice-johnson": {
+        "role": "Web Engineer"
+      },
+      "bob-brown": {
+        "role": "Cloud Architect"
+      },
+      "charlie-davis": {
+        "role": "Staff Software Engineer"
+      },
+      "david-smith": {
+        "role": "CDE, Angular"
+      },
+      "eve-wilson": {
+        "role": "UX Researcher"
+      },
+      "frank-miller": {
+        "role": "CTO"
+      },
+      "grace-lee": {
+        "role": "Lead Designer"
+      },
+      "henry-zhang": {
+        "role": "Android Engineer"
+      }
     },
     "featured": {
       "about": "Charlie is a Staff Engineer at Uber where she leads the web performance infrastructure team. With over 12 years of experience in the industry, she has been a vocal advocate for accessible web patterns and modern CSS architecture. She is a frequent contributor to open-source and loves building tools that make developers' lives easier."
@@ -282,7 +298,13 @@
     "cfpCta": "Submit a Proposal",
     "lunchBreak": "Lunch Break & Networking",
     "saveSessionAriaLabel": "Save {title}",
-    "noSessionsMatch": "No sessions match the current filters."
+    "noSessionsMatch": "No sessions match the current filters.",
+    "roomTabsLabel": "Rooms",
+    "breakLabel": "Break",
+    "unassignedRoom": "Unassigned",
+    "speakerTba": "TBA",
+    "speakerTbaSubtitle": "Speaker to be announced",
+    "resultsStatus": "{count, plural, =0 {No sessions match} one {# session} other {# sessions}}"
   },
   "speakersPage": {
     "badge": "Speakers",

@@ -31,8 +31,13 @@ const renderAgendaPage = () =>
     })
   );
 
-describe("Agenda page reference structure", () => {
-  test("renders the screenshot-scoped agenda timeline layout", () => {
+import { sessions } from "@/src/content/sessions";
+import { roomsFrom, sessionsForRoom } from "@/src/lib/agenda-rooms";
+
+// Asserted against whatever content is committed, so regenerating
+// src/content/sessions.ts from Sessionize can't break these.
+describe("Agenda page structure", () => {
+  test("renders the page chrome and filter toolbar", () => {
     const html = renderAgendaPage();
 
     // React escapes apostrophes in text nodes as `&#x27;`.
@@ -43,13 +48,40 @@ describe("Agenda page reference structure", () => {
     expect(html).toContain("Tracks:");
     expect(html).toContain("Levels:");
     expect(html).toContain("All Tracks");
-    expect(html).toContain("09:00");
-    expect(html).toContain("10:30");
-    expect(html).toContain("12:00");
-    expect(html).toContain("01:30");
-    expect(html).toContain("03:00");
-    expect(html).toContain(messages.agenda.lunchBreak.replace("&", "&amp;"));
-    expect(html).toContain(messages.sessions["sess-101"].title);
-    expect((html.match(/data-agenda-session=/g) ?? []).length).toBe(5);
+  });
+
+  test("renders a tab per room, or none for a single-room event", () => {
+    const html = renderAgendaPage();
+    const rooms = roomsFrom(sessions);
+    const tabs = [...html.matchAll(/role="tab"/g)].length;
+
+    expect(tabs).toBe(rooms.length > 1 ? rooms.length : 0);
+    for (const room of rooms) expect(html).toContain(room);
+  });
+
+  test("shows exactly the first room's sessions on load", () => {
+    const html = renderAgendaPage();
+    const firstRoom = roomsFrom(sessions)[0];
+    const expected = sessionsForRoom(sessions, firstRoom ?? "")
+      .filter((session) => !session.isBreak && session.speakerIds.length)
+      .map((session) => session.id);
+
+    const rendered = [...html.matchAll(/data-agenda-session="([^"]+)"/g)].map((match) => match[1]);
+    expect(rendered).toEqual(expected);
+    expect(rendered.length).toBeGreaterThan(0);
+  });
+
+  test("renders each visible session's translated title and start time", () => {
+    const html = renderAgendaPage();
+    const firstRoom = roomsFrom(sessions)[0] ?? "";
+
+    for (const session of sessionsForRoom(sessions, firstRoom).slice(0, 3)) {
+      const entry = (messages.sessions as Record<string, { title: string } | undefined>)[session.id];
+      if (entry) expect(html).toContain(entry.title.replace(/&/g, "&amp;").replace(/'/g, "&#x27;"));
+
+      const date = new Date(session.start);
+      const hours = `${date.getHours() % 12 || 12}`.padStart(2, "0");
+      expect(html).toContain(`${hours}:${`${date.getMinutes()}`.padStart(2, "0")}`);
+    }
   });
 });

@@ -297,7 +297,13 @@
     "cfpCta": "Invia una Proposta",
     "lunchBreak": "Pausa Pranzo & Networking",
     "saveSessionAriaLabel": "Salva {title}",
-    "noSessionsMatch": "Nessuna sessione corrisponde ai filtri correnti."
+    "noSessionsMatch": "Nessuna sessione corrisponde ai filtri correnti.",
+    "roomTabsLabel": "Sale",
+    "breakLabel": "Pausa",
+    "unassignedRoom": "Da assegnare",
+    "speakerTba": "Da annunciare",
+    "speakerTbaSubtitle": "Relatore da annunciare",
+    "resultsStatus": "{count, plural, =0 {Nessuna sessione corrisponde} one {# sessione} other {# sessioni}}"
   },
   "speakersPage": {
     "badge": "Speaker",

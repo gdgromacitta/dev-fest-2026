@@ -32,8 +32,10 @@ describe("against the real API shape", () => {
       track: "AI/ML",
       room: "Maria",
       level: "intermediate",
-      tags: ["AI/ML"],
-      speakerIds: ["df577d1f-1e8c-491a-a9de-5c8bbdb91bd7"]
+      // Both Topic selections survive — "Frontend" used to be dropped.
+      tags: ["AI/ML", "Frontend"],
+      speakerIds: ["df577d1f-1e8c-491a-a9de-5c8bbdb91bd7"],
+      isBreak: false
     });
   });
 
@@ -76,9 +78,60 @@ describe("category title matching", () => {
     expect(sessions[1]?.level).toBe("beginner");
   });
 
-  test("falls back to the track when no tags category is configured", () => {
+  test("falls back to every track-category selection when no tags category exists", () => {
     const { sessions } = mapAll(fixture, { categoryTitles: CATEGORY_TITLES });
-    expect(sessions[1]?.tags).toEqual(["Other"]);
+    // Single-select session keeps its one value...
+    expect(sessions.find((s) => s.id === "1057354")?.tags).toEqual(["Other"]);
+    // ...and a multi-select one keeps all of them, so filtering by the second
+    // topic can still surface the talk.
+    expect(sessions.find((s) => s.id === "1046422")?.tags).toEqual(["AI/ML", "Frontend"]);
+  });
+
+  test("orders sessions by start, then by the organizer's room order", () => {
+    const { sessions } = mapAll(fixture, { categoryTitles: CATEGORY_TITLES });
+    const starts = sessions.map((s) => s.start);
+    expect([...starts]).toEqual([...starts].sort());
+  });
+});
+
+describe("breaks", () => {
+  test("flags Sessionize service sessions", () => {
+    const withBreak = {
+      ...fixture,
+      sessions: [
+        ...fixture.sessions,
+        { ...fixture.sessions[0], id: "9100", title: "Lunch", isServiceSession: true, speakers: [] }
+      ]
+    };
+    const { sessions } = mapAll(withBreak, { categoryTitles: CATEGORY_TITLES });
+    expect(sessions.find((s) => s.id === "9100")?.isBreak).toBe(true);
+    expect(sessions.find((s) => s.id === "1046422")?.isBreak).toBe(false);
+  });
+
+  test("infers a break from no speaker AND no room, for events not using the flag", () => {
+    const withBreak = {
+      ...fixture,
+      sessions: [
+        ...fixture.sessions,
+        { ...fixture.sessions[0], id: "9101", title: "Coffee", speakers: [], roomId: null }
+      ]
+    };
+    const { sessions } = mapAll(withBreak, { categoryTitles: CATEGORY_TITLES });
+    expect(sessions.find((s) => s.id === "9101")?.isBreak).toBe(true);
+  });
+
+  test("keeps a talk whose speaker isn't confirmed yet out of the break path", () => {
+    // A real session with a room but no speaker assigned must stay a talk —
+    // otherwise it renders as a dashed break banner under every room tab,
+    // losing its track, level and room.
+    const unconfirmed = {
+      ...fixture,
+      sessions: [...fixture.sessions, { ...fixture.sessions[0], id: "9102", title: "Speaker TBA", speakers: [] }]
+    };
+    const { sessions } = mapAll(unconfirmed, { categoryTitles: CATEGORY_TITLES });
+    const session = sessions.find((s) => s.id === "9102");
+    expect(session?.isBreak).toBe(false);
+    expect(session?.room).toBe("Maria");
   });
 });
 

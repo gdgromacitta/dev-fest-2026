@@ -1,4 +1,5 @@
 import type { Session, SessionLevel } from "@/src/types/content";
+import { isBreakSession } from "@/src/lib/session-breaks";
 
 export type AgendaFilters = {
   track: string;
@@ -17,6 +18,12 @@ export const defaultAgendaFilters: AgendaFilters = {
 export function filterSessions(items: Session[], filters: AgendaFilters) {
   const normalizedQuery = filters.query.trim().toLowerCase();
   return items.filter((session) => {
+    // Breaks/lunch/registration carry a defaulted level and no real track, so
+    // any active filter would drop them and leave a schedule with unexplained
+    // gaps. They frame the day for every track — always keep them.
+    if (isBreakSession(session)) {
+      return true;
+    }
     if (filters.track && session.track !== filters.track) {
       return false;
     }

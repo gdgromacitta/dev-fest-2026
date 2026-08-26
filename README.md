@@ -19,6 +19,21 @@ event's "All" view from `SESSIONIZE_API_URL`
   the regenerated files showing as modified in `git status` — only commit
   them if you mean to update the checked-in content.
 
+> [!IMPORTANT]
+> **The CI secret currently points at the 2025 event** (`od2jlmwc`), used to
+> exercise the agenda UI against real data. It must be repointed at the 2026
+> event before the site goes live, or the deployed "DevFest Roma 2026" agenda
+> will show last October's schedule. Nothing fails loudly if this is missed —
+> the sync succeeds against the wrong event. Repoint with:
+>
+> ```
+> gh secret set SESSIONIZE_API_URL --repo gdgromacitta/dev-fest-2026
+> # https://sessionize.com/api/v2/<2026-event-id>/view/All
+> ```
+>
+> Also re-check the category titles for the 2026 event (see below) — the
+> defaults happen to match 2025's `Topic` / `Level of the Talk`.
+
 ### Category titles
 
 Sessionize has no first-class track/level/tag concept — they come from

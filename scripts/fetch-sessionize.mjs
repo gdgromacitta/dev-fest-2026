@@ -16,7 +16,7 @@
 // Never fails the build: any missing config, network error, or empty
 // response just warns and leaves existing files untouched (exit 0).
 
-import { readFile, writeFile } from "node:fs/promises";
+import { readFile, rename, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { DEFAULT_CATEGORY_TITLES, mapAll } from "./lib/sessionize-mapper.mjs";
@@ -56,41 +56,38 @@ function serializeArray(typeName, importPath, headerComment, items) {
   return `import type { ${typeName} } from "${importPath}";\n\n${headerComment}\nexport const ${typeName.toLowerCase()}s: ${typeName}[] = ${body};\n`;
 }
 
-async function writeSessionsFile(sessions) {
-  const content = serializeArray(
-    "Session",
-    "@/src/types/content",
-    '// `title` and `abstract` are translated content and live in\n' +
-      "// messages/{locale}.json under the `sessions.<id>.*` namespace, keyed by `id`.\n" +
-      "// Regenerated at build time by scripts/fetch-sessionize.mjs — see that file\n" +
-      "// before hand-editing.",
-    sessions
-  );
-  await writeFile(path.join(ROOT, "src/content/sessions.ts"), content);
-}
+const SESSIONS_HEADER =
+  "// `title` and `abstract` are translated content and live in\n" +
+  "// messages/{locale}.json under the `sessions.<id>.*` namespace, keyed by `id`.\n" +
+  "// Regenerated at build time by scripts/fetch-sessionize.mjs — see that file\n" +
+  "// before hand-editing.";
 
-async function writeSpeakersFile(speakers) {
-  const content = serializeArray(
-    "Speaker",
-    "@/src/types/content",
-    '// `bioShort` and `bioLong` are translated content and live in\n' +
-      "// messages/{locale}.json under the `speakers.<id>.*` namespace, keyed by `id`.\n" +
-      "// Regenerated at build time by scripts/fetch-sessionize.mjs — see that file\n" +
-      "// before hand-editing.",
-    speakers
-  );
-  await writeFile(path.join(ROOT, "src/content/speakers.ts"), content);
-}
+const SPEAKERS_HEADER =
+  "// `bioShort` and `bioLong` are translated content and live in\n" +
+  "// messages/{locale}.json under the `speakers.<id>.*` namespace, keyed by `id`.\n" +
+  "// Regenerated at build time by scripts/fetch-sessionize.mjs — see that file\n" +
+  "// before hand-editing.";
 
-// Replaces the namespace rather than merging into it: these namespaces hold
-// nothing but one entry per Sessionize id, so merging would leave entries for
-// sessions the organizer has since deleted or renamed (and the original seed
-// content) lingering forever.
-async function replaceMessagesNamespace(locale, key, entries) {
+const serializeSessions = (sessions) =>
+  serializeArray("Session", "@/src/types/content", SESSIONS_HEADER, sessions);
+
+const serializeSpeakers = (speakers) =>
+  serializeArray("Speaker", "@/src/types/content", SPEAKERS_HEADER, speakers);
+
+// Replaces each namespace rather than merging into it: they hold nothing but
+// one entry per Sessionize id, so merging would leave entries for sessions the
+// organizer has since deleted or renamed (and the original seed content)
+// lingering forever. Hand-authored namespaces in the same file are untouched.
+//
+// Both namespaces are applied in one pass — rendering them separately would
+// make the second write clobber the first.
+async function renderMessages(locale, namespaces) {
   const filePath = path.join(ROOT, `messages/${locale}.json`);
   const messages = JSON.parse(await readFile(filePath, "utf-8"));
-  messages[key] = entries;
-  await writeFile(filePath, JSON.stringify(messages, null, 2) + "\n");
+  for (const [key, entries] of Object.entries(namespaces)) {
+    messages[key] = entries;
+  }
+  return [filePath, `${JSON.stringify(messages, null, 2)}\n`];
 }
 
 async function main() {
@@ -111,39 +108,97 @@ async function main() {
   }
 
   const categoryTitles = categoryTitlesFromEnv();
-  const { sessions, speakers, sessionMessages, speakerMessages, skippedUnscheduled } = mapAll(apiResponse, {
-    categoryTitles
-  });
 
-  if (sessions.length === 0) {
-    console.warn("[fetch-sessionize] no scheduled sessions in response — skipping, keeping existing content.");
-    return;
-  }
+  // Everything past the fetch is inside the same guard: the contract at the
+  // top of this file is that a bad response can never fail the build, and a
+  // 200 with an unexpected body (maintenance page, `sessions` not an array)
+  // makes mapAll throw just as readily as the network does.
+  try {
+    const { sessions, speakers, sessionMessages, speakerMessages, skippedUnscheduled } = mapAll(apiResponse, {
+      categoryTitles
+    });
 
-  if (skippedUnscheduled > 0) {
-    console.warn(`[fetch-sessionize] skipped ${skippedUnscheduled} session(s) with no start/end time.`);
-  }
+    if (sessions.length === 0 || speakers.length === 0) {
+      console.warn(
+        `[fetch-sessionize] response has ${sessions.length} scheduled session(s) and ${speakers.length} ` +
+          "speaker(s) — skipping, keeping existing content."
+      );
+      return;
+    }
 
-  // A category title that matches nothing yields empty tracks/levels for every
-  // session, which silently guts the agenda filters — the failure this script
-  // is most likely to hit, since the titles are per-event free text.
-  const withoutTrack = sessions.filter((s) => !s.track).length;
-  if (withoutTrack === sessions.length) {
-    const seen = (apiResponse.categories ?? []).map((c) => c.title).join(", ");
-    console.warn(
-      `[fetch-sessionize] no session matched a track category (tried: ${categoryTitles.track.join(", ")}; ` +
-        `event has: ${seen || "none"}). Set SESSIONIZE_TRACK_CATEGORY to the right title.`
+    if (skippedUnscheduled > 0) {
+      console.warn(`[fetch-sessionize] skipped ${skippedUnscheduled} session(s) with no start/end time.`);
+    }
+
+    // A category title that matches nothing yields empty tracks/levels for
+    // every session, which silently guts the agenda filters — the failure this
+    // script is most likely to hit, since the titles are per-event free text.
+    const withoutTrack = sessions.filter((s) => !s.track).length;
+    if (withoutTrack === sessions.length) {
+      const seen = (apiResponse.categories ?? []).map((c) => c.title).join(", ");
+      console.warn(
+        `[fetch-sessionize] no session matched a track category (tried: ${categoryTitles.track.join(", ")}; ` +
+          `event has: ${seen || "none"}). Set SESSIONIZE_TRACK_CATEGORY to the right title.`
+      );
+    }
+
+    const withoutRoom = sessions.filter((s) => !s.room && !s.isBreak).length;
+    if (withoutRoom > 0) {
+      console.warn(
+        `[fetch-sessionize] ${withoutRoom} session(s) have no room assigned — they render under "Unassigned".`
+      );
+    }
+
+    // Serialize every file before writing any of them. sessions.ts and the
+    // messages namespaces have to agree — a half-written pair leaves the repo
+    // with sessions whose `sessions.<id>.title` key is missing, which fails
+    // the Next build rather than falling back cleanly.
+    const files = [
+      [path.join(ROOT, "src/content/sessions.ts"), serializeSessions(sessions)],
+      [path.join(ROOT, "src/content/speakers.ts"), serializeSpeakers(speakers)],
+      ...(await Promise.all(
+        LOCALES.map((locale) =>
+          renderMessages(locale, { sessions: sessionMessages, speakers: speakerMessages })
+        )
+      ))
+    ];
+
+    // Rename is atomic per file, but four files can't be swapped in one step.
+    // So snapshot the current contents first and roll them back if any rename
+    // fails: leaving sessions.ts on new ids while the message files still hold
+    // the old ones is the one outcome that breaks the next `next build`.
+    const previous = new Map(
+      await Promise.all(files.map(async ([filePath]) => [filePath, await readFile(filePath, "utf-8")]))
     );
-  }
 
-  await writeSessionsFile(sessions);
-  await writeSpeakersFile(speakers);
-  for (const locale of LOCALES) {
-    await replaceMessagesNamespace(locale, "sessions", sessionMessages);
-    await replaceMessagesNamespace(locale, "speakers", speakerMessages);
-  }
+    const staged = [];
+    const applied = [];
+    try {
+      for (const [filePath, contents] of files) {
+        const tempPath = `${filePath}.tmp-fetch-sessionize`;
+        // Registered before the write, so a partial write still gets cleaned up.
+        staged.push([tempPath, filePath]);
+        await writeFile(tempPath, contents);
+      }
+      // Shift only after the rename resolves — dropping the entry first would
+      // leak the temp file when the rename throws (EPERM, EXDEV, read-only).
+      while (staged.length) {
+        const [tempPath, filePath] = staged[0];
+        await rename(tempPath, filePath);
+        staged.shift();
+        applied.push(filePath);
+      }
+    } catch (err) {
+      await Promise.all(applied.map((filePath) => writeFile(filePath, previous.get(filePath)).catch(() => {})));
+      throw err;
+    } finally {
+      await Promise.all(staged.map(([tempPath]) => unlink(tempPath).catch(() => {})));
+    }
 
-  console.log(`[fetch-sessionize] wrote ${sessions.length} sessions, ${speakers.length} speakers.`);
+    console.log(`[fetch-sessionize] wrote ${sessions.length} sessions, ${speakers.length} speakers.`);
+  } catch (err) {
+    console.warn(`[fetch-sessionize] could not apply response (${err.message}) — keeping existing content.`);
+  }
 }
 
 await main();

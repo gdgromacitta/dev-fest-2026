@@ -69,9 +69,14 @@ function normalizeLevel(rawNames) {
 export function mapSession(session, { rooms, categories, categoryTitles = DEFAULT_CATEGORY_TITLES }) {
   const room = (rooms ?? []).find((r) => r.id === session.roomId);
   const byCategory = selectedNamesByCategory(session, categories);
-  const track = namesFor(byCategory, categoryTitles.track)?.[0] ?? "";
+  // The track category is often multi-select ("AI/ML" + "Frontend"). `track`
+  // takes the first for the chip and column, but the rest must survive into
+  // `tags` — they feed the filter chips and the search haystack, and dropping
+  // them makes those talks unfindable by their other topics.
+  const trackNames = namesFor(byCategory, categoryTitles.track) ?? [];
+  const track = trackNames[0] ?? "";
   const level = normalizeLevel(namesFor(byCategory, categoryTitles.level));
-  const tags = namesFor(byCategory, categoryTitles.tags) ?? (track ? [track] : []);
+  const tags = namesFor(byCategory, categoryTitles.tags) ?? trackNames;
 
   return {
     id: String(session.id),
@@ -81,7 +86,12 @@ export function mapSession(session, { rooms, categories, categoryTitles = DEFAUL
     room: room?.name ?? "",
     level,
     tags,
-    speakerIds: (session.speakers ?? []).map(String)
+    speakerIds: (session.speakers ?? []).map(String),
+    // Breaks/lunch/registration are flagged by the organizer in Sessionize.
+    // The fallback for events that don't set the flag requires BOTH no
+    // speaker and no room: a real talk whose speaker isn't confirmed yet
+    // still has a room, and must not be turned into a break banner.
+    isBreak: Boolean(session.isServiceSession) || ((session.speakers ?? []).length === 0 && !room?.name)
   };
 }
 
@@ -114,14 +124,26 @@ function isScheduled(session) {
 }
 
 export function mapAll(apiResponse, { categoryTitles = DEFAULT_CATEGORY_TITLES } = {}) {
-  const rooms = apiResponse.rooms ?? [];
+  // `sort` is the order the organizer arranged the rooms in the Sessionize
+  // dashboard; the UI derives its tab order from the order rooms first appear
+  // in this array, so emit sessions in that order rather than API order.
+  const rooms = [...(apiResponse.rooms ?? [])].sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0));
+  const roomRank = new Map(rooms.map((room, index) => [room.id, index]));
   const categories = apiResponse.categories ?? [];
 
   const allSessions = apiResponse.sessions ?? [];
   const scheduled = allSessions.filter(isScheduled);
   const skippedUnscheduled = allSessions.length - scheduled.length;
 
-  const sessions = scheduled.map((session) => mapSession(session, { rooms, categories, categoryTitles }));
+  // Carry the room rank alongside each mapped session rather than looking the
+  // source row up again inside the comparator.
+  const sessions = scheduled
+    .map((session) => ({
+      mapped: mapSession(session, { rooms, categories, categoryTitles }),
+      roomRank: roomRank.get(session.roomId) ?? Number.MAX_SAFE_INTEGER
+    }))
+    .sort((a, b) => a.mapped.start.localeCompare(b.mapped.start) || a.roomRank - b.roomRank)
+    .map((entry) => entry.mapped);
 
   const sessionIdsBySpeakerId = new Map();
   for (const session of sessions) {
