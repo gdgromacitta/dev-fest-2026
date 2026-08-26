@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "generate:og": "node scripts/generate-og-image.mjs",
     "fetch:content": "node scripts/fetch-sessionize.mjs",
     "test": "vitest run tests/unit",
     "test:watch": "vitest tests/unit"
