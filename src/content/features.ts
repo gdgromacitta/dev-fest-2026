@@ -1,7 +1,7 @@
 /** Build-time toggles — flip to false and rebuild to hide a page/section. */
 export const features = {
   venue: true,
-  agenda: true,
+  agenda: false,
   speakers: false,
   sponsors: true,
   about: true,
