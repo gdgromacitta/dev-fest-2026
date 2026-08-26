@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialImage } from "@/src/content/social-image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/src/i18n/navigation";
 import { team } from "@/src/content/team";
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "DevFest Roma 2026",
     description: "Join GDG Roma Città for a day of talks, workshops, and community.",
+    images: [{ ...socialImage, alt: "DevFest Roma 2026" }],
     type: "website"
   }
 };
