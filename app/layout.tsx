@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialImage } from "@/src/content/social-image";
 import { Inter, Poppins } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import "./globals.css";
@@ -26,12 +27,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "DevFest Roma by GDG Roma Città",
     description: "Discover sessions, speakers, and venue information for DevFest Roma.",
+    images: [socialImage],
     type: "website"
   },
   twitter: {
     card: "summary_large_image",
     title: "DevFest Roma by GDG Roma Città",
-    description: "Discover sessions, speakers, and venue information for DevFest Roma."
+    description: "Discover sessions, speakers, and venue information for DevFest Roma.",
+    images: [socialImage]
   }
 };
 
