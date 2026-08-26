@@ -191,25 +191,89 @@
     }
   },
   "speakers": {
-    "s-ada": {
-      "bioShort": "Collega tendenze su AI, web e community attraverso una formazione pratica per sviluppatori.",
-      "bioLong": "Sarah guida keynote per la community e programmi di enablement per sviluppatori, aiutando i team a capire come le nuove tecnologie Google si integrino nel lavoro reale sui prodotti."
+    "6fc71432-0fc4-4160-a7c9-0284e55e6398": {
+      "bioShort": "I help people to get things done, at the intersection of technology, community, leadership and fun.\nCommunity builder and developer by passion, Developer Relation @ Google by profession\n\n🇮🇹, I love being a dad, free-software, running on the beach, snowboarding. I relentlessly train myself in preparing (and eating) Tiramisù.\n\nI’m definitely yellow.",
+      "bioLong": "I help people to get things done, at the intersection of technology, community, leadership and fun.\nCommunity builder and developer by passion, Developer Relation @ Google by profession\n\n🇮🇹, I love being a dad, free-software, running on the beach, snowboarding. I relentlessly train myself in preparing (and eating) Tiramisù.\n\nI’m definitely yellow."
     },
-    "s-milo": {
-      "bioShort": "Aiuta i team a costruire interfacce mobile curate con un'architettura UI resiliente.",
-      "bioLong": "James lavora con team di ingegneria che adottano Flutter per prodotti reali, concentrandosi su pattern di interfaccia adattivi e sistemi di componenti manutenibili."
+    "96357db4-3623-42e2-a773-8d7de9a292f5": {
+      "bioShort": "Born in Rome in 1994, passionate about mobile development since forever. Andrea has been a technology enthusiast for as long as he can remember. He started developing his first Java programs in his early high school years, but with the advent of smartphones, he quickly fell in love with the mobile world. His experience started in Switzerland for an Android project in the medical field and continued for large companies such as NTT Data and Deloitte, until he got to his current Cegeka. Over the years he has developed applications with large user bases for various industries, specializing in native Android development, Flutter and now Kotlin Multiplatform.\nHis life is not only programming, but also football and padel!",
+      "bioLong": "Born in Rome in 1994, passionate about mobile development since forever. Andrea has been a technology enthusiast for as long as he can remember. He started developing his first Java programs in his early high school years, but with the advent of smartphones, he quickly fell in love with the mobile world. His experience started in Switzerland for an Android project in the medical field and continued for large companies such as NTT Data and Deloitte, until he got to his current Cegeka. Over the years he has developed applications with large user bases for various industries, specializing in native Android development, Flutter and now Kotlin Multiplatform.\nHis life is not only programming, but also football and padel!"
     },
-    "s-nora": {
-      "bioShort": "Progetta piattaforme cloud resilienti per team che operano su larga scala.",
-      "bioLong": "Elena si concentra sull'architettura delle piattaforme Kubernetes, sul progressive delivery e su modelli operativi che mantengono comprensibili i sistemi a microservizi."
+    "8aa33621-32f9-4cc1-a659-a86bea38b2c9": {
+      "bioShort": "Angela Petraglia, avvocato iscritto all'Albo di Reggio Emilia. \nSi occupa dei profili etici e legali delle tecnologie emergenti, tra cui Intelligenza Artificiale e Blockchain. \nSi è formata sui temi dell'Informatica Giuridica presso l’Università Alma Mater Studiorum di Bologna e sui temi filosofici della Tecnica in seno alla Pontificia Università Antonianum di Roma. Assiste startup innovative che sviluppano AI, PMI, enti del terzo settore ed enti pubblici nel delicato processo di trasformazione digitale e di adeguamento normativo. \nAutrice di podcast, scrive per riviste specializzate ed è speaker ad eventi di settore.",
+      "bioLong": "Angela Petraglia, avvocato iscritto all'Albo di Reggio Emilia. \nSi occupa dei profili etici e legali delle tecnologie emergenti, tra cui Intelligenza Artificiale e Blockchain. \nSi è formata sui temi dell'Informatica Giuridica presso l’Università Alma Mater Studiorum di Bologna e sui temi filosofici della Tecnica in seno alla Pontificia Università Antonianum di Roma. Assiste startup innovative che sviluppano AI, PMI, enti del terzo settore ed enti pubblici nel delicato processo di trasformazione digitale e di adeguamento normativo. \nAutrice di podcast, scrive per riviste specializzate ed è speaker ad eventi di settore."
     },
-    "s-lina": {
-      "bioShort": "Costruisce workflow AI pratici con particolare attenzione a valutazione e sicurezza del prodotto.",
-      "bioLong": "Maya aiuta i team di prodotto e ingegneria a rilasciare funzionalità AI in modo responsabile, con enfasi su ergonomia delle API, osservabilità e onboarding degli sviluppatori."
+    "306a6fe7-3509-4475-a94d-29d74b31e224": {
+      "bioShort": "360° IT expert, passionate about personal growth and effective strategies, electronic music and technology. Founder of the GDG of Pescara and COO at Ready2Use.\nI strongly believe in the value of sharing ideas. I love blending all knowledge to obtain unique and unexpected elements.",
+      "bioLong": "360° IT expert, passionate about personal growth and effective strategies, electronic music and technology. Founder of the GDG of Pescara and COO at Ready2Use.\nI strongly believe in the value of sharing ideas. I love blending all knowledge to obtain unique and unexpected elements."
     },
-    "s-omar": {
-      "bioShort": "Esplora le nuove capacità del browser e i modelli di interazione assistiti dall'AI.",
-      "bioLong": "David si concentra sulle nuove funzionalità della piattaforma web, sull'ingegneria delle prestazioni e sugli strumenti AI applicati alle esperienze nel browser."
+    "c1f5a2da-9168-4e08-92a3-89cd792ca36a": {
+      "bioShort": "Passionate about technology work in the IT industry since 2015. From Android through the web to Flutter helps companies to get their target.",
+      "bioLong": "Passionate about technology work in the IT industry since 2015. From Android through the web to Flutter helps companies to get their target."
+    },
+    "e0b4eee9-2d42-4ab9-93e3-b6973255fe0e": {
+      "bioShort": "Prima di essere un programmatore, sono un appassionato di tecnologia, la mia storia professionale è eratica incapace di focalizzarsi su una singola cosa, incapace di sopire la noia. Sono il classico asso di tutto maestro di nulla. Ricopro ora una posizione da programmatore junior in una piccola azienda, nella quale la mia storia personale riesce ad essere valorizzata, in quanto con un po' di formazione in più riesco a ricoprire quasi ogni ruolo.\nProprio grazie a questa mia natura sono anche diventato Digital Content Creator e responsabile tecnico presso la piccola realtà emergente di BacaroTech dell'amico e collega universitario Giorgio Basile.",
+      "bioLong": "Prima di essere un programmatore, sono un appassionato di tecnologia, la mia storia professionale è eratica incapace di focalizzarsi su una singola cosa, incapace di sopire la noia. Sono il classico asso di tutto maestro di nulla. Ricopro ora una posizione da programmatore junior in una piccola azienda, nella quale la mia storia personale riesce ad essere valorizzata, in quanto con un po' di formazione in più riesco a ricoprire quasi ogni ruolo.\nProprio grazie a questa mia natura sono anche diventato Digital Content Creator e responsabile tecnico presso la piccola realtà emergente di BacaroTech dell'amico e collega universitario Giorgio Basile."
+    },
+    "fc8ff68b-5890-48cd-8de6-05a062d962b5": {
+      "bioShort": "Egon Ferri is a Computer Vision Engineer at Immobiliare Labs, the tech department of Immobiliare.it, Italy’s No. 1 in real estate listings. He holds a master’s degree in Data Science from Sapienza University, enriched by a five-month Erasmus program at UPC in Barcelona, attending the Master’s in Innovation and Research in Informatics.\nAfter graduating, he worked on different projects and companies leading the selection, testing, and implementation of Computer Vision solutions based on Deep Learning approaches applied to different domains, like car insurance and real estate.\nHe is fundamentally a lazy person, so what excites him the most is the automation, speed up, and streamlining of tasks and processes.",
+      "bioLong": "Egon Ferri is a Computer Vision Engineer at Immobiliare Labs, the tech department of Immobiliare.it, Italy’s No. 1 in real estate listings. He holds a master’s degree in Data Science from Sapienza University, enriched by a five-month Erasmus program at UPC in Barcelona, attending the Master’s in Innovation and Research in Informatics.\nAfter graduating, he worked on different projects and companies leading the selection, testing, and implementation of Computer Vision solutions based on Deep Learning approaches applied to different domains, like car insurance and real estate.\nHe is fundamentally a lazy person, so what excites him the most is the automation, speed up, and streamlining of tasks and processes."
+    },
+    "05ed4b4a-5d57-4602-bb4e-8d55efad3e0f": {
+      "bioShort": "Hi 👋 Folks!\nI’m Emiliano Pisu, your friendly neighborhood Design Engineer.\n\nThroughout my career, driven by my coding addiction, I’ve always stayed up to date with software development and related trends, focusing on UI, UX, Accessibility, Responsiveness, Compatibility, Scalability, and Maintainability.\n\nMy main goal is to build accessible and pixel-perfect user interfaces that enhance the user experience.\n\nMy core approach is to develop with zero dependencies, fostering creativity, learning, experimentation, and deep knowledge. This leads to solutions that not only follow trends but are also carefully tailored to the needs of clients and stakeholders.\n\nI am deeply committed to knowledge sharing and mentorship: through my experience as Sensei @ Dev Dojo IT, I actively support those who want to grow in the frontend world and in designing accessible and scalable interfaces.\n\nIn conclusion, I’m the right person if you need a bridge between Design and Development. I live to simplify my colleagues' DevX, which is why I focus on advocating for the core technologies of the web, strictly vanilla.",
+      "bioLong": "Hi 👋 Folks!\nI’m Emiliano Pisu, your friendly neighborhood Design Engineer.\n\nThroughout my career, driven by my coding addiction, I’ve always stayed up to date with software development and related trends, focusing on UI, UX, Accessibility, Responsiveness, Compatibility, Scalability, and Maintainability.\n\nMy main goal is to build accessible and pixel-perfect user interfaces that enhance the user experience.\n\nMy core approach is to develop with zero dependencies, fostering creativity, learning, experimentation, and deep knowledge. This leads to solutions that not only follow trends but are also carefully tailored to the needs of clients and stakeholders.\n\nI am deeply committed to knowledge sharing and mentorship: through my experience as Sensei @ Dev Dojo IT, I actively support those who want to grow in the frontend world and in designing accessible and scalable interfaces.\n\nIn conclusion, I’m the right person if you need a bridge between Design and Development. I live to simplify my colleagues' DevX, which is why I focus on advocating for the core technologies of the web, strictly vanilla."
+    },
+    "d2ecc764-8de2-4e9c-9766-14a527f8820c": {
+      "bioShort": "Fabio Biondi, Microsoft MVP e Google Developer Expert, è uno sviluppatore freelance con più di 15 anni di esperienza nella creazione di applicazioni web enterprise.\nSpeaker in numerosi eventi front-end, ha inoltre fondato diverse community italiane che si occupano di Javascript, Angular e React (~30000 membri).\nAttualmente si occupa principalmente di formazione e consulenza su JS, TS, Angular, React, Redux, NGRX, Next e RxJS.\n\n\n\n",
+      "bioLong": "Fabio Biondi, Microsoft MVP e Google Developer Expert, è uno sviluppatore freelance con più di 15 anni di esperienza nella creazione di applicazioni web enterprise.\nSpeaker in numerosi eventi front-end, ha inoltre fondato diverse community italiane che si occupano di Javascript, Angular e React (~30000 membri).\nAttualmente si occupa principalmente di formazione e consulenza su JS, TS, Angular, React, Redux, NGRX, Next e RxJS.\n\n\n\n"
+    },
+    "e715387d-ff3b-4559-bdc3-1ee34393d8e4": {
+      "bioShort": "Fabio is an Android lover even before being an Android Developer, he studied in Pisa and now lives in Padua working as Senior Android Developer for Twinkly.  In his spare time helps the Google Developer Group Venezia organising events.",
+      "bioLong": "Fabio is an Android lover even before being an Android Developer, he studied in Pisa and now lives in Padua working as Senior Android Developer for Twinkly.  In his spare time helps the Google Developer Group Venezia organising events."
+    },
+    "56c1a58b-b22b-4694-ab30-40aebda7fb8e": {
+      "bioShort": "Hi, I'm Francesco, based in Rome, Italy. I'm a Computer Scientist, and from 2017 to 2020, I contributed to the European Space Agency's Copernicus project.\n\nI'm an active presence in online developer communities, especially on Twitter, YouTube, and Discord. Recognized as a Docker Captain, I've hosted official Docker events and appeared on their YouTube channel. Professionally, I focus on roles within developer relations, centered around content strategy and community engagement.\n\nCurrently, my main creative efforts are directed towards my YouTube channel, where I've interviewed over 250 developers. My content primarily covers Rust, Blockchain technologies, DevOps practices, and Web Development. I also enjoy engaging with the community through live streams",
+      "bioLong": "Hi, I'm Francesco, based in Rome, Italy. I'm a Computer Scientist, and from 2017 to 2020, I contributed to the European Space Agency's Copernicus project.\n\nI'm an active presence in online developer communities, especially on Twitter, YouTube, and Discord. Recognized as a Docker Captain, I've hosted official Docker events and appeared on their YouTube channel. Professionally, I focus on roles within developer relations, centered around content strategy and community engagement.\n\nCurrently, my main creative efforts are directed towards my YouTube channel, where I've interviewed over 250 developers. My content primarily covers Rust, Blockchain technologies, DevOps practices, and Web Development. I also enjoy engaging with the community through live streams"
+    },
+    "3d9a3287-cc36-4428-b6b4-1dd1df1e70e8": {
+      "bioShort": "I have been working in the IT industry for over 15 years. I currently hold the role of Senior Enterprise Architect in Adesso. I am a Google Developer Expert on GCP and a Google Cloud Innovator Champion on the topic of modern architecture. I manage GDG Pescara together with other developers, I love sharing my knowledge and trying to do it in a fun way.",
+      "bioLong": "I have been working in the IT industry for over 15 years. I currently hold the role of Senior Enterprise Architect in Adesso. I am a Google Developer Expert on GCP and a Google Cloud Innovator Champion on the topic of modern architecture. I manage GDG Pescara together with other developers, I love sharing my knowledge and trying to do it in a fun way."
+    },
+    "bf45e077-cf45-44a5-bd6c-4e021fd59a08": {
+      "bioShort": "Recruiter, founder e divulgatore nerd.\nAiuta aziende e sviluppatori a incontrarsi (senza fuffa) con Welyk, il servizio di Recruiting as a Service che punta su trasparenza, dati e umanità.\nTiene talk e workshop nei principali eventi tech italiani, e parla spesso di RAL, colloqui e negoziazione con l’obiettivo di rendere il mercato del lavoro un po’ meno tossico, e molto più consapevole.\nNel tempo libero colleziona carte Pokémon e bug nei processi di selezione.",
+      "bioLong": "Recruiter, founder e divulgatore nerd.\nAiuta aziende e sviluppatori a incontrarsi (senza fuffa) con Welyk, il servizio di Recruiting as a Service che punta su trasparenza, dati e umanità.\nTiene talk e workshop nei principali eventi tech italiani, e parla spesso di RAL, colloqui e negoziazione con l’obiettivo di rendere il mercato del lavoro un po’ meno tossico, e molto più consapevole.\nNel tempo libero colleziona carte Pokémon e bug nei processi di selezione."
+    },
+    "9313756e-05ba-4c41-aa31-260482f46093": {
+      "bioShort": "I am the CTO of Azimut Marketplace with over 10 years of experience in IT development. In the last year alone, I have successfully reduced IT costs by 80%, enhancing the operational efficiency of the platform. My primary commitment is to create IT solutions that not only drive profits but are also robust, durable, and flexible enough to meet the ever-evolving needs of our modern society. I am driven by a passion for innovation and technology, and I consistently strive to promote excellence in the management and development of technological systems.",
+      "bioLong": "I am the CTO of Azimut Marketplace with over 10 years of experience in IT development. In the last year alone, I have successfully reduced IT costs by 80%, enhancing the operational efficiency of the platform. My primary commitment is to create IT solutions that not only drive profits but are also robust, durable, and flexible enough to meet the ever-evolving needs of our modern society. I am driven by a passion for innovation and technology, and I consistently strive to promote excellence in the management and development of technological systems."
+    },
+    "df577d1f-1e8c-491a-a9de-5c8bbdb91bd7": {
+      "bioShort": "I'm a Senior Software Engineer, Google Developer Expert, Former Microsoft MVP Codemotion Ambassador and GitKraken Ambassador. I love JavaScript and TypeScript.\nIn my free time, I love studying new technologies, improving myself, creating YouTube content or writing technical articles. I can’t stay without trail running and love to do it in my love Dolomiti.",
+      "bioLong": "I'm a Senior Software Engineer, Google Developer Expert, Former Microsoft MVP Codemotion Ambassador and GitKraken Ambassador. I love JavaScript and TypeScript.\nIn my free time, I love studying new technologies, improving myself, creating YouTube content or writing technical articles. I can’t stay without trail running and love to do it in my love Dolomiti."
+    },
+    "96c13f58-033e-4f7a-8401-edcc8370009b": {
+      "bioShort": "I graduated with a degree in Computer Engineering at the University of L'Aquila. I have a strong passion for research, specifically Machine Learning and Evolutionary Computation.\nI work as a Machine Learning Engineer in the IT field, focusing on security and defense. My enthusiasm for learning and academia have led me to the exciting world of Dev Talks.\nI aim to inspire and engage others with the same fervor that drives my own work. I am dedicated to sharing insights and fostering discussions that push the boundaries of technology and innovation.\n\nSee my personal blog here: https://www.lucadivita.it/",
+      "bioLong": "I graduated with a degree in Computer Engineering at the University of L'Aquila. I have a strong passion for research, specifically Machine Learning and Evolutionary Computation.\nI work as a Machine Learning Engineer in the IT field, focusing on security and defense. My enthusiasm for learning and academia have led me to the exciting world of Dev Talks.\nI aim to inspire and engage others with the same fervor that drives my own work. I am dedicated to sharing insights and fostering discussions that push the boundaries of technology and innovation.\n\nSee my personal blog here: https://www.lucadivita.it/"
+    },
+    "337cbd32-a071-4045-9724-2e4fb8891058": {
+      "bioShort": "I'm a frontend engineer with a strong background in full-stack developmen. My expertise spans modern JavaScript and TypeScript frameworks such as Angular and React, with a growing interest in Svelte.\n\nBeyond code, I enjoy sharing knowledge through technical talks, tutorials, and developer content, often focusing on frontend architecture, performance optimization, and developer experience. I'm always eager to explore new technologies and contribute to building better digital experiences.\n\nMy work often bridges frontend and backend concerns, and I've contributed to projects ranging from digital signage platforms for Smart TVs to geospatial web applications and mobile apps for Android.",
+      "bioLong": "I'm a frontend engineer with a strong background in full-stack developmen. My expertise spans modern JavaScript and TypeScript frameworks such as Angular and React, with a growing interest in Svelte.\n\nBeyond code, I enjoy sharing knowledge through technical talks, tutorials, and developer content, often focusing on frontend architecture, performance optimization, and developer experience. I'm always eager to explore new technologies and contribute to building better digital experiences.\n\nMy work often bridges frontend and backend concerns, and I've contributed to projects ranging from digital signage platforms for Smart TVs to geospatial web applications and mobile apps for Android."
+    },
+    "fbf4ed2b-e1ec-4557-85d3-4a7524b631eb": {
+      "bioShort": "Formerly:\n- Math BS+MS & PhD.\n- Math researcher.\n- IT consultant.\n- Developer & quant @big bank.\n- Project manager, technical consultant & writer @small sw house.\n- Adjunct professor @\"Sapienza\" University (Rome).\n- Instructor @Deep Learning Italia.\n\nCurrently:\n- IT expert @GSE energy company.",
+      "bioLong": "Formerly:\n- Math BS+MS & PhD.\n- Math researcher.\n- IT consultant.\n- Developer & quant @big bank.\n- Project manager, technical consultant & writer @small sw house.\n- Adjunct professor @\"Sapienza\" University (Rome).\n- Instructor @Deep Learning Italia.\n\nCurrently:\n- IT expert @GSE energy company."
+    },
+    "53fefbc7-ac0c-4a89-b3fb-dfe111825a24": {
+      "bioShort": "I started programming in VB when I was 6 taking advantage of my father’s strong passion for computer science. I’ve always dreamt to be an engineer and I’ve worn different “hats”: data scientist, data analyst, web developer, sysadmin… This gave me the opportunity to gain experience in the design and dev of solutions from scratch. During the day I’m an Enterprise Architect, while I love writing at night when I get a hot cup of tea!",
+      "bioLong": "I started programming in VB when I was 6 taking advantage of my father’s strong passion for computer science. I’ve always dreamt to be an engineer and I’ve worn different “hats”: data scientist, data analyst, web developer, sysadmin… This gave me the opportunity to gain experience in the design and dev of solutions from scratch. During the day I’m an Enterprise Architect, while I love writing at night when I get a hot cup of tea!"
+    },
+    "000e7162-82b5-4498-9cca-53d356e0b427": {
+      "bioShort": "I'm an experienced web developer and a passionate IT and electronics trainer, specializing in frontend development and enterprise applications built with Angular.\nI spend most of my time exploring what's new in the tech world and helping other developers improve their skills.\nAs a conference speaker, I bring advanced Angular topics, tips for the integration of smart contracts and best solutions for web3 applications.",
+      "bioLong": "I'm an experienced web developer and a passionate IT and electronics trainer, specializing in frontend development and enterprise applications built with Angular.\nI spend most of my time exploring what's new in the tech world and helping other developers improve their skills.\nAs a conference speaker, I bring advanced Angular topics, tips for the integration of smart contracts and best solutions for web3 applications."
+    },
+    "79c7d0c8-9e6f-447b-b806-ead6963075f2": {
+      "bioShort": "Sono il genere di persona che passa più tempo a moddare una console, rispetto al giocarci.  \nAdoro la primavera e mi piace passare le giornate in mezzo alla natura, ma ogni tanto ho bisogno di stare qualche ora davanti a miliardi di pixel pieni di luce blu.  \nVa bene come bio?",
+      "bioLong": "Sono il genere di persona che passa più tempo a moddare una console, rispetto al giocarci.  \nAdoro la primavera e mi piace passare le giornate in mezzo alla natura, ma ogni tanto ho bisogno di stare qualche ora davanti a miliardi di pixel pieni di luce blu.  \nVa bene come bio?"
     }
   },
   "speakerCard": {
@@ -261,25 +325,89 @@
     }
   },
   "sessions": {
-    "sess-101": {
-      "title": "Il Futuro della Tecnologia: AI, Web e Oltre",
-      "abstract": "Un keynote che esplora come la nuova ondata di tecnologie Google stia trasformando i team di prodotto e i flussi di lavoro degli sviluppatori."
+    "1046422": {
+      "title": "AI in the Browser: Am I Still Waiting for It?",
+      "abstract": "AI is everywhere; no day goes by without a new AI agent being created. But what about browsers? Is a browser a good place to run AI?\nLet’s see what is possible to do in our Browser offline or online and learn how we can improve our applications, avoid expensive bills and let our users pay the energy bill for the AI 😉"
     },
-    "sess-102": {
-      "title": "Costruire UI Adattive con Flutter",
-      "abstract": "Un'introduzione pratica alla costruzione di interfacce mobile responsive con design system orientati alla produzione."
+    "1046434": {
+      "title": "One codebase to rule them all: Cross-Platform apps with Kotlin and Compose Multiplatform",
+      "abstract": "What if you could write your app's logic and UI once, and run it natively across Android, iOS, desktop, and the web—without sacrificing performance or flexibility? With Kotlin Multiplatform and Compose Multiplatform, this vision is becoming a reality. In this talk, we’ll explore how Compose empowers developers to share not only business logic but also rich, responsive user interfaces across platforms. We’ll look at the architecture, tooling, benefits, and challenges of building apps with a single codebase—while keeping that native feel users expect."
     },
-    "sess-205": {
-      "title": "Microservizi Scalabili con GKE",
-      "abstract": "Pattern per progettare servizi cloud resilienti con Kubernetes, observability e percorsi di rollout sicuri."
+    "1046536": {
+      "title": "customElements & beyond: a lean way to build reactive apps in vanillaJS",
+      "abstract": "You know when people tell you that without a framework you can't build a \"real\" app? Well… spoiler alert: that’s a lie.\nCustom Elements are no longer a toy for old-school HTML addicted, they're the gateway to a whole new way of building apps: lightweight, accessible, and blazing fast.\nAnd the best part? No endless npm install marathons required.\n\nIn this talk we’ll explore cutting-edge browser APIs like Observable Signals, Constructable Stylesheets, and more, showing how to make your native components do their magic like they’re powered by a framework… but without the framework.\n\nIt’s a journey into reactivity, semantics, and the future of the web, because vanillaJS isn’t old school, it’s the next level."
     },
-    "sess-301": {
-      "title": "Iniziare con Gemini API",
-      "abstract": "Un'introduzione alla costruzione di esperienze AI pratiche con Gemini, basi di valutazione e guardrail per la produzione."
+    "1047075": {
+      "title": "Pokedex a confronto - DevEx e Web Vitals tra Svelte, React e Angular",
+      "abstract": "Nel panorama dei framework frontend, dominato da giganti come React e Angular, Svelte si sta facendo strada con un approccio rivoluzionario basato sulla compilazione. Ma è davvero il più veloce? E come si fa a convincere qualcuno a provarlo? La risposta è una sola: sporcandosi le mani.\n\nPer scoprirlo, ho realizzato un'unica applicazione, la PokedexApp, sviluppandola con tutte e tre le tecnologie. Questo mi ha permesso di confrontare Svelte, React e Angular non solo sulla carta, ma sul campo.\n\nIn questo approfondimento, analizzeremo aspetti cruciali come:\n\nEsperienza di Sviluppo (DevExp): Come cambia l'approccio alla programmazione con Svelte, e quanto è più semplice e intuitivo?\n\nPerformance: Misureremo i risultati con parametri oggettivi come i Core Web Vitals, direttamente dalla PokedexApp. Vedremo come la compilazione di Svelte affronta il runtime e il build-time, e come si confronta con meccanismi come la change detection di Angular e il Virtual DOM di React.\n\nVolevo trovare un modo per parlarvi di questo strumento che in Italia è poco conosciuto. Sfrutterò dei confronti con gli storici.\n\nSe siete pronti a navigare nel vasto mare dei framework frontend e a mettere in discussione le vostre certezze, unitevi a me. La domanda è: Svelte è il futuro? Scopriamolo insieme e apriamo il dibattito\n"
     },
-    "sess-401": {
-      "title": "Web Moderno: Da WebAssembly al Browsing con AI",
-      "abstract": "Un tour tra le più recenti funzionalità del browser, i runtime web e i pattern di interazione assistiti dall'AI."
+    "1048317": {
+      "title": "Mille modi di orchestrare Microfrontend",
+      "abstract": "Quando un frontend si ingrandisce diventa pesante e toccare un pezzo di codice da una parte potrebbe far rompere qualcosa dalla parte opposta. Sarebbe belo evitarlo e al contempo mantenere sempre la stessa velocità di sviluppo evitando regressioni e segregando parti di codice? Benvenuti nel mondo dei microfrontend!\nIn questo talk faremo un viaggio che ti mostrerà tutti i passaggi per create un progetto strutturato a microfrontend con React, Vite Module Federation e Lerna su un monorepo. \nMa non basta! Spesso ci troviamo nella situazione in cui dobbiamo condividere questi microfrontend tra diversi progetti, e qui entrano in gioco i Web Components distribuiti su singoli repo, il nostro alleato segreto per superare queste sfide.\nE per finire vedremo anche qualche tips per mettere in produzione in maniera sicura i vostri microfrontend"
+    },
+    "1048568": {
+      "title": "I didn’t know my Android native app could run on iOS - Compose Multiplatform in action!",
+      "abstract": "What if you, as an Android developer, could suddenly develop for iOS without learning a new language or framework? This isn't a fantasy; it's the reality made possible by Compose Multiplatform.  \n\nEven libraries designed exclusively for Android, such as androidx.lifecycle, now work on iOS. Often right out of the box! \n\nDuring this talk, we will explore the basics of Kotlin Multiplatform (KMP) and Compose Multiplatform (CMP). Then, we will take a real native Android application, built entirely with Kotlin and Jetpack Compose, and methodically migrate it to run on iOS, changing only a few lines of code."
+    },
+    "1048576": {
+      "title": "E se le macchine, come l'uomo, evolvessero?",
+      "abstract": "La neuroevoluzione è un approccio alternativo alla classica backpropagazione per l'addestramento delle reti neurali. Essa, se propriamente utilizzata, apporta vantaggi rispetto ai più comuni approcci di design di una rete neurale: riduzione della probabilità di overfitting e underfitting, scoparsa dei problemi di gradient vanishing e explosion, costruzione incrementale, ottima e del tutto automatica di una architettura di rete. Questo apre nuove frontiere nel Deep Learning facendo sì che non solo le macchine siano sempre più vicine all'uomo nell'eseguire task complessi, ma anche nel modo di apprenderli tramite meccanismi evolutivi spontanei."
+    },
+    "1048615": {
+      "title": "AI Generativa con Google Gemini, VEO3 e Nano Banana",
+      "abstract": "L'intelligenza artificiale generativa sta trasformando lo sviluppo software, ma come possiamo integrarla in modo efficace e sicuro nelle nostre applicazioni web? \nQuesto talk risponde alla domanda, offrendo una guida pratica all'ecosistema Gemini di Google, pensato per sviluppatori moderni.\n\nGemini non è un singolo modello, ma una famiglia di modelli di intelligenza artificiale multimodale. Questo significa che può comprendere e elaborare non solo testo, ma anche immagini, video e audio. \nLe capacità di Gemini sono vaste: dalla generazione di codice alla sintesi di documenti, dalla creazione di contenuti creativi all'analisi di dati complessi.\nOltre ai modelli principali, Google ha introdotto strumenti specializzati che estendono le capacità di Gemini come VEO3 per la generazione di video (con audio) di altissima qualità e Nano Banana per la generazione e la modifica di immagini.\n\nUna sessione molto pratica, con poca teoria e moltissimi esempi pratici in NodeJS, Angular e NextJS, utilizzando sia la comunicazione con API REST ma soprattutto con due degli SDK più utilizzati: Google Gen AI e Firebase Genkit\n"
+    },
+    "1048629": {
+      "title": "JavaScript per l’IoT",
+      "abstract": "Hai mai pensato a quanto possa essere semplice creare applicazioni IoT con JavaScript? In questo talk, scopriremo come l'ecosistema vastissimo di JavaScript lo renda la scelta ideale per sviluppare soluzioni IoT dinamiche e scalabili.\nAttraverso esempi pratici e una live demo, vedrai come dare nuova vita a quella schedina elettronica che sta facendo polvere nel tuo cassetto, trasformandola in un dispositivo connesso e funzionale."
+    },
+    "1049174": {
+      "title": "Somebody call the 137!",
+      "abstract": "In the world of Kubernetes, understanding the termination of pods is crucial for managing containerized applications. Overseeing why pods terminate is essential for ensuring stability and reliability. In this session, Serena will dive into the details of most common and sad exit codes terminations, explore their underlying causes, discuss how to diagnose pods and provide best practices for prevention."
+    },
+    "1049495": {
+      "title": "A2A, MCP and security concerns",
+      "abstract": "In the evolving landscape of autonomous systems, Agent-to-Agent and Model Context Protocol are foundational. Crucially, the efficacy and reliability of AI agents, particularly those driven by sophisticated models, depend on the integrity of their operational environment, managed through those protocols.\n\nThis talk critically examines the security concerns arising at the intersection of A2A communication and the Model Context Protocol. We will dissect vulnerabilities such as Context Poisoning, Contextual Data Leakage, Model Evasion, and evaluate approaches on how to mitigate or totally avoid them, if and when possible, in a DevSecOps way.\n"
+    },
+    "1050047": {
+      "title": "Debito tecnologico e come affrontarlo - In fuga dai problemi progettuali",
+      "abstract": "Tutti noi programmatori dobbiamo approcciarci al risolvere problemi, piccoli o grandi che siano. \nAlcuni di questi problemi sono inaspettati, altri attesi. \nCome programmatori il nostro lavoro sarebbe, quando possibile, quello di risolverli. \nCome esseri umani, talvolta, fuggiamo da essi senza accorgerci di ciò che potrebbero diventare più avanti.\nNessun programmatore, in quanto essere umano, sarà mai un programmatore perfetto che sa tutto.\nInevitabilmente sarà portato a prendere delle decisioni obbligate dalla sua momentanea ignoranza o dalle circostanze o da chi lo circonda.\nInsieme vedremo cos'è il debito tecnologico raccontandovi la storia di un mio progetto, di come si sono formati dei problemi, alcuni calati dall'alto, altri figli del mio stesso operato, altri deliberatamente ignorati."
+    },
+    "1050412": {
+      "title": "K-nearest-neighbor query e come usarla su Firebase",
+      "abstract": "Negli ultimi anni, le ricerche semantiche basate su intelligenza artificiale sono passate da teoria accademica a strumenti pronti all'uso.\n\nIn questo talk esploreremo come integrare la ricerca vettoriale in progetti Firebase, partendo dai concetti fondamentali fino all'implementazione concreta. Vedremo come salvare gli embedding, configurare un indice, ed eseguire query basate sulla similarità."
+    },
+    "1050857": {
+      "title": "Better Call RAL",
+      "abstract": "Tutti parlano di tecnologia, quasi nessuno parla di soldi.\nEppure, la RAL è il vero bug che separa la soddisfazione lavorativa dal burnout.\n\nIn Better Call RAL parliamo di negoziazione, mercato e consapevolezza del proprio valore nel mondo tech, senza tabù.\nScopriremo insieme come trovare le offerte giuste, capire se sei pagato/a il giusto, prepararti a una trattativa, e smettere di accettare “siamo una famiglia” come benefit principale.\n\nUn talk pensato per chiunque voglia smettere di subire il mercato e iniziare a giocare da protagonista.\nCon esempi reali, aneddoti tragicomici dal mondo del recruiting, e qualche meme per ricordarci che sì, parlare di soldi può anche essere divertente.\n\"SAY MY RAL\""
+    },
+    "1051325": {
+      "title": "Docker Happy Hour: Builda e Brinda",
+      "abstract": "Docker è uno strumento potente per creare ambienti virtuali leggeri, perfetto per lo sviluppo e il deploy di applicazioni moderne.\nIn questo workshop partiremo dalle basi: capiremo cos’è Docker, perché può essere preferito alle classiche macchine virtuali, e come si usa davvero nella pratica.\n\nVedremo come impacchettare una nostra applicazione tramite il Dockerfile e come eseguirla tramite il Docker Compose.\nÈ pensato per chi ha poca (o nessuna) esperienza con Docker, ma vuole iniziare con il piede giusto... e magari con un cicchetto in mano."
+    },
+    "1054768": {
+      "title": "Estrarre informazioni strutturate dalle immagini con Pydantic AI e FastAPI",
+      "abstract": "Il ruolo del Computer Vision Engineer in un’azienda di prodotto sta cambiando: i modelli di visione tradizionali restano fondamentali, ma sempre più spesso vengono affiancati da LLM capaci di interpretare immagini e testo insieme, per estrarre conoscenza ad alto livello.\nIn questo talk racconterò come stiamo evolvendo questo approccio in Immobiliare.it, integrando modelli di deep learning classici con LLM “vision-enabled” per estrarre informazioni strutturate dalle immagini degli immobili.\nVedremo come con Pydantic AI e FastAPI sia possibile creare in modo semplice una piccola API che riceve un’immagine, interroga un modello generativo e restituisce dati validati e tipizzati.\nUn talk su come l’intelligenza artificiale visiva sta diventando più conversazionale e su come noi, ingegneri, possiamo imparare a parlarle meglio."
+    },
+    "1056519": {
+      "title": "Bringing Fictional Characters to Life with Open Source LLMs",
+      "abstract": "Tired of generic chatbots? In this session, we’ll create a truly unique AI agent. We’ll go through the process of running an LLM on your own machines, building a chat agent from the ground up, and imbuing it with the personality of your favorite fictional character. In addition, thanks to Retrieval Augmented Generation (RAG) and voice cloning, our character will sound as awesome as it acts. We’ll use only open source tools and a sprinklr of Docker."
+    },
+    "1056716": {
+      "title": "Harmonies from the Future: A Journey into Electronic Music Creation with AI",
+      "abstract": "🎵 Let's explore the future of music through the lens of artificial intelligence!\n\nThe world of sound is experiencing a \"silent\" revolution, with technology redrawing the boundaries of what is possible. Join me in an engaging session where we will explore together how synthesizer programming and the new frontiers of AI are coming together to generate melodies that capture the heart and soul.\n\n🤖  We'll delve into:\nArtificial Intelligence and Music: An overview of the latest innovations in the use of AI in music creation.\n\nSynthesizer Programming: Hands-on exploration of how to set up and program audio synthesizers to generate realistic, immersive sounds.\n\nAutonomous Generation: Discover how AI can not only replicate, but also autonomously create musical pieces that resonate with authenticity and emotion."
+    },
+    "1057354": {
+      "title": "Should you learn Rust as your next programming language?",
+      "abstract": "Are you tired of having to choose between performance and safety? Would you love to write concurrent code without the headache of data races? \n\nThis session shows you that you don’t need to compromise anymore. \n\nWe'll explore how Rust offers the speed of C++ while ensuring memory safety through its innovative ownership system. You'll see how its compiler acts like a personal mentor, and why developers around the world have voted it the most admired programming language. \n\nBy the end, you’ll probably be convinced to try Rust."
+    },
+    "1058647": {
+      "title": "C tua",
+      "abstract": "Ce ne deve fregà quarcosa der C? Stamio nel dumila e rotti e ancora dovemo traffica' chii puntatori (mejo le puntarelle!)? Mo ce stanno Rast, Go e compagnia bella, sticazzi der C, no? E 'nvece ve vojo ricconta' la storia de 'sto linguaggio e perché nun se lo potemo leva' da 'li cojoni tanto facilmente. Puro si nu' lo sai, so sempre C tua!"
+    },
+    "1059496": {
+      "title": "Dentro il codice: l'umano. Pipeline etica e legale",
+      "abstract": "Una riflessione filosofica e giuridica per fare luce sulle sfide etiche e legali che gli sviluppatori devono affrontare al tempo dell'intelligenza artificiale.\n\nDietro ogni riga di codice c'è una persona, una conseguenza, una domanda in attesa di risposta.\n\nUn'occasione per riconnettersi al significato profondo del proprio ruolo nel contesto digitale e conoscere le principali novità normative introdotte di recente."
     }
   },
   "agenda": {
@@ -297,7 +425,13 @@
     "cfpCta": "Invia una Proposta",
     "lunchBreak": "Pausa Pranzo & Networking",
     "saveSessionAriaLabel": "Salva {title}",
-    "noSessionsMatch": "Nessuna sessione corrisponde ai filtri correnti."
+    "noSessionsMatch": "Nessuna sessione corrisponde ai filtri correnti.",
+    "roomTabsLabel": "Sale",
+    "breakLabel": "Pausa",
+    "unassignedRoom": "Da assegnare",
+    "speakerTba": "Da annunciare",
+    "speakerTbaSubtitle": "Relatore da annunciare",
+    "resultsStatus": "{count, plural, =0 {Nessuna sessione corrisponde} one {# sessione} other {# sessioni}}"
   },
   "speakersPage": {
     "badge": "Speaker",

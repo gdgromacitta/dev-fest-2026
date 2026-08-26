@@ -37,6 +37,9 @@ export type Session = {
   level: SessionLevel;
   tags: string[];
   speakerIds: string[];
+  // Sessionize "service sessions" — breaks, lunch, registration. Rendered as
+  // a single row spanning every room column rather than inside one room.
+  isBreak?: boolean;
 };
 
 export type Venue = {
