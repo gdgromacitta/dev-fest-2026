@@ -1,0 +1,226 @@
+{
+  "sessions": [
+    {
+      "id": "1046422",
+      "title": "AI in the Browser: Am I Still Waiting for It?",
+      "description": "AI is everywhere; no day goes by without a new AI agent being created. But what about browsers? Is a browser a good place to run AI?\r\nLet’s see what is possible to do in our Browser offline or online and learn how we can improve our applications, avoid expensive bills and let our users pay the energy bill for the AI 😉",
+      "startsAt": "2025-10-25T10:00:00",
+      "endsAt": "2025-10-25T10:45:00",
+      "isServiceSession": false,
+      "isPlenumSession": false,
+      "speakers": [
+        "df577d1f-1e8c-491a-a9de-5c8bbdb91bd7"
+      ],
+      "categoryItems": [
+        402902,
+        402755,
+        402810,
+        402809
+      ],
+      "questionAnswers": [],
+      "roomId": 73150,
+      "liveUrl": null,
+      "recordingUrl": null,
+      "status": "Accepted",
+      "isInformed": true,
+      "isConfirmed": true
+    },
+    {
+      "id": "1057354",
+      "title": "Should you learn Rust as your next programming language?",
+      "description": "Are you tired of having to choose between performance and safety? Would you love to write concurrent code without the headache of data races? \r\n\r\nThis session shows you that you don’t need to compromise anymore. \r\n\r\nWe'll explore how Rust offers the speed of C++ while ensuring memory safety through its innovative ownership system. You'll see how its compiler acts like a personal mentor, and why developers around the world have voted it the most admired programming language. \r\n\r\nBy the end, you’ll probably be convinced to try Rust.",
+      "startsAt": "2025-10-25T10:00:00",
+      "endsAt": "2025-10-25T10:45:00",
+      "isServiceSession": false,
+      "isPlenumSession": false,
+      "speakers": [
+        "56c1a58b-b22b-4694-ab30-40aebda7fb8e"
+      ],
+      "categoryItems": [
+        402902,
+        402751,
+        402813
+      ],
+      "questionAnswers": [],
+      "roomId": 73151,
+      "liveUrl": null,
+      "recordingUrl": null,
+      "status": "Accepted",
+      "isInformed": true,
+      "isConfirmed": false
+    },
+    {
+      "id": "1056519",
+      "title": "Bringing Fictional Characters to Life with Open Source LLMs",
+      "description": "Tired of generic chatbots? In this session, we’ll create a truly unique AI agent. We’ll go through the process of running an LLM on your own machines, building a chat agent from the ground up, and imbuing it with the personality of your favorite fictional character. In addition, thanks to Retrieval Augmented Generation (RAG) and voice cloning, our character will sound as awesome as it acts. We’ll use only open source tools and a sprinklr of Docker.",
+      "startsAt": "2025-10-25T14:00:00",
+      "endsAt": "2025-10-25T14:45:00",
+      "isServiceSession": false,
+      "isPlenumSession": false,
+      "speakers": [
+        "6fc71432-0fc4-4160-a7c9-0284e55e6398"
+      ],
+      "categoryItems": [
+        402902,
+        402753,
+        402810
+      ],
+      "questionAnswers": [],
+      "roomId": 73150,
+      "liveUrl": null,
+      "recordingUrl": null,
+      "status": "Accepted",
+      "isInformed": true,
+      "isConfirmed": true
+    }
+  ],
+  "speakers": [
+    {
+      "id": "6fc71432-0fc4-4160-a7c9-0284e55e6398",
+      "firstName": "Alfredo",
+      "lastName": "Morresi",
+      "bio": "I help people to get things done, at the intersection of technology, community, leadership and fun.\r\nCommunity builder and developer by passion, Developer Relation @ Google by profession\r\n\r\n🇮🇹, I love being a dad, free-software, running on the beach, snowboarding. I relentlessly train myself in preparing (and eating) Tiramisù.\r\n\r\nI’m definitely yellow.",
+      "tagLine": "Developer Relations @ Google",
+      "profilePicture": "https://cdn.sessionize.com/image/970e-400o400o1-Xda5G7dE1SHvGgMQinayWf.png",
+      "isTopSpeaker": false,
+      "links": [],
+      "sessions": [
+        1056519
+      ],
+      "fullName": "Alfredo Morresi",
+      "categoryItems": [],
+      "questionAnswers": []
+    },
+    {
+      "id": "56c1a58b-b22b-4694-ab30-40aebda7fb8e",
+      "firstName": "Francesco",
+      "lastName": "Ciulla",
+      "bio": "Hi, I'm Francesco, based in Rome, Italy. I'm a Computer Scientist, and from 2017 to 2020, I contributed to the European Space Agency's Copernicus project.\r\n\r\nI'm an active presence in online developer communities, especially on Twitter, YouTube, and Discord. Recognized as a Docker Captain, I've hosted official Docker events and appeared on their YouTube channel. Professionally, I focus on roles within developer relations, centered around content strategy and community engagement.\r\n\r\nCurrently, my main creative efforts are directed towards my YouTube channel, where I've interviewed over 250 developers. My content primarily covers Rust, Blockchain technologies, DevOps practices, and Web Development. I also enjoy engaging with the community through live streams",
+      "tagLine": "Developer Advocate at daily.dev | Docker Captain",
+      "profilePicture": "https://cdn.sessionize.com/image/5bc3-400o400o1-QpTCTVpr9LyzQPGFwSAbSt.jpg",
+      "isTopSpeaker": false,
+      "links": [],
+      "sessions": [
+        1057354
+      ],
+      "fullName": "Francesco Ciulla",
+      "categoryItems": [],
+      "questionAnswers": []
+    },
+    {
+      "id": "df577d1f-1e8c-491a-a9de-5c8bbdb91bd7",
+      "firstName": "Luca",
+      "lastName": "Del Puppo",
+      "bio": "I'm a Senior Software Engineer, Google Developer Expert, Former Microsoft MVP Codemotion Ambassador and GitKraken Ambassador. I love JavaScript and TypeScript.\r\nIn my free time, I love studying new technologies, improving myself, creating YouTube content or writing technical articles. I can’t stay without trail running and love to do it in my love Dolomiti.",
+      "tagLine": "Nearform_, Senior Software Engineer",
+      "profilePicture": "https://cdn.sessionize.com/image/09ed-400o400o1-Mtu422U1R2UjEixBL8dDea.jpg",
+      "isTopSpeaker": false,
+      "links": [],
+      "sessions": [
+        1046422
+      ],
+      "fullName": "Luca Del Puppo",
+      "categoryItems": [],
+      "questionAnswers": []
+    }
+  ],
+  "questions": [],
+  "categories": [
+    {
+      "id": 111966,
+      "title": "Type of Session",
+      "items": [
+        {
+          "id": 402902,
+          "name": "Standard Talk (45 min, including Q&A)",
+          "sort": 1
+        },
+        {
+          "id": 402750,
+          "name": "Workshop",
+          "sort": 2
+        }
+      ],
+      "sort": 0,
+      "type": "session"
+    },
+    {
+      "id": 112013,
+      "title": "Topic",
+      "items": [
+        {
+          "id": 402814,
+          "name": "Cloud",
+          "sort": 1
+        },
+        {
+          "id": 402810,
+          "name": "AI/ML",
+          "sort": 2
+        },
+        {
+          "id": 402809,
+          "name": "Frontend",
+          "sort": 3
+        },
+        {
+          "id": 402811,
+          "name": "Backend",
+          "sort": 4
+        },
+        {
+          "id": 402812,
+          "name": "DevOps",
+          "sort": 5
+        },
+        {
+          "id": 402813,
+          "name": "Other",
+          "sort": 6
+        }
+      ],
+      "sort": 2,
+      "type": "session"
+    },
+    {
+      "id": 111968,
+      "title": "Level of the Talk",
+      "items": [
+        {
+          "id": 402751,
+          "name": "Beginner",
+          "sort": 1
+        },
+        {
+          "id": 402755,
+          "name": "Intermediate",
+          "sort": 2
+        },
+        {
+          "id": 402753,
+          "name": "Advanced",
+          "sort": 3
+        }
+      ],
+      "sort": 3,
+      "type": "session"
+    }
+  ],
+  "rooms": [
+    {
+      "id": 73150,
+      "name": "Maria",
+      "sort": 0
+    },
+    {
+      "id": 73151,
+      "name": "Anna",
+      "sort": 1
+    },
+    {
+      "id": 73152,
+      "name": "Ludovica",
+      "sort": 2
+    }
+  ]
+}

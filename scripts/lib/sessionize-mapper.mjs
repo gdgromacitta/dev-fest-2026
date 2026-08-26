@@ -1,42 +1,77 @@
 // Maps a Sessionize `view/All` API response onto this repo's Session/Speaker
 // shape (src/types/content.ts). Pure functions, no I/O — see
 // scripts/fetch-sessionize.mjs for the orchestration that calls these.
+//
+// The response shape is pinned by tests/fixtures/sessionize-view-all.json,
+// captured verbatim from a real event. Two traps live in that shape:
+//
+//   * A *category* lists its options under `items`. The name `categoryItems`
+//     also exists, but on a *session*, where it holds the selected option ids.
+//     Reading `categoryItems` off a category silently yields nothing.
+//   * Category titles are free text the organizer types into the Sessionize
+//     dashboard ("Topic", "Level of the Talk", …) and differ per event, so
+//     they are matched against a candidate list and overridable via env.
 
 const LEVELS = ["beginner", "intermediate", "advanced"];
 
-// TODO: Sessionize has no first-class "track"/"level"/"tags" concept — these
-// map from Category titles the organizer configures in the Sessionize
-// dashboard. Unknown until the event is set up there; adjust to match once
-// known.
-export const TRACK_CATEGORY_NAME = "Track";
-export const LEVEL_CATEGORY_NAME = "Level";
-export const TAG_CATEGORY_NAME = "Tags";
+export const DEFAULT_LEVEL = "intermediate";
 
-function categoryItemNamesByCategory(session, categories) {
-  const itemIds = new Set(session.categoryItems ?? []);
+// Candidate category titles, matched case-insensitively. Override per event
+// with SESSIONIZE_{TRACK,LEVEL,TAGS}_CATEGORY (comma-separated) — see
+// scripts/fetch-sessionize.mjs.
+export const DEFAULT_CATEGORY_TITLES = {
+  track: ["Track", "Topic", "Argomento"],
+  level: ["Level", "Level of the Talk", "Livello"],
+  tags: ["Tags", "Tag"]
+};
+
+function normalize(value) {
+  return String(value ?? "").trim().toLowerCase();
+}
+
+// A category's options live under `items`; older/other Sessionize views have
+// been seen using `categoryItems`, so accept either.
+function optionsOf(category) {
+  return category.items ?? category.categoryItems ?? [];
+}
+
+function selectedNamesByCategory(session, categories) {
+  const selectedIds = new Set(session.categoryItems ?? []);
   const byCategory = new Map();
   for (const category of categories ?? []) {
-    const names = (category.categoryItems ?? [])
-      .filter((item) => itemIds.has(item.id))
+    const names = optionsOf(category)
+      .filter((item) => selectedIds.has(item.id))
       .map((item) => item.name);
-    if (names.length) byCategory.set(category.title, names);
+    if (names.length) byCategory.set(normalize(category.title), names);
   }
   return byCategory;
 }
 
-function normalizeLevel(rawNames) {
-  const normalized = (rawNames ?? [])
-    .map((name) => name.trim().toLowerCase())
-    .find((name) => LEVELS.includes(name));
-  return normalized ?? "intermediate";
+function namesFor(byCategory, candidateTitles) {
+  for (const title of candidateTitles) {
+    const names = byCategory.get(normalize(title));
+    if (names?.length) return names;
+  }
+  return undefined;
 }
 
-export function mapSession(session, { rooms, categories }) {
+// Real level options are plain ("Beginner"), but organizers also write things
+// like "Beginner friendly" or "L1 - Advanced", so fall back to a substring hit.
+function normalizeLevel(rawNames) {
+  const names = (rawNames ?? []).map(normalize);
+  return (
+    names.find((name) => LEVELS.includes(name)) ??
+    names.map((name) => LEVELS.find((level) => name.includes(level))).find(Boolean) ??
+    DEFAULT_LEVEL
+  );
+}
+
+export function mapSession(session, { rooms, categories, categoryTitles = DEFAULT_CATEGORY_TITLES }) {
   const room = (rooms ?? []).find((r) => r.id === session.roomId);
-  const byCategory = categoryItemNamesByCategory(session, categories);
-  const track = byCategory.get(TRACK_CATEGORY_NAME)?.[0] ?? "";
-  const level = normalizeLevel(byCategory.get(LEVEL_CATEGORY_NAME));
-  const tags = byCategory.get(TAG_CATEGORY_NAME) ?? (track ? [track] : []);
+  const byCategory = selectedNamesByCategory(session, categories);
+  const track = namesFor(byCategory, categoryTitles.track)?.[0] ?? "";
+  const level = normalizeLevel(namesFor(byCategory, categoryTitles.level));
+  const tags = namesFor(byCategory, categoryTitles.tags) ?? (track ? [track] : []);
 
   return {
     id: String(session.id),
@@ -55,10 +90,10 @@ export function mapSpeaker(speaker, { sessionIdsBySpeakerId }) {
     id: String(speaker.id),
     name: speaker.fullName ?? `${speaker.firstName ?? ""} ${speaker.lastName ?? ""}`.trim(),
     title: speaker.tagLine ?? "",
-    // ponytail: Sessionize has no separate "company" field (organizers often
-    // bake it into tagLine, e.g. "Engineer @ Google") — left blank rather
-    // than guessing via string-splitting. Add a real mapping if the
-    // organizer sets up a custom question for it.
+    // Sessionize has no separate "company" field (organizers often bake it
+    // into tagLine, e.g. "Developer Relations @ Google") — left blank rather
+    // than guessing via string-splitting. Add a real mapping if the organizer
+    // sets up a custom question for it.
     company: "",
     photo: speaker.profilePicture ?? "",
     links: (speaker.links ?? []).map((link) => ({
@@ -66,16 +101,27 @@ export function mapSpeaker(speaker, { sessionIdsBySpeakerId }) {
       url: link.url
     })),
     sessions: sessionIdsBySpeakerId.get(String(speaker.id)) ?? [],
-    // TODO: no clean mapping yet — revisit via `isTopSpeaker` or a
-    // configured category once the organizer's Sessionize setup is known.
-    keynote: false
+    keynote: Boolean(speaker.isTopSpeaker)
   };
 }
 
-export function mapAll(apiResponse) {
+// Sessions still being scheduled come back with `startsAt`/`endsAt` null.
+// `Session.start`/`.end` are typed `string`, so emitting those would write
+// `null` into src/content/sessions.ts and fail the build's type check —
+// drop them instead and let the caller report the count.
+function isScheduled(session) {
+  return Boolean(session.startsAt) && Boolean(session.endsAt);
+}
+
+export function mapAll(apiResponse, { categoryTitles = DEFAULT_CATEGORY_TITLES } = {}) {
   const rooms = apiResponse.rooms ?? [];
   const categories = apiResponse.categories ?? [];
-  const sessions = (apiResponse.sessions ?? []).map((session) => mapSession(session, { rooms, categories }));
+
+  const allSessions = apiResponse.sessions ?? [];
+  const scheduled = allSessions.filter(isScheduled);
+  const skippedUnscheduled = allSessions.length - scheduled.length;
+
+  const sessions = scheduled.map((session) => mapSession(session, { rooms, categories, categoryTitles }));
 
   const sessionIdsBySpeakerId = new Map();
   for (const session of sessions) {
@@ -89,10 +135,12 @@ export function mapAll(apiResponse) {
   const speakers = (apiResponse.speakers ?? []).map((speaker) => mapSpeaker(speaker, { sessionIdsBySpeakerId }));
 
   const sessionMessages = {};
-  for (const session of apiResponse.sessions ?? []) {
+  for (const session of scheduled) {
     sessionMessages[String(session.id)] = {
       title: session.title ?? "",
-      abstract: session.description ?? ""
+      // Sessionize returns CRLF from its textarea inputs; normalize so the
+      // generated JSON doesn't churn on \r.
+      abstract: (session.description ?? "").replace(/\r\n/g, "\n")
     };
   }
 
@@ -100,9 +148,9 @@ export function mapAll(apiResponse) {
   for (const speaker of apiResponse.speakers ?? []) {
     // Sessionize only exposes one `bio` field — bioShort/bioLong both get
     // the same fetched text as-is (single-language, no separate summary).
-    const bio = speaker.bio ?? "";
+    const bio = (speaker.bio ?? "").replace(/\r\n/g, "\n");
     speakerMessages[String(speaker.id)] = { bioShort: bio, bioLong: bio };
   }
 
-  return { sessions, speakers, sessionMessages, speakerMessages };
+  return { sessions, speakers, sessionMessages, speakerMessages, skippedUnscheduled };
 }

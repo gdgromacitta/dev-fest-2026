@@ -1,81 +1,117 @@
+import fixture from "../fixtures/sessionize-view-all.json";
 import { mapAll } from "../../scripts/lib/sessionize-mapper.mjs";
 
-const fixture = {
-  rooms: [{ id: 1, name: "Main Hall" }],
-  categories: [
-    { title: "Track", categoryItems: [{ id: 10, name: "AI" }] },
-    { title: "Level", categoryItems: [{ id: 20, name: "Beginner" }] }
-  ],
-  sessions: [
-    {
-      id: "sess-1",
-      title: "Intro to AI",
-      description: "An intro talk.",
-      startsAt: "2026-11-21T09:00:00+01:00",
-      endsAt: "2026-11-21T10:00:00+01:00",
-      roomId: 1,
-      speakers: ["sp-1"],
-      categoryItems: [10, 20]
-    },
-    {
-      id: "sess-2",
-      title: "Unconfigured level",
-      description: "No level category configured.",
-      startsAt: "2026-11-21T10:30:00+01:00",
-      endsAt: "2026-11-21T11:00:00+01:00",
-      roomId: 1,
-      speakers: ["sp-1"],
-      categoryItems: []
-    }
-  ],
-  speakers: [
-    {
-      id: "sp-1",
-      fullName: "Ada Lovelace",
-      tagLine: "Engineer",
-      bio: "Works on AI.",
-      profilePicture: "https://example.com/ada.jpg",
-      links: [{ title: "GitHub", url: "https://github.com/ada" }]
-    }
-  ]
-};
+// The fixture is a verbatim slice of a real Sessionize `view/All` response
+// (event od2jlmwc). Do not hand-edit its shape to make a test pass — the
+// point is that it pins the shape the API actually returns.
 
-test("maps sessions with configured categories", () => {
-  const { sessions } = mapAll(fixture);
-  expect(sessions[0]).toEqual({
-    id: "sess-1",
-    start: "2026-11-21T09:00:00+01:00",
-    end: "2026-11-21T10:00:00+01:00",
-    track: "AI",
-    room: "Main Hall",
-    level: "beginner",
-    tags: ["AI"],
-    speakerIds: ["sp-1"]
+const CATEGORY_TITLES = { track: ["Topic"], level: ["Level of the Talk"], tags: ["Tags"] };
+
+describe("against the real API shape", () => {
+  test("reads category options from `items`, not `categoryItems`", () => {
+    // Regression: a category lists its options under `items`; `categoryItems`
+    // is the *session* field holding selected ids. Reading the wrong one
+    // yields no track, no tags, and a defaulted level for every session.
+    const { sessions } = mapAll(fixture, { categoryTitles: CATEGORY_TITLES });
+
+    expect(sessions.map((s) => s.track)).toEqual(["AI/ML", "Other", "AI/ML"]);
+    expect(sessions.every((s) => s.track !== "")).toBe(true);
+  });
+
+  test("resolves every level rather than falling back to the default", () => {
+    const { sessions } = mapAll(fixture, { categoryTitles: CATEGORY_TITLES });
+    expect(sessions.map((s) => s.level)).toEqual(["intermediate", "beginner", "advanced"]);
+  });
+
+  test("maps a session onto the Session shape", () => {
+    const { sessions } = mapAll(fixture, { categoryTitles: CATEGORY_TITLES });
+    expect(sessions[0]).toEqual({
+      id: "1046422",
+      start: "2025-10-25T10:00:00",
+      end: "2025-10-25T10:45:00",
+      track: "AI/ML",
+      room: "Maria",
+      level: "intermediate",
+      tags: ["AI/ML"],
+      speakerIds: ["df577d1f-1e8c-491a-a9de-5c8bbdb91bd7"]
+    });
+  });
+
+  test("maps speakers and derives their session ids", () => {
+    const { speakers } = mapAll(fixture, { categoryTitles: CATEGORY_TITLES });
+    const alfredo = speakers.find((s) => s.name === "Alfredo Morresi");
+    expect(alfredo).toMatchObject({
+      id: "6fc71432-0fc4-4160-a7c9-0284e55e6398",
+      title: "Developer Relations @ Google",
+      company: "",
+      photo: "https://cdn.sessionize.com/image/970e-400o400o1-Xda5G7dE1SHvGgMQinayWf.png",
+      sessions: ["1056519"],
+      keynote: false
+    });
+  });
+
+  test("normalizes CRLF out of fetched prose", () => {
+    const { sessionMessages } = mapAll(fixture, { categoryTitles: CATEGORY_TITLES });
+    const abstracts = Object.values(sessionMessages).map((m) => m.abstract);
+    expect(abstracts.some((a) => a.includes("\n"))).toBe(true);
+    expect(abstracts.every((a) => !a.includes("\r"))).toBe(true);
   });
 });
 
-test("falls back to intermediate when level category is unconfigured", () => {
-  const { sessions } = mapAll(fixture);
-  expect(sessions[1]?.level).toBe("intermediate");
-  expect(sessions[1]?.track).toBe("");
-});
+describe("category title matching", () => {
+  test("yields empty tracks when titles match nothing", () => {
+    // The pre-fix behaviour, now reachable only by misconfiguration.
+    const { sessions } = mapAll(fixture, {
+      categoryTitles: { track: ["Track"], level: ["Level"], tags: ["Tags"] }
+    });
+    expect(sessions.every((s) => s.track === "")).toBe(true);
+    expect(sessions.every((s) => s.level === "intermediate")).toBe(true);
+  });
 
-test("maps speakers and derives their session ids", () => {
-  const { speakers } = mapAll(fixture);
-  expect(speakers[0]).toMatchObject({
-    id: "sp-1",
-    name: "Ada Lovelace",
-    title: "Engineer",
-    company: "",
-    photo: "https://example.com/ada.jpg",
-    links: [{ label: "GitHub", url: "https://github.com/ada" }],
-    sessions: ["sess-1", "sess-2"],
-    keynote: false
+  test("matches titles case-insensitively and tries each candidate", () => {
+    const { sessions } = mapAll(fixture, {
+      categoryTitles: { track: ["Track", "tOpIc"], level: ["level of the talk"], tags: ["Tags"] }
+    });
+    expect(sessions[0]?.track).toBe("AI/ML");
+    expect(sessions[1]?.level).toBe("beginner");
+  });
+
+  test("falls back to the track when no tags category is configured", () => {
+    const { sessions } = mapAll(fixture, { categoryTitles: CATEGORY_TITLES });
+    expect(sessions[1]?.tags).toEqual(["Other"]);
   });
 });
 
-test("builds translated messages entries from title/abstract/bio", () => {
-  const { sessionMessages, speakerMessages } = mapAll(fixture);
-  expect(sessionMessages["sess-1"]).toEqual({ title: "Intro to AI", abstract: "An intro talk." });
-  expect(speakerMessages["sp-1"]).toEqual({ bioShort: "Works on AI.", bioLong: "Works on AI." });
+describe("unscheduled sessions", () => {
+  // Sessionize returns null start/end while an agenda is still being built.
+  // `Session.start` is typed `string`, so emitting these would write `null`
+  // into src/content/sessions.ts and fail the build's type check.
+  const withUnscheduled = {
+    ...fixture,
+    sessions: [
+      ...fixture.sessions,
+      { ...fixture.sessions[0], id: "9001", title: "Not yet scheduled", startsAt: null, endsAt: null, roomId: null }
+    ]
+  };
+
+  test("drops them and reports the count", () => {
+    const { sessions, skippedUnscheduled } = mapAll(withUnscheduled, { categoryTitles: CATEGORY_TITLES });
+    expect(skippedUnscheduled).toBe(1);
+    expect(sessions.map((s) => s.id)).not.toContain("9001");
+    expect(sessions.every((s) => typeof s.start === "string" && typeof s.end === "string")).toBe(true);
+  });
+
+  test("keeps them out of the translated messages too", () => {
+    const { sessionMessages } = mapAll(withUnscheduled, { categoryTitles: CATEGORY_TITLES });
+    expect(Object.keys(sessionMessages)).not.toContain("9001");
+  });
+});
+
+describe("defaults", () => {
+  test("works with no options passed", () => {
+    // "Topic" and "Level of the Talk" are in the shipped candidate lists.
+    const { sessions } = mapAll(fixture);
+    expect(sessions[0]?.track).toBe("AI/ML");
+    expect(sessions[2]?.level).toBe("advanced");
+  });
 });

@@ -19,15 +19,33 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { mapAll } from "./lib/sessionize-mapper.mjs";
+import { DEFAULT_CATEGORY_TITLES, mapAll } from "./lib/sessionize-mapper.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
+
+const LOCALES = ["en", "it"];
 
 try {
   process.loadEnvFile(path.join(ROOT, ".env.local"));
 } catch {
   // .env.local is optional
+}
+
+// Sessionize category titles are free text per event. Override the defaults
+// with a comma-separated list, e.g. SESSIONIZE_TRACK_CATEGORY="Topic,Track".
+function categoryTitlesFromEnv() {
+  const fromEnv = (name, fallback) => {
+    const raw = process.env[name];
+    if (!raw) return fallback;
+    const titles = raw.split(",").map((t) => t.trim()).filter(Boolean);
+    return titles.length ? titles : fallback;
+  };
+  return {
+    track: fromEnv("SESSIONIZE_TRACK_CATEGORY", DEFAULT_CATEGORY_TITLES.track),
+    level: fromEnv("SESSIONIZE_LEVEL_CATEGORY", DEFAULT_CATEGORY_TITLES.level),
+    tags: fromEnv("SESSIONIZE_TAGS_CATEGORY", DEFAULT_CATEGORY_TITLES.tags)
+  };
 }
 
 function serializeArray(typeName, importPath, headerComment, items) {
@@ -64,11 +82,14 @@ async function writeSpeakersFile(speakers) {
   await writeFile(path.join(ROOT, "src/content/speakers.ts"), content);
 }
 
-async function mergeMessages(locale, key, entries) {
+// Replaces the namespace rather than merging into it: these namespaces hold
+// nothing but one entry per Sessionize id, so merging would leave entries for
+// sessions the organizer has since deleted or renamed (and the original seed
+// content) lingering forever.
+async function replaceMessagesNamespace(locale, key, entries) {
   const filePath = path.join(ROOT, `messages/${locale}.json`);
-  const raw = await readFile(filePath, "utf-8");
-  const messages = JSON.parse(raw);
-  messages[key] = { ...messages[key], ...entries };
+  const messages = JSON.parse(await readFile(filePath, "utf-8"));
+  messages[key] = entries;
   await writeFile(filePath, JSON.stringify(messages, null, 2) + "\n");
 }
 
@@ -89,19 +110,38 @@ async function main() {
     return;
   }
 
-  const { sessions, speakers, sessionMessages, speakerMessages } = mapAll(apiResponse);
+  const categoryTitles = categoryTitlesFromEnv();
+  const { sessions, speakers, sessionMessages, speakerMessages, skippedUnscheduled } = mapAll(apiResponse, {
+    categoryTitles
+  });
 
   if (sessions.length === 0) {
-    console.warn("[fetch-sessionize] no sessions in response — skipping, keeping existing content.");
+    console.warn("[fetch-sessionize] no scheduled sessions in response — skipping, keeping existing content.");
     return;
+  }
+
+  if (skippedUnscheduled > 0) {
+    console.warn(`[fetch-sessionize] skipped ${skippedUnscheduled} session(s) with no start/end time.`);
+  }
+
+  // A category title that matches nothing yields empty tracks/levels for every
+  // session, which silently guts the agenda filters — the failure this script
+  // is most likely to hit, since the titles are per-event free text.
+  const withoutTrack = sessions.filter((s) => !s.track).length;
+  if (withoutTrack === sessions.length) {
+    const seen = (apiResponse.categories ?? []).map((c) => c.title).join(", ");
+    console.warn(
+      `[fetch-sessionize] no session matched a track category (tried: ${categoryTitles.track.join(", ")}; ` +
+        `event has: ${seen || "none"}). Set SESSIONIZE_TRACK_CATEGORY to the right title.`
+    );
   }
 
   await writeSessionsFile(sessions);
   await writeSpeakersFile(speakers);
-  await mergeMessages("en", "sessions", sessionMessages);
-  await mergeMessages("it", "sessions", sessionMessages);
-  await mergeMessages("en", "speakers", speakerMessages);
-  await mergeMessages("it", "speakers", speakerMessages);
+  for (const locale of LOCALES) {
+    await replaceMessagesNamespace(locale, "sessions", sessionMessages);
+    await replaceMessagesNamespace(locale, "speakers", speakerMessages);
+  }
 
   console.log(`[fetch-sessionize] wrote ${sessions.length} sessions, ${speakers.length} speakers.`);
 }
