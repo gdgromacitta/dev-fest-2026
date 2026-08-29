@@ -5,9 +5,9 @@ export const features = {
   speakers: false,
   sponsors: true,
   about: true,
-  cfp: true,
+  cfp: false,
   programTracks: false,
-  speakersPreview: false,
+  speakersPreview: true,
   faq: true,
   team: true
 };
