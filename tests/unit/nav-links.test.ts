@@ -9,6 +9,7 @@ const ALL_LINKS = [
   { href: "/agenda", key: "agenda" },
   { href: "/speakers", key: "speakers" },
   { href: "/sponsors", key: "sponsors" },
+  { href: "/about", key: "about" },
   { href: "/#faq", key: "faq" }
 ] as const;
 
