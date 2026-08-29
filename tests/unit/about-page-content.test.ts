@@ -42,8 +42,8 @@ describe("About page reference structure", () => {
 
     expect(html).toContain("About GDG");
     expect(html).toContain("DevFest");
-    expect(html).toContain("Unisciti alla Comunità");
-    expect(html).toContain("Leggi il Manifesto");
+    expect(html).not.toContain("Unisciti alla Comunità");
+    expect(html).not.toContain("Leggi il Manifesto");
     expect((html.match(/data-organizer-card=/g) ?? []).length).toBe(team.length);
     expect((html.match(/data-about-value=/g) ?? []).length).toBe(3);
   });

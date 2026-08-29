@@ -39,14 +39,6 @@ export default async function AboutPage({ params }: Props) {
               </h1>
               <p className="m-0 max-w-md text-lg leading-relaxed text-muted">{t("aboutDescription")}</p>
             </div>
-            <div className="flex flex-wrap gap-3.5">
-              <a href={aboutHero.primaryCta.href} className="btn-primary">
-                {t("joinCta")}
-              </a>
-              <a href={aboutHero.secondaryCta.href} className="btn-outline">
-                {t("manifestoCta")}
-              </a>
-            </div>
           </div>
           <div className="mx-auto w-full max-w-[30rem]">
             <div className="overflow-hidden rounded-[20px] border border-line bg-white p-10">
