@@ -77,7 +77,8 @@
     "cfpDeadlineDate": "31 Luglio 2026",
     "teamHeading": "I nostri Organizzatori",
     "teamSubtext": "I volontari appassionati dietro DevFest Roma che lavorano per creare un'esperienza inclusiva e ad alto impatto per tutti.",
-    "learnMoreCta": "Scopri il team"
+    "learnMoreCta": "Scopri il team",
+    "venuePartnerLabel": "Con il supporto di"
   },
   "venue": {
     "badge": "Sede",
@@ -104,7 +105,8 @@
     "accessibility": {
       "info": "I dettagli sull'accessibilità della sede verranno confermati più vicino alla data dell'evento. Se hai esigenze specifiche, contatta in anticipo gli organizzatori.",
       "commitment": "Ci impegniamo a rendere DevFest Roma 2026 un'esperienza inclusiva per tutti i partecipanti."
-    }
+    },
+    "venuePartnerLabel": "Con il supporto di"
   },
   "sponsorsPage": {
     "badge": "Sponsor",

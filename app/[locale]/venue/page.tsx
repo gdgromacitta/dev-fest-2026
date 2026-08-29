@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { venue } from "@/src/content/venue";
 import { registerUrl } from "@/src/content/nav-links";
 import { features } from "@/src/content/features";
+import { VenuePartnerLogo } from "@/src/components/venue/venue-partner-logo";
 
 export const metadata: Metadata = {
   title: "Venue | DevFest Roma",
@@ -43,6 +44,7 @@ export default async function VenuePage({ params }: Props) {
             </a>
             <a href={registerUrl} className="btn-outline">{t("registerCta")}</a>
           </div>
+          <VenuePartnerLogo label={t("venuePartnerLabel")} className="mt-2" />
         </div>
       </section>
 
