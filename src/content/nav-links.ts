@@ -8,6 +8,7 @@ const allNavLinks: { href: string; label: string; key: string }[] = [
   { href: "/agenda", label: "Agenda", key: "agenda" },
   { href: "/speakers", label: "Speakers", key: "speakers" },
   { href: "/sponsors", label: "Sponsors", key: "sponsors" },
+  { href: "/about", label: "About", key: "about" },
   { href: "/#faq", label: "FAQ", key: "faq" }
 ];
 
