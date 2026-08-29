@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { sponsors } from "@/src/content/sponsors";
 import { sponsorFormUrl } from "@/src/content/nav-links";
 import { features } from "@/src/content/features";
+import { SponsorLogo } from "@/src/components/sponsors/sponsor-logo";
 import type { Sponsor } from "@/src/types/content";
 
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ type Props = {
 // Per-tier accents and card scale from the restyling design (option 2e):
 // top tiers get bigger cards and a colored eyebrow, descending by rank.
 const tiers: { tier: Sponsor["tier"]; labelKey: string; cols: string; label: string; card: string }[] = [
+  { tier: "main", labelKey: "mainLabel", cols: "sm:grid-cols-1", label: "text-accent-yellow-deep", card: "min-h-[220px] rounded-3xl" },
   { tier: "platinum", labelKey: "platinumLabel", cols: "sm:grid-cols-2", label: "text-accent-red", card: "min-h-[180px] rounded-2xl" },
   { tier: "gold", labelKey: "goldLabel", cols: "sm:grid-cols-3", label: "text-primary", card: "min-h-[140px] rounded-[14px]" },
   { tier: "silver", labelKey: "silverLabel", cols: "sm:grid-cols-4", label: "text-accent-green", card: "min-h-[104px] rounded-xl" },
@@ -31,20 +33,13 @@ const benefits = [
   { key: "benefit4", dot: "bg-accent-green" }
 ];
 
-// Availability preview shown before any sponsor has signed on (design 2f).
-const availableTiers = [
-  { labelKey: "platinumLabel", descriptionKey: "platinumAvailabilityDescription", label: "text-accent-red" },
-  { labelKey: "goldLabel", descriptionKey: "goldAvailabilityDescription", label: "text-primary" },
-  { labelKey: "silverLabel", descriptionKey: "silverAvailabilityDescription", label: "text-accent-green" },
-  { labelKey: "bronzeLabel", descriptionKey: "bronzeAvailabilityDescription", label: "text-accent-bronze" }
-];
-
 export default async function SponsorsPage({ params }: Props) {
   if (!features.sponsors) notFound();
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "sponsorsPage" });
   const hasSponsors = sponsors.length > 0;
+  const communitySponsors = sponsors.filter((sponsor) => sponsor.community);
 
   return (
     <main>
@@ -70,43 +65,55 @@ export default async function SponsorsPage({ params }: Props) {
           <h2 id="sponsors-heading" className="sr-only">
             {t("badge")}
           </h2>
-          {hasSponsors ? (
-            <div className="flex flex-col gap-20">
-              {tiers.map(({ tier, labelKey, cols, label, card }) => {
-                const tierSponsors = sponsors.filter((sponsor) => sponsor.tier === tier);
-                if (tierSponsors.length === 0) return null;
+          <div className="flex flex-col gap-20">
+            {tiers.map(({ tier, labelKey, cols, label, card }) => {
+              const tierSponsors = sponsors.filter((sponsor) => sponsor.tier === tier);
+              if (tierSponsors.length === 0) return null;
 
-                return (
-                  <div key={tier}>
-                    <div className={`eyebrow mb-7 ${label}`}>{t(labelKey)}</div>
-                    <ul role="list" className={`m-0 grid list-none grid-cols-2 gap-5 p-0 ${cols}`}>
-                      {tierSponsors.map((sponsor) => (
-                        <li key={sponsor.name}>
-                          <a
-                            href={sponsor.url}
-                            target="_blank"
-                            rel="noreferrer noopener"
-                            className={`focus-ring flex h-full items-center justify-center border border-line bg-white p-7 text-center text-base font-semibold text-ink transition-colors duration-200 hover:border-line-strong ${card}`}
-                          >
-                            {sponsor.name}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                );
-              })}
-            </div>
-          ) : (
-            <div className="grid gap-5 sm:grid-cols-4">
-              {availableTiers.map(({ labelKey, descriptionKey, label }) => (
-                <div key={labelKey} className="flex flex-col gap-2 rounded-2xl bg-tint p-7">
-                  <div className={`eyebrow ${label}`}>{t(labelKey)}</div>
-                  <p className="m-0 text-[13.5px] leading-relaxed text-muted">{t(descriptionKey)}</p>
+              return (
+                <div key={tier}>
+                  <div className={`eyebrow mb-7 ${label}`}>{t(labelKey)}</div>
+                  <ul role="list" className={`m-0 grid list-none grid-cols-2 gap-5 p-0 ${cols}`}>
+                    {tierSponsors.map((sponsor) => (
+                      <li key={sponsor.name}>
+                        <a
+                          href={sponsor.url}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          className={`focus-ring flex h-full items-center justify-center border border-line bg-white p-7 text-center text-base font-semibold text-ink transition-colors duration-200 hover:border-line-strong ${card}`}
+                        >
+                          <SponsorLogo sponsor={sponsor} />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              ))}
-            </div>
-          )}
+              );
+            })}
+
+            {/* Community & swag/licence partners — not part of the paid tier
+                ladder, presented alongside it. Whether these eventually get
+                their own group is an open decision (see `community` flag). */}
+            {communitySponsors.length > 0 && (
+              <div>
+                <div className="eyebrow mb-7 text-accent-gray-deep">{t("communityLabel")}</div>
+                <ul role="list" className="m-0 grid list-none grid-cols-2 gap-5 p-0 sm:grid-cols-4">
+                  {communitySponsors.map((sponsor) => (
+                    <li key={sponsor.name}>
+                      <a
+                        href={sponsor.url}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="focus-ring flex h-full min-h-[104px] items-center justify-center rounded-xl border border-line bg-white p-7 text-center text-base font-semibold text-ink transition-colors duration-200 hover:border-line-strong"
+                      >
+                        <SponsorLogo sponsor={sponsor} />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
         </div>
       </section>
 
