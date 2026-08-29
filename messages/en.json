@@ -98,9 +98,8 @@
       "time": "9:00 AM - 6:00 PM"
     },
     "directions": {
-      "publicTransport": "The venue is easily reached by public transport. Metro B serves the area, and the nearest rail stations are Trastevere and Ostiense.",
-      "parking": "No dedicated event parking is available. Limited street parking may be found in the surrounding area. Carpooling or public transport is strongly recommended.",
-      "busTodo": "TODO: confirm the bus line number and nearest stop."
+      "publicTransport": "The venue is easily reached by public transport. Take Metro B toward Laurentina and get off at Basilica San Paolo, about a 10-minute walk from the venue. Bus lines 128 or 766 also run from the Basilica San Paolo metro stop: get off at the first stop, cross Viale Marconi, and walk 50 m to the left. From Roma Termini, take Metro B toward Laurentina. From the airport, reach Ostiense station and take Metro B toward Laurentina, exiting at Basilica San Paolo.",
+      "parking": "No dedicated event parking is available. Limited street parking may be found in the surrounding area. Carpooling or public transport is strongly recommended."
     },
     "accessibility": {
       "info": "Accessibility details for the venue will be confirmed closer to the event.",

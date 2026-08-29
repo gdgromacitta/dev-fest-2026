@@ -98,9 +98,8 @@
       "time": "9:00 - 18:00"
     },
     "directions": {
-      "publicTransport": "La sede è facilmente raggiungibile con i mezzi pubblici. La zona è servita dalla Metro B, mentre le stazioni ferroviarie più vicine sono Trastevere e Ostiense.",
-      "parking": "Non è disponibile un parcheggio dedicato all'evento. Nelle vicinanze si può trovare parcheggio limitato su strada. Si consiglia vivamente il car pooling o l'uso dei mezzi pubblici.",
-      "busTodo": "TODO: confermare il numero della linea e la fermata più vicina."
+      "publicTransport": "La sede è facilmente raggiungibile con i mezzi pubblici. Prendi la Metro B direzione Laurentina e scendi alla fermata Basilica San Paolo, a circa 10 minuti a piedi dalla sede. Dalla fermata Basilica San Paolo partono anche gli autobus 128 o 766: scendi alla prima fermata, attraversa viale Marconi e cammina per 50 metri verso sinistra. Da Roma Termini, prendi la Metro B direzione Laurentina. Dall'aeroporto, raggiungi la stazione Ostiense e prendi la Metro B direzione Laurentina, scendendo a Basilica San Paolo.",
+      "parking": "Non è disponibile un parcheggio dedicato all'evento. Nelle vicinanze si può trovare parcheggio limitato su strada. Si consiglia vivamente il car pooling o l'uso dei mezzi pubblici."
     },
     "accessibility": {
       "info": "I dettagli sull'accessibilità della sede verranno confermati più vicino alla data dell'evento.",
