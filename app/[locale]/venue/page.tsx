@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { venue } from "@/src/content/venue";
-import { registerUrl } from "@/src/content/nav-links";
+import { registerUrl, contactEmail } from "@/src/content/nav-links";
 import { features } from "@/src/content/features";
 
 export const metadata: Metadata = {
@@ -90,13 +90,22 @@ export default async function VenuePage({ params }: Props) {
                 <div aria-hidden="true" className={`mb-[18px] h-[5px] w-8 rounded-[3px] ${card.bar}`} />
                 <h3 className="m-0 mb-2.5 text-[19px] font-semibold text-ink">{t(card.headingKey)}</h3>
                 <p className="m-0 text-[14.5px] leading-[1.7] text-muted">{t(card.bodyKey)}</p>
+                {card.headingKey === "publicTransportHeading" && (
+                  <p className="m-0 mt-2.5 text-[14.5px] italic leading-[1.7] text-muted">
+                    {t("directions.busTodo")}
+                  </p>
+                )}
               </article>
             ))}
             <article className="rounded-2xl bg-white p-7">
               <div aria-hidden="true" className="mb-[18px] h-[5px] w-8 rounded-[3px] bg-accent-green" />
               <h3 className="m-0 mb-2.5 text-[19px] font-semibold text-ink">{t("accessibilityHeading")}</h3>
               <p className="m-0 text-[14.5px] leading-[1.7] text-muted">
-                {t("accessibility.info")} {t("accessibility.commitment")}
+                {t("accessibility.info")} {t("accessibility.contactLabel")}{" "}
+                <a href={`mailto:${contactEmail}`} className="focus-ring rounded-sm underline">
+                  {contactEmail}
+                </a>
+                . {t("accessibility.commitment")}
               </p>
             </article>
           </div>

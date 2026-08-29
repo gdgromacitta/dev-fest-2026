@@ -54,10 +54,14 @@ describe("Venue page reference structure", () => {
 
     expect(html).toContain("Trasporto Pubblico");
     expect(html).toContain("facilmente raggiungibile con i mezzi pubblici");
+    expect(html).toContain("Metro B");
+    expect(html).toContain("Trastevere e Ostiense");
+    expect(html).toContain("TODO: confermare il numero della linea");
     expect(html).toContain("Parcheggio e Auto");
     expect(html).toContain("Non è disponibile un parcheggio dedicato");
     expect(html).toContain("Accessibilità");
     expect(html).toContain("verranno confermati più vicino alla data");
+    expect(html).toContain('href="mailto:gdgroma.citta@gmail.com"');
     expect(html).toContain("Ci impegniamo a rendere DevFest Roma 2026");
   });
 });
