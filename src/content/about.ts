@@ -1,9 +1,7 @@
 // `eyebrow`, `title`, and `description` are translated content and live in
 // messages/{locale}.json under the `about.*` namespace. Only locale-invariant
-// data (CTA hrefs, the visual asset) stays here.
+// data (the visual asset) stays here.
 export const aboutHero = {
-  primaryCta: { href: "#" },
-  secondaryCta: { href: "#" },
   visual: "/logos/devfest-roma-horizontal.svg"
 };
 

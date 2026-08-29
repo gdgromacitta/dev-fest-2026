@@ -5,6 +5,7 @@
     "agenda": "Agenda",
     "speakers": "Speakers",
     "sponsors": "Sponsors",
+    "about": "About",
     "faq": "FAQ",
     "registerCta": "Register",
     "menuAriaLabel": "Menu",
@@ -49,7 +50,7 @@
     "faq2Question": "Where does DevFest Roma take place?",
     "faq2Answer": "Università degli Studi Roma Tre, Via Vito Volterra 60, Roma.",
     "faq3Question": "How do I propose a talk?",
-    "faq3Answer": "Submit a proposal on Sessionize by July 31, 2026.",
+    "faq3Answer": "The call for papers is now closed. The speaker line-up will be announced soon — stay tuned!",
     "sponsorsHeading": "With the support of",
     "sponsorsCtaBadge": "Sponsorship",
     "sponsorsCtaHeading": "Want to sponsor DevFest Roma 2026?",
@@ -98,12 +99,13 @@
       "time": "9:00 AM - 6:00 PM"
     },
     "directions": {
-      "publicTransport": "The venue is best reached by public transport. Use Google Maps with the address Via Vito Volterra 60, Roma to find the best route from your starting point. Trastevere and Ostiense railway stations are the closest major hubs.",
+      "publicTransport": "The venue is easily reached by public transport. Take Metro B toward Laurentina and get off at Basilica San Paolo, about a 10-minute walk from the venue. Bus lines 128 or 766 also run from the Basilica San Paolo metro stop: get off at the first stop, cross Viale Marconi, and walk 50 m to the left. From Roma Termini, take Metro B toward Laurentina. From the airport, reach Ostiense station and take Metro B toward Laurentina, exiting at Basilica San Paolo.",
       "parking": "No dedicated event parking is available. Limited street parking may be found in the surrounding area. Carpooling or public transport is strongly recommended."
     },
     "accessibility": {
-      "info": "Accessibility details for the venue will be confirmed closer to the event. If you have specific needs, please reach out to the organizers in advance.",
-      "commitment": "We are committed to making DevFest Roma 2026 an inclusive experience for all attendees."
+      "info": "Accessibility details for the venue will be confirmed closer to the event.",
+      "commitment": "We are committed to making DevFest Roma 2026 an inclusive experience for all attendees.",
+      "contactLabel": "For specific accessibility needs, contact us at"
     }
   },
   "sponsorsPage": {
@@ -133,8 +135,6 @@
     "eyebrow": "A COMMUNITY FOCUSED",
     "aboutTitle": "About GDG\nDevFest Roma",
     "aboutDescription": "Our mission is to bring together local developers to learn, share, and connect through Google technologies and community-driven events. DevFest is a global decentralized conference hosted by Google Developer Groups.",
-    "joinCta": "Join the Community",
-    "manifestoCta": "Read Manifesto",
     "teamHeading": "Meet the Organizers",
     "teamSubtext": "The passionate volunteers behind DevFest Roma working to create an inclusive and high-impact experience for everyone.",
     "value_innovation_title": "Innovation",

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { venue } from "@/src/content/venue";
-import { registerUrl } from "@/src/content/nav-links";
+import { registerUrl, contactEmail } from "@/src/content/nav-links";
 import { features } from "@/src/content/features";
 
 export const metadata: Metadata = {
@@ -20,6 +20,9 @@ export default async function VenuePage({ params }: Props) {
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "venue" });
 
+  // Public-transport directions (directions.publicTransport in messages/*.json)
+  // are sourced from Roma Tre's own "dove siamo" page for the STM department,
+  // the same block as this venue: https://stm.uniroma3.it/dove-siamo/
   const howToCards = [
     { headingKey: "publicTransportHeading", bodyKey: "directions.publicTransport", bar: "bg-primary" },
     { headingKey: "parkingHeading", bodyKey: "directions.parking", bar: "bg-accent-red" }
@@ -96,7 +99,11 @@ export default async function VenuePage({ params }: Props) {
               <div aria-hidden="true" className="mb-[18px] h-[5px] w-8 rounded-[3px] bg-accent-green" />
               <h3 className="m-0 mb-2.5 text-[19px] font-semibold text-ink">{t("accessibilityHeading")}</h3>
               <p className="m-0 text-[14.5px] leading-[1.7] text-muted">
-                {t("accessibility.info")} {t("accessibility.commitment")}
+                {t("accessibility.info")} {t("accessibility.contactLabel")}{" "}
+                <a href={`mailto:${contactEmail}`} className="focus-ring rounded-sm underline">
+                  {contactEmail}
+                </a>
+                . {t("accessibility.commitment")}
               </p>
             </article>
           </div>
