@@ -27,6 +27,10 @@ export const cfpUrl = "https://sessionize.com/devfest-roma-2026/";
 /** Sponsor enquiries — shared by footer and sponsor-page CTAs. */
 export const sponsorEmail = "gdgroma.citta@gmail.com";
 
+/** General organiser contact — same mailbox as sponsorEmail, used where the
+ * enquiry isn't sponsor-specific (e.g. venue accessibility). */
+export const contactEmail = sponsorEmail;
+
 /** Become-a-Sponsor form — shared by home and sponsor-page CTAs. */
 export const sponsorFormUrl =
   "https://docs.google.com/forms/d/e/1FAIpQLScracoBDSFefwj54UCV_r1Um7oD-c3Y1NBVE16WHFwJRCckFw/viewform";
