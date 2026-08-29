@@ -7,6 +7,7 @@ import { sponsors } from "@/src/content/sponsors";
 import { venue } from "@/src/content/venue";
 import { registerUrl, cfpUrl, sponsorFormUrl } from "@/src/content/nav-links";
 import { ShuffledTeamGrid } from "@/src/components/about/shuffled-team-grid";
+import { VenuePartnerLogo } from "@/src/components/venue/venue-partner-logo";
 import { features } from "@/src/content/features";
 
 export const metadata: Metadata = {
@@ -113,6 +114,7 @@ export default async function HomePage({ params }: Props) {
             <p className="m-0 mt-1 text-[15px] text-muted">
               {venue.address}, {venue.city}
             </p>
+            <VenuePartnerLogo label={t("venuePartnerLabel")} className="mt-3" />
           </div>
           <div className="flex flex-wrap gap-3">
             <Link

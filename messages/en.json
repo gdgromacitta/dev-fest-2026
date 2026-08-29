@@ -77,7 +77,8 @@
     "cfpDeadlineDate": "July 31, 2026",
     "teamHeading": "Meet the Organizers",
     "teamSubtext": "The passionate volunteers behind DevFest Roma working to create an inclusive and high-impact experience for everyone.",
-    "learnMoreCta": "Learn more about the team"
+    "learnMoreCta": "Learn more about the team",
+    "venuePartnerLabel": "Hosted by"
   },
   "venue": {
     "badge": "Venue",
@@ -104,7 +105,8 @@
     "accessibility": {
       "info": "Accessibility details for the venue will be confirmed closer to the event. If you have specific needs, please reach out to the organizers in advance.",
       "commitment": "We are committed to making DevFest Roma 2026 an inclusive experience for all attendees."
-    }
+    },
+    "venuePartnerLabel": "Hosted by"
   },
   "sponsorsPage": {
     "badge": "Sponsors",
