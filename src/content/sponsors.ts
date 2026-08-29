@@ -1,11 +1,18 @@
 import type { Sponsor } from "@/src/types/content";
 
 /**
- * Sponsors displayed on the landing page.
- * The sponsors section is completely hidden when this array is empty.
- * Add entries to make the section visible. Replace with real data before launch.
+ * Sponsors and partners displayed on the landing page and the sponsors page.
+ * Entries with a `tier` are grouped under that tier; entries with
+ * `community: true` are non-monetary partners (swag, licences, etc.) shown
+ * alongside the tiers rather than inside the paid ladder.
  *
- * Example entry:
- * { name: "Google", url: "https://google.com", tier: "gold" }
+ * No logo assets exist yet for any entry below, so all of them render a
+ * name-based placeholder. Add a file to `public/logos/` and set `logo` to
+ * its filename to show a real logo — no code change required.
  */
-export const sponsors: Sponsor[] = [];
+export const sponsors: Sponsor[] = [
+  { name: "Google", url: "https://google.com", tier: "main" },
+  { name: "Bip", url: "https://bip.com", tier: "gold" },
+  { name: "Seeweb", url: "https://www.seeweb.it", tier: "silver" },
+  { name: "JetBrains", url: "https://www.jetbrains.com", community: true }
+];

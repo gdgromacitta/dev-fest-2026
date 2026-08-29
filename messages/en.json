@@ -116,14 +116,12 @@
     "emptyHeroTitle": "Support DevFest Roma 2026",
     "emptyHeroDescription": "Sponsorships are open: help us keep the event free for 500+ developers.",
     "emptyBecomeSponsorCta": "Become our first Sponsor",
+    "mainLabel": "Main Sponsor",
     "platinumLabel": "Platinum",
     "goldLabel": "Gold",
     "silverLabel": "Silver",
     "bronzeLabel": "Bronze",
-    "platinumAvailabilityDescription": "Booth, talk/workshop, dedicated activity — max 1 spot",
-    "goldAvailabilityDescription": "Booth, talk/workshop, welcome bag gadget — max 3 spots",
-    "silverAvailabilityDescription": "Booth, logo on rollup and t-shirt — max 6 spots",
-    "bronzeAvailabilityDescription": "Logo on site, social media, and keynote — max 20 spots",
+    "communityLabel": "Community & Swag Partners",
     "whyHeading": "Why sponsor",
     "benefit1": "Visibility with 500+ passionate developers",
     "benefit2": "Direct access to tech talent for recruiting",
@@ -442,5 +440,8 @@
     "cfpTitle": "Want to be one of our speakers?",
     "cfpSubtext": "The Call for Papers closes on July 31, 2026.",
     "cfpCta": "Submit a Proposal"
+  },
+  "pastSponsors": {
+    "heading": "Those who believed in us"
   }
 }

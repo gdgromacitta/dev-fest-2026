@@ -50,8 +50,36 @@ export type Venue = {
   mapsLinkUrl: string;
 };
 
+export type SponsorTier = "main" | "platinum" | "gold" | "silver" | "bronze";
+
 export type Sponsor = {
   name: string;
   url: string;
-  tier: "platinum" | "gold" | "silver" | "bronze";
+  /** Absent for non-tiered partners (see `community`). */
+  tier?: SponsorTier;
+  /**
+   * Filename under `public/logos/` (e.g. "google.svg"). Omit to render a
+   * name-based placeholder instead — adding the file and setting this field
+   * is the only step needed to show a real logo, no code change required.
+   */
+  logo?: string;
+  /**
+   * Non-monetary partners (swag, licences, etc.) that aren't part of the
+   * paid tier ladder but are still presented on the sponsors page.
+   */
+  community?: boolean;
+};
+
+/**
+ * A past sponsor/partner shown in the "chi ha creduto in noi" marquee. Kept
+ * as a separate shape from `Sponsor` — past entries have no tier and no
+ * current CTA link, only a name and a logo image.
+ */
+export type PastSponsor = {
+  name: string;
+  /**
+   * Full image URL (placehold.co placeholder today). Swapping in a real
+   * asset later is a one-field change — no code change required.
+   */
+  logoUrl: string;
 };
