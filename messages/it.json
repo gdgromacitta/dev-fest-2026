@@ -439,5 +439,8 @@
     "cfpTitle": "Vuoi essere uno dei nostri speaker?",
     "cfpSubtext": "La Call for Papers chiude il 31 luglio 2026.",
     "cfpCta": "Invia una Proposta"
+  },
+  "pastSponsors": {
+    "heading": "Chi ha creduto in noi"
   }
 }

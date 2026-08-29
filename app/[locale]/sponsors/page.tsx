@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { sponsors } from "@/src/content/sponsors";
+import { pastSponsors } from "@/src/content/past-sponsors";
 import { sponsorFormUrl } from "@/src/content/nav-links";
 import { features } from "@/src/content/features";
 import { SponsorLogo } from "@/src/components/sponsors/sponsor-logo";
+import { PastSponsorsMarquee } from "@/src/components/sponsors/past-sponsors-marquee";
 import type { Sponsor } from "@/src/types/content";
 
 export const metadata: Metadata = {
@@ -38,6 +40,7 @@ export default async function SponsorsPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "sponsorsPage" });
+  const tPastSponsors = await getTranslations({ locale, namespace: "pastSponsors" });
   const hasSponsors = sponsors.length > 0;
   const communitySponsors = sponsors.filter((sponsor) => sponsor.community);
 
@@ -116,6 +119,9 @@ export default async function SponsorsPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* Past sponsors — "chi ha creduto in noi", separate list, never inside a tier */}
+      <PastSponsorsMarquee sponsors={pastSponsors} heading={tPastSponsors("heading")} />
 
       {/* Why sponsor + CTA */}
       <section aria-labelledby="why-sponsor-heading" className="bg-tint">

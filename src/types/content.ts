@@ -69,3 +69,17 @@ export type Sponsor = {
    */
   community?: boolean;
 };
+
+/**
+ * A past sponsor/partner shown in the "chi ha creduto in noi" marquee. Kept
+ * as a separate shape from `Sponsor` — past entries have no tier and no
+ * current CTA link, only a name and a logo image.
+ */
+export type PastSponsor = {
+  name: string;
+  /**
+   * Full image URL (placehold.co placeholder today). Swapping in a real
+   * asset later is a one-field change — no code change required.
+   */
+  logoUrl: string;
+};

@@ -4,10 +4,12 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/src/i18n/navigation";
 import { team } from "@/src/content/team";
 import { sponsors } from "@/src/content/sponsors";
+import { pastSponsors } from "@/src/content/past-sponsors";
 import { venue } from "@/src/content/venue";
 import { registerUrl, cfpUrl, sponsorFormUrl } from "@/src/content/nav-links";
 import { ShuffledTeamGrid } from "@/src/components/about/shuffled-team-grid";
 import { SponsorLogo } from "@/src/components/sponsors/sponsor-logo";
+import { PastSponsorsMarquee } from "@/src/components/sponsors/past-sponsors-marquee";
 import { features } from "@/src/content/features";
 
 export const metadata: Metadata = {
@@ -67,6 +69,7 @@ export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "home" });
+  const tPastSponsors = await getTranslations({ locale, namespace: "pastSponsors" });
   const hasSponsors = sponsors.length > 0;
 
   return (
@@ -263,6 +266,9 @@ export default async function HomePage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* ── 6b. Past sponsors — "chi ha creduto in noi" ──────── */}
+      <PastSponsorsMarquee sponsors={pastSponsors} heading={tPastSponsors("heading")} />
 
       {/* ── 7. FAQ ───────────────────────────────────────────── */}
       {features.faq && (
