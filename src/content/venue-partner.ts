@@ -1,15 +1,12 @@
 /**
  * Path to the Roma Tre venue-partner logo.
  *
- * The asset is not available yet and usage permission from the university
- * is still unconfirmed (see issue #26). This app is a static export, so
- * there is no way to detect a file's presence at request time -- the path
- * must be resolvable at build time.
- *
- * Once the logo is cleared, drop it into `public/logos/` and set this
- * constant to its path (e.g. "/logos/roma-tre.svg"), then rebuild. Adding
- * the asset alone is not sufficient -- this one constant also has to flip.
- * While it is `null`, the slot renders nothing: no broken image icon, no
- * reserved gap, no layout shift.
+ * Vector artwork extracted from page 8 (section 1.4) of the official manual:
+ * https://www.uniroma3.it/wp-content/uploads/file_locked/2018/10/Manuale-operativo-per-la-riproduzione-del-Logo-ufficiale-di-Ateneo.pdf
+ * Institutional blue #003366 (section 1.3, web value) — allowed only on a
+ * white background (1.6), so every placement must sit on white. Use the
+ * black positive version instead if it ever lands on a tinted surface.
+ * Keep clear space of at least 1/6 logo width and 1/4 logo height (1.2).
+ * Set to null to hide the logo; rebuild the static export after changes.
  */
-export const venuePartnerLogoPath: string | null = null;
+export const venuePartnerLogoPath: string | null = "/logos/roma-tre.svg";

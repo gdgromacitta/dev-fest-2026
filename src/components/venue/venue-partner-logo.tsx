@@ -1,8 +1,9 @@
 import { venuePartnerLogoPath } from "@/src/content/venue-partner";
 
 type Props = {
-  label: string;
+  label?: string;
   className?: string;
+  prominent?: boolean;
 };
 
 /**
@@ -10,18 +11,41 @@ type Props = {
  * `venuePartnerLogoPath` (src/content/venue-partner.ts) is set. Renders
  * nothing while the path is `null`, so callers don't need to reserve any
  * space for it.
+ *
+ * `prominent` renders a white partner card (label on top, large logo) for
+ * the venue hero; the default is a small inline lockup for teasers.
+ * Padding keeps the brand-manual clear space (≥1/6 width, ≥1/4 height).
  */
-export function VenuePartnerLogo({ label, className }: Props) {
+export function VenuePartnerLogo({ label, className, prominent = false }: Props) {
   if (!venuePartnerLogoPath) return null;
 
+  if (prominent) {
+    return (
+      <div className={`flex flex-col items-center gap-5 rounded-[20px] border border-line bg-white px-10 py-8 md:px-14 md:py-10 ${className ?? ""}`}>
+        {label && <span className="eyebrow text-muted">{label}</span>}
+        <img
+          src={venuePartnerLogoPath}
+          alt="Università degli Studi Roma Tre"
+          width={364}
+          height={186}
+          className="h-24 w-auto md:h-32"
+        />
+      </div>
+    );
+  }
+
   return (
-    <div className={`flex items-center gap-2.5 ${className ?? ""}`}>
-      <span className="text-[13px] font-medium text-muted">{label}</span>
-      <img
-        src={venuePartnerLogoPath}
-        alt="Università degli Studi Roma Tre"
-        className="h-8 w-auto"
-      />
+    <div className={`flex flex-col items-start ${className ?? ""}`}>
+      {label && <span className="text-[13px] font-medium text-muted">{label}</span>}
+      <div className="px-3 py-2">
+        <img
+          src={venuePartnerLogoPath}
+          alt="Università degli Studi Roma Tre"
+          width={364}
+          height={186}
+          className="h-8 w-auto"
+        />
+      </div>
     </div>
   );
 }
