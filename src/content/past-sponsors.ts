@@ -7,18 +7,19 @@ import type { PastSponsor } from "@/src/types/content";
  * and community partners from the 2025 site — only paying sponsors/partners
  * belong here.
  *
- * Each entry uses a https://placehold.co/ image as a stand-in until real
- * assets arrive — swapping `logoUrl` for a real asset URL/path is a
- * one-field change, no code change required.
+ * Logos are the same assets the 2025 site (gdgromacitta.github.io/devFest)
+ * used for these sponsors, copied into `public/logos/`. "BacaroTech" is the
+ * community's actual name (a Venetian wine-bar pun on "C#"/sharp) — the 2025
+ * site's own asset filename ("bacaroTech.png") confirms the spelling.
  */
 export const pastSponsors: PastSponsor[] = [
-  { name: "Google", logoUrl: "https://placehold.co/160x80?text=Google" },
-  { name: "Immobiliare Labs", logoUrl: "https://placehold.co/160x80?text=Immobiliare+Labs" },
-  { name: "Ready2Use", logoUrl: "https://placehold.co/160x80?text=Ready2Use" },
-  { name: "Bizzy Now", logoUrl: "https://placehold.co/160x80?text=Bizzy+Now" },
-  { name: "DatWave", logoUrl: "https://placehold.co/160x80?text=DatWave" },
-  { name: "SharpCoding", logoUrl: "https://placehold.co/160x80?text=SharpCoding" },
-  { name: "BacatoTech", logoUrl: "https://placehold.co/160x80?text=BacatoTech" },
-  { name: "Scry Studios", logoUrl: "https://placehold.co/160x80?text=Scry+Studios" },
-  { name: "Welyk", logoUrl: "https://placehold.co/160x80?text=Welyk" }
+  { name: "Google", logoUrl: "/logos/google-2025.png" },
+  { name: "Immobiliare Labs", logoUrl: "/logos/immobiliare-labs.png" },
+  { name: "Ready2Use", logoUrl: "/logos/ready2use.png" },
+  { name: "Bizzy Now", logoUrl: "/logos/bizzy-now.png" },
+  { name: "DatWave", logoUrl: "/logos/datwave.png" },
+  { name: "SharpCoding", logoUrl: "/logos/sharpcoding.png" },
+  { name: "BacaroTech", logoUrl: "/logos/bacarotech.png" },
+  { name: "Scry Studios", logoUrl: "/logos/scry-studios.png" },
+  { name: "Welyk", logoUrl: "/logos/welyk.png" }
 ];

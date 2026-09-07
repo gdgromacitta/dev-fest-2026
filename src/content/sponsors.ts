@@ -6,13 +6,18 @@ import type { Sponsor } from "@/src/types/content";
  * `community: true` are non-monetary partners (swag, licences, etc.) shown
  * alongside the tiers rather than inside the paid ladder.
  *
- * No logo assets exist yet for any entry below, so all of them render a
- * name-based placeholder. Add a file to `public/logos/` and set `logo` to
- * its filename to show a real logo — no code change required.
+ * Logo sources (current wordmarks, official):
+ * - google.svg: Wikimedia Commons, "Google 2015 logo.svg" (public domain).
+ * - jetbrains.svg: Wikimedia Commons, "JetBrains company logo.svg".
+ * - seeweb.svg: seeweb.it site asset (/assets/images/logo-seeweb.svg).
+ * - bip.svg: extracted from the inline header mark on bip-group.com — the
+ *   current "bip." monogram, #E1251B.
+ * Add a file to `public/logos/` and set `logo` to its filename to show a
+ * real logo for any future entry — no code change required.
  */
 export const sponsors: Sponsor[] = [
-  { name: "Google", url: "https://google.com", tier: "main" },
-  { name: "Bip", url: "https://bip.com", tier: "gold" },
-  { name: "Seeweb", url: "https://www.seeweb.it", tier: "silver" },
-  { name: "JetBrains", url: "https://www.jetbrains.com", community: true }
+  { name: "Google", url: "https://google.com", tier: "main", logo: "google.svg" },
+  { name: "Bip", url: "https://www.bip-group.com", tier: "gold", logo: "bip.svg" },
+  { name: "Seeweb", url: "https://www.seeweb.it", tier: "silver", logo: "seeweb.svg" },
+  { name: "JetBrains", url: "https://www.jetbrains.com", community: true, logo: "jetbrains.svg" }
 ];
