@@ -14,7 +14,8 @@ type Props = {
  *
  * `prominent` renders a white partner card (label on top, large logo) for
  * the venue hero; the default is a small inline lockup for teasers.
- * Padding keeps the brand-manual clear space (≥1/6 width, ≥1/4 height).
+ * The 2024 mark is wide (≈4.6:1), so heights stay modest to keep the
+ * rendered width in check; card padding provides the clear space.
  */
 export function VenuePartnerLogo({ label, className, prominent = false }: Props) {
   if (!venuePartnerLogoPath) return null;
@@ -26,9 +27,9 @@ export function VenuePartnerLogo({ label, className, prominent = false }: Props)
         <img
           src={venuePartnerLogoPath}
           alt="Università degli Studi Roma Tre"
-          width={364}
-          height={186}
-          className="h-24 w-auto md:h-32"
+          width={930}
+          height={204}
+          className="h-16 w-auto md:h-20"
         />
       </div>
     );
@@ -41,8 +42,8 @@ export function VenuePartnerLogo({ label, className, prominent = false }: Props)
         <img
           src={venuePartnerLogoPath}
           alt="Università degli Studi Roma Tre"
-          width={364}
-          height={186}
+          width={930}
+          height={204}
           className="h-8 w-auto"
         />
       </div>

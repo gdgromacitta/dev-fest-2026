@@ -1,12 +1,14 @@
 /**
  * Path to the Roma Tre venue-partner logo.
  *
- * Vector artwork extracted from page 8 (section 1.4) of the official manual:
- * https://www.uniroma3.it/wp-content/uploads/file_locked/2018/10/Manuale-operativo-per-la-riproduzione-del-Logo-ufficiale-di-Ateneo.pdf
- * Institutional blue #003366 (section 1.3, web value) — allowed only on a
- * white background (1.6), so every placement must sit on white. Use the
- * black positive version instead if it ever lands on a tinted surface.
- * Keep clear space of at least 1/6 logo width and 1/4 logo height (1.2).
+ * Roma Tre adopted a new visual identity on 2 December 2024 (Humus Design);
+ * this is the current horizontal mark in institutional blue #002a61,
+ * viewBox 930×204 (aspect ≈ 4.56:1). Vector source: the file published on
+ * Wikimedia Commons from uniroma3.it (public domain, trademark applies):
+ * https://commons.wikimedia.org/wiki/File:Roma_Tre_University_logo.svg
+ * The updated identity manual is still "in preparation" on
+ * https://www.uniroma3.it/ateneo/comunicazione/identita-visiva/ — until it
+ * ships, keep the logo on a white surface with generous clear space.
  * Set to null to hide the logo; rebuild the static export after changes.
  */
 export const venuePartnerLogoPath: string | null = "/logos/roma-tre.svg";
