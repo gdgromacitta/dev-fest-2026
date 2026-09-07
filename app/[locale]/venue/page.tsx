@@ -25,8 +25,14 @@ export default async function VenuePage({ params }: Props) {
   // are sourced from Roma Tre's own "dove siamo" page for the STM department,
   // the same block as this venue: https://stm.uniroma3.it/dove-siamo/
   const howToCards = [
-    { headingKey: "publicTransportHeading", bodyKey: "directions.publicTransport", bar: "bg-primary" },
-    { headingKey: "parkingHeading", bodyKey: "directions.parking", bar: "bg-accent-red" }
+    {
+      headingKey: "publicTransportHeading", bodyKey: "directions.publicTransport", color: "text-primary", iconBg: "bg-primary-soft",
+      icon: <><rect x="5" y="3" width="14" height="15" rx="3" /><path d="M5 10h14M12 3v7M8 18l-2 3m10-3 2 3M8 14h1m6 0h1" /></>
+    },
+    {
+      headingKey: "parkingHeading", bodyKey: "directions.parking", color: "text-accent-red", iconBg: "bg-accent-red-soft",
+      icon: <><path d="m5 10 2-6h10l2 6M3 10h18v8H3zM5 18v3m14-3v3M6 14h2m8 0h2" /></>
+    }
   ];
 
   return (
@@ -57,34 +63,38 @@ export default async function VenuePage({ params }: Props) {
         </div>
       </section>
 
-      {/* Map + details */}
+      {/* Map + key details */}
       <section aria-label={t("mapAriaLabel")}>
-        <div className="mx-auto grid w-full max-w-[1440px] gap-14 px-4 py-16 md:grid-cols-[1.1fr_0.9fr] md:px-16 md:py-24">
-          <iframe
-            src={venue.mapEmbedUrl}
-            className="h-[28rem] w-full rounded-[20px] border-0"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="DevFest Roma 2026 — Università degli Studi Roma Tre"
-            allowFullScreen
-          />
-          <div className="flex flex-col justify-center gap-7">
-            <div>
-              <h2 className="m-0 mb-2 text-xl font-semibold text-ink">{t("addressLabel")}</h2>
-              <p className="m-0 text-[15.5px] leading-relaxed text-muted">
-                {venue.address}
-                <br />
-                {venue.city}
-              </p>
+        <div className="mx-auto w-full max-w-[1440px] px-4 py-16 md:px-16 md:py-24">
+          <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+            <div className="min-w-0 overflow-hidden rounded-[20px] border border-line bg-white">
+              <iframe
+                src={venue.mapEmbedUrl}
+                className="h-72 w-full border-0 sm:h-96 lg:h-[26rem]"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="DevFest Roma 2026 — Università degli Studi Roma Tre"
+                allowFullScreen
+              />
             </div>
-            <div>
-              <h2 className="m-0 mb-2 text-xl font-semibold text-ink">{t("dateLabel")}</h2>
-              <p className="m-0 text-[15.5px] leading-relaxed text-muted">{t("notes.date")}</p>
-            </div>
-            <div>
-              <h2 className="m-0 mb-2 text-xl font-semibold text-ink">{t("timeLabel")}</h2>
-              <p className="m-0 text-[15.5px] leading-relaxed text-muted">{t("notes.time")}</p>
-            </div>
+            <dl className="m-0 flex flex-col gap-7">
+              <div>
+                <dt className="font-display text-xl font-semibold text-ink">{t("addressLabel")}</dt>
+                <dd className="m-0 mt-2 text-[15.5px] leading-relaxed text-muted">
+                  {venue.address}
+                  <br />
+                  {venue.city}
+                </dd>
+              </div>
+              <div>
+                <dt className="font-display text-xl font-semibold text-ink">{t("dateLabel")}</dt>
+                <dd className="m-0 mt-2 text-[15.5px] leading-relaxed text-muted">{t("notes.date")}</dd>
+              </div>
+              <div>
+                <dt className="font-display text-xl font-semibold text-ink">{t("timeLabel")}</dt>
+                <dd className="m-0 mt-2 text-[15.5px] leading-relaxed text-muted">{t("notes.time")}</dd>
+              </div>
+            </dl>
           </div>
         </div>
       </section>
@@ -92,19 +102,28 @@ export default async function VenuePage({ params }: Props) {
       {/* How to get here */}
       <section aria-labelledby="how-to-heading" className="bg-tint">
         <div className="mx-auto w-full max-w-[1440px] px-4 py-16 md:px-16 md:py-24">
-          <h2 id="how-to-heading" className="m-0 mb-11 text-3xl font-bold text-ink md:text-4xl">
+          <h2 id="how-to-heading" className="scroll-mt-28 m-0 mb-11 text-3xl font-bold text-ink md:text-4xl">
             {t("howToGetHereLabel")}
           </h2>
           <div className="grid gap-6 md:grid-cols-3">
             {howToCards.map((card) => (
               <article key={card.headingKey} className="rounded-2xl bg-white p-7">
-                <div aria-hidden="true" className={`mb-[18px] h-[5px] w-8 rounded-[3px] ${card.bar}`} />
+                <div className={`mb-[18px] flex h-[52px] w-[52px] items-center justify-center rounded-[14px] ${card.iconBg}`}>
+                  <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className={`h-6 w-6 shrink-0 ${card.color}`}>
+                    {card.icon}
+                  </svg>
+                </div>
                 <h3 className="m-0 mb-2.5 text-[19px] font-semibold text-ink">{t(card.headingKey)}</h3>
                 <p className="m-0 text-[14.5px] leading-[1.7] text-muted">{t(card.bodyKey)}</p>
               </article>
             ))}
             <article className="rounded-2xl bg-white p-7">
-              <div aria-hidden="true" className="mb-[18px] h-[5px] w-8 rounded-[3px] bg-accent-green" />
+              <div className="mb-[18px] flex h-[52px] w-[52px] items-center justify-center rounded-[14px] bg-accent-green-soft">
+                <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 shrink-0 text-accent-green">
+                  <circle cx="12" cy="4" r="2" />
+                  <path d="m4 9 8 2 8-2M12 11v5m0 0-4 6m4-6 4 6" />
+                </svg>
+              </div>
               <h3 className="m-0 mb-2.5 text-[19px] font-semibold text-ink">{t("accessibilityHeading")}</h3>
               <p className="m-0 text-[14.5px] leading-[1.7] text-muted">
                 {t("accessibility.info")} {t("accessibility.contactLabel")}{" "}
