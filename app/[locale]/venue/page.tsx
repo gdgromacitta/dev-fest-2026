@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { venue } from "@/src/content/venue";
 import { registerUrl, contactEmail } from "@/src/content/nav-links";
 import { features } from "@/src/content/features";
+import { VenuePartnerLogo } from "@/src/components/venue/venue-partner-logo";
 
 export const metadata: Metadata = {
   title: "Venue | DevFest Roma",
@@ -31,21 +32,28 @@ export default async function VenuePage({ params }: Props) {
   return (
     <main>
       {/* Hero */}
-      <section className="bg-tint">
-        <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-4 px-4 py-16 md:px-16 md:py-[88px]">
-          <div className="eyebrow text-primary">{t("badge")}</div>
-          <h1 className="m-0 max-w-4xl text-4xl font-bold leading-[1.1] text-ink md:text-[3.5rem]">
-            {venue.name}
-          </h1>
-          <p className="m-0 max-w-2xl text-lg text-muted">
-            {venue.address}, {venue.city}
-          </p>
-          <div className="mt-2.5 flex flex-wrap gap-3.5">
-            <a href={venue.mapsLinkUrl} target="_blank" rel="noreferrer noopener" className="btn-primary">
-              {t("openInMapsCta")}
-            </a>
-            <a href={registerUrl} className="btn-outline">{t("registerCta")}</a>
+      <section aria-labelledby="venue-heading" className="bg-tint">
+        <div className="mx-auto grid w-full max-w-[1440px] items-center gap-10 px-4 py-16 md:px-16 md:py-[88px] lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+          <div className="flex min-w-0 flex-col gap-5">
+            <div className="eyebrow text-primary">{t("badge")}</div>
+            <h1 id="venue-heading" className="m-0 max-w-3xl text-4xl font-bold leading-[1.1] text-ink md:text-[3.5rem]">
+              {venue.name}
+            </h1>
+            <address className="m-0 max-w-xl text-lg not-italic leading-relaxed text-muted">
+              {venue.address}
+              <br />
+              {venue.city}
+            </address>
+            <div className="mt-3 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <a href={venue.mapsLinkUrl} target="_blank" rel="noreferrer noopener" className="btn-primary">
+                {t("openInMapsCta")}
+              </a>
+              <a href={registerUrl} className="btn-outline">
+                {t("registerCta")}
+              </a>
+            </div>
           </div>
+          <VenuePartnerLogo prominent label={t("venuePartnerLabel")} className="justify-self-center lg:justify-self-end" />
         </div>
       </section>
 
