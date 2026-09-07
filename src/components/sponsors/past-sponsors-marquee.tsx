@@ -46,7 +46,7 @@ export function PastSponsorsMarquee({ sponsors, heading }: Props) {
                     width={160}
                     height={80}
                     loading="lazy"
-                    className="h-20 w-40 flex-none object-contain grayscale transition-[filter] duration-200 hover:grayscale-0"
+                    className="h-20 w-40 flex-none object-contain"
                   />
                 </li>
               ))}
@@ -61,7 +61,7 @@ export function PastSponsorsMarquee({ sponsors, heading }: Props) {
                     width={160}
                     height={80}
                     loading="lazy"
-                    className="h-20 w-40 flex-none object-contain grayscale"
+                    className="h-20 w-40 flex-none object-contain"
                   />
                 </li>
               ))}
