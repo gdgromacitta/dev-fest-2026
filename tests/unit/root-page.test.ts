@@ -73,34 +73,34 @@ describe("root page — landing page", () => {
   });
 
   test("renders a Become a Sponsor CTA banner when sponsors array is empty", async () => {
-    const html = await renderHomePage();
-
-    expect(html).toContain('data-section="sponsors"');
-    expect(html).toContain(messages.home.sponsorsCtaHeading);
-    expect(html).toContain(messages.home.sponsorsCtaDescription);
-    expect((html.match(/data-sponsor-cta="true"/g) ?? []).length).toBe(1);
-    expect(html).toContain(
-      `href="https://docs.google.com/forms/d/e/1FAIpQLScracoBDSFefwj54UCV_r1Um7oD-c3Y1NBVE16WHFwJRCckFw/viewform"`
-    );
-    expect(html).toContain('rel="noreferrer noopener"');
-  });
-
-  test("renders sponsor logos plus a Become a Sponsor CTA button when sponsors array is populated", async () => {
-    // src/content/sponsors.ts is empty in this repo today; temporarily
-    // populate the live array (rather than editing the content file) to
-    // exercise the populated-state markup, then restore it.
-    sponsors.push({ name: "Test Sponsor", url: "https://example.com", tier: "gold" });
+    // src/content/sponsors.ts is seeded with real sponsors today; empty the
+    // live array temporarily to exercise the empty-state markup, then
+    // restore it.
+    const seeded = sponsors.splice(0, sponsors.length);
 
     try {
       const html = await renderHomePage();
 
       expect(html).toContain('data-section="sponsors"');
-      expect(html).toContain('data-sponsor-name="Test Sponsor"');
-      expect(html).toContain(messages.home.sponsorsHeading);
+      expect(html).toContain(messages.home.sponsorsCtaHeading);
+      expect(html).toContain(messages.home.sponsorsCtaDescription);
       expect((html.match(/data-sponsor-cta="true"/g) ?? []).length).toBe(1);
-      expect(html).toContain(messages.home.sponsorsCtaButton);
+      expect(html).toContain(
+        `href="https://docs.google.com/forms/d/e/1FAIpQLScracoBDSFefwj54UCV_r1Um7oD-c3Y1NBVE16WHFwJRCckFw/viewform"`
+      );
+      expect(html).toContain('rel="noreferrer noopener"');
     } finally {
-      sponsors.length = 0;
+      sponsors.push(...seeded);
     }
+  });
+
+  test("renders sponsor logos plus a Become a Sponsor CTA button when sponsors array is populated", async () => {
+    const html = await renderHomePage();
+
+    expect(html).toContain('data-section="sponsors"');
+    expect(html).toContain('data-sponsor-name="Google"');
+    expect(html).toContain(messages.home.sponsorsHeading);
+    expect((html.match(/data-sponsor-cta="true"/g) ?? []).length).toBe(1);
+    expect(html).toContain(messages.home.sponsorsCtaButton);
   });
 });

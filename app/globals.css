@@ -81,3 +81,64 @@ body {
   }
 }
 
+/* Past-sponsors marquee — CSS-only continuous horizontal loop. */
+.sponsor-marquee {
+  overflow: hidden;
+}
+
+.sponsor-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: sponsor-marquee-scroll 36s linear infinite;
+}
+
+.sponsor-marquee:hover .sponsor-marquee__track,
+.sponsor-marquee:focus-within .sponsor-marquee__track {
+  animation-play-state: paused;
+}
+
+.sponsor-marquee__group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sponsor-marquee__item {
+  padding: 0 2rem;
+}
+
+@keyframes sponsor-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* Exactly one group's width — the two groups are identical, so this is seamless. */
+    transform: translateX(-50%);
+  }
+}
+
+/*
+ * The global rule above already stops the animation. This block additionally
+ * fixes the layout: without it the track would freeze mid-scroll, clipped by
+ * `overflow: hidden`, with roughly half the logos parked off-screen. Instead
+ * it degrades to a static wrapped row and hides the now-redundant duplicate
+ * group used only for the looping animation.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .sponsor-marquee {
+    overflow: visible;
+  }
+
+  .sponsor-marquee__track {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .sponsor-marquee__group[aria-hidden="true"] {
+    display: none;
+  }
+}
+

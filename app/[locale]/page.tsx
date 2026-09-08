@@ -1,14 +1,17 @@
-import type { Metadata } from "next";
-import { socialImage } from "@/src/content/social-image";
-import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Link } from "@/src/i18n/navigation";
-import { team } from "@/src/content/team";
-import { sponsors } from "@/src/content/sponsors";
-import { venue } from "@/src/content/venue";
-import { registerUrl, cfpUrl, sponsorFormUrl } from "@/src/content/nav-links";
 import { ShuffledTeamGrid } from "@/src/components/about/shuffled-team-grid";
+import { PastSponsorsMarquee } from "@/src/components/sponsors/past-sponsors-marquee";
+import { SponsorLogo } from "@/src/components/sponsors/sponsor-logo";
 import { VenuePartnerLogo } from "@/src/components/venue/venue-partner-logo";
 import { features } from "@/src/content/features";
+import { cfpUrl, registerUrl, sponsorFormUrl } from "@/src/content/nav-links";
+import { pastSponsors } from "@/src/content/past-sponsors";
+import { socialImage } from "@/src/content/social-image";
+import { sponsors } from "@/src/content/sponsors";
+import { team } from "@/src/content/team";
+import { venue } from "@/src/content/venue";
+import { Link } from "@/src/i18n/navigation";
+import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "DevFest Roma 2026 — Home",
@@ -67,6 +70,7 @@ export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "home" });
+  const tPastSponsors = await getTranslations({ locale, namespace: "pastSponsors" });
   const hasSponsors = sponsors.length > 0;
 
   return (
@@ -233,7 +237,7 @@ export default async function HomePage({ params }: Props) {
                       data-sponsor-name={sponsor.name}
                       data-sponsor-tier={sponsor.tier}
                     >
-                      {sponsor.name}
+                      <SponsorLogo sponsor={sponsor} className="max-h-8" />
                     </a>
                   </li>
                 ))}
@@ -264,6 +268,9 @@ export default async function HomePage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* ── 6b. Past sponsors — "chi ha creduto in noi" ──────── */}
+      <PastSponsorsMarquee sponsors={pastSponsors} heading={tPastSponsors("heading")} />
 
       {/* ── 7. FAQ ───────────────────────────────────────────── */}
       {features.faq && (
