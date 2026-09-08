@@ -1,16 +1,17 @@
-import type { Metadata } from "next";
-import { socialImage } from "@/src/content/social-image";
-import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Link } from "@/src/i18n/navigation";
-import { team } from "@/src/content/team";
-import { sponsors } from "@/src/content/sponsors";
-import { pastSponsors } from "@/src/content/past-sponsors";
-import { venue } from "@/src/content/venue";
-import { registerUrl, cfpUrl, sponsorFormUrl } from "@/src/content/nav-links";
 import { ShuffledTeamGrid } from "@/src/components/about/shuffled-team-grid";
-import { SponsorLogo } from "@/src/components/sponsors/sponsor-logo";
 import { PastSponsorsMarquee } from "@/src/components/sponsors/past-sponsors-marquee";
+import { SponsorLogo } from "@/src/components/sponsors/sponsor-logo";
+import { VenuePartnerLogo } from "@/src/components/venue/venue-partner-logo";
 import { features } from "@/src/content/features";
+import { cfpUrl, registerUrl, sponsorFormUrl } from "@/src/content/nav-links";
+import { pastSponsors } from "@/src/content/past-sponsors";
+import { socialImage } from "@/src/content/social-image";
+import { sponsors } from "@/src/content/sponsors";
+import { team } from "@/src/content/team";
+import { venue } from "@/src/content/venue";
+import { Link } from "@/src/i18n/navigation";
+import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "DevFest Roma 2026 — Home",
@@ -117,6 +118,7 @@ export default async function HomePage({ params }: Props) {
             <p className="m-0 mt-1 text-[15px] text-muted">
               {venue.address}, {venue.city}
             </p>
+            <VenuePartnerLogo label={t("venuePartnerLabel")} className="mt-3" />
           </div>
           <div className="flex flex-wrap gap-3">
             <Link
