@@ -25,16 +25,16 @@
       "en": "DevFest Roma brings the local community together to learn, share, and connect through technical content and real-world cases."
     },
     "program_status": {
-      "it": "Il programma completo sarà pubblicato a settembre. Speaker e sessioni non sono ancora annunciati.",
-      "en": "The full program will be published in September. Speakers and sessions have not been announced yet."
+      "it": "Il programma verrà annunciato presto. Speaker e sessioni non sono ancora annunciati.",
+      "en": "The schedule will be announced soon. Speakers and sessions have not been announced yet."
     }
   },
   "cfp": {
     "deadline": "2026-07-31",
     "submission_url": "https://sessionize.com/devfest-roma-2026/",
     "description": {
-      "it": "La Call for Papers accetta proposte da speaker di ogni livello su contenuti tecnici e casi reali, senza marketing.",
-      "en": "The Call for Papers welcomes proposals from speakers at every experience level, focused on technical content and real-world cases rather than marketing."
+      "it": "La Call for Papers è chiusa. Non è più possibile inviare proposte. Il programma verrà annunciato presto.",
+      "en": "The Call for Papers is closed. Talk submissions are no longer accepted. The schedule will be announced soon."
     },
     "speaker_benefits": {
       "it": [
