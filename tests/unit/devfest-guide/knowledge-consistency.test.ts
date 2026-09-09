@@ -30,3 +30,11 @@ test("disabled placeholder program content is not exposed", () => {
   expect(knowledge.sessions).toEqual([]);
   expect(knowledge.speakers).toEqual([]);
 });
+
+test.each([ ["it", itMessages], ["en", enMessages] ] as const)(
+  "guide venue directions match the %s public page",
+  (locale, messages) => {
+    expect(knowledge.venue.public_transport[locale]).toBe(messages.venue.directions.publicTransport);
+    expect(knowledge.venue.parking[locale]).toBe(messages.venue.directions.parking);
+  }
+);

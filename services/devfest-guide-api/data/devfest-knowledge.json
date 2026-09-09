@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-07-24",
+  "updated_at": "2026-09-09",
   "event": {
     "name": "DevFest Roma 2026",
     "organizer": "GDG Roma Città",
@@ -84,12 +84,12 @@
     "city": "Roma, Italy",
     "maps_url": "https://maps.google.com/?q=Via+Vito+Volterra+60,+Roma,+Italia",
     "public_transport": {
-      "it": "La sede è facilmente raggiungibile con i mezzi pubblici. Trastevere e Ostiense sono gli snodi ferroviari principali più vicini.",
-      "en": "The venue is best reached by public transport. Trastevere and Ostiense are the closest major railway hubs."
+      "it": "La sede è facilmente raggiungibile con i mezzi pubblici. Prendi la Metro B direzione Laurentina e scendi alla fermata Basilica San Paolo, a circa 10 minuti a piedi dalla sede. Dalla fermata Basilica San Paolo partono anche gli autobus 128 o 766: scendi alla prima fermata, attraversa viale Marconi e cammina per 50 metri verso sinistra. Da Roma Termini, prendi la Metro B direzione Laurentina. Dall'aeroporto, raggiungi la stazione Ostiense e prendi la Metro B direzione Laurentina, scendendo a Basilica San Paolo.",
+      "en": "The venue is easily reached by public transport. Take Metro B toward Laurentina and get off at Basilica San Paolo, about a 10-minute walk from the venue. Bus lines 128 or 766 also run from the Basilica San Paolo metro stop: get off at the first stop, cross Viale Marconi, and walk 50 m to the left. From Roma Termini, take Metro B toward Laurentina. From the airport, reach Ostiense station and take Metro B toward Laurentina, exiting at Basilica San Paolo."
     },
     "parking": {
-      "it": "Non è disponibile un parcheggio dedicato. Il parcheggio su strada è limitato; sono consigliati mezzi pubblici o car pooling.",
-      "en": "There is no dedicated event parking. Street parking is limited; public transport or carpooling is recommended."
+      "it": "Non è disponibile un parcheggio dedicato all'evento. Nelle vicinanze si può trovare parcheggio limitato su strada. Si consiglia vivamente il car pooling o l'uso dei mezzi pubblici.",
+      "en": "No dedicated event parking is available. Limited street parking may be found in the surrounding area. Carpooling or public transport is strongly recommended."
     },
     "accessibility": {
       "it": "I dettagli sull'accessibilità saranno confermati più vicino all'evento. Per esigenze specifiche è consigliato contattare in anticipo gli organizzatori.",

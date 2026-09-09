@@ -119,3 +119,44 @@ def test_cors_preflight_allows_local_frontend() -> None:
 
     assert response.status_code == 200
     assert response.headers["access-control-allow-origin"] == "http://localhost:3000"
+
+
+def test_chat_streams_answer_and_completion() -> None:
+    from pydantic_ai.models.test import TestModel
+
+    from devfest_guide.agent import guide_agent
+
+    with guide_agent.override(model=TestModel(call_tools=[], custom_output_text="Ciao da Lupetta!")):
+        response = client.post(
+            "/api/guide",
+            json={"locale": "it", "messages": [{"role": "user", "content": "Ciao"}]},
+        )
+
+    import json
+
+    events = [json.loads(line[6:]) for line in response.text.splitlines() if line.startswith("data: ")]
+    assert response.status_code == 200
+    assert response.headers["content-type"].startswith("text/event-stream")
+    assert "".join(event["text"] for event in events if event["type"] == "delta") == "Ciao da Lupetta!"
+    assert events[-1] == {"type": "done"}
+
+
+@pytest.mark.parametrize("locale", ["it", "en"])
+def test_provider_failure_returns_localized_stream_error(locale: str) -> None:
+    from pydantic_ai.models.function import FunctionModel
+
+    from devfest_guide.agent import guide_agent
+    from devfest_guide.service import ERROR_MESSAGES
+
+    async def failing_stream(messages, info):
+        raise RuntimeError("Provider unavailable")
+        yield "unreachable"
+
+    with guide_agent.override(model=FunctionModel(stream_function=failing_stream)):
+        response = client.post(
+            "/api/guide",
+            json={"locale": locale, "messages": [{"role": "user", "content": "Hello"}]},
+        )
+
+    assert response.text == sse_event("error", message=ERROR_MESSAGES[locale])
+    assert "Provider unavailable" not in response.text
