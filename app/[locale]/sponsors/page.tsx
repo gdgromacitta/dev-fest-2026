@@ -76,7 +76,7 @@ export default async function SponsorsPage({ params }: Props) {
               return (
                 <div key={tier}>
                   <div className={`eyebrow mb-7 ${label}`}>{t(labelKey)}</div>
-                  <ul role="list" className={`m-0 grid list-none grid-cols-2 gap-5 p-0 ${cols}`}>
+                  <ul role="list" className={`m-0 grid list-none grid-cols-1 gap-5 p-0 ${cols}`}>
                     {tierSponsors.map((sponsor) => (
                       <li key={sponsor.name}>
                         <a
@@ -100,7 +100,7 @@ export default async function SponsorsPage({ params }: Props) {
             {communitySponsors.length > 0 && (
               <div>
                 <div className="eyebrow mb-7 text-accent-gray-deep">{t("communityLabel")}</div>
-                <ul role="list" className="m-0 grid list-none grid-cols-2 gap-5 p-0 sm:grid-cols-4">
+                <ul role="list" className="m-0 grid list-none grid-cols-1 gap-5 p-0 sm:grid-cols-4">
                   {communitySponsors.map((sponsor) => (
                     <li key={sponsor.name}>
                       <a
