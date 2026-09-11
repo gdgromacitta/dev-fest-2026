@@ -3,6 +3,8 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Header } from "@/src/components/layout/header";
 import { Footer } from "@/src/components/layout/footer";
+import { features } from "@/src/content/features";
+import { DevFestGuideChat } from "@/src/features/devfest-guide/DevFestGuideChat";
 import { routing } from "@/i18n/routing";
 
 export function generateStaticParams() {
@@ -40,6 +42,9 @@ export default async function LocaleLayout({ children, params }: Props) {
       <Header />
       <div id="main-content">{children}</div>
       <Footer />
+      {features.devfestGuide ? (
+        <DevFestGuideChat key={locale} locale={locale as "it" | "en"} />
+      ) : null}
     </NextIntlClientProvider>
   );
 }
