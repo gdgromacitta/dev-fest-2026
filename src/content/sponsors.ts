@@ -28,7 +28,7 @@ export const sponsors: Sponsor[] = [
   { name: "JetBrains", url: "https://www.jetbrains.com", community: true, logo: "jetbrains.svg" },
   {
     name: "Women Techmakers Italia",
-    url: "https://www.womentechmakers.it",
+    url: "https://www.womentechmakers.com",
     community: true,
     logo: "women-techmakers.png"
   }
