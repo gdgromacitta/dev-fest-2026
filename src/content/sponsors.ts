@@ -17,6 +17,12 @@ import type { Sponsor } from "@/src/types/content";
  */
 export const sponsors: Sponsor[] = [
   { name: "Google", url: "https://google.com", tier: "main", logo: "google.svg" },
+  {
+    name: "ELIS Innovation Hub",
+    url: "https://www.elis.org",
+    tier: "platinum",
+    logo: "elis-innovation-hub.svg"
+  },
   { name: "Bip", url: "https://www.bip-group.com", tier: "gold", logo: "bip.svg" },
   { name: "Seeweb", url: "https://www.seeweb.it", tier: "silver", logo: "seeweb.svg" },
   { name: "JetBrains", url: "https://www.jetbrains.com", community: true, logo: "jetbrains.svg" },

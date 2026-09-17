@@ -29,24 +29,23 @@ describe("Sponsors page — tier rendering", () => {
     const html = renderToStaticMarkup(element);
 
     const mainIndex = html.indexOf("Main Sponsor");
+    const platinumIndex = html.indexOf("Platinum");
     const goldIndex = html.indexOf("Gold");
     const silverIndex = html.indexOf("Silver");
 
     expect(mainIndex).toBeGreaterThan(-1);
-    expect(goldIndex).toBeGreaterThan(mainIndex);
+    expect(platinumIndex).toBeGreaterThan(mainIndex);
+    expect(goldIndex).toBeGreaterThan(platinumIndex);
     expect(silverIndex).toBeGreaterThan(goldIndex);
 
-    // Real seed data has no Platinum or Bronze sponsors — those tiers must
-    // render nothing at all, not a bare heading with an empty list.
-    expect(html).not.toContain("Platinum");
+    // Real seed data has no Bronze sponsors — that tier must render nothing
+    // at all, not a bare heading with an empty list.
     expect(html).not.toContain("Bronze");
   });
 
-  test("Platinum and Bronze tiers render nothing when empty (no bare heading)", async () => {
-    const platinumSponsors = sponsors.filter((sponsor) => sponsor.tier === "platinum");
+  test("Bronze tier renders nothing when empty (no bare heading)", async () => {
     const bronzeSponsors = sponsors.filter((sponsor) => sponsor.tier === "bronze");
 
-    expect(platinumSponsors).toHaveLength(0);
     expect(bronzeSponsors).toHaveLength(0);
   });
 
