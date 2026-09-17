@@ -107,7 +107,7 @@ export default async function SponsorsPage({ params }: Props) {
                         href={sponsor.url}
                         target="_blank"
                         rel="noreferrer noopener"
-                        className="focus-ring flex h-full min-h-[104px] items-center justify-center rounded-xl border border-line bg-white p-7 text-center text-base font-semibold text-ink transition-colors duration-200 hover:border-line-strong"
+                        className="focus-ring flex h-[136px] items-center justify-center rounded-xl border border-line bg-white p-7 text-center text-base font-semibold text-ink transition-colors duration-200 hover:border-line-strong"
                       >
                         <SponsorLogo sponsor={sponsor} />
                       </a>

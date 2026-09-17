@@ -233,11 +233,11 @@ export default async function HomePage({ params }: Props) {
                       href={sponsor.url}
                       target="_blank"
                       rel="noreferrer noopener"
-                      className="focus-ring flex h-16 min-w-[180px] items-center justify-center rounded-[10px] border border-line bg-white px-6 text-[15px] font-semibold text-ink transition-colors duration-200 hover:border-line-strong"
+                      className="focus-ring flex h-20 min-w-[200px] items-center justify-center rounded-[10px] border border-line bg-white px-8 py-5 text-[15px] font-semibold text-ink transition-colors duration-200 hover:border-line-strong"
                       data-sponsor-name={sponsor.name}
                       data-sponsor-tier={sponsor.tier}
                     >
-                      <SponsorLogo sponsor={sponsor} className="max-h-8" />
+                      <SponsorLogo sponsor={sponsor} />
                     </a>
                   </li>
                 ))}

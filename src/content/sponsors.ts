@@ -19,5 +19,11 @@ export const sponsors: Sponsor[] = [
   { name: "Google", url: "https://google.com", tier: "main", logo: "google.svg" },
   { name: "Bip", url: "https://www.bip-group.com", tier: "gold", logo: "bip.svg" },
   { name: "Seeweb", url: "https://www.seeweb.it", tier: "silver", logo: "seeweb.svg" },
-  { name: "JetBrains", url: "https://www.jetbrains.com", community: true, logo: "jetbrains.svg" }
+  { name: "JetBrains", url: "https://www.jetbrains.com", community: true, logo: "jetbrains.svg" },
+  {
+    name: "Women Techmakers Italia",
+    url: "https://www.womentechmakers.it",
+    community: true,
+    logo: "women-techmakers.png"
+  }
 ];
