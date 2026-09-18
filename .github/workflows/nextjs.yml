@@ -32,6 +32,8 @@ jobs:
       - name: Build Next.js site
         run: npm run build
         env:
+          NEXT_PUBLIC_DEVFEST_GUIDE_ENABLED: ${{ vars.NEXT_PUBLIC_DEVFEST_GUIDE_ENABLED }}
+          NEXT_PUBLIC_DEVFEST_GUIDE_API_URL: ${{ vars.NEXT_PUBLIC_DEVFEST_GUIDE_API_URL }}
           SESSIONIZE_API_URL: ${{ secrets.SESSIONIZE_API_URL }}
           # Optional: only needed when this event's Sessionize category
           # titles differ from the defaults — see README.
