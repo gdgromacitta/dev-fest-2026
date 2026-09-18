@@ -14,21 +14,30 @@ export function SpeakerCard({ speaker, onOpen }: SpeakerCardProps) {
   const tCard = useTranslations("speakerCard");
 
   return (
-    <Card as="article" className="h-full space-y-3" id={speaker.id}>
+    <Card as="article" className="flex h-full flex-col gap-3" id={speaker.id}>
+      {speaker.photo && (
+        <img
+          src={speaker.photo}
+          alt={`${speaker.name} portrait`}
+          className="h-40 w-full rounded-lg object-cover"
+        />
+      )}
       <div>
         <h3 className="m-0 text-lg font-semibold">{speaker.name}</h3>
         <p className="m-0 text-sm text-gblue">
           {speaker.title} at {speaker.company}
         </p>
       </div>
-      <p className="m-0 text-sm text-slate-700">{t(`${speaker.id}.bioShort`)}</p>
-      <button
-        type="button"
-        className="focus-ring rounded-md bg-gblue px-3 py-2 text-sm font-semibold text-white"
-        onClick={onOpen}
-      >
-        {tCard("viewDetails")}
-      </button>
+      <p className="m-0 line-clamp-4 text-sm text-slate-700">{t(`${speaker.id}.bioShort`)}</p>
+      <div className="mt-auto flex justify-end pt-3">
+        <button
+          type="button"
+          className="focus-ring rounded text-sm font-semibold text-gblue hover:underline"
+          onClick={onOpen}
+        >
+          {tCard("viewDetails")}
+        </button>
+      </div>
     </Card>
   );
 }

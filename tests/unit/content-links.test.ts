@@ -5,8 +5,10 @@ import { speakers } from "@/src/content/speakers";
 // Asserted against whatever content is committed — seed data or a Sessionize
 // sync — so regenerating src/content/* can't break these.
 
+// Sessions may legitimately be empty (speakers published before the
+// schedule is out — features.agenda is off in that case), but a speaker
+// roster with nothing in it means the fetch/seed is broken.
 test("content is non-empty", () => {
-  expect(sessions.length).toBeGreaterThan(0);
   expect(speakers.length).toBeGreaterThan(0);
 });
 
