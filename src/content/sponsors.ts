@@ -31,5 +31,11 @@ export const sponsors: Sponsor[] = [
     url: "https://www.womentechmakers.com",
     community: true,
     logo: "women-techmakers.png"
+  },
+  {
+    name: "Golang Roma",
+    url: "https://www.golangroma.it/",
+    community: true,
+    logo: "golangroma.png"
   }
 ];

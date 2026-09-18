@@ -23,6 +23,9 @@ export function SponsorLogo({ sponsor, className }: Props) {
     <img
       src={`/logos/${sponsor.logo}`}
       alt={sponsor.name}
+      loading="lazy"
+      width={160}
+      height={80}
       className={className ? `${className} max-h-full w-auto object-contain` : "max-h-full w-auto object-contain"}
     />
   );
