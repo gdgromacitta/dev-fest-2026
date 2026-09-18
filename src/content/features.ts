@@ -2,7 +2,7 @@
 export const features = {
   venue: true,
   agenda: false,
-  speakers: false,
+  speakers: true,
   sponsors: true,
   about: true,
   cfp: false,
