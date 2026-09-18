@@ -1,4 +1,5 @@
 import { ShuffledTeamGrid } from "@/src/components/about/shuffled-team-grid";
+import { SpeakersCarousel } from "@/src/components/home/speakers-carousel";
 import { PastSponsorsMarquee } from "@/src/components/sponsors/past-sponsors-marquee";
 import { SponsorLogo } from "@/src/components/sponsors/sponsor-logo";
 import { VenuePartnerLogo } from "@/src/components/venue/venue-partner-logo";
@@ -6,6 +7,7 @@ import { features } from "@/src/content/features";
 import { cfpUrl, registerUrl, sponsorFormUrl } from "@/src/content/nav-links";
 import { pastSponsors } from "@/src/content/past-sponsors";
 import { socialImage } from "@/src/content/social-image";
+import { speakers } from "@/src/content/speakers";
 import { sponsors } from "@/src/content/sponsors";
 import { team } from "@/src/content/team";
 import { venue } from "@/src/content/venue";
@@ -203,15 +205,19 @@ export default async function HomePage({ params }: Props) {
               {t("speakersHeading")}
             </h2>
             <p className="m-0 mt-3 max-w-xl text-base text-muted">{t("speakersSubtext")}</p>
-            <div className="mt-11 grid grid-cols-2 gap-6 md:grid-cols-4">
-              {speakerSlots.map((slot) => (
-                <div key={slot.label} className="flex flex-col items-center gap-3 text-center">
-                  <span aria-hidden="true" className="h-24 w-24 rounded-full border border-dashed border-line-strong bg-tint" />
-                  <div className="text-[15px] font-semibold text-ink">{t("speakerTba")}</div>
-                  <span className={`chip !px-3 !py-[5px] !text-xs ${slot.chip}`}>{slot.label}</span>
-                </div>
-              ))}
-            </div>
+            {speakers.length > 0 ? (
+              <SpeakersCarousel />
+            ) : (
+              <div className="mt-11 grid grid-cols-2 gap-6 md:grid-cols-4">
+                {speakerSlots.map((slot) => (
+                  <div key={slot.label} className="flex flex-col items-center gap-3 text-center">
+                    <span aria-hidden="true" className="h-24 w-24 rounded-full border border-dashed border-line-strong bg-tint" />
+                    <div className="text-[15px] font-semibold text-ink">{t("speakerTba")}</div>
+                    <span className={`chip !px-3 !py-[5px] !text-xs ${slot.chip}`}>{slot.label}</span>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </section>
       )}

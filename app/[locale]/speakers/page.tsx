@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { cfpUrl } from "@/src/content/nav-links";
 import { features } from "@/src/content/features";
+import { speakers } from "@/src/content/speakers";
+import { SpeakersGrid } from "@/src/components/speakers/speakers-grid";
 
 export const metadata: Metadata = {
   title: "Speakers | DevFest Roma",
@@ -43,18 +45,22 @@ export default async function SpeakersPage({ params }: Props) {
         </div>
       </section>
 
-      {/* TBA grid */}
+      {/* Speaker grid */}
       <section aria-label={t("heading")}>
         <div className="mx-auto w-full max-w-[1440px] px-4 py-16 md:px-16 md:py-20">
-          <div className="grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4">
-            {speakerSlots.map((slot, index) => (
-              <div key={`${slot.label}-${index}`} className="flex flex-col items-center gap-3.5 text-center">
-                <span aria-hidden="true" className="h-[104px] w-[104px] rounded-full border border-dashed border-line-strong bg-tint" />
-                <div className="text-base font-semibold text-ink">{t("speakerTba")}</div>
-                <span className={`chip !px-3 !py-[5px] !text-xs ${slot.chip}`}>{slot.label}</span>
-              </div>
-            ))}
-          </div>
+          {speakers.length > 0 ? (
+            <SpeakersGrid />
+          ) : (
+            <div className="grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4">
+              {speakerSlots.map((slot, index) => (
+                <div key={`${slot.label}-${index}`} className="flex flex-col items-center gap-3.5 text-center">
+                  <span aria-hidden="true" className="h-[104px] w-[104px] rounded-full border border-dashed border-line-strong bg-tint" />
+                  <div className="text-base font-semibold text-ink">{t("speakerTba")}</div>
+                  <span className={`chip !px-3 !py-[5px] !text-xs ${slot.chip}`}>{slot.label}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
