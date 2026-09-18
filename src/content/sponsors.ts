@@ -12,6 +12,7 @@ import type { Sponsor } from "@/src/types/content";
  * - seeweb.svg: seeweb.it site asset (/assets/images/logo-seeweb.svg).
  * - datwave.svg: datwave.ai site asset
  *   (/wp-content/uploads/2024/06/datwave-logo.svg).
+ * - bc-soft.svg: provided directly by BC Soft (horizontal, positive variant).
  * Add a file to `public/logos/` and set `logo` to its filename to show a
  * real logo for any future entry — no code change required.
  */
@@ -25,6 +26,7 @@ export const sponsors: Sponsor[] = [
   },
   { name: "Datwave", url: "https://datwave.ai", tier: "gold", logo: "datwave.svg" },
   { name: "Seeweb", url: "https://www.seeweb.it", tier: "silver", logo: "seeweb.svg" },
+  { name: "BC Soft", url: "https://www.bcsoft.net/", tier: "silver", logo: "bc-soft.svg" },
   { name: "JetBrains", url: "https://www.jetbrains.com", community: true, logo: "jetbrains.svg" },
   {
     name: "Women Techmakers Italia",
