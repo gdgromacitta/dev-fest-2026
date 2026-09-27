@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { socialImage } from "@/src/content/social-image";
-import { Inter, Poppins } from "next/font/google";
+import { Inter, Poppins, Roboto_Flex } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import "./globals.css";
 import { ServiceWorkerRegistration } from "@/src/components/pwa/service-worker-registration";
@@ -10,6 +10,15 @@ const poppins = Poppins({
   subsets: ["latin"],
   weight: ["600", "700"],
   variable: "--font-poppins",
+  display: "swap"
+});
+
+// Variable width + weight axes drive the home hero's scroll animation and the
+// theme-word hover; Poppins has neither axis.
+const robotoFlex = Roboto_Flex({
+  subsets: ["latin"],
+  axes: ["wdth", "opsz"],
+  variable: "--font-flex",
   display: "swap"
 });
 
@@ -46,7 +55,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang={routing.defaultLocale}>
-      <body className={`${inter.variable} ${poppins.variable} font-sans`}>
+      <body className={`${inter.variable} ${poppins.variable} ${robotoFlex.variable} font-sans`}>
         {children}
         <ServiceWorkerRegistration />
       </body>

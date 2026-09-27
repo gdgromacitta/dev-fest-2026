@@ -11,6 +11,8 @@ const config: Config = {
         faint: "oklch(0.6 0.01 260)",
         mist: "oklch(0.75 0.01 260)",
         tint: "oklch(0.97 0.01 240)",
+        // Warm travertine neutral for the venue tile — a nod to Rome's stone.
+        sand: "oklch(0.95 0.025 80)",
         line: {
           DEFAULT: "oklch(0.9 0.005 260)",
           soft: "oklch(0.92 0.005 260)",
@@ -43,7 +45,8 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-poppins)", "system-ui", "sans-serif"]
+        display: ["var(--font-poppins)", "system-ui", "sans-serif"],
+        flex: ["var(--font-flex)", "var(--font-poppins)", "system-ui", "sans-serif"]
       }
     }
   },

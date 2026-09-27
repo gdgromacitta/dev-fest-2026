@@ -79,7 +79,34 @@
     "teamHeading": "I nostri Organizzatori",
     "teamSubtext": "I volontari appassionati dietro DevFest Roma che lavorano per creare un'esperienza inclusiva e ad alto impatto per tutti.",
     "learnMoreCta": "Scopri il team",
-    "venuePartnerLabel": "Con il supporto di"
+    "venuePartnerLabel": "Con il supporto di",
+    "bentoHeading": "DevFest Roma 2026 in breve",
+    "themeBadge": "Tema 2026",
+    "theme1": "Build,",
+    "theme2": "Secure,",
+    "theme3": "Scale.",
+    "themeTagline": "Sviluppatori e builder nell'era agentica.",
+    "themeSubtext": "Casi reali ed esperienza sul campo, senza talk di marketing.",
+    "registerBadge": "Ingresso gratuito",
+    "registerTileText": "La partecipazione è gratuita grazie alle aziende che sostengono la nostra community.",
+    "registerTileCta": "Prenota il tuo posto",
+    "countdownLabel": "{count, plural, one {giorno all'evento} other {giorni all'evento}}",
+    "countdownToday": "DevFest è oggi",
+    "countdownPast": "Grazie di essere venuti",
+    "countdownDate": "Sab 10.10 · 09:00",
+    "speakersTileLabel": "speaker confermati",
+    "speakersTileCta": "Scopri gli speaker",
+    "venueRouteLabel": "Metro B fino a Basilica San Paolo, poi circa 10 minuti a piedi",
+    "venueMetroStop": "Basilica S. Paolo",
+    "venueWalk": "~10 min a piedi",
+    "venueStreet": "Via V. Volterra 60",
+    "communityValue": "500+",
+    "communityText": "sviluppatori nella community GDG Roma Città. DevFest è organizzato interamente da volontari.",
+    "heroLine1": "DevFest",
+    "heroLine2": "Roma",
+    "heroWhen": "Sabato 10 Ottobre 2026",
+    "heroTime": "9:00 – 18:00",
+    "heroSummary": "Università Roma Tre, Via Vito Volterra 60. Una giornata gratuita di talk per sviluppatori e builder nell'era agentica."
   },
   "venue": {
     "badge": "Sede",
@@ -108,7 +135,9 @@
       "commitment": "Ci impegniamo a rendere DevFest Roma 2026 un'esperienza inclusiva per tutti i partecipanti.",
       "contactLabel": "Per esigenze specifiche di accessibilità, scrivici a"
     },
-    "venuePartnerLabel": "Con il supporto di"
+    "venuePartnerLabel": "Con il supporto di",
+    "titleLine1": "Sede",
+    "titleLine2": "Roma Tre"
   },
   "sponsorsPage": {
     "badge": "Sponsor",
@@ -131,7 +160,9 @@
     "benefit4": "Presenza su sito, social e materiali dell'evento",
     "ctaCardTitle": "Richiedi il prospetto sponsor",
     "ctaCardDescription": "Scrivici per ricevere i pacchetti di sponsorizzazione disponibili e i relativi benefit.",
-    "ctaCardButton": "Compila il form"
+    "ctaCardButton": "Compila il form",
+    "titleLine1": "Sponsor",
+    "titleLine2": "2026"
   },
   "about": {
     "aboutTitle": "About GDG\nDevFest Roma",
@@ -143,7 +174,9 @@
     "value_community_title": "Comunità",
     "value_community_description": "Unisciti a migliaia di sviluppatori in un ambiente fondato sulla collaborazione e la crescita reciproca.",
     "value_globalImpact_title": "Impatto Globale",
-    "value_globalImpact_description": "Fai parte del più grande evento della community di sviluppatori al mondo, che raggiunge oltre 100 paesi."
+    "value_globalImpact_description": "Fai parte del più grande evento della community di sviluppatori al mondo, che raggiunge oltre 100 paesi.",
+    "titleLine1": "Chi",
+    "titleLine2": "siamo"
   },
   "teamCard": {
     "portraitAlt": "ritratto di {name}"
@@ -435,7 +468,9 @@
     "unassignedRoom": "Da assegnare",
     "speakerTba": "Da annunciare",
     "speakerTbaSubtitle": "Relatore da annunciare",
-    "resultsStatus": "{count, plural, =0 {Nessuna sessione corrisponde} one {# sessione} other {# sessioni}}"
+    "resultsStatus": "{count, plural, =0 {Nessuna sessione corrisponde} one {# sessione} other {# sessioni}}",
+    "titleLine1": "Agenda",
+    "titleLine2": "10.10"
   },
   "speakersPage": {
     "badge": "Speaker",
@@ -444,7 +479,9 @@
     "speakerTba": "Speaker TBA",
     "cfpTitle": "Vuoi essere uno dei nostri speaker?",
     "cfpSubtext": "La Call for Papers chiude il 31 luglio 2026.",
-    "cfpCta": "Invia una Proposta"
+    "cfpCta": "Invia una Proposta",
+    "titleLine1": "Speaker",
+    "titleLine2": "2026"
   },
   "pastSponsors": {
     "heading": "Chi ha creduto in noi"

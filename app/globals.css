@@ -54,12 +54,76 @@ body {
   .chip {
     @apply inline-flex rounded-full px-4 py-2 text-[13px] font-semibold;
   }
+
+  /* Home bento grid — each tile is one flat block of the at-a-glance grid */
+  .bento-tile {
+    @apply relative flex min-w-0 flex-col gap-3.5 rounded-[22px] p-6 md:p-8;
+  }
+  .bento-link {
+    @apply transition-[transform,box-shadow] duration-200 hover:-translate-y-[3px] hover:shadow-[0_10px_28px_-14px_oklch(0.2_0.03_260/0.35)];
+  }
+  .bento-figure {
+    @apply font-display text-[3.75rem] font-bold leading-[0.9] tracking-[-0.04em] tabular-nums md:text-[5rem];
+  }
+  .bento-go {
+    @apply mt-auto inline-flex items-center gap-2 text-[15px] font-semibold;
+  }
+  .bento-go::after {
+    content: "→";
+    @apply transition-transform duration-200;
+  }
+  .bento-link:hover .bento-go::after {
+    @apply translate-x-1;
+  }
+
+  /* Home hero title: sized to the viewport; HeroHeadline animates its axes on scroll. */
+  .hero-title {
+    @apply font-flex text-ink;
+    font-size: clamp(4.2rem, 18.5vw, 17.5rem);
+    line-height: 0.84;
+    letter-spacing: -0.035em;
+  }
+  /* Inner pages: same treatment, sized for longer words than "DevFest". */
+  .page-title {
+    @apply font-flex text-ink;
+    font-size: clamp(3.4rem, 14vw, 12rem);
+    line-height: 0.84;
+    letter-spacing: -0.035em;
+  }
+  .hero-headline {
+    display: block;
+    font-weight: 850;
+    font-variation-settings: "wdth" 112, "opsz" 144;
+  }
+
+  /* Theme words: hovering the tile thins every word, the hovered one goes heavy and wide. */
+  .theme-words {
+    @apply font-flex;
+    font-size: clamp(3.4rem, 8.4vw, 8.2rem);
+    line-height: 0.86;
+    letter-spacing: -0.04em;
+  }
+  .theme-words span {
+    display: block;
+    font-weight: 780;
+    font-variation-settings: "wdth" 100, "opsz" 144;
+    transition: font-weight 0.45s ease, font-variation-settings 0.45s ease;
+  }
+  .theme-tile:hover .theme-words span {
+    font-weight: 300;
+    font-variation-settings: "wdth" 70, "opsz" 144;
+  }
+  .theme-tile:hover .theme-words span:hover {
+    font-weight: 950;
+    font-variation-settings: "wdth" 125, "opsz" 144;
+  }
 }
 
 .focus-ring:focus-visible,
 .btn-primary:focus-visible,
 .btn-outline:focus-visible,
-.btn-dark:focus-visible {
+.btn-dark:focus-visible,
+.bento-link:focus-visible {
   outline: 3px solid var(--google-blue);
   outline-offset: 2px;
 }

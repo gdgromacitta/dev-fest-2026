@@ -5,6 +5,7 @@ import { aboutHero, aboutValues } from "@/src/content/about";
 import { team } from "@/src/content/team";
 import { ShuffledTeamGrid } from "@/src/components/about/shuffled-team-grid";
 import { features } from "@/src/content/features";
+import { PageHero } from "@/src/components/layout/page-hero";
 
 export const metadata: Metadata = {
   title: "About | DevFest Roma",
@@ -27,26 +28,14 @@ export default async function AboutPage({ params }: Props) {
 
   return (
     <main>
-      {/* ── Hero ──────────────────────────────────────────────── */}
-      <section className="bg-tint">
-        <div className="mx-auto grid w-full max-w-[1440px] gap-12 px-4 py-16 md:grid-cols-[1.05fr_0.95fr] md:items-center md:px-16 md:py-24">
-          <div className="space-y-6">
-            <div className="space-y-5">
-              <h1 className="m-0 max-w-xl text-5xl font-bold leading-[1.05] text-ink md:text-[3.75rem]">
-                {titleLine1}
-                <br />
-                <span className="text-primary">{titleLine2}</span>
-              </h1>
-              <p className="m-0 max-w-md text-lg leading-relaxed text-muted">{t("aboutDescription")}</p>
-            </div>
-          </div>
-          <div className="mx-auto w-full max-w-[30rem]">
-            <div className="overflow-hidden rounded-[20px] border border-line bg-white p-10">
-              <img src={aboutHero.visual} alt="DevFest Roma" className="block h-auto w-full" />
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        id="about-heading"
+        eyebrow={`${titleLine1} · ${titleLine2}`}
+        lines={[t("titleLine1"), t("titleLine2")]}
+      >
+        <p className="m-0 max-w-2xl text-lg leading-relaxed text-muted">{t("aboutDescription")}</p>
+        <img src={aboutHero.visual} alt="DevFest Roma" className="block h-14 w-auto md:h-16" />
+      </PageHero>
 
       {/* ── Team ──────────────────────────────────────────────── */}
       <section aria-labelledby="team-heading">
@@ -61,22 +50,18 @@ export default async function AboutPage({ params }: Props) {
         </div>
       </section>
 
-      {/* ── Values ────────────────────────────────────────────── */}
-      <section className="bg-tint">
-        <div className="mx-auto grid w-full max-w-[1440px] gap-10 px-4 py-16 text-center md:grid-cols-3 md:px-16 md:py-20">
+      {/* ── Values — one bento row, each value on its own color ── */}
+      <section>
+        <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 gap-2.5 px-4 pb-16 md:grid-cols-3 md:gap-3.5 md:px-16 md:pb-24">
           {aboutValues.map((value) => {
             const title = t(`value_${value.key}_title`);
             const description = t(`value_${value.key}_description`);
 
             return (
-              <article key={value.key} data-about-value={title} className="mx-auto max-w-xs space-y-4">
-                <div className={`mx-auto flex h-9 w-9 items-center justify-center rounded-full ${value.soft}`}>
-                  <span className={`h-3 w-3 rounded-full ${value.dot}`} />
-                </div>
-                <div className="space-y-3">
-                  <h2 className="m-0 text-xl font-bold text-ink">{title}</h2>
-                  <p className="m-0 text-[15px] leading-relaxed text-muted">{description}</p>
-                </div>
+              <article key={value.key} data-about-value={title} className={`bento-tile min-h-[220px] ${value.soft}`}>
+                <span aria-hidden="true" className={`h-3.5 w-3.5 rounded-full ${value.dot}`} />
+                <h2 className="m-0 mt-auto font-flex text-[2rem] font-bold leading-none tracking-[-0.02em] text-ink">{title}</h2>
+                <p className="m-0 text-[15px] leading-relaxed text-ink/80">{description}</p>
               </article>
             );
           })}
