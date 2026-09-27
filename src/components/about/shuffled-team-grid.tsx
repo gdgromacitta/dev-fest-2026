@@ -2,19 +2,8 @@
 
 import { useState, useEffect } from "react";
 import type { TeamMember } from "@/src/types/content";
+import { shuffle } from "@/src/lib/shuffle";
 import { TeamCard } from "./team-card";
-
-/**
- * Fisher-Yates in-place shuffle — returns a new array, never mutates the input.
- */
-function shuffle<T>(arr: readonly T[]): T[] {
-  const result = [...arr];
-  for (let i = result.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [result[i], result[j]] = [result[j], result[i]];
-  }
-  return result;
-}
 
 type ShuffledTeamGridProps = {
   members: TeamMember[];

@@ -68,7 +68,10 @@ describe("Agenda page structure", () => {
 
     const rendered = [...html.matchAll(/data-agenda-session="([^"]+)"/g)].map((match) => match[1]);
     expect(rendered).toEqual(expected);
-    expect(rendered.length).toBeGreaterThan(0);
+    // Guards against a vacuously-true empty/empty match — skipped while
+    // speakers are published ahead of the schedule (sessions.ts is
+    // legitimately empty then; see content-links.test.ts).
+    if (sessions.length > 0) expect(rendered.length).toBeGreaterThan(0);
   });
 
   test("renders each visible session's translated title and start time", () => {

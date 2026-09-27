@@ -118,12 +118,16 @@ async function main() {
       categoryTitles
     });
 
-    if (sessions.length === 0 || speakers.length === 0) {
+    if (speakers.length === 0) {
       console.warn(
         `[fetch-sessionize] response has ${sessions.length} scheduled session(s) and ${speakers.length} ` +
           "speaker(s) — skipping, keeping existing content."
       );
       return;
+    }
+
+    if (sessions.length === 0) {
+      console.warn("[fetch-sessionize] no scheduled sessions yet — writing speakers only, agenda will be empty.");
     }
 
     if (skippedUnscheduled > 0) {
@@ -134,7 +138,7 @@ async function main() {
     // every session, which silently guts the agenda filters — the failure this
     // script is most likely to hit, since the titles are per-event free text.
     const withoutTrack = sessions.filter((s) => !s.track).length;
-    if (withoutTrack === sessions.length) {
+    if (sessions.length > 0 && withoutTrack === sessions.length) {
       const seen = (apiResponse.categories ?? []).map((c) => c.title).join(", ");
       console.warn(
         `[fetch-sessionize] no session matched a track category (tried: ${categoryTitles.track.join(", ")}; ` +
@@ -153,14 +157,16 @@ async function main() {
     // messages namespaces have to agree — a half-written pair leaves the repo
     // with sessions whose `sessions.<id>.title` key is missing, which fails
     // the Next build rather than falling back cleanly.
+    // With zero sessions there's nothing to replace the `sessions` messages
+    // namespace with — leave whatever's already committed there untouched
+    // rather than wiping it to {}, same as any other namespace this script
+    // doesn't own.
+    const messageNamespaces = sessions.length > 0 ? { sessions: sessionMessages, speakers: speakerMessages } : { speakers: speakerMessages };
+
     const files = [
       [path.join(ROOT, "src/content/sessions.ts"), serializeSessions(sessions)],
       [path.join(ROOT, "src/content/speakers.ts"), serializeSpeakers(speakers)],
-      ...(await Promise.all(
-        LOCALES.map((locale) =>
-          renderMessages(locale, { sessions: sessionMessages, speakers: speakerMessages })
-        )
-      ))
+      ...(await Promise.all(LOCALES.map((locale) => renderMessages(locale, messageNamespaces))))
     ];
 
     // Rename is atomic per file, but four files can't be swapped in one step.

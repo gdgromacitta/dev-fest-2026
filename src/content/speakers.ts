@@ -6,123 +6,165 @@ import type { Speaker } from "@/src/types/content";
 // before hand-editing.
 export const speakers: Speaker[] = [
     {
-      "id": "6fc71432-0fc4-4160-a7c9-0284e55e6398",
-      "name": "Alfredo Morresi",
-      "title": "Developer Relations @ Google",
+      "id": "ed5cdb60-eb09-49bc-af9c-a1df24e0c921",
+      "name": "Adi Mazor Kario",
+      "title": "Product, Design & Gen AI Expert",
       "company": "",
-      "photo": "https://cdn.sessionize.com/image/970e-400o400o1-Xda5G7dE1SHvGgMQinayWf.png",
-      "links": [],
-      "sessions": [
-        "1056519"
+      "photo": "https://cdn.sessionize.com/image/2014-400o400o1-9WPNTXm4EAsjJdLzszsW3Z.jpg",
+      "links": [
+        {
+          "label": "X (Twitter)",
+          "url": "https://twitter.com/AdiMazorKario"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/adimazorkario/"
+        },
+        {
+          "label": "Blog",
+          "url": "https://open.spotify.com/show/3YPor4R2whDXXCtKUPHqrF?si=fe5bcc819db34267"
+        }
       ],
+      "sessions": [],
       "keynote": false
     },
     {
-      "id": "96357db4-3623-42e2-a773-8d7de9a292f5",
-      "name": "Andrea Della Porta",
-      "title": "Cegeka, Mobile Technical Leader",
+      "id": "277c86d6-408f-4aaf-9558-ab8d72ac5a00",
+      "name": "Alexander Amin",
+      "title": "Freelance Software Engineer",
       "company": "",
-      "photo": "https://cdn.sessionize.com/image/ee34-400o400o1-WZpt2cFNVGhBUbioMTX1cK.jpg",
-      "links": [],
-      "sessions": [
-        "1046434"
+      "photo": "https://cdn.sessionize.com/image/6f9e-400o400o1-3d9DJxPhtq1mkMgkk56rhp.jpg",
+      "links": [
+        {
+          "label": "LinkedIn",
+          "url": "https://linkedin.com/in/alex-amin"
+        }
       ],
+      "sessions": [],
       "keynote": false
     },
     {
-      "id": "8aa33621-32f9-4cc1-a659-a86bea38b2c9",
-      "name": "Angela Petraglia",
-      "title": "Avvocato",
+      "id": "4f4a677c-44c3-484e-accb-5ba8b38463ef",
+      "name": "Alfonso Graziano",
+      "title": "AI Tech Lead @ Nearform",
       "company": "",
-      "photo": "https://cdn.sessionize.com/image/eee0-400o400o1-LxKgjr5WhKBYyQP5AG44LJ.jpg",
-      "links": [],
-      "sessions": [
-        "1059496"
+      "photo": "https://cdn.sessionize.com/image/b124-400o400o1-E73XiN6VYoSJZGcZjsnQY3.jpg",
+      "links": [
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/alfonso-graziano/"
+        },
+        {
+          "label": "Blog",
+          "url": "https://www.alfonsograziano.it/"
+        }
       ],
+      "sessions": [],
       "keynote": false
     },
     {
-      "id": "306a6fe7-3509-4475-a94d-29d74b31e224",
-      "name": "Antonio Di Marino",
-      "title": "COO @ Ready2Use | Community Manager @ GDG Pescara | Community Manager @ Ableton User Group Pescara",
+      "id": "5420ebbc-daff-4bde-959b-4542e4287fdd",
+      "name": "Alfredo Bautista Santos",
+      "title": "Flutter & Dart GDE / Flutter dev / GDG organizer",
       "company": "",
-      "photo": "https://cdn.sessionize.com/image/59c5-400o400o1-aYrcmSSXwruAxPQvNZ7Gfn.png",
-      "links": [],
-      "sessions": [
-        "1056716"
+      "photo": "https://cdn.sessionize.com/image/3af7-400o400o1-9W9wup8wc65N57QSJgh5pw.png",
+      "links": [
+        {
+          "label": "X (Twitter)",
+          "url": "https://x.com/alfredobs97"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/alfredo-bautista-santos-179b2b105/"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/alfredobs97/"
+        }
       ],
+      "sessions": [],
       "keynote": false
     },
     {
-      "id": "c1f5a2da-9168-4e08-92a3-89cd792ca36a",
-      "name": "Camillo Bucciarelli",
-      "title": "Technical manager @ Sopra Steria",
+      "id": "c6d730f8-1144-464c-ba36-606c92618a98",
+      "name": "Carlo Antonio Venditti",
+      "title": "Freelance software engineer",
       "company": "",
-      "photo": "https://cdn.sessionize.com/image/b8a3-400o400o1-HfF1SQKRTkTkZ983QYync2.jpeg",
-      "links": [],
-      "sessions": [
-        "1050412"
+      "photo": "https://cdn.sessionize.com/image/b677-400o400o1-376kqrW6fTCWR45obCpjKa.jpg",
+      "links": [
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/carlo-antonio-venditti-6649b0193"
+        }
       ],
+      "sessions": [],
       "keynote": false
     },
     {
-      "id": "e0b4eee9-2d42-4ab9-93e3-b6973255fe0e",
-      "name": "Danilo Macchion",
-      "title": "Programmatore Junior presso Alceo s.r.l.",
+      "id": "55c6b59b-448d-4e3b-a013-3b23810b6fcd",
+      "name": "Daniel Ostrovsky",
+      "title": "AI Architect at Payoneer | Full Cycle Development Expert | Public Speaker | Open Source Contributor | ",
       "company": "",
-      "photo": "https://cdn.sessionize.com/image/e663-400o400o1-Hgo8kS59M2tn2K6Hg65gj6.png",
-      "links": [],
-      "sessions": [
-        "1050047"
+      "photo": "https://cdn.sessionize.com/image/401f-400o400o1-P6uziRGo5Pa9LiWzydSkPn.png",
+      "links": [
+        {
+          "label": "X (Twitter)",
+          "url": "https://x.com/danduh81"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/danduh/"
+        },
+        {
+          "label": "Blog",
+          "url": "https://medium.com/@danduh"
+        }
       ],
+      "sessions": [],
       "keynote": false
     },
     {
-      "id": "fc8ff68b-5890-48cd-8de6-05a062d962b5",
-      "name": "Egon Ferri",
-      "title": "Computer Vision Engineer @ Immobiliare.it",
+      "id": "67fa196a-5b03-4d22-a521-48ae1d56e2b1",
+      "name": "Elsa Panza",
+      "title": "Datwave, Manager, Data Engineer - Data Architect - Data Analyst",
       "company": "",
-      "photo": "https://cdn.sessionize.com/image/7fff-400o400o1-ReFBXrwGWaXCVq7XihiBnV.jpg",
+      "photo": "https://cdn.sessionize.com/image/8512-400o400o1-M3JScJf21wHyTmEXvf67z9.png",
       "links": [],
-      "sessions": [
-        "1054768"
-      ],
+      "sessions": [],
       "keynote": false
     },
     {
-      "id": "05ed4b4a-5d57-4602-bb4e-8d55efad3e0f",
-      "name": "Emiliano Pisu",
-      "title": "Senior Design Engineer, Sensei & Co-Host @ DevDojoIT",
+      "id": "c5dfc454-2d8f-42a5-a8df-7331e20f3329",
+      "name": "Fabio Carusi",
+      "title": "Data Engineer @BitBang ",
       "company": "",
-      "photo": "https://cdn.sessionize.com/image/3f00-400o400o1-EcrLxcftstvv3HTx9qb6cD.jpg",
-      "links": [],
-      "sessions": [
-        "1046536"
+      "photo": "https://cdn.sessionize.com/image/7a1a-400o400o1-R73tFEQXQUYopVpLbuaTos.jpg",
+      "links": [
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/fabio-carusi-34812325/"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/fabio_carusi/"
+        }
       ],
-      "keynote": false
-    },
-    {
-      "id": "d2ecc764-8de2-4e9c-9766-14a527f8820c",
-      "name": "Fabio Biondi",
-      "title": "Microsoft MVP | Google Expert in Angular",
-      "company": "",
-      "photo": "https://cdn.sessionize.com/image/b9d2-400o400o1-64-8de2-4e9c-9766-14a527f8820c.b46b3700-6eeb-4a6f-857c-7ee0c024ee00.png",
-      "links": [],
-      "sessions": [
-        "1048615"
-      ],
+      "sessions": [],
       "keynote": false
     },
     {
       "id": "e715387d-ff3b-4559-bdc3-1ee34393d8e4",
       "name": "Fabio Catinella",
-      "title": "Senior Android Developer @ Twinkly ",
+      "title": "Senior Android Developer @ Sky",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/2d8d-400o400o1-XeArCJX5wVh4tKTy6DMy43.png",
-      "links": [],
-      "sessions": [
-        "1048568"
+      "links": [
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/fabio-catinella/"
+        }
       ],
+      "sessions": [],
       "keynote": false
     },
     {
@@ -131,82 +173,182 @@ export const speakers: Speaker[] = [
       "title": "Developer Advocate at daily.dev | Docker Captain",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/5bc3-400o400o1-QpTCTVpr9LyzQPGFwSAbSt.jpg",
-      "links": [],
-      "sessions": [
-        "1057354"
+      "links": [
+        {
+          "label": "X (Twitter)",
+          "url": "https://twitter.com/FrancescoCiull4"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/francesco-ciulla-roma/"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/francescociull4"
+        },
+        {
+          "label": "Blog",
+          "url": "http://francescociulla.com/"
+        }
       ],
+      "sessions": [],
       "keynote": false
     },
     {
-      "id": "3d9a3287-cc36-4428-b6b4-1dd1df1e70e8",
-      "name": "Gregorio Palamà",
-      "title": "GDE Cloud | Mia-Platform Expert | Senior Enterprise Architect @ Adesso | Community Manager @ GDG Pescara",
+      "id": "5a25ee5f-9a7b-44e4-9ea6-f70f5ba36244",
+      "name": "Giacomo Sergio",
+      "title": "CEO@Wondersys/Co-Founder and CTO@YouDoTOols",
       "company": "",
-      "photo": "https://cdn.sessionize.com/image/a17b-400o400o1-3Bzfto4MgCJbi7uwAYGkRf.png",
-      "links": [],
-      "sessions": [
-        "1049495"
+      "photo": "https://cdn.sessionize.com/image/a4c7-400o400o1-nc7XrcEhXZ3LMQTtRxnu2Y.jpg",
+      "links": [
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/giacomo-sergio-5047752/"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://www.facebook.com/giacomo.sergio.3"
+        },
+        {
+          "label": "Blog",
+          "url": "https://youdotoo.app/en/category/blog-en/"
+        }
       ],
+      "sessions": [],
       "keynote": false
     },
     {
-      "id": "bf45e077-cf45-44a5-bd6c-4e021fd59a08",
-      "name": "Guido Penta",
-      "title": "Co-Founder & Chief Recruiting Officer @Welyk , host @La Locanda del Tech",
+      "id": "16271985-149a-411d-bebb-e9704df38154",
+      "name": "Haim Michael",
+      "title": "Software Developer | Trainer | Consultant",
       "company": "",
-      "photo": "https://cdn.sessionize.com/image/e06d-400o400o1-wTX43i52E2vMd9SXCdKTRK.jpg",
-      "links": [],
-      "sessions": [
-        "1050857"
+      "photo": "https://cdn.sessionize.com/image/ff78-400o400o1-JHhbLhS2qtq6gV8qDvf1Hy.png",
+      "links": [
+        {
+          "label": "X (Twitter)",
+          "url": "https://x.com/lifemichael"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://linkedin.com/in/lifemichael"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://facebook.com/lifemichael"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://instagram.com/lifemichael"
+        },
+        {
+          "label": "Blog",
+          "url": "https://blog.lifemichael.com"
+        }
       ],
+      "sessions": [],
       "keynote": false
     },
     {
-      "id": "9313756e-05ba-4c41-aa31-260482f46093",
-      "name": "Lorenzo De Francesco",
-      "title": "CTO",
+      "id": "cc115ac8-2e9b-4f28-bf88-48c8b4341938",
+      "name": "Jason Berryman",
+      "title": "Google Developer Expert - Firebase & Cloud",
       "company": "",
-      "photo": "https://cdn.sessionize.com/image/1f37-400o400o1-no3LfKzhtCxKPw2RdJZohk.png",
-      "links": [],
-      "sessions": [
-        "1048317"
+      "photo": "https://cdn.sessionize.com/image/d1c5-400o400o1-3CFdR7Dw8Vc3WHP1j8bmri.jpg",
+      "links": [
+        {
+          "label": "X (Twitter)",
+          "url": "https://twitter.com/JasonBerrymanUK"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/jasonberryman/"
+        }
       ],
+      "sessions": [],
       "keynote": false
     },
     {
-      "id": "df577d1f-1e8c-491a-a9de-5c8bbdb91bd7",
-      "name": "Luca Del Puppo",
-      "title": "Nearform_, Senior Software Engineer",
+      "id": "cfbb2c88-e6be-4024-924e-729be5eebbf7",
+      "name": "Maria Korneeva",
+      "title": "Consultant and Trainer",
       "company": "",
-      "photo": "https://cdn.sessionize.com/image/09ed-400o400o1-Mtu422U1R2UjEixBL8dDea.jpg",
-      "links": [],
-      "sessions": [
-        "1046422"
+      "photo": "https://cdn.sessionize.com/image/a493-400o400o1-J3LQN4RCnWKMuGEYKvdB9H.jpg",
+      "links": [
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/maria-korneeva/"
+        },
+        {
+          "label": "Blog",
+          "url": "https://browserperson.medium.com/"
+        }
       ],
+      "sessions": [],
       "keynote": false
     },
     {
-      "id": "96c13f58-033e-4f7a-8401-edcc8370009b",
-      "name": "Luca Di Vita",
-      "title": "Machine Learning Engineer @ Cy4Gate | Organizer @ GDG Pescara | Co-Founder @ Python Pescara",
+      "id": "190be305-4971-497a-b24e-38558aba5c8f",
+      "name": "Mohamed Islem Ayari",
+      "title": "CLOUDPILOTS, Cloud Consultant",
       "company": "",
-      "photo": "https://cdn.sessionize.com/image/2baa-400o400o1-HJSZbMy7xpdVXM8xN2RF5Y.png",
-      "links": [],
-      "sessions": [
-        "1048576"
+      "photo": "https://cdn.sessionize.com/image/f081-400o400o1-fW8QhuuntD4yfTmHuzskjQ.jpg",
+      "links": [
+        {
+          "label": "LinkedIn",
+          "url": "https://linkedin.com/in/mohamed-islem-ayari-98a32a172"
+        },
+        {
+          "label": "Blog",
+          "url": "https://medium.com/@mohamed.islem.ayari"
+        }
       ],
+      "sessions": [],
       "keynote": false
     },
     {
-      "id": "337cbd32-a071-4045-9724-2e4fb8891058",
-      "name": "Michele Scarpa",
-      "title": "web developer - software engineer - curiosity is everything",
+      "id": "d3f982bf-06f2-4a7a-ac5a-2479f4cec0b2",
+      "name": "Mohamed Mortadha Manai",
+      "title": "Senior AI Engineer  | Google Developer Expert in Cloud AI |Phd Candidate in xAI | AI Expert Consultant | AI Expert Author | International AI Speaker",
       "company": "",
-      "photo": "https://cdn.sessionize.com/image/062d-400o400o1-f7ZCeFmN73cUJ251GRchUj.png",
-      "links": [],
-      "sessions": [
-        "1047075"
+      "photo": "https://cdn.sessionize.com/image/a17b-400o400o1-DT2RYj3mGNxmsLqrknvJCo.jpg",
+      "links": [
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/mannai-mortadha/"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://www.facebook.com/profile.php?id=100004306062352"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/mortadha_mannai/"
+        },
+        {
+          "label": "Blog",
+          "url": "https://manaimortadha.medium.com/"
+        }
       ],
+      "sessions": [],
+      "keynote": false
+    },
+    {
+      "id": "4d99c10c-8f54-4526-ac00-873711d36042",
+      "name": "Moisés Martínez",
+      "title": "ML, DL, LLMs, LVMs, TensorFlow, GCP,  Pytorch, Python. ",
+      "company": "",
+      "photo": "https://cdn.sessionize.com/image/78a5-400o400o1-WxgqwFt3uuGgJeNgTdrd3N.jpg",
+      "links": [
+        {
+          "label": "X (Twitter)",
+          "url": "https://twitter.com/moisipm?lang=es"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/momartinm/"
+        }
+      ],
+      "sessions": [],
       "keynote": false
     },
     {
@@ -215,46 +357,113 @@ export const speakers: Speaker[] = [
       "title": "GSE spa - IT Expert",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/a0ac-400o400o1-JuJZHqwbWMmU3yYvLHrhBW.png",
-      "links": [],
-      "sessions": [
-        "1058647"
+      "links": [
+        {
+          "label": "X (Twitter)",
+          "url": "https://twitter.com/www_caressa_it"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://linkedin.com/in/paolocaressa"
+        },
+        {
+          "label": "Blog",
+          "url": "https://www.youtube.com/channel/UCC40Patjx3g-aBq485raFOQ"
+        }
       ],
+      "sessions": [],
       "keynote": false
     },
     {
-      "id": "53fefbc7-ac0c-4a89-b3fb-dfe111825a24",
-      "name": "Serena Sensini",
-      "title": "Innovation & Emerging Techlogies Leader, author and founder@TheRedCode",
+      "id": "6b3af3e6-c30a-4cb5-9c96-15c15dcdeb76",
+      "name": "Piero Savastano",
+      "title": "Data Scientist",
       "company": "",
-      "photo": "https://cdn.sessionize.com/image/6a14-400o400o1-atJBm6F2VREAZDYzu1E2zs.jpg",
-      "links": [],
-      "sessions": [
-        "1049174"
+      "photo": "https://cdn.sessionize.com/image/cc12-400o400o1-fuZwKrAzBDZyjXaEsya9nB.png",
+      "links": [
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/piero-savastano-523b3016/"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/piero.savastano/"
+        },
+        {
+          "label": "Blog",
+          "url": "https://www.youtube.com/channel/UCD-HLhRV_4Z3sYGkgqAnIJw?view_as=subscriber"
+        }
       ],
+      "sessions": [],
       "keynote": false
     },
     {
-      "id": "000e7162-82b5-4498-9cca-53d356e0b427",
-      "name": "Soumaya Erradi",
-      "title": "Senior Software Developer @ Atlantis",
+      "id": "7035748c-ceda-43d5-bfca-ee5fea7dc8ab",
+      "name": "Saurabh Mishra",
+      "title": "Lead Consultant ",
       "company": "",
-      "photo": "https://cdn.sessionize.com/image/ce91-400o400o1-9xJYxgvnNyvDJpcpmnJ49R.jpg",
-      "links": [],
-      "sessions": [
-        "1048629"
+      "photo": "https://cdn.sessionize.com/image/dae5-400o400o1-R8u3fBusyugv5T2MkMHKjD.jpg",
+      "links": [
+        {
+          "label": "X (Twitter)",
+          "url": "https://twitter.com/skmjss"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/connectsaurabhmishra/"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://instagram.com/mishra_saurabh08"
+        },
+        {
+          "label": "Blog",
+          "url": "https://medium.com/@connectsaurabhmishra"
+        }
       ],
+      "sessions": [],
       "keynote": false
     },
     {
-      "id": "79c7d0c8-9e6f-447b-b806-ead6963075f2",
-      "name": "Vittorio Terreran",
-      "title": "effegi sistemi, embedded systems developer",
+      "id": "79456a39-767a-4670-97e9-c559f6bfb312",
+      "name": "Tahreem Rasul",
+      "title": "Tech Lead @ Red Buffer | Google Developer Expert in AI",
       "company": "",
-      "photo": "https://cdn.sessionize.com/image/f386-400o400o1-hk7SZdD1kH9M59T4pVkmgK.jpg",
-      "links": [],
-      "sessions": [
-        "1051325"
+      "photo": "https://cdn.sessionize.com/image/99de-400o400o1-JrHP23NvQqhm5WkxEczeTq.jpg",
+      "links": [
+        {
+          "label": "X (Twitter)",
+          "url": "https://x.com/tahreemrasul1"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/tahreemrasul/"
+        },
+        {
+          "label": "Blog",
+          "url": "https://medium.com/@tahreemrasul"
+        }
       ],
+      "sessions": [],
+      "keynote": false
+    },
+    {
+      "id": "010b5826-2430-48eb-8355-7b375b1e87dc",
+      "name": "Tamas Piros",
+      "title": "AI Consultant",
+      "company": "",
+      "photo": "https://cdn.sessionize.com/image/ad01-400o400o1-XXP5SeiaRiSJNDwoLxAZkD.jpg",
+      "links": [
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/tpiros"
+        },
+        {
+          "label": "Blog",
+          "url": "https://tamaspiros.com"
+        }
+      ],
+      "sessions": [],
       "keynote": false
     }
   ];

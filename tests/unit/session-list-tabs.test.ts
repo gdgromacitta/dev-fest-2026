@@ -279,11 +279,12 @@ describe("tab accessibility", () => {
 });
 
 describe("speaker links", () => {
-  test("renders the speaker as plain text while /speakers is unpublished", () => {
-    // features.speakers is off: linking to /speakers would 404, and the
-    // page emits no per-speaker anchors to scroll to anyway.
+  test("links each speaker to their /speakers anchor now that the page is published", () => {
+    // features.speakers is on: session-list.tsx (line ~280) gates this same
+    // link on that flag, so this test tracks the current committed state
+    // rather than the flag's off-case.
     const html = render(schedule);
-    expect(html).not.toContain('href="/speakers#');
+    expect(html).toContain('href="/speakers#sp-1"');
   });
 });
 
