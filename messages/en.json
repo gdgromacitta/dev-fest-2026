@@ -79,7 +79,34 @@
     "teamHeading": "Meet the Organizers",
     "teamSubtext": "The passionate volunteers behind DevFest Roma working to create an inclusive and high-impact experience for everyone.",
     "learnMoreCta": "Learn more about the team",
-    "venuePartnerLabel": "Hosted by"
+    "venuePartnerLabel": "Hosted by",
+    "bentoHeading": "DevFest Roma 2026 at a glance",
+    "themeBadge": "Theme 2026",
+    "theme1": "Build,",
+    "theme2": "Secure,",
+    "theme3": "Scale.",
+    "themeTagline": "Developers and builders in the agentic era.",
+    "themeSubtext": "Real case studies and hands-on experience, with no marketing talks.",
+    "registerBadge": "Free entry",
+    "registerTileText": "Attendance is free, thanks to the companies that support our community.",
+    "registerTileCta": "Get your ticket",
+    "countdownLabel": "{count, plural, one {day to go} other {days to go}}",
+    "countdownToday": "DevFest is on today",
+    "countdownPast": "Thanks for joining us",
+    "countdownDate": "Sat 10.10 · 09:00",
+    "speakersTileLabel": "speakers confirmed",
+    "speakersTileCta": "See the line-up",
+    "venueRouteLabel": "Metro B to Basilica San Paolo, then about a 10-minute walk",
+    "venueMetroStop": "Basilica S. Paolo",
+    "venueWalk": "~10 min walk",
+    "venueStreet": "Via V. Volterra 60",
+    "communityValue": "500+",
+    "communityText": "developers in the GDG Roma Città community. DevFest is organized entirely by volunteers.",
+    "heroLine1": "DevFest",
+    "heroLine2": "Roma",
+    "heroWhen": "Saturday 10 October 2026",
+    "heroTime": "9:00 – 18:00",
+    "heroSummary": "Università Roma Tre, Via Vito Volterra 60. One free day of talks for developers and builders in the agentic era."
   },
   "venue": {
     "badge": "Venue",
@@ -108,7 +135,9 @@
       "commitment": "We are committed to making DevFest Roma 2026 an inclusive experience for all attendees.",
       "contactLabel": "For specific accessibility needs, contact us at"
     },
-    "venuePartnerLabel": "Hosted by"
+    "venuePartnerLabel": "Hosted by",
+    "titleLine1": "Venue",
+    "titleLine2": "Roma Tre"
   },
   "sponsorsPage": {
     "badge": "Sponsors",
@@ -131,7 +160,9 @@
     "benefit4": "Presence on site, social media, and event materials",
     "ctaCardTitle": "Request the sponsor prospectus",
     "ctaCardDescription": "Reach out to receive the available sponsorship packages and their benefits.",
-    "ctaCardButton": "Fill out the form"
+    "ctaCardButton": "Fill out the form",
+    "titleLine1": "Sponsors",
+    "titleLine2": "2026"
   },
   "about": {
     "eyebrow": "A COMMUNITY FOCUSED",
@@ -144,7 +175,9 @@
     "value_community_title": "Community",
     "value_community_description": "Join thousands of developers in an environment built on collaboration and mutual growth.",
     "value_globalImpact_title": "Global Impact",
-    "value_globalImpact_description": "Be part of the world's largest developer community event reaching over 100 countries."
+    "value_globalImpact_description": "Be part of the world's largest developer community event reaching over 100 countries.",
+    "titleLine1": "About",
+    "titleLine2": "us"
   },
   "teamCard": {
     "portraitAlt": "{name} portrait"
@@ -436,7 +469,9 @@
     "unassignedRoom": "Unassigned",
     "speakerTba": "TBA",
     "speakerTbaSubtitle": "Speaker to be announced",
-    "resultsStatus": "{count, plural, =0 {No sessions match} one {# session} other {# sessions}}"
+    "resultsStatus": "{count, plural, =0 {No sessions match} one {# session} other {# sessions}}",
+    "titleLine1": "Agenda",
+    "titleLine2": "10.10"
   },
   "speakersPage": {
     "badge": "Speakers",
@@ -445,7 +480,9 @@
     "speakerTba": "Speaker TBA",
     "cfpTitle": "Want to be one of our speakers?",
     "cfpSubtext": "The Call for Papers closes on July 31, 2026.",
-    "cfpCta": "Submit a Proposal"
+    "cfpCta": "Submit a Proposal",
+    "titleLine1": "Speakers",
+    "titleLine2": "2026"
   },
   "pastSponsors": {
     "heading": "Those who believed in us"

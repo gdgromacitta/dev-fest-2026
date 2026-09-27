@@ -5,6 +5,7 @@ import { cfpUrl } from "@/src/content/nav-links";
 import { features } from "@/src/content/features";
 import { speakers } from "@/src/content/speakers";
 import { SpeakersGrid } from "@/src/components/speakers/speakers-grid";
+import { PageHero } from "@/src/components/layout/page-hero";
 
 export const metadata: Metadata = {
   title: "Speakers | DevFest Roma",
@@ -36,18 +37,13 @@ export default async function SpeakersPage({ params }: Props) {
 
   return (
     <main>
-      {/* Hero */}
-      <section className="bg-tint">
-        <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-4 px-4 py-16 md:px-16 md:py-[88px]">
-          <div className="eyebrow text-primary">{t("badge")}</div>
-          <h1 className="m-0 text-4xl font-bold leading-[1.1] text-ink md:text-[3.5rem]">{t("heading")}</h1>
-          <p className="m-0 max-w-2xl text-lg text-muted">{t("intro")}</p>
-        </div>
-      </section>
+      <PageHero id="speakers-heading" eyebrow={t("badge")} lines={[t("titleLine1"), t("titleLine2")]} srSuffix={t("heading")}>
+        <p className="m-0 max-w-2xl text-lg text-muted">{t("intro")}</p>
+      </PageHero>
 
       {/* Speaker grid */}
       <section aria-label={t("heading")}>
-        <div className="mx-auto w-full max-w-[1440px] px-4 py-16 md:px-16 md:py-20">
+        <div className="mx-auto w-full max-w-[1440px] px-4 pb-12 md:px-16 md:pb-16">
           {speakers.length > 0 ? (
             <SpeakersGrid />
           ) : (
@@ -64,16 +60,23 @@ export default async function SpeakersPage({ params }: Props) {
         </div>
       </section>
 
-      {/* CfP CTA strip */}
-      <section aria-labelledby="speakers-cfp-heading" className="bg-tint">
-        <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-6 px-4 py-16 md:flex-row md:items-center md:justify-between md:px-16">
-          <div>
-            <h2 id="speakers-cfp-heading" className="m-0 mb-1.5 text-2xl font-bold text-ink">{t("cfpTitle")}</h2>
-            <p className="m-0 text-[15px] text-muted">{t("cfpSubtext")}</p>
+      {/* CfP CTA tile */}
+      <section aria-labelledby="speakers-cfp-heading">
+        <div className="mx-auto w-full max-w-[1440px] px-4 pb-16 md:px-16 md:pb-24">
+          <div className="bento-tile bg-ink text-white md:flex-row md:items-center md:justify-between">
+            <div>
+              <h2 id="speakers-cfp-heading" className="m-0 mb-1.5 text-2xl font-bold">{t("cfpTitle")}</h2>
+              <p className="m-0 text-[15px] text-white/70">{t("cfpSubtext")}</p>
+            </div>
+            <a
+              href={cfpUrl}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="focus-ring inline-flex flex-none items-center justify-center self-start rounded-full bg-white px-8 py-4 text-base font-semibold text-ink transition-colors duration-200 hover:bg-tint md:self-auto"
+            >
+              {t("cfpCta")}
+            </a>
           </div>
-          <a href={cfpUrl} target="_blank" rel="noreferrer noopener" className="btn-dark flex-none self-start md:self-auto">
-            {t("cfpCta")}
-          </a>
         </div>
       </section>
     </main>

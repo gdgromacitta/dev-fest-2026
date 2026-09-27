@@ -7,6 +7,7 @@ import { defaultAgendaFilters, filterSessions } from "@/src/lib/agenda-filters";
 import { FilterToolbar } from "@/src/components/agenda/filter-toolbar";
 import { SessionList } from "@/src/components/agenda/session-list";
 import { roomsFrom } from "@/src/lib/agenda-rooms";
+import { PageHero } from "@/src/components/layout/page-hero";
 
 // Preferred display order; any track the data has that isn't listed here
 // (Sessionize category names differ per event) is appended rather than dropped.
@@ -30,15 +31,16 @@ export function AgendaPageContent() {
   const visibleSessions = useMemo(() => filterSessions(sessions, filters), [filters]);
 
   return (
-    <div className="bg-[#f3f4f6] px-4 py-10 md:px-5 md:py-12">
-      <div className="mx-auto max-w-5xl space-y-10">
-        <section className="space-y-3">
-          <h1 className="m-0 text-5xl font-semibold tracking-[-0.05em] text-slate-950">{t("heading")}</h1>
-          <p className="m-0 max-w-4xl text-lg leading-8 text-slate-500">{t("intro")}</p>
-        </section>
-        <FilterToolbar filters={filters} tracks={tracks} levels={levels} onFiltersChange={setFilters} />
-        <SessionList sessions={visibleSessions} rooms={rooms} />
+    <>
+      <PageHero id="agenda-heading" eyebrow={t("heading")} lines={[t("titleLine1"), t("titleLine2")]}>
+        <p className="m-0 max-w-3xl text-lg leading-8 text-muted">{t("intro")}</p>
+      </PageHero>
+      <div className="mx-auto w-full max-w-[1440px] px-4 pb-16 md:px-16 md:pb-24">
+        <div className="space-y-10 rounded-[22px] bg-tint p-4 md:p-8">
+          <FilterToolbar filters={filters} tracks={tracks} levels={levels} onFiltersChange={setFilters} />
+          <SessionList sessions={visibleSessions} rooms={rooms} />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
