@@ -467,6 +467,8 @@
     "roomTabsLabel": "Rooms",
     "breakLabel": "Break",
     "unassignedRoom": "Unassigned",
+    "savedTab": "Saved",
+    "savedHiddenByFilters": "{count, plural, one {# saved session is hidden by your filters.} other {# saved sessions are hidden by your filters.}}",
     "speakerTba": "TBA",
     "speakerTbaSubtitle": "Speaker to be announced",
     "resultsStatus": "{count, plural, =0 {No sessions match} one {# session} other {# sessions}}",

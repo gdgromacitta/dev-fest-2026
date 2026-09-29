@@ -3,7 +3,7 @@ import { vi } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 import { NextIntlClientProvider } from "next-intl";
 import { SessionList } from "@/src/components/agenda/session-list";
-import { UNASSIGNED_ROOM, roomsFrom, sessionsForRoom } from "@/src/lib/agenda-rooms";
+import { UNASSIGNED_ROOM, roomsFrom, savedTabSessions, sessionsForRoom } from "@/src/lib/agenda-rooms";
 import type { Session } from "@/src/types/content";
 import messages from "@/messages/it.json";
 
@@ -341,5 +341,34 @@ describe("unknown track names", () => {
     const html = render([talk("a", "Maria", "2026-10-10T10:00:00", "")], ["Maria"]);
     expect(html).not.toMatch(/class="[^"]*undefined/);
     expect(cards(html)).toEqual(["a"]);
+  });
+});
+
+describe("savedTabSessions", () => {
+  const a = talk("a", "Maria", "2026-10-10T10:00:00", "Web");
+  const b = talk("b", "Anna", "2026-10-10T09:00:00", "AI/ML");
+  const c = talk("c", "", "2026-10-10T11:00:00", "Web");
+  const all = [a, b, c, lunch];
+
+  it("lists saved talks from all rooms sorted by start time", () => {
+    const { total, visible } = savedTabSessions(all, all, ["a", "b", "c"]);
+    expect(total).toBe(3);
+    expect(visible.map((s) => s.id)).toEqual(["b", "a", "c"]);
+  });
+
+  it("applies the filtered subset but keeps the unfiltered total", () => {
+    const filtered = all.filter((s) => s.track === "Web" || s.isBreak);
+    const { total, visible } = savedTabSessions(all, filtered, ["a", "b"]);
+    expect(total).toBe(2);
+    expect(visible.map((s) => s.id)).toEqual(["a"]);
+    expect(savedTabSessions(all, [lunch], ["a", "b"])).toMatchObject({ total: 2, visible: [] });
+  });
+
+  it("ignores unknown ids", () => {
+    expect(savedTabSessions(all, all, ["gone"])).toEqual({ total: 0, visible: [] });
+  });
+
+  it("never includes breaks", () => {
+    expect(savedTabSessions(all, all, ["break-1", "a"]).visible.map((s) => s.id)).toEqual(["a"]);
   });
 });
