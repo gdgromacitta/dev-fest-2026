@@ -60,16 +60,12 @@ function toneFor(value: string, known: Record<string, string>, palette: string[]
   return known[value] ?? palette[hashIndex(value, palette.length)];
 }
 
+// 24-hour clock (15:00, not 3:00 PM) — the Italian convention for the event.
 const formatSlot = (value: string) => {
   const date = new Date(value);
-  let hours = date.getHours();
+  const hours = `${date.getHours()}`.padStart(2, "0");
   const minutes = `${date.getMinutes()}`.padStart(2, "0");
-  const meridiem = hours >= 12 ? "PM" : "AM";
-  hours = hours % 12 || 12;
-  return {
-    time: `${`${hours}`.padStart(2, "0")}:${minutes}`,
-    meridiem
-  };
+  return { time: `${hours}:${minutes}` };
 };
 
 const getSpeakerMeta = (speakerId: string, fallbackName: string, fallbackSubtitle: string) => {
@@ -242,9 +238,6 @@ export function SessionList({ sessions, rooms: roomsProp, allSessions }: Session
               >
                 <div className="space-y-1 pt-1 md:text-right">
                   <p className="m-0 text-[1.75rem] font-semibold tracking-[-0.05em] text-slate-800">{slot.time}</p>
-                  <p className="m-0 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-                    {slot.meridiem}
-                  </p>
                 </div>
                 <div className="relative md:pl-6">
                   <div className="rounded-2xl border border-dashed border-[#c8d8ff] bg-[#f7fbff] px-5 py-4 text-center text-lg font-semibold text-[#4d8cff]">
@@ -270,7 +263,6 @@ export function SessionList({ sessions, rooms: roomsProp, allSessions }: Session
             <div key={session.id} className="grid gap-4 md:grid-cols-[4.5rem_minmax(0,1fr)] md:items-start">
               <div className="space-y-1 pt-1 md:text-right">
                 <p className="m-0 text-[1.75rem] font-semibold tracking-[-0.05em] text-slate-800">{slot.time}</p>
-                <p className="m-0 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{slot.meridiem}</p>
               </div>
               <div className="relative md:pl-6 md:before:absolute md:before:bottom-[-1.5rem] md:before:left-0 md:before:top-0 md:before:w-px md:before:bg-slate-200 md:before:content-['']">
                 <article
@@ -305,7 +297,7 @@ export function SessionList({ sessions, rooms: roomsProp, allSessions }: Session
                       <h3 className="m-0 text-[1.95rem] font-semibold leading-tight tracking-[-0.045em] text-slate-900 md:text-[1.8rem]">
                         {title}
                       </h3>
-                      <div className="flex items-center gap-3 text-sm text-slate-500">
+                      <div className="flex items-center gap-3 pt-2 text-sm text-slate-500">
                         <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-[#f4d4b0] text-[0.65rem] font-semibold text-slate-700">
                           {speaker.initials}
                         </span>
@@ -346,7 +338,7 @@ export function SessionList({ sessions, rooms: roomsProp, allSessions }: Session
                       <svg
                         aria-hidden="true"
                         viewBox="0 0 20 20"
-                        className={`h-5 w-5 ${saved ? "fill-current" : "fill-none"}`}
+                        className={`h-8 w-8 ${saved ? "fill-current" : "fill-none"}`}
                         stroke="currentColor"
                         strokeWidth="1.5"
                         strokeLinejoin="round"

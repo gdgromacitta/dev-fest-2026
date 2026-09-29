@@ -83,7 +83,7 @@ describe("Agenda page structure", () => {
       if (entry) expect(html).toContain(entry.title.replace(/&/g, "&amp;").replace(/'/g, "&#x27;"));
 
       const date = new Date(session.start);
-      const hours = `${date.getHours() % 12 || 12}`.padStart(2, "0");
+      const hours = `${date.getHours()}`.padStart(2, "0");
       expect(html).toContain(`${hours}:${`${date.getMinutes()}`.padStart(2, "0")}`);
     }
   });
