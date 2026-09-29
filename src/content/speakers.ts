@@ -25,7 +25,9 @@ export const speakers: Speaker[] = [
           "url": "https://open.spotify.com/show/3YPor4R2whDXXCtKUPHqrF?si=fe5bcc819db34267"
         }
       ],
-      "sessions": [],
+      "sessions": [
+        "1273464"
+      ],
       "keynote": false
     },
     {
@@ -40,7 +42,9 @@ export const speakers: Speaker[] = [
           "url": "https://linkedin.com/in/alex-amin"
         }
       ],
-      "sessions": [],
+      "sessions": [
+        "1287833"
+      ],
       "keynote": false
     },
     {
@@ -59,7 +63,9 @@ export const speakers: Speaker[] = [
           "url": "https://www.alfonsograziano.it/"
         }
       ],
-      "sessions": [],
+      "sessions": [
+        "1300555"
+      ],
       "keynote": false
     },
     {
@@ -82,7 +88,9 @@ export const speakers: Speaker[] = [
           "url": "https://www.instagram.com/alfredobs97/"
         }
       ],
-      "sessions": [],
+      "sessions": [
+        "1286980"
+      ],
       "keynote": false
     },
     {
@@ -97,7 +105,9 @@ export const speakers: Speaker[] = [
           "url": "https://www.linkedin.com/in/carlo-antonio-venditti-6649b0193"
         }
       ],
-      "sessions": [],
+      "sessions": [
+        "1298641"
+      ],
       "keynote": false
     },
     {
@@ -120,7 +130,9 @@ export const speakers: Speaker[] = [
           "url": "https://medium.com/@danduh"
         }
       ],
-      "sessions": [],
+      "sessions": [
+        "1286351"
+      ],
       "keynote": false
     },
     {
@@ -130,7 +142,9 @@ export const speakers: Speaker[] = [
       "company": "",
       "photo": "https://cdn.sessionize.com/image/8512-400o400o1-M3JScJf21wHyTmEXvf67z9.png",
       "links": [],
-      "sessions": [],
+      "sessions": [
+        "1299834"
+      ],
       "keynote": false
     },
     {
@@ -149,7 +163,9 @@ export const speakers: Speaker[] = [
           "url": "https://www.instagram.com/fabio_carusi/"
         }
       ],
-      "sessions": [],
+      "sessions": [
+        "1273802"
+      ],
       "keynote": false
     },
     {
@@ -164,7 +180,9 @@ export const speakers: Speaker[] = [
           "url": "https://www.linkedin.com/in/fabio-catinella/"
         }
       ],
-      "sessions": [],
+      "sessions": [
+        "1278573"
+      ],
       "keynote": false
     },
     {
@@ -191,7 +209,9 @@ export const speakers: Speaker[] = [
           "url": "http://francescociulla.com/"
         }
       ],
-      "sessions": [],
+      "sessions": [
+        "1320557"
+      ],
       "keynote": false
     },
     {
@@ -214,7 +234,30 @@ export const speakers: Speaker[] = [
           "url": "https://youdotoo.app/en/category/blog-en/"
         }
       ],
-      "sessions": [],
+      "sessions": [
+        "1293694"
+      ],
+      "keynote": false
+    },
+    {
+      "id": "ac1ea296-0d75-4be5-97e3-58c67b792f64",
+      "name": "Giulia Lotti",
+      "title": "SheTech Ambassador",
+      "company": "",
+      "photo": "https://cdn.sessionize.com/image/d370-400o400o1-3Sm478hzkuv895GBBgJ4pQ.jpg",
+      "links": [
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/giulialotti/"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/giulialotti2"
+        }
+      ],
+      "sessions": [
+        "1343851"
+      ],
       "keynote": false
     },
     {
@@ -245,7 +288,9 @@ export const speakers: Speaker[] = [
           "url": "https://blog.lifemichael.com"
         }
       ],
-      "sessions": [],
+      "sessions": [
+        "1275223"
+      ],
       "keynote": false
     },
     {
@@ -264,7 +309,9 @@ export const speakers: Speaker[] = [
           "url": "https://www.linkedin.com/in/jasonberryman/"
         }
       ],
-      "sessions": [],
+      "sessions": [
+        "1303081"
+      ],
       "keynote": false
     },
     {
@@ -283,7 +330,9 @@ export const speakers: Speaker[] = [
           "url": "https://browserperson.medium.com/"
         }
       ],
-      "sessions": [],
+      "sessions": [
+        "1284873"
+      ],
       "keynote": false
     },
     {
@@ -302,7 +351,9 @@ export const speakers: Speaker[] = [
           "url": "https://medium.com/@mohamed.islem.ayari"
         }
       ],
-      "sessions": [],
+      "sessions": [
+        "1293747"
+      ],
       "keynote": false
     },
     {
@@ -329,7 +380,9 @@ export const speakers: Speaker[] = [
           "url": "https://manaimortadha.medium.com/"
         }
       ],
-      "sessions": [],
+      "sessions": [
+        "1302571"
+      ],
       "keynote": false
     },
     {
@@ -348,7 +401,9 @@ export const speakers: Speaker[] = [
           "url": "https://www.linkedin.com/in/momartinm/"
         }
       ],
-      "sessions": [],
+      "sessions": [
+        "1289815"
+      ],
       "keynote": false
     },
     {
@@ -371,7 +426,9 @@ export const speakers: Speaker[] = [
           "url": "https://www.youtube.com/channel/UCC40Patjx3g-aBq485raFOQ"
         }
       ],
-      "sessions": [],
+      "sessions": [
+        "1292196"
+      ],
       "keynote": false
     },
     {
@@ -394,34 +451,30 @@ export const speakers: Speaker[] = [
           "url": "https://www.youtube.com/channel/UCD-HLhRV_4Z3sYGkgqAnIJw?view_as=subscriber"
         }
       ],
-      "sessions": [],
+      "sessions": [
+        "1324803"
+      ],
       "keynote": false
     },
     {
-      "id": "7035748c-ceda-43d5-bfca-ee5fea7dc8ab",
-      "name": "Saurabh Mishra",
-      "title": "Lead Consultant ",
+      "id": "53fefbc7-ac0c-4a89-b3fb-dfe111825a24",
+      "name": "Serena Sensini",
+      "title": "CTO @ Welyk, Innovation & Emerging Technologies Leader @ Dedalus, author and founder@TheRedCode.it",
       "company": "",
-      "photo": "https://cdn.sessionize.com/image/dae5-400o400o1-R8u3fBusyugv5T2MkMHKjD.jpg",
+      "photo": "https://cdn.sessionize.com/image/6a14-400o400o1-atJBm6F2VREAZDYzu1E2zs.jpg",
       "links": [
         {
-          "label": "X (Twitter)",
-          "url": "https://twitter.com/skmjss"
-        },
-        {
           "label": "LinkedIn",
-          "url": "https://www.linkedin.com/in/connectsaurabhmishra/"
-        },
-        {
-          "label": "Instagram",
-          "url": "https://instagram.com/mishra_saurabh08"
+          "url": "https://www.linkedin.com/in/serena-sensini/"
         },
         {
           "label": "Blog",
-          "url": "https://medium.com/@connectsaurabhmishra"
+          "url": "https://theredcode.it"
         }
       ],
-      "sessions": [],
+      "sessions": [
+        "1344585"
+      ],
       "keynote": false
     },
     {
@@ -444,7 +497,9 @@ export const speakers: Speaker[] = [
           "url": "https://medium.com/@tahreemrasul"
         }
       ],
-      "sessions": [],
+      "sessions": [
+        "1292641"
+      ],
       "keynote": false
     },
     {
@@ -463,7 +518,9 @@ export const speakers: Speaker[] = [
           "url": "https://tamaspiros.com"
         }
       ],
-      "sessions": [],
+      "sessions": [
+        "1272029"
+      ],
       "keynote": false
     }
   ];
