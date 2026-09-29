@@ -38,7 +38,7 @@ export function AgendaPageContent() {
       <div className="mx-auto w-full max-w-[1440px] px-4 pb-16 md:px-16 md:pb-24">
         <div className="space-y-10 rounded-[22px] bg-tint p-4 md:p-8">
           <FilterToolbar filters={filters} tracks={tracks} levels={levels} onFiltersChange={setFilters} />
-          <SessionList sessions={visibleSessions} rooms={rooms} />
+          <SessionList sessions={visibleSessions} rooms={rooms} allSessions={sessions} />
         </div>
       </div>
     </>

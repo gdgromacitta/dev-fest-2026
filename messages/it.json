@@ -466,6 +466,8 @@
     "roomTabsLabel": "Sale",
     "breakLabel": "Pausa",
     "unassignedRoom": "Da assegnare",
+    "savedTab": "Salvate",
+    "savedHiddenByFilters": "{count, plural, one {# sessione salvata è nascosta dai filtri.} other {# sessioni salvate sono nascoste dai filtri.}}",
     "speakerTba": "Da annunciare",
     "speakerTbaSubtitle": "Relatore da annunciare",
     "resultsStatus": "{count, plural, =0 {Nessuna sessione corrisponde} one {# sessione} other {# sessioni}}",

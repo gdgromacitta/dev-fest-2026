@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type KeyboardEvent } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/src/i18n/navigation";
 import type { Session } from "@/src/types/content";
@@ -8,7 +8,7 @@ import { speakers } from "@/src/content/speakers";
 import { features } from "@/src/content/features";
 import { isBreakSession } from "@/src/lib/session-breaks";
 import { toggleSession, useSavedSessionIds } from "@/src/lib/saved-sessions";
-import { UNASSIGNED_ROOM, roomKey, roomsFrom, sessionsForRoom } from "@/src/lib/agenda-rooms";
+import { SAVED_TAB, UNASSIGNED_ROOM, roomKey, roomsFrom, savedTabSessions, sessionsForRoom } from "@/src/lib/agenda-rooms";
 
 type SessionListProps = {
   sessions: Session[];
@@ -16,6 +16,9 @@ type SessionListProps = {
   // put while filters hide individual sessions; falls back to the rooms
   // present in `sessions`.
   rooms?: string[];
+  // Every session, unfiltered. Lets the Saved tab tell "nothing saved" from
+  // "saved but hidden by the filters"; falls back to `sessions`.
+  allSessions?: Session[];
 };
 
 // Track and room names come from Sessionize category/room titles the organizer
@@ -94,7 +97,7 @@ const getSpeakerMeta = (speakerId: string, fallbackName: string, fallbackSubtitl
 const slugify = (value: string, index: number) =>
   `${value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "room"}-${index}`;
 
-export function SessionList({ sessions, rooms: roomsProp }: SessionListProps) {
+export function SessionList({ sessions, rooms: roomsProp, allSessions }: SessionListProps) {
   const tSessions = useTranslations("sessions");
   const tAgenda = useTranslations("agenda");
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -103,17 +106,44 @@ export function SessionList({ sessions, rooms: roomsProp }: SessionListProps) {
 
   const rooms = roomsProp?.length ? roomsProp : roomsFrom(sessions);
 
-  const [selectedRoom, setSelectedRoom] = useState(rooms[0] ?? "");
-  // Filters can drop the selected room out of the list entirely.
-  const activeRoom = rooms.includes(selectedRoom) ? selectedRoom : (rooms[0] ?? "");
-  const activeIndex = Math.max(0, rooms.indexOf(activeRoom));
+  const saved = savedTabSessions(allSessions ?? sessions, sessions, savedIds);
+  // The Saved tab only exists once something is saved. The server snapshot
+  // and the hydration render have no saves, so it never causes a mismatch.
+  const showSaved = saved.total > 0;
+  const tabs = showSaved ? [...rooms, SAVED_TAB] : rooms;
 
-  const roomLabel = (room: string) => (room === UNASSIGNED_ROOM ? tAgenda("unassignedRoom") : room);
+  const [selectedRoom, setSelectedRoom] = useState(rooms[0] ?? "");
+  // Unsaving the last session removes the tab: fall back to a room tab so
+  // saving again later doesn't silently re-select Saved.
+  if (selectedRoom === SAVED_TAB && !showSaved) {
+    setSelectedRoom(rooms[0] ?? "");
+  }
+  // Filters can drop the selected room out of the list entirely.
+  const activeRoom = tabs.includes(selectedRoom) ? selectedRoom : (rooms[0] ?? "");
+  const activeIndex = Math.max(0, tabs.indexOf(activeRoom));
+  const savedActive = activeRoom === SAVED_TAB;
+
+  // The focused unsave button disappears with the Saved tab; move focus to the
+  // first room tab instead of losing it to <body>.
+  const wasSavedActive = useRef(false);
+  useEffect(() => {
+    if (wasSavedActive.current && !showSaved) {
+      tabRefs.current[0]?.focus();
+    }
+    wasSavedActive.current = savedActive;
+  }, [savedActive, showSaved]);
+
+  const roomLabel = (room: string) => {
+    if (room === SAVED_TAB) return tAgenda("savedTab");
+    return room === UNASSIGNED_ROOM ? tAgenda("unassignedRoom") : room;
+  };
 
   const countFor = (room: string) =>
-    sessions.filter((session) => !isBreakSession(session) && roomKey(session) === room).length;
+    room === SAVED_TAB
+      ? saved.visible.length
+      : sessions.filter((session) => !isBreakSession(session) && roomKey(session) === room).length;
 
-  const visible = sessionsForRoom(sessions, activeRoom);
+  const visible = savedActive ? saved.visible : sessionsForRoom(sessions, activeRoom);
   // Breaks alone aren't an agenda — if filters left this room with no talks,
   // say so instead of rendering a solitary break banner.
   const hasTalks = visible.some((session) => !isBreakSession(session));
@@ -124,35 +154,35 @@ export function SessionList({ sessions, rooms: roomsProp }: SessionListProps) {
       ArrowRight: index + 1,
       ArrowLeft: index - 1,
       Home: 0,
-      End: rooms.length - 1
+      End: tabs.length - 1
     };
     const next = moves[event.key];
     if (next === undefined) return;
     event.preventDefault();
-    const target = (next + rooms.length) % rooms.length;
-    setSelectedRoom(rooms[target]!);
+    const target = (next + tabs.length) % tabs.length;
+    setSelectedRoom(tabs[target]!);
     tabRefs.current[target]?.focus();
   };
 
-  if (!sessions.length) {
+  if (!sessions.length && !showSaved) {
     return <p className="text-sm text-slate-600">{tAgenda("noSessionsMatch")}</p>;
   }
 
   return (
     <section className="space-y-6">
-      {rooms.length === 1 ? (
+      {tabs.length === 1 ? (
         <p className="m-0 text-sm font-semibold uppercase tracking-[0.08em] text-slate-500">
-          {roomLabel(rooms[0]!)}
+          {roomLabel(tabs[0]!)}
         </p>
       ) : null}
 
-      {rooms.length > 1 ? (
+      {tabs.length > 1 ? (
         <div
           role="tablist"
           aria-label={tAgenda("roomTabsLabel")}
           className="flex flex-wrap gap-2 border-b border-slate-200 pb-px"
         >
-          {rooms.map((room, index) => {
+          {tabs.map((room, index) => {
             const selected = room === activeRoom;
             return (
               <button
@@ -195,12 +225,12 @@ export function SessionList({ sessions, rooms: roomsProp }: SessionListProps) {
       </p>
 
       <div
-        role={rooms.length > 1 ? "tabpanel" : undefined}
+        role={tabs.length > 1 ? "tabpanel" : undefined}
         id={`agenda-room-panel-${slugify(roomLabel(activeRoom), activeIndex)}`}
-        aria-labelledby={rooms.length > 1 ? `agenda-room-tab-${slugify(roomLabel(activeRoom), activeIndex)}` : undefined}
+        aria-labelledby={tabs.length > 1 ? `agenda-room-tab-${slugify(roomLabel(activeRoom), activeIndex)}` : undefined}
         className="space-y-6"
       >
-        {(hasTalks ? visible : []).map((session) => {
+        {(hasTalks || savedActive ? visible : []).map((session) => {
           const slot = formatSlot(session.start);
 
           if (isBreakSession(session)) {
@@ -250,6 +280,11 @@ export function SessionList({ sessions, rooms: roomsProp }: SessionListProps) {
                   <div className="flex items-start justify-between gap-4">
                     <div className="space-y-3">
                       <div className="flex flex-wrap gap-2">
+                        {savedActive ? (
+                          <span className="rounded-md bg-slate-100 px-2 py-1 text-[0.6rem] font-bold uppercase tracking-[0.08em] text-slate-500">
+                            {roomLabel(roomKey(session))}
+                          </span>
+                        ) : null}
                         {session.track ? (
                           <span
                             className={`rounded-md px-2 py-1 text-[0.6rem] font-bold uppercase tracking-[0.08em] ${toneFor(
@@ -326,7 +361,10 @@ export function SessionList({ sessions, rooms: roomsProp }: SessionListProps) {
           );
         })}
 
-        {!hasTalks ? <p className="text-sm text-slate-600">{tAgenda("noSessionsMatch")}</p> : null}
+        {savedActive && !visible.length ? (
+          <p className="text-sm text-slate-600">{tAgenda("savedHiddenByFilters", { count: saved.total })}</p>
+        ) : null}
+        {!savedActive && !hasTalks ? <p className="text-sm text-slate-600">{tAgenda("noSessionsMatch")}</p> : null}
       </div>
     </section>
   );
