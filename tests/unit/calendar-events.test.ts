@@ -30,7 +30,7 @@ describe("Rome to UTC", () => {
 
 describe("escapeIcsText", () => {
   it("escapes backslash, comma, semicolon and newline", () => {
-    expect(escapeIcsText("a\\b,c;d\ne")).toBe("a\\\\b\\,c\;d\\ne");
+    expect(escapeIcsText("a\\b,c;d\ne")).toBe("a\\\\b\\,c\\;d\\ne");
   });
 });
 
@@ -61,7 +61,7 @@ describe("buildIcs", () => {
     expect(ics).toContain("DTSTAMP:20260101T000000Z\r\n");
     expect(ics).toContain("DTSTART:20261010T120500Z\r\n");
     expect(ics).toContain("DTEND:20261010T130000Z\r\n");
-    expect(ics).toContain("SUMMARY:Signals\\, Zone\; and more\r\n");
+    expect(ics).toContain("SUMMARY:Signals\\, Zone\\; and more\r\n");
     expect(ics).toContain("DESCRIPTION:Line one\\nLine two\r\n");
     expect(ics).toContain("LOCATION:Room A\\, Via Roma 1\r\n");
     expect(ics).not.toContain("SEQUENCE");
