@@ -7,6 +7,7 @@ import type { Session } from "@/src/types/content";
 import { speakers } from "@/src/content/speakers";
 import { features } from "@/src/content/features";
 import { isBreakSession } from "@/src/lib/session-breaks";
+import { toggleSession, useSavedSessionIds } from "@/src/lib/saved-sessions";
 import { UNASSIGNED_ROOM, roomKey, roomsFrom, sessionsForRoom } from "@/src/lib/agenda-rooms";
 
 type SessionListProps = {
@@ -97,6 +98,8 @@ export function SessionList({ sessions, rooms: roomsProp }: SessionListProps) {
   const tSessions = useTranslations("sessions");
   const tAgenda = useTranslations("agenda");
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  // Server snapshot is empty, so first render is unsaved and hydration matches.
+  const savedIds = useSavedSessionIds();
 
   const rooms = roomsProp?.length ? roomsProp : roomsFrom(sessions);
 
@@ -231,6 +234,7 @@ export function SessionList({ sessions, rooms: roomsProp }: SessionListProps) {
           );
           const speaker = lineup[0]!;
           const title = tSessions(`${session.id}.title`);
+          const saved = savedIds.includes(session.id);
 
           return (
             <div key={session.id} className="grid gap-4 md:grid-cols-[4.5rem_minmax(0,1fr)] md:items-start">
@@ -295,10 +299,23 @@ export function SessionList({ sessions, rooms: roomsProp }: SessionListProps) {
                     </div>
                     <button
                       type="button"
+                      // Fixed label + aria-pressed: swapping the label would be
+                      // announced as "Unsave, pressed".
                       aria-label={tAgenda("saveSessionAriaLabel", { title })}
-                      className="focus-ring mt-2 flex-none rounded-lg p-2 text-slate-400"
+                      aria-pressed={saved}
+                      onClick={() => toggleSession(session.id)}
+                      className={`focus-ring mt-2 flex-none rounded-lg p-2 transition-colors ${
+                        saved ? "text-[#2b6cd4]" : "text-slate-400 hover:text-slate-600"
+                      }`}
                     >
-                      <svg aria-hidden="true" viewBox="0 0 20 20" className="h-4 w-4 fill-current">
+                      <svg
+                        aria-hidden="true"
+                        viewBox="0 0 20 20"
+                        className={`h-5 w-5 ${saved ? "fill-current" : "fill-none"}`}
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinejoin="round"
+                      >
                         <path d="M6 3.5A1.5 1.5 0 0 1 7.5 2h5A1.5 1.5 0 0 1 14 3.5v13.12c0 .69-.78 1.1-1.35.72L10 15.54l-2.65 1.8c-.57.38-1.35-.03-1.35-.72V3.5Z" />
                       </svg>
                     </button>
