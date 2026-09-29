@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { useTranslations } from "next-intl";
+import { AddToCalendar } from "@/src/components/agenda/add-to-calendar";
 import { Link } from "@/src/i18n/navigation";
 import type { Session } from "@/src/types/content";
 import { speakers } from "@/src/content/speakers";
@@ -323,6 +324,7 @@ export function SessionList({ sessions, rooms: roomsProp, allSessions }: Session
                           {speaker.subtitle && lineup.length === 1 ? `, ${speaker.subtitle}` : ""}
                         </p>
                       </div>
+                      <AddToCalendar session={session} title={title} />
                     </div>
                     <button
                       type="button"

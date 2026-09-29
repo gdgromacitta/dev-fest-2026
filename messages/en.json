@@ -473,7 +473,11 @@
     "speakerTbaSubtitle": "Speaker to be announced",
     "resultsStatus": "{count, plural, =0 {No sessions match} one {# session} other {# sessions}}",
     "titleLine1": "Agenda",
-    "titleLine2": "10.10"
+    "titleLine2": "10.10",
+    "addToCalendar": "Add to calendar",
+    "addToCalendarAriaLabel": "Add {title} to calendar",
+    "addToGoogleCalendar": "Google Calendar",
+    "downloadIcs": "Download .ics"
   },
   "speakersPage": {
     "badge": "Speakers",

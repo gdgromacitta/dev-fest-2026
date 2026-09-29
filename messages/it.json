@@ -472,7 +472,11 @@
     "speakerTbaSubtitle": "Relatore da annunciare",
     "resultsStatus": "{count, plural, =0 {Nessuna sessione corrisponde} one {# sessione} other {# sessioni}}",
     "titleLine1": "Agenda",
-    "titleLine2": "10.10"
+    "titleLine2": "10.10",
+    "addToCalendar": "Aggiungi al calendario",
+    "addToCalendarAriaLabel": "Aggiungi {title} al calendario",
+    "addToGoogleCalendar": "Google Calendar",
+    "downloadIcs": "Scarica .ics"
   },
   "speakersPage": {
     "badge": "Speaker",

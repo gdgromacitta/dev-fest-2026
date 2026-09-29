@@ -108,7 +108,7 @@ export function romeToLocalBasic(value: string): string {
 export function escapeIcsText(text: string): string {
   return text
     .replace(/\\/g, "\\\\")
-    .replace(/;/g, "\;")
+    .replace(/;/g, "\\;")
     .replace(/,/g, "\\,")
     .replace(/\r\n|\r|\n/g, "\\n");
 }
