@@ -38,3 +38,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .tokensave
+
+# Agent Squad worktrees (claude/hooks/worktree.sh)
+.claude/worktrees/
