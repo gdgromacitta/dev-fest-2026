@@ -118,4 +118,21 @@ describe("Dialog", () => {
     expect(dialogEl().open).toBe(false);
     expect(onClose).not.toHaveBeenCalled();
   });
+
+  test("locks page scroll while open and restores it on close", () => {
+    document.documentElement.style.overflow = "clip";
+    render(true);
+    expect(document.documentElement.style.overflow).toBe("hidden");
+    act(() => (container.querySelector("button") as HTMLButtonElement).click());
+    expect(document.documentElement.style.overflow).toBe("clip");
+    document.documentElement.style.overflow = "";
+  });
+
+  test("releases the scroll lock when unmounted while open", () => {
+    render(true);
+    expect(document.documentElement.style.overflow).toBe("hidden");
+    act(() => root.unmount());
+    expect(document.documentElement.style.overflow).toBe("");
+    root = createRoot(container);
+  });
 });
