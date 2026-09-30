@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { AddToCalendar } from "@/src/components/agenda/add-to-calendar";
 import { Link } from "@/src/i18n/navigation";
 import type { Session } from "@/src/types/content";
-import { speakers } from "@/src/content/speakers";
+import { SessionDialog, getSpeakerMeta, useSessionModal } from "@/src/components/agenda/session-dialog";
 import { features } from "@/src/content/features";
 import { isBreakSession } from "@/src/lib/session-breaks";
 import { toggleSession, useSavedSessionIds } from "@/src/lib/saved-sessions";
@@ -69,25 +69,6 @@ const formatSlot = (value: string) => {
   return { time: `${hours}:${minutes}` };
 };
 
-const getSpeakerMeta = (speakerId: string, fallbackName: string, fallbackSubtitle: string) => {
-  const speaker = speakers.find((item) => item.id === speakerId);
-  if (!speaker) {
-    return { name: fallbackName, subtitle: fallbackSubtitle, initials: fallbackName.slice(0, 1) };
-  }
-  const initials = speaker.name
-    .split(" ")
-    .map((part) => part[0])
-    .slice(0, 2)
-    .join("");
-  return {
-    name: speaker.name,
-    // `company` is blank for Sessionize-sourced speakers (no such field) —
-    // join only what's there so the subtitle never ends in a stray comma.
-    subtitle: [speaker.title, speaker.company].filter(Boolean).join(", "),
-    initials
-  };
-};
-
 // Room names are free text, so a slug alone can collide ("Sala 1" / "sala-1")
 // or come out empty. The index keeps every generated id unique, which
 // aria-controls/aria-labelledby depend on.
@@ -100,6 +81,8 @@ export function SessionList({ sessions, rooms: roomsProp, allSessions }: Session
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   // Server snapshot is empty, so first render is unsaved and hydration matches.
   const savedIds = useSavedSessionIds();
+  // Resolve against every session so filters never block a deep link.
+  const modal = useSessionModal(allSessions ?? sessions);
 
   const rooms = roomsProp?.length ? roomsProp : roomsFrom(sessions);
 
@@ -296,7 +279,13 @@ export function SessionList({ sessions, rooms: roomsProp, allSessions }: Session
                         </span>
                       </div>
                       <h3 className="m-0 text-[1.95rem] font-semibold leading-tight tracking-[-0.045em] text-slate-900 md:text-[1.8rem]">
-                        {title}
+                        <button
+                          type="button"
+                          onClick={() => modal.open(session.id)}
+                          className="focus-ring rounded p-0 text-left font-[inherit] tracking-[inherit] text-inherit hover:underline"
+                        >
+                          {title}
+                        </button>
                       </h3>
                       <div className="flex items-center gap-3 pt-2 text-sm text-slate-500">
                         <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-[#f4d4b0] text-[0.65rem] font-semibold text-slate-700">
@@ -309,9 +298,9 @@ export function SessionList({ sessions, rooms: roomsProp, allSessions }: Session
                               {/* Only link out while /speakers is published —
                                   otherwise the route 404s and the anchor leads
                                   nowhere. */}
-                              {features.speakers ? (
+                              {features.speakers && person.slug ? (
                                 <Link
-                                  href={`/speakers#${session.speakerIds[personIndex] ?? ""}`}
+                                  href={`/speakers/${person.slug}`}
                                   className="focus-ring rounded font-semibold text-slate-600"
                                 >
                                   {person.name}
@@ -360,6 +349,7 @@ export function SessionList({ sessions, rooms: roomsProp, allSessions }: Session
         ) : null}
         {!savedActive && !hasTalks ? <p className="text-sm text-slate-600">{tAgenda("noSessionsMatch")}</p> : null}
       </div>
+      <SessionDialog session={modal.session} onClose={modal.close} />
     </section>
   );
 }
