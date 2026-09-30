@@ -191,7 +191,9 @@ export default async function SpeakerDetailPage({ params }: Props) {
                         ))}
                       </p>
                     )}
-                    <Link href={`/agenda#${session.id}`} className="focus-ring self-start rounded text-sm font-semibold text-primary hover:underline">
+                    {/* Plain /agenda, not #<id>: the hash would open the session
+                        modal, which only repeats what this page already shows. */}
+                    <Link href="/agenda" className="focus-ring self-start rounded text-sm font-semibold text-primary hover:underline">
                       {t("viewInAgenda")}
                     </Link>
                   </li>
