@@ -86,7 +86,6 @@ export function useSessionModal(sessions: Session[]) {
       // Deep link: there is no earlier in-app entry to go back to.
       hasEntry.current = false;
       // Opening from the URL is the mount-time sync of external state.
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setOpenId(initial.id);
     }
     const onPopState = () => {
