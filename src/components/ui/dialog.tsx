@@ -23,7 +23,8 @@ type DialogProps = {
  * Generic modal built on the native <dialog> element. The browser provides
  * focus containment, Escape handling, top-layer rendering and an inert
  * background. This component adds focus restore to the previously focused
- * element (the trigger), backdrop-click dismissal, and a labelled close button.
+ * element (the trigger), backdrop-click dismissal, a labelled close button,
+ * and a page scroll lock — the inert background still scrolls natively.
  */
 export function Dialog({ open, onClose, title, children, className = "" }: DialogProps) {
   const t = useTranslations("dialog");
@@ -32,6 +33,21 @@ export function Dialog({ open, onClose, title, children, className = "" }: Dialo
   const openerRef = useRef<HTMLElement | null>(null);
   const openRef = useRef(open);
   const onCloseRef = useRef(onClose);
+  // Inline `overflow` on <html> before we locked it; null while unlocked.
+  const lockedOverflowRef = useRef<string | null>(null);
+
+  function lockScroll() {
+    if (lockedOverflowRef.current !== null) return;
+    const root = document.documentElement;
+    lockedOverflowRef.current = root.style.overflow;
+    root.style.overflow = "hidden";
+  }
+
+  function unlockScroll() {
+    if (lockedOverflowRef.current === null) return;
+    document.documentElement.style.overflow = lockedOverflowRef.current;
+    lockedOverflowRef.current = null;
+  }
 
   useEffect(() => {
     onCloseRef.current = onClose;
@@ -44,16 +60,21 @@ export function Dialog({ open, onClose, title, children, className = "" }: Dialo
     if (open && !dialog.open) {
       openerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
       dialog.showModal();
+      lockScroll();
     } else if (!open && dialog.open) {
       dialog.close();
     }
   }, [open]);
+
+  // Unmounting while open fires no `close` event, so release the lock here.
+  useEffect(() => unlockScroll, []);
 
   // The native `close` event fires for every close path (Escape, close(),
   // form method=dialog), so focus restore and onClose live here only.
   function handleClose() {
     const opener = openerRef.current;
     openerRef.current = null;
+    unlockScroll();
     if (opener?.isConnected) opener.focus();
     if (openRef.current) {
       openRef.current = false;
