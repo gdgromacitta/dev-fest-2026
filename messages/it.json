@@ -535,5 +535,21 @@
   },
   "pastSponsors": {
     "heading": "Chi ha creduto in noi"
+  },
+  "speakerPage": {
+    "metaTitle": "{name} | DevFest Roma 2026",
+    "roleWithCompany": "{title} presso {company}",
+    "sessionsHeading": "Sessioni",
+    "linksHeading": "Link",
+    "coSpeakersHeading": "Sul palco anche",
+    "viewInAgenda": "Vedi nell’agenda",
+    "time": "Orario",
+    "room": "Sala",
+    "track": "Track",
+    "level": "Livello",
+    "level_beginner": "Base",
+    "level_intermediate": "Intermedio",
+    "level_advanced": "Avanzato",
+    "backToSpeakers": "Tutti gli speaker"
   }
 }

@@ -536,5 +536,21 @@
   },
   "pastSponsors": {
     "heading": "Those who believed in us"
+  },
+  "speakerPage": {
+    "metaTitle": "{name} | DevFest Roma 2026",
+    "roleWithCompany": "{title} at {company}",
+    "sessionsHeading": "Sessions",
+    "linksHeading": "Links",
+    "coSpeakersHeading": "Also speaking",
+    "viewInAgenda": "View in agenda",
+    "time": "Time",
+    "room": "Room",
+    "track": "Track",
+    "level": "Level",
+    "level_beginner": "Beginner",
+    "level_intermediate": "Intermediate",
+    "level_advanced": "Advanced",
+    "backToSpeakers": "All speakers"
   }
 }
