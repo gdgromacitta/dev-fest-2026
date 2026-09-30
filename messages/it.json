@@ -491,6 +491,9 @@
       "abstract": ""
     }
   },
+  "dialog": {
+    "close": "Chiudi"
+  },
   "agenda": {
     "badge": "Programma",
     "heading": "Agenda DevFest Roma 2026",

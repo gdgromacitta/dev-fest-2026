@@ -492,6 +492,9 @@
       "abstract": ""
     }
   },
+  "dialog": {
+    "close": "Close"
+  },
   "agenda": {
     "badge": "Program",
     "heading": "DevFest Roma 2026 Agenda",
