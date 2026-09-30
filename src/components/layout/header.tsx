@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, useRouter, usePathname } from "@/src/i18n/navigation";
 import { MobileNav } from "@/src/components/layout/mobile-nav";
@@ -13,7 +13,19 @@ export function Header() {
   const router = useRouter();
   const pathname = usePathname();
 
+  // The menu floats over the page, so Escape, the scrim, a chosen link and
+  // the locale switch all close it rather than leaving the content covered.
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   function toggleLocale() {
+    setOpen(false);
     router.replace(pathname, { locale: locale === "it" ? "en" : "it" });
   }
 
@@ -72,8 +84,18 @@ export function Header() {
           </button>
         </div>
       </div>
-      <div className="mx-auto w-full max-w-[1440px] px-4 md:px-16">
-        <MobileNav open={open} />
+      {/* Overlay below the sticky header instead of in-flow, so opening the
+          menu doesn't push the page down. `absolute` rather than `fixed`: the
+          header's backdrop-blur makes it the containing block either way. */}
+      {open ? (
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-full h-[100dvh] bg-slate-900/20 md:hidden"
+          onClick={() => setOpen(false)}
+        />
+      ) : null}
+      <div className="pointer-events-none absolute inset-x-0 top-full mx-auto w-full max-w-[1440px] px-4 pt-2 md:px-16">
+        <MobileNav open={open} onNavigate={() => setOpen(false)} />
       </div>
     </header>
   );
