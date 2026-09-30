@@ -135,4 +135,32 @@ describe("Dialog", () => {
     expect(document.documentElement.style.overflow).toBe("");
     root = createRoot(container);
   });
+
+  test("pins the footer outside the scrolling body", () => {
+    act(() => {
+      root.render(
+        React.createElement(NextIntlClientProvider, {
+          locale: "en",
+          messages: en,
+          children: React.createElement(Dialog, {
+            open: true,
+            onClose,
+            title: "Hello",
+            footer: React.createElement("p", { id: "foot" }, "Foot"),
+            children: React.createElement("p", { id: "body" }, "Body")
+          })
+        })
+      );
+    });
+    const body = container.querySelector("[data-dialog-body]") as HTMLElement;
+    const footer = container.querySelector("[data-dialog-footer]") as HTMLElement;
+    expect(body.contains(container.querySelector("#body"))).toBe(true);
+    expect(footer.contains(container.querySelector("#foot"))).toBe(true);
+    expect(body.contains(footer)).toBe(false);
+  });
+
+  test("renders no footer region when none is given", () => {
+    render(true);
+    expect(container.querySelector("[data-dialog-footer]")).toBeNull();
+  });
 });
