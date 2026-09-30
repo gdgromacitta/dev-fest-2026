@@ -126,7 +126,8 @@ describe("SpeakerDetailPage", () => {
     const html = await render("en", "speaker-a");
     expect(html).toContain('href="/speakers/speaker-b"');
     expect(html).not.toContain('href="/speakers/speaker-a"');
-    expect(html).toContain('href="/agenda#shared-session"');
+    expect(html).toContain('href="/agenda"');
+    expect(html).not.toContain("/agenda#");
     expect(html).toContain("10:15");
     // No abstract key exists for this session: renders without throwing.
     expect(html).toContain("Room 1");
