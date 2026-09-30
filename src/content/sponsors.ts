@@ -13,6 +13,7 @@ import type { Sponsor } from "@/src/types/content";
  * - datwave.svg: datwave.ai site asset
  *   (/wp-content/uploads/2024/06/datwave-logo.svg).
  * - bc-soft.svg: provided directly by BC Soft (horizontal, positive variant).
+ * - 42-roma.png: provided directly by 42 Roma (side layout, black variant).
  * Add a file to `public/logos/` and set `logo` to its filename to show a
  * real logo for any future entry — no code change required.
  */
@@ -39,5 +40,6 @@ export const sponsors: Sponsor[] = [
     url: "https://www.golangroma.it/",
     community: true,
     logo: "golangroma.png"
-  }
+  },
+  { name: "42 Roma", url: "https://42roma.it/", community: true, logo: "42-roma.png" }
 ];
