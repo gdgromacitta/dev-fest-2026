@@ -8,6 +8,7 @@ export const speakers: Speaker[] = [
     {
       "id": "ed5cdb60-eb09-49bc-af9c-a1df24e0c921",
       "name": "Adi Mazor Kario",
+      "slug": "adi-mazor-kario",
       "title": "Product, Design & Gen AI Expert",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/2014-400o400o1-9WPNTXm4EAsjJdLzszsW3Z.jpg",
@@ -33,6 +34,7 @@ export const speakers: Speaker[] = [
     {
       "id": "277c86d6-408f-4aaf-9558-ab8d72ac5a00",
       "name": "Alexander Amin",
+      "slug": "alexander-amin",
       "title": "Freelance Software Engineer",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/6f9e-400o400o1-3d9DJxPhtq1mkMgkk56rhp.jpg",
@@ -50,6 +52,7 @@ export const speakers: Speaker[] = [
     {
       "id": "4f4a677c-44c3-484e-accb-5ba8b38463ef",
       "name": "Alfonso Graziano",
+      "slug": "alfonso-graziano",
       "title": "AI Tech Lead @ Nearform",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/b124-400o400o1-E73XiN6VYoSJZGcZjsnQY3.jpg",
@@ -71,6 +74,7 @@ export const speakers: Speaker[] = [
     {
       "id": "5420ebbc-daff-4bde-959b-4542e4287fdd",
       "name": "Alfredo Bautista Santos",
+      "slug": "alfredo-bautista-santos",
       "title": "Flutter & Dart GDE / Flutter dev / GDG organizer",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/3af7-400o400o1-9W9wup8wc65N57QSJgh5pw.png",
@@ -96,6 +100,7 @@ export const speakers: Speaker[] = [
     {
       "id": "c6d730f8-1144-464c-ba36-606c92618a98",
       "name": "Carlo Antonio Venditti",
+      "slug": "carlo-antonio-venditti",
       "title": "Freelance software engineer",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/b677-400o400o1-376kqrW6fTCWR45obCpjKa.jpg",
@@ -113,6 +118,7 @@ export const speakers: Speaker[] = [
     {
       "id": "55c6b59b-448d-4e3b-a013-3b23810b6fcd",
       "name": "Daniel Ostrovsky",
+      "slug": "daniel-ostrovsky",
       "title": "AI Architect at Payoneer | Full Cycle Development Expert | Public Speaker | Open Source Contributor | ",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/401f-400o400o1-P6uziRGo5Pa9LiWzydSkPn.png",
@@ -138,6 +144,7 @@ export const speakers: Speaker[] = [
     {
       "id": "67fa196a-5b03-4d22-a521-48ae1d56e2b1",
       "name": "Elsa Panza",
+      "slug": "elsa-panza",
       "title": "Datwave, Manager, Data Engineer - Data Architect - Data Analyst",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/8512-400o400o1-M3JScJf21wHyTmEXvf67z9.png",
@@ -150,6 +157,7 @@ export const speakers: Speaker[] = [
     {
       "id": "c5dfc454-2d8f-42a5-a8df-7331e20f3329",
       "name": "Fabio Carusi",
+      "slug": "fabio-carusi",
       "title": "Data Engineer @BitBang ",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/7a1a-400o400o1-R73tFEQXQUYopVpLbuaTos.jpg",
@@ -171,6 +179,7 @@ export const speakers: Speaker[] = [
     {
       "id": "e715387d-ff3b-4559-bdc3-1ee34393d8e4",
       "name": "Fabio Catinella",
+      "slug": "fabio-catinella",
       "title": "Senior Android Developer @ Sky",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/2d8d-400o400o1-XeArCJX5wVh4tKTy6DMy43.png",
@@ -188,6 +197,7 @@ export const speakers: Speaker[] = [
     {
       "id": "56c1a58b-b22b-4694-ab30-40aebda7fb8e",
       "name": "Francesco Ciulla",
+      "slug": "francesco-ciulla",
       "title": "Developer Advocate at daily.dev | Docker Captain",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/5bc3-400o400o1-QpTCTVpr9LyzQPGFwSAbSt.jpg",
@@ -217,6 +227,7 @@ export const speakers: Speaker[] = [
     {
       "id": "5a25ee5f-9a7b-44e4-9ea6-f70f5ba36244",
       "name": "Giacomo Sergio",
+      "slug": "giacomo-sergio",
       "title": "CEO@Wondersys/Co-Founder and CTO@YouDoTOols",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/a4c7-400o400o1-nc7XrcEhXZ3LMQTtRxnu2Y.jpg",
@@ -242,6 +253,7 @@ export const speakers: Speaker[] = [
     {
       "id": "ac1ea296-0d75-4be5-97e3-58c67b792f64",
       "name": "Giulia Lotti",
+      "slug": "giulia-lotti",
       "title": "SheTech Ambassador",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/d370-400o400o1-3Sm478hzkuv895GBBgJ4pQ.jpg",
@@ -263,6 +275,7 @@ export const speakers: Speaker[] = [
     {
       "id": "16271985-149a-411d-bebb-e9704df38154",
       "name": "Haim Michael",
+      "slug": "haim-michael",
       "title": "Software Developer | Trainer | Consultant",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/ff78-400o400o1-JHhbLhS2qtq6gV8qDvf1Hy.png",
@@ -296,6 +309,7 @@ export const speakers: Speaker[] = [
     {
       "id": "cc115ac8-2e9b-4f28-bf88-48c8b4341938",
       "name": "Jason Berryman",
+      "slug": "jason-berryman",
       "title": "Google Developer Expert - Firebase & Cloud",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/d1c5-400o400o1-3CFdR7Dw8Vc3WHP1j8bmri.jpg",
@@ -317,6 +331,7 @@ export const speakers: Speaker[] = [
     {
       "id": "cfbb2c88-e6be-4024-924e-729be5eebbf7",
       "name": "Maria Korneeva",
+      "slug": "maria-korneeva",
       "title": "Consultant and Trainer",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/a493-400o400o1-J3LQN4RCnWKMuGEYKvdB9H.jpg",
@@ -338,6 +353,7 @@ export const speakers: Speaker[] = [
     {
       "id": "190be305-4971-497a-b24e-38558aba5c8f",
       "name": "Mohamed Islem Ayari",
+      "slug": "mohamed-islem-ayari",
       "title": "CLOUDPILOTS, Cloud Consultant",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/f081-400o400o1-fW8QhuuntD4yfTmHuzskjQ.jpg",
@@ -359,6 +375,7 @@ export const speakers: Speaker[] = [
     {
       "id": "d3f982bf-06f2-4a7a-ac5a-2479f4cec0b2",
       "name": "Mohamed Mortadha Manai",
+      "slug": "mohamed-mortadha-manai",
       "title": "Senior AI Engineer  | Google Developer Expert in Cloud AI |Phd Candidate in xAI | AI Expert Consultant | AI Expert Author | International AI Speaker",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/a17b-400o400o1-DT2RYj3mGNxmsLqrknvJCo.jpg",
@@ -388,6 +405,7 @@ export const speakers: Speaker[] = [
     {
       "id": "4d99c10c-8f54-4526-ac00-873711d36042",
       "name": "Moisés Martínez",
+      "slug": "moises-martinez",
       "title": "ML, DL, LLMs, LVMs, TensorFlow, GCP,  Pytorch, Python. ",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/78a5-400o400o1-WxgqwFt3uuGgJeNgTdrd3N.jpg",
@@ -409,6 +427,7 @@ export const speakers: Speaker[] = [
     {
       "id": "fbf4ed2b-e1ec-4557-85d3-4a7524b631eb",
       "name": "Paolo Caressa",
+      "slug": "paolo-caressa",
       "title": "GSE spa - IT Expert",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/a0ac-400o400o1-JuJZHqwbWMmU3yYvLHrhBW.png",
@@ -434,6 +453,7 @@ export const speakers: Speaker[] = [
     {
       "id": "6b3af3e6-c30a-4cb5-9c96-15c15dcdeb76",
       "name": "Piero Savastano",
+      "slug": "piero-savastano",
       "title": "Data Scientist",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/cc12-400o400o1-fuZwKrAzBDZyjXaEsya9nB.png",
@@ -459,6 +479,7 @@ export const speakers: Speaker[] = [
     {
       "id": "53fefbc7-ac0c-4a89-b3fb-dfe111825a24",
       "name": "Serena Sensini",
+      "slug": "serena-sensini",
       "title": "CTO @ Welyk, Innovation & Emerging Technologies Leader @ Dedalus, author and founder@TheRedCode.it",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/6a14-400o400o1-atJBm6F2VREAZDYzu1E2zs.jpg",
@@ -480,6 +501,7 @@ export const speakers: Speaker[] = [
     {
       "id": "79456a39-767a-4670-97e9-c559f6bfb312",
       "name": "Tahreem Rasul",
+      "slug": "tahreem-rasul",
       "title": "Tech Lead @ Red Buffer | Google Developer Expert in AI",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/99de-400o400o1-JrHP23NvQqhm5WkxEczeTq.jpg",
@@ -505,6 +527,7 @@ export const speakers: Speaker[] = [
     {
       "id": "010b5826-2430-48eb-8355-7b375b1e87dc",
       "name": "Tamas Piros",
+      "slug": "tamas-piros",
       "title": "AI Consultant",
       "company": "",
       "photo": "https://cdn.sessionize.com/image/ad01-400o400o1-XXP5SeiaRiSJNDwoLxAZkD.jpg",

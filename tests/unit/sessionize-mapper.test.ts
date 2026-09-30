@@ -168,3 +168,34 @@ describe("defaults", () => {
     expect(sessions[2]?.level).toBe("advanced");
   });
 });
+
+describe("speaker slugs", () => {
+  const raw = (id: string, fullName: string) => ({ id, fullName, sessions: [] });
+  const slugsOf = (speakers: ReturnType<typeof raw>[]) =>
+    Object.fromEntries(mapAll({ speakers, sessions: [] }).speakers.map((s) => [s.id, s.slug]));
+
+  it("slugifies plain, accented and apostrophe names", () => {
+    const slugs = slugsOf([
+      raw("a1", "Adi Mazor Kario"),
+      raw("b2", "Niccolò Ç"),
+      raw("c3", "Luca D'Angelo")
+    ]);
+    expect(slugs).toEqual({ a1: "adi-mazor-kario", b2: "niccolo-c", c3: "luca-dangelo" });
+  });
+
+  it("falls back to the id prefix for symbols-only names", () => {
+    expect(slugsOf([raw("0123456789abcdef", "!!! ???")])).toEqual({ "0123456789abcdef": "speaker-01234567" });
+  });
+
+  it("gives -2 to the greater id regardless of input order", () => {
+    const first = slugsOf([raw("aaa", "Jane Doe"), raw("bbb", "Jane Doe")]);
+    const second = slugsOf([raw("bbb", "Jane Doe"), raw("aaa", "Jane Doe")]);
+    expect(first).toEqual({ aaa: "jane-doe", bbb: "jane-doe-2" });
+    expect(second).toEqual(first);
+  });
+
+  it("emits a slug for every fixture speaker", () => {
+    const { speakers } = mapAll(fixture);
+    expect(speakers.every((s) => s.slug.length > 0)).toBe(true);
+  });
+});
