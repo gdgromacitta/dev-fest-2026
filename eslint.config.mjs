@@ -11,5 +11,5 @@ export default defineConfig([
       "react/no-children-prop": "off"
     }
   },
-  globalIgnores([".next/**", ".remember/**", "out/**", "next-env.d.ts"])
+  globalIgnores([".next/**", ".remember/**", "out/**", "next-env.d.ts", "public/game/**"])
 ]);
