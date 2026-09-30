@@ -3,18 +3,18 @@
 import { useTranslations } from "next-intl";
 import type { Speaker } from "@/src/types/content";
 import { Card } from "@/src/components/ui/card";
+import { Link } from "@/src/i18n/navigation";
 
 type SpeakerCardProps = {
   speaker: Speaker;
-  onOpen: () => void;
 };
 
-export function SpeakerCard({ speaker, onOpen }: SpeakerCardProps) {
+export function SpeakerCard({ speaker }: SpeakerCardProps) {
   const t = useTranslations("speakers");
   const tCard = useTranslations("speakerCard");
 
   return (
-    <Card as="article" className="flex h-full flex-col gap-3" id={speaker.id}>
+    <Card as="article" className="relative flex h-full flex-col gap-3" id={speaker.id}>
       {speaker.photo && (
         <img
           src={speaker.photo}
@@ -30,13 +30,13 @@ export function SpeakerCard({ speaker, onOpen }: SpeakerCardProps) {
       </div>
       <p className="m-0 line-clamp-4 text-sm text-slate-700">{t(`${speaker.id}.bioShort`)}</p>
       <div className="mt-auto flex justify-end pt-3">
-        <button
-          type="button"
-          className="focus-ring rounded text-sm font-semibold text-gblue hover:underline"
-          onClick={onOpen}
+        {/* The after: overlay stretches the link over the whole card. */}
+        <Link
+          href={`/speakers/${speaker.slug}`}
+          className="focus-ring rounded text-sm font-semibold text-gblue after:absolute after:inset-0 after:content-[''] hover:underline"
         >
           {tCard("viewDetails")}
-        </button>
+        </Link>
       </div>
     </Card>
   );

@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { cfpUrl } from "@/src/content/nav-links";
 import { features } from "@/src/content/features";
 import { speakers } from "@/src/content/speakers";
+import { LegacyHashRedirect } from "@/src/components/speakers/legacy-hash-redirect";
 import { SpeakersGrid } from "@/src/components/speakers/speakers-grid";
 import { PageHero } from "@/src/components/layout/page-hero";
 
@@ -37,6 +38,7 @@ export default async function SpeakersPage({ params }: Props) {
 
   return (
     <main>
+      <LegacyHashRedirect />
       <PageHero id="speakers-heading" eyebrow={t("badge")} lines={[t("titleLine1"), t("titleLine2")]} srSuffix={t("heading")}>
         <p className="m-0 max-w-2xl text-lg text-muted">{t("intro")}</p>
       </PageHero>
