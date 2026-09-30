@@ -127,7 +127,12 @@ type SessionDialogProps = {
 
 export function SessionDialog({ session, onClose }: SessionDialogProps) {
   return (
-    <Dialog open={session !== null} onClose={onClose} title={session ? <SessionTitle id={session.id} /> : ""}>
+    <Dialog
+      open={session !== null}
+      onClose={onClose}
+      title={session ? <SessionTitle id={session.id} /> : ""}
+      footer={session ? <SessionFooter session={session} /> : null}
+    >
       {session ? <SessionDetails session={session} /> : null}
     </Dialog>
   );
@@ -141,45 +146,16 @@ function SessionTitle({ id }: { id: string }) {
 function SessionDetails({ session }: { session: Session }) {
   const tSessions = useTranslations("sessions");
   const tAgenda = useTranslations("agenda");
-  const savedIds = useSavedSessionIds();
-  const saved = savedIds.includes(session.id);
-  const title = tSessions(`${session.id}.title`);
   const hasAbstract = tSessions.has(`${session.id}.abstract`);
   const room = roomKey(session);
-  const lineup = (session.speakerIds.length ? session.speakerIds : [""]).map((id) => ({
-    id,
-    meta: getSpeakerMeta(id, tAgenda("speakerTba"), tAgenda("speakerTbaSubtitle"))
-  }));
 
   return (
     <div className="space-y-4">
-      <div className="flex items-start justify-between gap-4">
-        <p className="m-0 text-sm text-slate-600">
-          {formatTime(session.start)}–{formatTime(session.end)}
-          {" · "}
-          {room === UNASSIGNED_ROOM ? tAgenda("unassignedRoom") : room}
-        </p>
-        <button
-          type="button"
-          aria-label={tAgenda("saveSessionAriaLabel", { title })}
-          aria-pressed={saved}
-          onClick={() => toggleSession(session.id)}
-          className={`focus-ring flex-none rounded-lg p-1 transition-colors ${
-            saved ? "text-[#2b6cd4]" : "text-slate-400 hover:text-slate-600"
-          }`}
-        >
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 20 20"
-            className={`h-7 w-7 ${saved ? "fill-current" : "fill-none"}`}
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinejoin="round"
-          >
-            <path d="M6 3.5A1.5 1.5 0 0 1 7.5 2h5A1.5 1.5 0 0 1 14 3.5v13.12c0 .69-.78 1.1-1.35.72L10 15.54l-2.65 1.8c-.57.38-1.35-.03-1.35-.72V3.5Z" />
-          </svg>
-        </button>
-      </div>
+      <p className="m-0 text-sm text-slate-600">
+        {formatTime(session.start)}–{formatTime(session.end)}
+        {" · "}
+        {room === UNASSIGNED_ROOM ? tAgenda("unassignedRoom") : room}
+      </p>
 
       <div className="flex flex-wrap gap-2 text-[0.65rem] font-bold uppercase tracking-[0.08em]">
         {session.track ? <span className="rounded-md bg-slate-100 px-2 py-1 text-slate-600">{session.track}</span> : null}
@@ -198,7 +174,24 @@ function SessionDetails({ session }: { session: Session }) {
           {tSessions(`${session.id}.abstract`)}
         </p>
       ) : null}
+    </div>
+  );
+}
 
+/** Pinned below the scrolling abstract so speakers and actions stay in view. */
+function SessionFooter({ session }: { session: Session }) {
+  const tSessions = useTranslations("sessions");
+  const tAgenda = useTranslations("agenda");
+  const savedIds = useSavedSessionIds();
+  const saved = savedIds.includes(session.id);
+  const title = tSessions(`${session.id}.title`);
+  const lineup = (session.speakerIds.length ? session.speakerIds : [""]).map((id) => ({
+    id,
+    meta: getSpeakerMeta(id, tAgenda("speakerTba"), tAgenda("speakerTbaSubtitle"))
+  }));
+
+  return (
+    <div className="space-y-3">
       <section aria-label={tAgenda("modalSpeakers")}>
         <ul className="m-0 list-none space-y-3 p-0">
           {lineup.map(({ id, meta }, index) => (
@@ -231,7 +224,29 @@ function SessionDetails({ session }: { session: Session }) {
         </ul>
       </section>
 
-      <AddToCalendar session={session} title={title} />
+      <div className="flex items-center justify-between gap-4">
+        <AddToCalendar session={session} title={title} placement="above" />
+        <button
+          type="button"
+          aria-label={tAgenda("saveSessionAriaLabel", { title })}
+          aria-pressed={saved}
+          onClick={() => toggleSession(session.id)}
+          className={`focus-ring flex-none rounded-lg p-1 transition-colors ${
+            saved ? "text-[#2b6cd4]" : "text-slate-400 hover:text-slate-600"
+          }`}
+        >
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 20 20"
+            className={`h-7 w-7 ${saved ? "fill-current" : "fill-none"}`}
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinejoin="round"
+          >
+            <path d="M6 3.5A1.5 1.5 0 0 1 7.5 2h5A1.5 1.5 0 0 1 14 3.5v13.12c0 .69-.78 1.1-1.35.72L10 15.54l-2.65 1.8c-.57.38-1.35-.03-1.35-.72V3.5Z" />
+          </svg>
+        </button>
+      </div>
     </div>
   );
 }

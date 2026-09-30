@@ -52,6 +52,15 @@ describe("CalendarPopup", () => {
     expect(html).toContain('rel="noopener noreferrer"');
     expect(html).toContain('href="/calendar/talk-1.en.ics"');
   });
+
+  it("opens below by default and above on request", () => {
+    expect(html).toContain("top-full");
+    const above = wrap(
+      React.createElement(CalendarPopup, { id: "p2", googleUrl: "https://x", icsHref: "/x.ics", placement: "above" })
+    );
+    expect(above).toContain("bottom-full");
+    expect(above).not.toContain("top-full");
+  });
 });
 
 describe("isCloseKey", () => {

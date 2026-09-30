@@ -119,6 +119,20 @@ describe("trigger", () => {
   });
 });
 
+describe("layout", () => {
+  test("abstract scrolls in the body; speakers and actions stay pinned in the footer", () => {
+    mount();
+    act(() => trigger("First talk").click());
+    const body = dialog().querySelector("[data-dialog-body]")!;
+    const footer = dialog().querySelector("[data-dialog-footer]")!;
+    expect(body.textContent).toContain("Abstract one");
+    expect(body.textContent).not.toContain(speaker.name);
+    expect(footer.textContent).toContain(speaker.name);
+    expect(footer.querySelector("button[aria-pressed]")).not.toBeNull();
+    expect(footer.querySelector(`[data-add-to-calendar="s1"]`)).not.toBeNull();
+  });
+});
+
 describe("bookmark sync", () => {
   test("toggling in the modal updates the card", () => {
     mount();
