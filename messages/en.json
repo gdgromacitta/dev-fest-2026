@@ -496,6 +496,7 @@
     "close": "Close"
   },
   "agenda": {
+    "modalSpeakers": "Speakers",
     "badge": "Program",
     "heading": "DevFest Roma 2026 Agenda",
     "intro": "The full program will be published in September. Here's a preview of the parallel tracks.",

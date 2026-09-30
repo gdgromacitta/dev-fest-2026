@@ -4,6 +4,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { NextIntlClientProvider } from "next-intl";
 import { SessionList } from "@/src/components/agenda/session-list";
 import { UNASSIGNED_ROOM, roomsFrom, savedTabSessions, sessionsForRoom } from "@/src/lib/agenda-rooms";
+import { speakers } from "@/src/content/speakers";
 import type { Session } from "@/src/types/content";
 import messages from "@/messages/it.json";
 
@@ -241,7 +242,8 @@ describe("sessions with no room", () => {
 
   test("keeps the sentinel out of generated ids", () => {
     const html = renderDerivingRooms([talk("a", "Maria", "2026-10-10T10:00:00"), roomless("orphan")]);
-    for (const id of [...html.matchAll(/id="([^"]+)"/g)].map((m) => m[1])) {
+    // useId() ids (the session dialog's aria-labelledby target) are React's.
+    for (const id of [...html.matchAll(/id="([^"]+)"/g)].map((m) => m[1]).filter((id) => !id!.startsWith("_R_"))) {
       expect(id).toMatch(/^[a-z0-9-]+$/);
     }
   });
@@ -279,12 +281,18 @@ describe("tab accessibility", () => {
 });
 
 describe("speaker links", () => {
-  test("links each speaker to their /speakers anchor now that the page is published", () => {
-    // features.speakers is on: session-list.tsx (line ~280) gates this same
-    // link on that flag, so this test tracks the current committed state
-    // rather than the flag's off-case.
-    const html = render(schedule);
-    expect(html).toContain('href="/speakers#sp-1"');
+  test("links each speaker to their /speakers/<slug> page now that the page is published", () => {
+    // features.speakers is on: session-list.tsx gates this same link on that
+    // flag, so this test tracks the current committed state rather than the
+    // flag's off-case.
+    const real = speakers[0]!;
+    const html = render([{ ...talk("a", "Maria", "2026-10-10T10:00:00"), speakerIds: [real.id] }], ["Maria"]);
+    expect(html).toContain(`href="/speakers/${real.slug}"`);
+    expect(html).not.toContain("/speakers#");
+  });
+
+  test("renders unknown speakers as plain text", () => {
+    expect(render(schedule)).not.toContain('href="/speakers');
   });
 });
 

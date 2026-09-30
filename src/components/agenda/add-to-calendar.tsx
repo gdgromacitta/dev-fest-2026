@@ -18,17 +18,27 @@ const OPEN_EVENT = "add-to-calendar:open";
 const optionClass =
   "focus-ring block rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100";
 
-type CalendarPopupProps = { id: string; googleUrl: string; icsHref: string; onSelect?: () => void };
+// "above" is for triggers pinned to the bottom of a clipping container (the
+// session dialog footer), where a panel opening downward would be cut off.
+export type CalendarPopupPlacement = "below" | "above";
+
+type CalendarPopupProps = {
+  id: string;
+  googleUrl: string;
+  icsHref: string;
+  onSelect?: () => void;
+  placement?: CalendarPopupPlacement;
+};
 
 /** The popup body; split out so its links can be rendered in isolation. */
-export function CalendarPopup({ id, googleUrl, icsHref, onSelect }: CalendarPopupProps) {
+export function CalendarPopup({ id, googleUrl, icsHref, onSelect, placement = "below" }: CalendarPopupProps) {
   const t = useTranslations("agenda");
   return (
     <div
       id={id}
       // max-w keeps the panel inside a 360px viewport; it opens from the
       // trigger's left edge, which sits at the card's left.
-      className="absolute left-0 top-full z-20 mt-1 w-max max-w-[calc(100vw-3rem)] rounded-xl border border-slate-200 bg-white p-1 shadow-lg"
+      className={`absolute left-0 z-20 ${placement === "above" ? "bottom-full mb-1" : "top-full mt-1"} w-max max-w-[calc(100vw-3rem)] rounded-xl border border-slate-200 bg-white p-1 shadow-lg`}
     >
       <a href={googleUrl} target="_blank" rel="noopener noreferrer" onClick={onSelect} className={optionClass}>
         {t("addToGoogleCalendar")}
@@ -43,14 +53,14 @@ export function CalendarPopup({ id, googleUrl, icsHref, onSelect }: CalendarPopu
 /** Escape closes the popup; kept pure so it can be tested without a DOM. */
 export const isCloseKey = (key: string) => key === "Escape";
 
-type AddToCalendarProps = { session: Session; title: string };
+type AddToCalendarProps = { session: Session; title: string; placement?: CalendarPopupPlacement };
 
 /**
  * Disclosure popup with two links. Disclosure (not role="menu") because the
  * options are plain links: Tab moves through them, Escape closes and returns
  * focus to the trigger, outside click and selecting an option also close.
  */
-export function AddToCalendar({ session, title }: AddToCalendarProps) {
+export function AddToCalendar({ session, title, placement }: AddToCalendarProps) {
   const t = useTranslations("agenda");
   const locale = useLocale();
   const messages = useMessages() as CalendarMessages;
@@ -111,7 +121,13 @@ export function AddToCalendar({ session, title }: AddToCalendarProps) {
         {t("addToCalendar")}
       </button>
       {open ? (
-        <CalendarPopup id={panelId} googleUrl={googleUrl} icsHref={icsPath(session.id, locale)} onSelect={close} />
+        <CalendarPopup
+          id={panelId}
+          googleUrl={googleUrl}
+          icsHref={icsPath(session.id, locale)}
+          onSelect={close}
+          placement={placement}
+        />
       ) : null}
     </div>
   );
