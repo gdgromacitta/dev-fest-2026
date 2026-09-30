@@ -20,7 +20,7 @@ function Row({ speakers: rowSpeakers }: { speakers: Speaker[] }) {
       {rowSpeakers.map((speaker) => (
         <li key={speaker.id}>
           <Link
-            href={`/speakers#${speaker.id}`}
+            href={`/speakers/${speaker.slug}`}
             className="focus-ring flex w-24 flex-col items-center gap-2 rounded-lg text-center"
           >
             {speaker.photo ? (
