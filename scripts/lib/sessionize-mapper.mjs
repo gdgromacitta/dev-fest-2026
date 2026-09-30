@@ -95,10 +95,48 @@ export function mapSession(session, { rooms, categories, categoryTitles = DEFAUL
   };
 }
 
+// URL segment for a speaker page. Diacritics are stripped, apostrophes
+// deleted ("D'Angelo" -> "dangelo"), everything else non-alphanumeric becomes
+// "-". Names with no usable characters fall back to the Sessionize id prefix.
+export function baseSlug(name, id) {
+  const slug = String(name ?? "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/['\u2019\u2018`]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return slug || `speaker-${String(id).slice(0, 8)}`;
+}
+
+// Resolves collisions between base slugs. Speakers are grouped by base slug and
+// ordered by Sessionize id, so the suffix a speaker gets never depends on the
+// order the API happened to return them in. Returns a new array in input order.
+export function assignUniqueSlugs(speakers) {
+  const groups = new Map();
+  for (const speaker of speakers) {
+    const base = baseSlug(speaker.name, speaker.id);
+    const group = groups.get(base) ?? [];
+    group.push(speaker);
+    groups.set(base, group);
+  }
+  const slugById = new Map();
+  for (const [base, group] of groups) {
+    [...group]
+      .sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0))
+      .forEach((speaker, index) => slugById.set(speaker.id, index === 0 ? base : `${base}-${index + 1}`));
+  }
+  return speakers.map((speaker) => ({ ...speaker, slug: slugById.get(speaker.id) }));
+}
+
 export function mapSpeaker(speaker, { sessionIdsBySpeakerId }) {
+  const id = String(speaker.id);
+  const name = speaker.fullName ?? `${speaker.firstName ?? ""} ${speaker.lastName ?? ""}`.trim();
   return {
-    id: String(speaker.id),
-    name: speaker.fullName ?? `${speaker.firstName ?? ""} ${speaker.lastName ?? ""}`.trim(),
+    id,
+    name,
+    // Base slug only; mapAll resolves collisions across the whole list.
+    slug: baseSlug(name, id),
     title: speaker.tagLine ?? "",
     // Sessionize has no separate "company" field (organizers often bake it
     // into tagLine, e.g. "Developer Relations @ Google") — left blank rather
@@ -154,7 +192,9 @@ export function mapAll(apiResponse, { categoryTitles = DEFAULT_CATEGORY_TITLES }
     }
   }
 
-  const speakers = (apiResponse.speakers ?? []).map((speaker) => mapSpeaker(speaker, { sessionIdsBySpeakerId }));
+  const speakers = assignUniqueSlugs(
+    (apiResponse.speakers ?? []).map((speaker) => mapSpeaker(speaker, { sessionIdsBySpeakerId }))
+  );
 
   const sessionMessages = {};
   for (const session of scheduled) {
