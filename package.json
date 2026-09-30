@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "eslint .",
     "generate:og": "node scripts/generate-og-image.mjs",
+    "generate:sprites": "node scripts/generate-rome-sprites.mjs",
     "fetch:content": "node scripts/fetch-sessionize.mjs",
     "test": "vitest run tests/unit",
     "test:watch": "vitest tests/unit"

@@ -555,5 +555,12 @@
     "level_intermediate": "Intermedio",
     "level_advanced": "Avanzato",
     "backToSpeakers": "Tutti gli speaker"
+  },
+  "notFound": {
+    "title": "Pagina non trovata",
+    "body": "Questa pagina non esiste, ma intanto puoi giocare.",
+    "backHome": "Torna alla home",
+    "gameTitle": "Gioco runner",
+    "gameHint": "Premi Spazio o tocca per giocare"
   }
 }

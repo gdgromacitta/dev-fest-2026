@@ -556,5 +556,12 @@
     "level_intermediate": "Intermediate",
     "level_advanced": "Advanced",
     "backToSpeakers": "All speakers"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "This page doesn't exist, but you can play while you're here.",
+    "backHome": "Back to home",
+    "gameTitle": "Runner game",
+    "gameHint": "Press Space or tap to play"
   }
 }
