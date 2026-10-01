@@ -14,6 +14,7 @@ import type { Sponsor } from "@/src/types/content";
  *   (/wp-content/uploads/2024/06/datwave-logo.svg).
  * - bc-soft.svg: provided directly by BC Soft (horizontal, positive variant).
  * - 42-roma.png: provided directly by 42 Roma (side layout, black variant).
+ * - romajs.png: rasterised from the romajs.org site logo SVG (512x512).
  * Add a file to `public/logos/` and set `logo` to its filename to show a
  * real logo for any future entry — no code change required.
  */
@@ -25,6 +26,7 @@ export const sponsors: Sponsor[] = [
     tier: "platinum",
     logo: "elis-innovation-hub.svg"
   },
+  { name: "42 Roma", url: "https://42roma.it/", tier: "platinum", logo: "42-roma.png" },
   { name: "Datwave", url: "https://datwave.ai", tier: "gold", logo: "datwave.svg" },
   { name: "Seeweb", url: "https://www.seeweb.it", tier: "silver", logo: "seeweb.svg" },
   { name: "BC Soft", url: "https://www.bcsoft.net/", tier: "silver", logo: "bc-soft.svg" },
@@ -41,5 +43,5 @@ export const sponsors: Sponsor[] = [
     community: true,
     logo: "golangroma.png"
   },
-  { name: "42 Roma", url: "https://42roma.it/", community: true, logo: "42-roma.png" }
+  { name: "RomaJS", url: "https://romajs.org/", community: true, logo: "romajs.png" }
 ];
