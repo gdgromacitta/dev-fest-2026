@@ -68,44 +68,71 @@ export default async function SponsorsPage({ params }: Props) {
             {t("badge")}
           </h2>
           <ul role="list" className="m-0 grid list-none grid-flow-dense grid-cols-1 gap-2.5 p-0 md:grid-cols-6 md:gap-3.5 lg:grid-cols-12">
-            {tiers.flatMap(({ tier, labelKey, span, label, height, logo }) =>
-              sponsors
-                .filter((sponsor) => sponsor.tier === tier)
-                .map((sponsor) => (
-                  <li key={sponsor.name} className={span}>
-                    <a
-                      href={sponsor.url}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      className={`bento-tile bento-link focus-ring h-full border border-line bg-white text-base font-semibold text-ink ${height}`}
+            {/* One tile per tier holding every sponsor in it; each logo is its own link. */}
+            {tiers.map(({ tier, labelKey, span, label, height, logo }) => {
+              const tierSponsors = sponsors.filter((sponsor) => !sponsor.community && sponsor.tier === tier);
+              if (tierSponsors.length === 0) return null;
+              return (
+                <li key={tier} className={span}>
+                  <div
+                    className={`bento-tile h-full border border-line bg-white text-base font-semibold text-ink ${height}`}
+                    data-sponsor-tier={tier}
+                  >
+                    <span className={`eyebrow ${label}`}>{t(labelKey)}</span>
+                    <ul
+                      role="list"
+                      className="m-0 flex flex-1 list-none flex-wrap items-center justify-center gap-x-12 gap-y-6 p-0 py-4 text-center"
                     >
-                      <span className={`eyebrow ${label}`}>{t(labelKey)}</span>
-                      <span className="flex flex-1 items-center justify-center py-4 text-center">
-                        <SponsorLogo sponsor={sponsor} className={logo} />
-                      </span>
-                    </a>
-                  </li>
-                ))
-            )}
+                      {tierSponsors.map((sponsor) => (
+                        <li key={sponsor.name}>
+                          <a
+                            href={sponsor.url}
+                            target="_blank"
+                            rel="noreferrer noopener"
+                            className={`focus-ring flex items-center rounded-md transition-opacity hover:opacity-75 ${logo}`}
+                            data-sponsor-name={sponsor.name}
+                          >
+                            <SponsorLogo sponsor={sponsor} className="h-full" />
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </li>
+              );
+            })}
 
             {/* Community & swag/licence partners — not part of the paid tier
                 ladder, presented alongside it. Whether these eventually get
                 their own group is an open decision (see `community` flag). */}
-            {communitySponsors.map((sponsor) => (
-              <li key={sponsor.name} className="md:col-span-3 lg:col-span-4">
-                <a
-                  href={sponsor.url}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="bento-tile bento-link focus-ring h-full min-h-[140px] bg-tint text-base font-semibold text-ink"
+            {communitySponsors.length > 0 && (
+              <li className="md:col-span-6 lg:col-span-12">
+                <div
+                  className="bento-tile h-full min-h-[140px] bg-tint text-base font-semibold text-ink"
+                  data-sponsor-tier="community"
                 >
                   <span className="eyebrow text-accent-gray-deep">{t("communityLabel")}</span>
-                  <span className="flex flex-1 items-center justify-center py-3 text-center">
-                    <SponsorLogo sponsor={sponsor} className="h-14" />
-                  </span>
-                </a>
+                  <ul
+                    role="list"
+                    className="m-0 flex flex-1 list-none flex-wrap items-center justify-center gap-x-12 gap-y-6 p-0 py-3 text-center"
+                  >
+                    {communitySponsors.map((sponsor) => (
+                      <li key={sponsor.name}>
+                        <a
+                          href={sponsor.url}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          className="focus-ring flex h-14 items-center rounded-md transition-opacity hover:opacity-75"
+                          data-sponsor-name={sponsor.name}
+                        >
+                          <SponsorLogo sponsor={sponsor} className="h-full" />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </li>
-            ))}
+            )}
           </ul>
         </div>
       </section>
