@@ -298,27 +298,32 @@ export function SessionList({ sessions, rooms: roomsProp, allSessions }: Session
                             />
                           ))}
                         </span>
-                        <p className="m-0">
-                          {lineup.map((person, personIndex) => (
-                            <span key={session.speakerIds[personIndex] ?? personIndex}>
-                              {personIndex > 0 ? ", " : ""}
-                              {/* Only link out while /speakers is published —
-                                  otherwise the route 404s and the anchor leads
-                                  nowhere. */}
-                              {features.speakers && person.slug ? (
-                                <Link
-                                  href={`/speakers/${person.slug}`}
-                                  className="focus-ring rounded font-semibold text-slate-600"
-                                >
-                                  {person.name}
-                                </Link>
-                              ) : (
-                                <span className="font-semibold text-slate-600">{person.name}</span>
-                              )}
-                            </span>
-                          ))}
-                          {speaker.subtitle && lineup.length === 1 ? `, ${speaker.subtitle}` : ""}
-                        </p>
+                        <div className="min-w-0">
+                          <p className="m-0">
+                            {lineup.map((person, personIndex) => (
+                              <span key={session.speakerIds[personIndex] ?? personIndex}>
+                                {personIndex > 0 ? ", " : ""}
+                                {/* Only link out while /speakers is published —
+                                    otherwise the route 404s and the anchor leads
+                                    nowhere. */}
+                                {features.speakers && person.slug ? (
+                                  <Link
+                                    href={`/speakers/${person.slug}`}
+                                    className="focus-ring rounded font-semibold text-slate-600"
+                                  >
+                                    {person.name}
+                                  </Link>
+                                ) : (
+                                  <span className="font-semibold text-slate-600">{person.name}</span>
+                                )}
+                              </span>
+                            ))}
+                          </p>
+                          {/* Role on its own line under the name; paired talks list several names, so it's single-speaker only. */}
+                          {speaker.subtitle && lineup.length === 1 ? (
+                            <p className="m-0 mt-0.5 leading-snug">{speaker.subtitle}</p>
+                          ) : null}
+                        </div>
                       </div>
                       <AddToCalendar session={session} title={title} />
                     </div>
