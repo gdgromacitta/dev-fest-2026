@@ -42,6 +42,21 @@ export const getSpeakerMeta = (speakerId: string, fallbackName: string, fallback
   };
 };
 
+/** Round speaker photo, falling back to initials for TBA / photo-less speakers. Decorative: the name is always shown beside it. */
+export function SpeakerAvatar({ meta, className }: { meta: SpeakerMeta; className: string }) {
+  return meta.photo ? (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={meta.photo} alt="" loading="lazy" className={`${className} flex-none rounded-full bg-slate-100 object-cover`} />
+  ) : (
+    <span
+      aria-hidden="true"
+      className={`${className} flex flex-none items-center justify-center rounded-full bg-[#f4d4b0] font-semibold text-slate-700`}
+    >
+      {meta.initials}
+    </span>
+  );
+}
+
 /**
  * Maps a location hash to the session it should open. Breaks and unknown ids
  * resolve to null, so a stale or hand-edited hash never opens anything.
@@ -196,17 +211,7 @@ function SessionFooter({ session }: { session: Session }) {
         <ul className="m-0 list-none space-y-3 p-0">
           {lineup.map(({ id, meta }, index) => (
             <li key={id || `tba-${index}`} className="flex items-center gap-3">
-              {meta.photo ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={meta.photo} alt="" className="h-10 w-10 flex-none rounded-full object-cover" />
-              ) : (
-                <span
-                  aria-hidden="true"
-                  className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-[#f4d4b0] text-xs font-semibold text-slate-700"
-                >
-                  {meta.initials}
-                </span>
-              )}
+              <SpeakerAvatar meta={meta} className="h-10 w-10 text-xs" />
               <div className="min-w-0 text-sm">
                 <p className="m-0 font-semibold text-slate-800">
                   {features.speakers && meta.slug ? (

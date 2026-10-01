@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { AddToCalendar } from "@/src/components/agenda/add-to-calendar";
 import { Link } from "@/src/i18n/navigation";
 import type { Session } from "@/src/types/content";
-import { SessionDialog, getSpeakerMeta, useSessionModal } from "@/src/components/agenda/session-dialog";
+import { SessionDialog, SpeakerAvatar, getSpeakerMeta, useSessionModal } from "@/src/components/agenda/session-dialog";
 import { features } from "@/src/content/features";
 import { isBreakSession } from "@/src/lib/session-breaks";
 import { toggleSession, useSavedSessionIds } from "@/src/lib/saved-sessions";
@@ -288,8 +288,15 @@ export function SessionList({ sessions, rooms: roomsProp, allSessions }: Session
                         </button>
                       </h3>
                       <div className="flex items-center gap-3 pt-2 text-sm text-slate-500">
-                        <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-[#f4d4b0] text-[0.65rem] font-semibold text-slate-700">
-                          {speaker.initials}
+                        {/* One avatar per speaker, overlapping for paired talks. */}
+                        <span className="flex flex-none -space-x-3">
+                          {lineup.map((person, personIndex) => (
+                            <SpeakerAvatar
+                              key={session.speakerIds[personIndex] ?? personIndex}
+                              meta={person}
+                              className="h-11 w-11 text-xs ring-2 ring-white"
+                            />
+                          ))}
                         </span>
                         <p className="m-0">
                           {lineup.map((person, personIndex) => (
