@@ -43,6 +43,21 @@ describe("Sponsors page — tier rendering", () => {
     expect(html).not.toContain("Bronze");
   });
 
+  test("renders one tile per tier holding all of that tier's sponsors", async () => {
+    const { default: SponsorsPage } = await import("@/app/[locale]/sponsors/page");
+    const element = await SponsorsPage({ params: Promise.resolve({ locale: "it" }) });
+    const html = renderToStaticMarkup(element);
+
+    expect(html.match(/data-sponsor-tier="platinum"/g)).toHaveLength(1);
+    const platinumTile = html.slice(html.indexOf('data-sponsor-tier="platinum"'), html.indexOf('data-sponsor-tier="gold"'));
+    for (const sponsor of sponsors.filter((s) => !s.community && s.tier === "platinum")) {
+      expect(platinumTile).toContain(`data-sponsor-name="${sponsor.name}"`);
+    }
+
+    expect(html.match(/data-sponsor-tier="community"/g)).toHaveLength(1);
+    expect(html.match(/Community &amp; Swag Partner/g)).toHaveLength(1);
+  });
+
   test("Bronze tier renders nothing when empty (no bare heading)", async () => {
     const bronzeSponsors = sponsors.filter((sponsor) => sponsor.tier === "bronze");
 
