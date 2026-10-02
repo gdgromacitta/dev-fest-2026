@@ -5,7 +5,8 @@ import { useTranslations } from "next-intl";
 import { AddToCalendar } from "@/src/components/agenda/add-to-calendar";
 import { Link } from "@/src/i18n/navigation";
 import type { Session } from "@/src/types/content";
-import { SessionDialog, SpeakerAvatar, getSpeakerMeta, useSessionModal } from "@/src/components/agenda/session-dialog";
+import { SessionDialog, SessionLogoRow, SpeakerAvatar, getSpeakerMeta, useSessionModal } from "@/src/components/agenda/session-dialog";
+import { sessionLogos } from "@/src/content/session-logos";
 import { features } from "@/src/content/features";
 import { isBreakSession } from "@/src/lib/session-breaks";
 import { toggleSession, useSavedSessionIds } from "@/src/lib/saved-sessions";
@@ -236,10 +237,12 @@ export function SessionList({ sessions, rooms: roomsProp, allSessions }: Session
 
           // Paired talks are common on Sessionize; render every speaker, not
           // just the first.
-          const lineup = (session.speakerIds.length ? session.speakerIds : [""]).map((id) =>
+          const logos = sessionLogos[session.id];
+          // With logos, a speaker-less session shows just the logos — no "TBA".
+          const lineup = (session.speakerIds.length || logos ? session.speakerIds : [""]).map((id) =>
             getSpeakerMeta(id, tAgenda("speakerTba"), tAgenda("speakerTbaSubtitle"))
           );
-          const speaker = lineup[0]!;
+          const speaker = lineup[0];
           const title = tSessions(`${session.id}.title`);
           const saved = savedIds.includes(session.id);
 
@@ -288,16 +291,21 @@ export function SessionList({ sessions, rooms: roomsProp, allSessions }: Session
                         </button>
                       </h3>
                       <div className="flex items-center gap-3 pt-2 text-sm text-slate-500">
-                        {/* One avatar per speaker, overlapping for paired talks. */}
-                        <span className="flex flex-none -space-x-3">
-                          {lineup.map((person, personIndex) => (
-                            <SpeakerAvatar
-                              key={session.speakerIds[personIndex] ?? personIndex}
-                              meta={person}
-                              className="h-11 w-11 text-xs ring-2 ring-white"
-                            />
-                          ))}
-                        </span>
+                        {logos ? (
+                          <SessionLogoRow logos={logos} className="h-11 w-11" />
+                        ) : (
+                          // One avatar per speaker, overlapping for paired talks.
+                          <span className="flex flex-none -space-x-3">
+                            {lineup.map((person, personIndex) => (
+                              <SpeakerAvatar
+                                key={session.speakerIds[personIndex] ?? personIndex}
+                                meta={person}
+                                className="h-11 w-11 text-xs ring-2 ring-white"
+                              />
+                            ))}
+                          </span>
+                        )}
+                        {speaker ? (
                         <div className="min-w-0">
                           <p className="m-0">
                             {lineup.map((person, personIndex) => (
@@ -324,6 +332,7 @@ export function SessionList({ sessions, rooms: roomsProp, allSessions }: Session
                             <p className="m-0 mt-0.5 leading-snug">{speaker.subtitle}</p>
                           ) : null}
                         </div>
+                        ) : null}
                       </div>
                       <AddToCalendar session={session} title={title} />
                     </div>
