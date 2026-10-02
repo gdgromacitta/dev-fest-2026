@@ -459,6 +459,18 @@
       "title": "Unicode invisibile: attacchi pratici agli LLM",
       "abstract": "I caratteri Unicode invisibili e gli omoglifi possono aggirare i filtri di sicurezza degli LLM in modi quasi impercettibili. In questo talk mostreremo dal vivo come costruire payload che eludono controlli di input, moderazione e validazione, sfruttando normalizzazione, confusori visivi e edge case Unicode. Analizzeremo esempi concreti di attacchi, tecniche di rilevamento e contromisure a livello di carattere, con demo di codice e best practice per difendersi in contesti reali e accademici."
     },
+    "1349344": {
+      "title": "Blind Trust: Caccia alle Vulnerabilità nel Codice Generato da IA – Master ICT",
+      "abstract": "Un laboratorio pratico in stile Capture The Flag in cui i partecipanti analizzano e attaccano un'applicazione scritta interamente con l'assistenza di LLM.\n\nAttraverso exploit reali su allucinazioni di pacchetti (slopsquatting), sanitizzazioni bypassabili e leak di credenziali nel contesto, gli sviluppatori scoprono i rischi della supply chain dell'IA e imparano a impostare processi di review e pipeline SAST/SCA a prova di codice sintetico.\n\n👉 👉 Vi ricordiamo che per partecipare ai workshop è necessario venire muniti di laptop. 💻"
+    },
+    "1349347": {
+      "title": "AGENT IN TRASFERTA – Ingegneria Digitale",
+      "abstract": "Build, Secure, Scale: progetta in un’ora la travel app aziendale dell’era agentica\n\nVolo cancellato alle 22:00, hotel da riprenotare, nota spese da compilare: e se ci pensasse un agente AI?\n\nIn un’ora, a squadre, progetterete l’app che gestisce le trasferte dei dipendenti di un’azienda, con al centro un assistente agentico che non si limita a rispondere, ma agisce. 40 minuti per definire funzionalità, agente, architettura, sicurezza e mockup, poi 2 minuti per convincere la giuria. \n\nSviluppatori, designer, PM e data/AI engineer: portate il vostro profilo, lo mettiamo insieme agli altri. Vince l’idea più utile, solida e innovativa.\n\n👉 👉 Vi ricordiamo che per partecipare ai workshop è necessario venire muniti di laptop. 💻"
+    },
+    "1349348": {
+      "title": "Build it. Break it. Explain it. — 42 Roma ELIS",
+      "abstract": "Costruisci. Rompi. Difendi il tuo codice.\n\nUn workshop pratico in cui programmerai, metterai alla prova il lavoro degli altri e dovrai spiegare le tue scelte.\n\nNiente teoria: solo coding, bug e problem solving.\nSe pensi di saper programmare, vieni a dimostrarlo.\n\n👉 👉 Vi ricordiamo che per partecipare ai workshop è necessario venire muniti di laptop. 💻"
+    },
     "859cf24a-5c8a-4e03-b009-51e07a2d5c2c": {
       "title": "Registration & Welcome Breakfast",
       "abstract": ""
@@ -471,16 +483,8 @@
       "title": "Coffee Break",
       "abstract": ""
     },
-    "e89ab699-82d2-4809-8cff-d3eb2371f938": {
-      "title": "Elis - Workshop",
-      "abstract": ""
-    },
     "e1e2f34f-d6a4-40a7-87a7-9979b9f32eee": {
       "title": "Lunch Break",
-      "abstract": ""
-    },
-    "fb5d4c6c-2259-4249-8905-916e5cd44a0f": {
-      "title": "Elis - Workshop",
       "abstract": ""
     },
     "2a6b1078-af80-4004-af75-718cc4673bbc": {
