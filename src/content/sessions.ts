@@ -155,15 +155,17 @@ export const sessions: Session[] = [
       "isBreak": false
     },
     {
-      "id": "e89ab699-82d2-4809-8cff-d3eb2371f938",
+      "id": "1349344",
       "start": "2026-10-10T11:20:00",
       "end": "2026-10-10T13:00:00",
-      "track": "",
+      "track": "Agentic AI (LLM, Agents, Reasoning, Tools, RAG, Workflows)",
       "room": "Workshop 2 - DS3B",
       "level": "intermediate",
-      "tags": [],
+      "tags": [
+        "Agentic AI (LLM, Agents, Reasoning, Tools, RAG, Workflows)"
+      ],
       "speakerIds": [],
-      "isBreak": true
+      "isBreak": false
     },
     {
       "id": "1300555",
@@ -289,15 +291,17 @@ export const sessions: Session[] = [
       "isBreak": false
     },
     {
-      "id": "fb5d4c6c-2259-4249-8905-916e5cd44a0f",
+      "id": "1349347",
       "start": "2026-10-10T14:05:00",
       "end": "2026-10-10T15:45:00",
-      "track": "",
+      "track": "Agentic AI (LLM, Agents, Reasoning, Tools, RAG, Workflows)",
       "room": "Workshop 2 - DS3B",
-      "level": "intermediate",
-      "tags": [],
+      "level": "beginner",
+      "tags": [
+        "Agentic AI (LLM, Agents, Reasoning, Tools, RAG, Workflows)"
+      ],
       "speakerIds": [],
-      "isBreak": true
+      "isBreak": false
     },
     {
       "id": "1298641",
@@ -405,6 +409,19 @@ export const sessions: Session[] = [
       "speakerIds": [
         "c5dfc454-2d8f-42a5-a8df-7331e20f3329"
       ],
+      "isBreak": false
+    },
+    {
+      "id": "1349348",
+      "start": "2026-10-10T16:10:00",
+      "end": "2026-10-10T17:50:00",
+      "track": "Agentic AI (LLM, Agents, Reasoning, Tools, RAG, Workflows)",
+      "room": "Workshop 2 - DS3B",
+      "level": "beginner",
+      "tags": [
+        "Agentic AI (LLM, Agents, Reasoning, Tools, RAG, Workflows)"
+      ],
+      "speakerIds": [],
       "isBreak": false
     },
     {

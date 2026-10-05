@@ -6,6 +6,7 @@ import { AddToCalendar } from "@/src/components/agenda/add-to-calendar";
 import { Dialog } from "@/src/components/ui/dialog";
 import { Link } from "@/src/i18n/navigation";
 import { features } from "@/src/content/features";
+import { sessionLogos, type SessionLogo } from "@/src/content/session-logos";
 import { speakers } from "@/src/content/speakers";
 import { isBreakSession } from "@/src/lib/session-breaks";
 import { toggleSession, useSavedSessionIds } from "@/src/lib/saved-sessions";
@@ -53,6 +54,24 @@ export function SpeakerAvatar({ meta, className }: { meta: SpeakerMeta; classNam
       className={`${className} flex flex-none items-center justify-center rounded-full bg-[#f4d4b0] font-semibold text-slate-700`}
     >
       {meta.initials}
+    </span>
+  );
+}
+
+/** Organisation logos shown in place of speaker photos for sessions listed in `sessionLogos`. */
+export function SessionLogoRow({ logos, className }: { logos: SessionLogo[]; className: string }) {
+  return (
+    <span className="flex flex-none items-center gap-2">
+      {logos.map((logo) => (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          key={logo.src}
+          src={logo.src}
+          alt={logo.alt}
+          loading="lazy"
+          className={`${className} flex-none rounded-lg border border-slate-200 bg-white object-contain p-1`}
+        />
+      ))}
     </span>
   );
 }
@@ -200,18 +219,22 @@ function SessionFooter({ session }: { session: Session }) {
   const savedIds = useSavedSessionIds();
   const saved = savedIds.includes(session.id);
   const title = tSessions(`${session.id}.title`);
-  const lineup = (session.speakerIds.length ? session.speakerIds : [""]).map((id) => ({
+  const logos = sessionLogos[session.id];
+  // With logos, a speaker-less session shows just the logos — no "TBA" row.
+  const lineup = (session.speakerIds.length || logos ? session.speakerIds : [""]).map((id) => ({
     id,
     meta: getSpeakerMeta(id, tAgenda("speakerTba"), tAgenda("speakerTbaSubtitle"))
   }));
 
   return (
     <div className="space-y-3">
-      <section aria-label={tAgenda("modalSpeakers")}>
+      <section aria-label={tAgenda("modalSpeakers")} className="space-y-3">
+        {logos ? <SessionLogoRow logos={logos} className="h-10 w-10" /> : null}
+        {lineup.length ? (
         <ul className="m-0 list-none space-y-3 p-0">
           {lineup.map(({ id, meta }, index) => (
             <li key={id || `tba-${index}`} className="flex items-center gap-3">
-              <SpeakerAvatar meta={meta} className="h-10 w-10 text-xs" />
+              {logos ? null : <SpeakerAvatar meta={meta} className="h-10 w-10 text-xs" />}
               <div className="min-w-0 text-sm">
                 <p className="m-0 font-semibold text-slate-800">
                   {features.speakers && meta.slug ? (
@@ -227,6 +250,7 @@ function SessionFooter({ session }: { session: Session }) {
             </li>
           ))}
         </ul>
+        ) : null}
       </section>
 
       <div className="flex items-center justify-between gap-4">
