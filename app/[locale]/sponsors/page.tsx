@@ -22,11 +22,11 @@ type Props = {
 // Per-tier accents from the restyling design (option 2e), laid out as one
 // bento grid: higher tiers get wider, taller tiles.
 const tiers: { tier: Sponsor["tier"]; labelKey: string; span: string; label: string; height: string; logo: string }[] = [
-  { tier: "main", labelKey: "mainLabel", span: "md:col-span-6 lg:col-span-12", label: "text-accent-yellow-deep", height: "min-h-[240px]", logo: "h-20" },
-  { tier: "platinum", labelKey: "platinumLabel", span: "md:col-span-6 lg:col-span-6", label: "text-accent-red", height: "min-h-[200px]", logo: "h-16" },
-  { tier: "gold", labelKey: "goldLabel", span: "md:col-span-3 lg:col-span-3", label: "text-primary", height: "min-h-[200px]", logo: "h-12" },
-  { tier: "silver", labelKey: "silverLabel", span: "md:col-span-3 lg:col-span-3", label: "text-accent-green", height: "min-h-[200px]", logo: "h-10" },
-  { tier: "bronze", labelKey: "bronzeLabel", span: "md:col-span-2 lg:col-span-2", label: "text-accent-bronze", height: "min-h-[120px]", logo: "h-8" }
+  { tier: "main", labelKey: "mainLabel", span: "md:col-span-6 lg:col-span-12", label: "text-accent-yellow-deep", height: "min-h-[240px]", logo: "h-16 w-56 sm:h-20 sm:w-72" },
+  { tier: "platinum", labelKey: "platinumLabel", span: "md:col-span-6 lg:col-span-6", label: "text-accent-red", height: "min-h-[200px]", logo: "h-14 w-44 sm:h-16 sm:w-52" },
+  { tier: "gold", labelKey: "goldLabel", span: "md:col-span-3 lg:col-span-3", label: "text-primary", height: "min-h-[200px]", logo: "h-12 w-44" },
+  { tier: "silver", labelKey: "silverLabel", span: "md:col-span-3 lg:col-span-3", label: "text-accent-green", height: "min-h-[200px]", logo: "h-10 w-36" },
+  { tier: "bronze", labelKey: "bronzeLabel", span: "md:col-span-2 lg:col-span-2", label: "text-accent-bronze", height: "min-h-[120px]", logo: "h-8 w-28" }
 ];
 
 const benefits = [
@@ -84,15 +84,15 @@ export default async function SponsorsPage({ params }: Props) {
                       className="m-0 flex flex-1 list-none flex-wrap items-center justify-center gap-x-12 gap-y-6 p-0 py-4 text-center"
                     >
                       {tierSponsors.map((sponsor) => (
-                        <li key={sponsor.name}>
+                        <li key={sponsor.name} className="max-w-full">
                           <a
                             href={sponsor.url}
                             target="_blank"
                             rel="noreferrer noopener"
-                            className={`focus-ring flex items-center rounded-md transition-opacity hover:opacity-75 ${logo}`}
+                            className={`focus-ring flex max-w-full items-center justify-center rounded-md transition-opacity hover:opacity-75 ${logo}`}
                             data-sponsor-name={sponsor.name}
                           >
-                            <SponsorLogo sponsor={sponsor} className="h-full" />
+                            <SponsorLogo sponsor={sponsor} className="h-full w-full" />
                           </a>
                         </li>
                       ))}
@@ -117,15 +117,15 @@ export default async function SponsorsPage({ params }: Props) {
                     className="m-0 flex flex-1 list-none flex-wrap items-center justify-center gap-x-12 gap-y-6 p-0 py-3 text-center"
                   >
                     {communitySponsors.map((sponsor) => (
-                      <li key={sponsor.name}>
+                      <li key={sponsor.name} className="max-w-full">
                         <a
                           href={sponsor.url}
                           target="_blank"
                           rel="noreferrer noopener"
-                          className="focus-ring flex h-14 items-center rounded-md transition-opacity hover:opacity-75"
+                          className="focus-ring flex h-10 w-32 max-w-full items-center justify-center rounded-md transition-opacity hover:opacity-75"
                           data-sponsor-name={sponsor.name}
                         >
-                          <SponsorLogo sponsor={sponsor} className="h-full" />
+                          <SponsorLogo sponsor={sponsor} className="h-full w-full" />
                         </a>
                       </li>
                     ))}
