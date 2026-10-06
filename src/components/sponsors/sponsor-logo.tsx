@@ -26,7 +26,7 @@ export function SponsorLogo({ sponsor, className }: Props) {
       loading="lazy"
       width={160}
       height={80}
-      className={className ? `${className} max-h-full w-auto object-contain` : "max-h-full w-auto object-contain"}
+      className={className ? `${className} max-h-full max-w-full object-contain` : "max-h-full max-w-full w-auto object-contain"}
     />
   );
 }

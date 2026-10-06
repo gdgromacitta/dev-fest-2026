@@ -63,14 +63,14 @@ const themeWords = [
   { key: "theme3", className: "text-accent-green" }
 ] as const;
 
-/** Sponsor rows in the bento tile, highest tier first; logo height tracks the tier. */
-const sponsorRows: { key: SponsorTier | "community"; labelKey: string; logoHeight: string }[] = [
-  { key: "main", labelKey: "mainLabel", logoHeight: "h-10" },
-  { key: "platinum", labelKey: "platinumLabel", logoHeight: "h-9" },
-  { key: "gold", labelKey: "goldLabel", logoHeight: "h-8" },
-  { key: "silver", labelKey: "silverLabel", logoHeight: "h-7" },
-  { key: "bronze", labelKey: "bronzeLabel", logoHeight: "h-6" },
-  { key: "community", labelKey: "communityLabel", logoHeight: "h-8" }
+/** Sponsor rows in the bento tile, highest tier first; logo bounds track the tier. */
+const sponsorRows: { key: SponsorTier | "community"; labelKey: string; logoSize: string }[] = [
+  { key: "main", labelKey: "mainLabel", logoSize: "h-12 w-40" },
+  { key: "platinum", labelKey: "platinumLabel", logoSize: "h-10 w-32" },
+  { key: "gold", labelKey: "goldLabel", logoSize: "h-8 w-28" },
+  { key: "silver", labelKey: "silverLabel", logoSize: "h-7 w-24" },
+  { key: "bronze", labelKey: "bronzeLabel", logoSize: "h-6 w-20" },
+  { key: "community", labelKey: "communityLabel", logoSize: "h-8 w-24" }
 ];
 
 const inRow = (sponsor: Sponsor, key: SponsorTier | "community") =>
@@ -308,16 +308,16 @@ export default async function HomePage({ params }: Props) {
                       <span className="eyebrow text-muted">{tSponsorsPage(row.labelKey)}</span>
                       <ul role="list" className="m-0 flex list-none flex-wrap items-center gap-x-8 gap-y-3 p-0">
                         {rowSponsors.map((sponsor) => (
-                          <li key={sponsor.name}>
+                          <li key={sponsor.name} className="max-w-full">
                             <a
                               href={sponsor.url}
                               target="_blank"
                               rel="noreferrer noopener"
-                              className={`focus-ring flex items-center rounded-md text-[15px] font-semibold text-ink ${row.logoHeight}`}
+                              className={`focus-ring flex max-w-full items-center justify-center rounded-md text-[15px] font-semibold text-ink ${row.logoSize}`}
                               data-sponsor-name={sponsor.name}
                               data-sponsor-tier={sponsor.tier}
                             >
-                              <SponsorLogo sponsor={sponsor} className="h-full" />
+                              <SponsorLogo sponsor={sponsor} className="h-full w-full" />
                             </a>
                           </li>
                         ))}

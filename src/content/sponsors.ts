@@ -9,12 +9,14 @@ import type { Sponsor } from "@/src/types/content";
  * Logo sources (current wordmarks, official):
  * - google.svg: Wikimedia Commons, "Google 2015 logo.svg" (public domain).
  * - jetbrains.svg: Wikimedia Commons, "JetBrains company logo.svg".
- * - seeweb.svg: seeweb.it site asset (/assets/images/logo-seeweb.svg).
+ * - regolo.svg: regolo.ai site asset (/wp-content/themes/regolo/img/regolo-logo.svg).
+ *   White lettering adapted to the site's ink color for light backgrounds.
  * - datwave.svg: datwave.ai site asset
  *   (/wp-content/uploads/2024/06/datwave-logo.svg).
  * - bc-soft.svg: provided directly by BC Soft (horizontal, positive variant).
  * - 42-roma.png: provided directly by 42 Roma (side layout, black variant).
  * - romajs.png: rasterised from the romajs.org site logo SVG (512x512).
+ * - sharpcoding.png: sharpcoding.it site asset (/SharpCoding.Theme/img/core-img/logo.png), transparent.
  * Add a file to `public/logos/` and set `logo` to its filename to show a
  * real logo for any future entry — no code change required.
  */
@@ -28,7 +30,7 @@ export const sponsors: Sponsor[] = [
   },
   { name: "42 Roma", url: "https://42roma.it/", tier: "platinum", logo: "42-roma.png" },
   { name: "Datwave", url: "https://datwave.ai", tier: "gold", logo: "datwave.svg" },
-  { name: "Seeweb", url: "https://www.seeweb.it", tier: "silver", logo: "seeweb.svg" },
+  { name: "Regolo AI", url: "https://regolo.ai/", tier: "silver", logo: "regolo.svg" },
   { name: "BC Soft", url: "https://www.bcsoft.net/", tier: "silver", logo: "bc-soft.svg" },
   { name: "JetBrains", url: "https://www.jetbrains.com", community: true, logo: "jetbrains.svg" },
   {
@@ -43,5 +45,6 @@ export const sponsors: Sponsor[] = [
     community: true,
     logo: "golangroma.png"
   },
-  { name: "RomaJS", url: "https://romajs.org/", community: true, logo: "romajs.png" }
+  { name: "RomaJS", url: "https://romajs.org/", community: true, logo: "romajs.png" },
+  { name: "SharpCoding", url: "https://sharpcoding.it/", community: true, logo: "sharpcoding.png" }
 ];
