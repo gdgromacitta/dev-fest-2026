@@ -43,6 +43,7 @@ export default async function SponsorsPage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: "sponsorsPage" });
   const tPastSponsors = await getTranslations({ locale, namespace: "pastSponsors" });
   const hasSponsors = sponsors.length > 0;
+  const technicalSponsors = sponsors.filter((sponsor) => sponsor.technical);
   const communitySponsors = sponsors.filter((sponsor) => sponsor.community);
 
   return (
@@ -101,6 +102,35 @@ export default async function SponsorsPage({ params }: Props) {
                 </li>
               );
             })}
+
+            {technicalSponsors.length > 0 && (
+              <li className="md:col-span-6 lg:col-span-12">
+                <div
+                  className="bento-tile h-full min-h-[140px] bg-tint text-base font-semibold text-ink"
+                  data-sponsor-tier="technical"
+                >
+                  <span className="eyebrow text-accent-gray-deep">{t("technicalLabel")}</span>
+                  <ul
+                    role="list"
+                    className="m-0 flex flex-1 list-none flex-wrap items-center justify-center gap-x-12 gap-y-6 p-0 py-3 text-center"
+                  >
+                    {technicalSponsors.map((sponsor) => (
+                      <li key={sponsor.name} className="max-w-full">
+                        <a
+                          href={sponsor.url}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          className="focus-ring flex h-10 w-32 max-w-full items-center justify-center rounded-md transition-opacity hover:opacity-75"
+                          data-sponsor-name={sponsor.name}
+                        >
+                          <SponsorLogo sponsor={sponsor} className="h-full w-full" />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </li>
+            )}
 
             {/* Community & swag/licence partners — not part of the paid tier
                 ladder, presented alongside it. Whether these eventually get

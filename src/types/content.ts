@@ -70,6 +70,8 @@ export type Sponsor = {
    * paid tier ladder but are still presented on the sponsors page.
    */
   community?: boolean;
+  /** Technical partners (tech communities/providers), shown in their own group before community. */
+  technical?: boolean;
 };
 
 /**

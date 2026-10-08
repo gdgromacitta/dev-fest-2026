@@ -64,17 +64,18 @@ const themeWords = [
 ] as const;
 
 /** Sponsor rows in the bento tile, highest tier first; logo bounds track the tier. */
-const sponsorRows: { key: SponsorTier | "community"; labelKey: string; logoSize: string }[] = [
+const sponsorRows: { key: SponsorTier | "technical" | "community"; labelKey: string; logoSize: string }[] = [
   { key: "main", labelKey: "mainLabel", logoSize: "h-12 w-40" },
   { key: "platinum", labelKey: "platinumLabel", logoSize: "h-10 w-32" },
   { key: "gold", labelKey: "goldLabel", logoSize: "h-8 w-28" },
   { key: "silver", labelKey: "silverLabel", logoSize: "h-7 w-24" },
   { key: "bronze", labelKey: "bronzeLabel", logoSize: "h-6 w-20" },
+  { key: "technical", labelKey: "technicalLabel", logoSize: "h-8 w-24" },
   { key: "community", labelKey: "communityLabel", logoSize: "h-8 w-24" }
 ];
 
-const inRow = (sponsor: Sponsor, key: SponsorTier | "community") =>
-  key === "community" ? Boolean(sponsor.community) : !sponsor.community && sponsor.tier === key;
+const inRow = (sponsor: Sponsor, key: SponsorTier | "technical" | "community") =>
+  key === "technical" ? Boolean(sponsor.technical) : key === "community" ? Boolean(sponsor.community) : !sponsor.community && sponsor.tier === key;
 
 const speakerSlots = [
   { label: "AI/ML", chip: "bg-primary-soft text-primary-deep" },

@@ -17,6 +17,10 @@ import type { Sponsor } from "@/src/types/content";
  * - 42-roma.png: provided directly by 42 Roma (side layout, black variant).
  * - romajs.png: rasterised from the romajs.org site logo SVG (512x512).
  * - sharpcoding.png: sharpcoding.it site asset (/SharpCoding.Theme/img/core-img/logo.png), transparent.
+ * - theredcode.png: theredcode.it site asset (/images/theRedCode_logo.webp), converted to PNG and scaled to 640px wide.
+ * - pydata-roma-capitale.svg: pydataroma.python.it site asset
+ *   (/theme/images/logos/pydata_roma_capitale_logo.svg), chapter logo.
+ * - bacarotech.png: bacarotech.github.io site asset (/img/icon.png), 500x500, opaque navy background.
  * Add a file to `public/logos/` and set `logo` to its filename to show a
  * real logo for any future entry — no code change required.
  */
@@ -32,6 +36,9 @@ export const sponsors: Sponsor[] = [
   { name: "Datwave", url: "https://datwave.ai", tier: "gold", logo: "datwave.svg" },
   { name: "Regolo AI", url: "https://regolo.ai/", tier: "silver", logo: "regolo.svg" },
   { name: "BC Soft", url: "https://www.bcsoft.net/", tier: "silver", logo: "bc-soft.svg" },
+  { name: "SharpCoding", url: "https://sharpcoding.it/", technical: true, logo: "sharpcoding.png" },
+  { name: "TheRedCode", url: "https://theredcode.it/", technical: true, logo: "theredcode.png" },
+  { name: "PyData Roma Capitale", url: "https://pydataroma.python.it/", technical: true, logo: "pydata-roma-capitale.svg" },
   { name: "JetBrains", url: "https://www.jetbrains.com", community: true, logo: "jetbrains.svg" },
   {
     name: "Women Techmakers Italia",
@@ -46,5 +53,5 @@ export const sponsors: Sponsor[] = [
     logo: "golangroma.png"
   },
   { name: "RomaJS", url: "https://romajs.org/", community: true, logo: "romajs.png" },
-  { name: "SharpCoding", url: "https://sharpcoding.it/", community: true, logo: "sharpcoding.png" }
+  { name: "BacaroTech", url: "https://bacarotech.github.io/", community: true, logo: "bacarotech.png" }
 ];
