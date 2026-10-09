@@ -44,12 +44,18 @@ export type Session = {
   isBreak?: boolean;
 };
 
-export type Venue = {
-  name: string;
+export type VenueEntrance = {
   address: string;
-  city: string;
   mapEmbedUrl: string;
   mapsLinkUrl: string;
+};
+
+export type Venue = {
+  name: string;
+  department: string;
+  address: string;
+  city: string;
+  entrances: VenueEntrance[];
 };
 
 export type SponsorTier = "main" | "platinum" | "gold" | "silver" | "bronze";

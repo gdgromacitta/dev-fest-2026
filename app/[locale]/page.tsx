@@ -254,8 +254,24 @@ export default async function HomePage({ params }: Props) {
             <h3 id="venue-heading" className="m-0 text-[2.5rem] font-bold leading-none tracking-[-0.03em] text-ink md:text-[3.5rem]">
               {venue.name}
             </h3>
+            {/* Two equally valid entrances; each opens its own pin in Maps. */}
             <p className="m-0 max-w-[48ch] text-[15px] text-muted">
-              {venue.address}, {venue.city}
+              {venue.department}
+              <br />
+              {venue.entrances.map((entrance, index) => (
+                <span key={entrance.address}>
+                  {index > 0 ? " · " : ""}
+                  <a
+                    href={entrance.mapsLinkUrl}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="focus-ring rounded underline decoration-line-strong underline-offset-4 hover:text-ink"
+                  >
+                    {entrance.address}
+                  </a>
+                </span>
+              ))}
+              , {venue.city}
             </p>
             <div
               role="img"
@@ -277,9 +293,6 @@ export default async function HomePage({ params }: Props) {
                 <Link href="/venue" className="btn-outline !bg-white !px-6 !py-3 !text-sm" data-venue-cta="true">
                   {t("venueDetailsCta")}
                 </Link>
-                <a href={venue.mapsLinkUrl} target="_blank" rel="noreferrer noopener" className="btn-outline !bg-white !px-6 !py-3 !text-sm">
-                  {t("openInMapsCta")}
-                </a>
               </div>
               {/* Roma Tre's identity asks for a white surface around its mark. */}
               <VenuePartnerLogo label={t("venuePartnerLabel")} className="rounded-xl bg-white px-2 pt-2" />

@@ -42,11 +42,13 @@ export default async function VenuePage({ params }: Props) {
         <address className="m-0 max-w-xl text-lg not-italic leading-relaxed text-muted">
           <strong className="font-semibold text-ink">{venue.name}</strong>
           <br />
-          {venue.address}, {venue.city}
+          {venue.department}
+          <br />
+          {venue.entrances.map((entrance) => entrance.address).join(" · ")}, {venue.city}
         </address>
         <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-          <a href={venue.mapsLinkUrl} target="_blank" rel="noreferrer noopener" className="btn-primary">
-            {t("openInMapsCta")}
+          <a href="#venue-map" className="btn-primary">
+            {t("seeEntrancesCta")}
           </a>
           <a href={registerUrl} className="btn-outline">
             {t("registerCta")}
@@ -55,17 +57,34 @@ export default async function VenuePage({ params }: Props) {
       </PageHero>
 
       {/* Map + key details */}
-      <section aria-label={t("mapAriaLabel")}>
+      <section id="venue-map" aria-label={t("mapAriaLabel")} className="scroll-mt-[88px]">
         <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 gap-2.5 px-4 pb-4 md:grid-cols-6 md:gap-3.5 md:px-16 lg:grid-cols-12">
-          <div className="min-w-0 overflow-hidden rounded-[22px] border border-line bg-white md:col-span-6 lg:col-span-7 lg:row-span-2">
-            <iframe
-              src={venue.mapEmbedUrl}
-              className="block h-72 w-full border-0 sm:h-96 lg:h-full lg:min-h-[26rem]"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="DevFest Roma 2026 — Università degli Studi Roma Tre"
-              allowFullScreen
-            />
+          {/* One map per entrance: the keyless Google embed only takes a
+              single pin. Side by side from sm, stacked on phones. */}
+          <div className="grid min-w-0 grid-cols-1 gap-2.5 sm:grid-cols-2 md:col-span-6 md:gap-3.5 lg:col-span-7 lg:row-span-2">
+            {venue.entrances.map((entrance) => (
+              <figure key={entrance.address} className="m-0 flex min-w-0 flex-col overflow-hidden rounded-[22px] border border-line bg-white">
+                <iframe
+                  src={entrance.mapEmbedUrl}
+                  className="block h-64 w-full border-0 sm:h-80 lg:h-auto lg:min-h-[22rem] lg:flex-1"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title={`DevFest Roma 2026 — ${entrance.address}`}
+                  allowFullScreen
+                />
+                <figcaption className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-3">
+                  <span className="text-[15px] font-semibold text-ink">{entrance.address}</span>
+                  <a
+                    href={entrance.mapsLinkUrl}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="focus-ring rounded text-sm font-semibold text-primary hover:underline"
+                  >
+                    {t("openInMapsCta")}
+                  </a>
+                </figcaption>
+              </figure>
+            ))}
           </div>
           <dl className="bento-tile m-0 bg-accent-yellow text-ink md:col-span-3 lg:col-span-5">
             <div>
@@ -79,10 +98,14 @@ export default async function VenuePage({ params }: Props) {
           </dl>
           <div className="bento-tile bg-sand md:col-span-3 lg:col-span-5">
             <dl className="m-0">
-              <dt className="eyebrow text-accent-red-deep">{t("addressLabel")}</dt>
+              <dt className="eyebrow text-accent-red-deep">{t("entrancesLabel")}</dt>
               <dd className="m-0 mt-3 text-[15.5px] leading-relaxed text-ink">
-                {venue.address}
-                <br />
+                <span className="mb-1 block text-muted">{venue.department}</span>
+                {venue.entrances.map((entrance) => (
+                  <span key={entrance.address} className="block">
+                    {entrance.address}
+                  </span>
+                ))}
                 {venue.city}
               </dd>
             </dl>
