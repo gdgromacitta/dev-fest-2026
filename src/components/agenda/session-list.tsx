@@ -76,10 +76,19 @@ const formatSlot = (value: string) => {
 const slugify = (value: string, index: number) =>
   `${value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "room"}-${index}`;
 
+// Sessionize room titles read "Track 1 - Sala N117"; the tab shows the short
+// part big and the location underneath so more tabs fit on a phone. Names
+// without the separator stay on one line.
+const splitRoomLabel = (label: string) => {
+  const [primary, ...rest] = label.split(" - ");
+  return { primary: primary!, secondary: rest.join(" - ") };
+};
+
 export function SessionList({ sessions, rooms: roomsProp, allSessions }: SessionListProps) {
   const tSessions = useTranslations("sessions");
   const tAgenda = useTranslations("agenda");
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const tabBarRef = useRef<HTMLDivElement | null>(null);
   // Server snapshot is empty, so first render is unsaved and hydration matches.
   const savedIds = useSavedSessionIds();
   // Resolve against every session so filters never block a deep link.
@@ -114,6 +123,33 @@ export function SessionList({ sessions, rooms: roomsProp, allSessions }: Session
     wasSavedActive.current = savedActive;
   }, [savedActive, showSaved]);
 
+  // The strip scrolls sideways on phones: keep the active tab in view.
+  // Horizontal only: scrollIntoView would also drag the page down on load.
+  useEffect(() => {
+    const bar = tabBarRef.current;
+    const tab = tabRefs.current[activeIndex];
+    if (!bar || !tab) return;
+    const gutter = parseFloat(getComputedStyle(bar).paddingLeft) || 0;
+    if (tab.offsetLeft - gutter < bar.scrollLeft) {
+      bar.scrollTo({ left: tab.offsetLeft - gutter });
+    } else if (tab.offsetLeft + tab.offsetWidth + gutter > bar.scrollLeft + bar.clientWidth) {
+      bar.scrollTo({ left: tab.offsetLeft + tab.offsetWidth + gutter - bar.clientWidth });
+    }
+  }, [activeIndex]);
+
+  // Switching rooms while the bar is stuck mid-list would leave the reader
+  // deep inside the new room's schedule; jump back to its first slot.
+  const selectRoom = (room: string) => {
+    setSelectedRoom(room);
+    const bar = tabBarRef.current;
+    if (!bar) return;
+    const stuckAt = parseFloat(getComputedStyle(bar).top) || 0;
+    if (bar.getBoundingClientRect().top <= stuckAt + 1) {
+      const anchor = bar.parentElement?.getBoundingClientRect().top ?? 0;
+      window.scrollTo({ top: window.scrollY + anchor - stuckAt });
+    }
+  };
+
   const roomLabel = (room: string) => {
     if (room === SAVED_TAB) return tAgenda("savedTab");
     return room === UNASSIGNED_ROOM ? tAgenda("unassignedRoom") : room;
@@ -141,7 +177,7 @@ export function SessionList({ sessions, rooms: roomsProp, allSessions }: Session
     if (next === undefined) return;
     event.preventDefault();
     const target = (next + tabs.length) % tabs.length;
-    setSelectedRoom(tabs[target]!);
+    selectRoom(tabs[target]!);
     tabRefs.current[target]?.focus();
   };
 
@@ -158,13 +194,18 @@ export function SessionList({ sessions, rooms: roomsProp, allSessions }: Session
       ) : null}
 
       {tabs.length > 1 ? (
+        // One sticky row under the site header (72px / 88px at md); it scrolls
+        // sideways instead of wrapping, and bleeds over the panel's padding so
+        // cards slide underneath cleanly.
         <div
+          ref={tabBarRef}
           role="tablist"
           aria-label={tAgenda("roomTabsLabel")}
-          className="flex flex-wrap gap-2 border-b border-slate-200 pb-px"
+          className="sticky top-[72px] z-10 -mx-4 flex snap-x scroll-px-4 gap-1 overflow-x-auto border-b border-slate-200 bg-tint px-4 pb-px pt-2 [scrollbar-width:none] md:top-[88px] md:-mx-8 md:scroll-px-8 md:px-8 [&::-webkit-scrollbar]:hidden"
         >
           {tabs.map((room, index) => {
             const selected = room === activeRoom;
+            const label = splitRoomLabel(roomLabel(room));
             return (
               <button
                 key={room}
@@ -179,17 +220,26 @@ export function SessionList({ sessions, rooms: roomsProp, allSessions }: Session
                 aria-controls={selected ? `agenda-room-panel-${slugify(roomLabel(room), index)}` : undefined}
                 aria-selected={selected}
                 tabIndex={selected ? 0 : -1}
-                onClick={() => setSelectedRoom(room)}
+                onClick={() => selectRoom(room)}
                 onKeyDown={(event) => onTabKeyDown(event, index)}
-                className={`focus-ring -mb-px rounded-t-lg border-b-2 px-4 py-2.5 text-sm font-semibold transition-colors ${
+                className={`focus-ring -mb-px flex flex-none snap-start items-center gap-2 whitespace-nowrap rounded-t-lg border-b-2 px-3 py-2 text-left text-sm font-semibold transition-colors md:px-4 ${
                   selected
                     ? "border-[#4d8cff] text-[#2b6cd4]"
                     : "border-transparent text-slate-500 hover:text-slate-700"
                 }`}
               >
-                {roomLabel(room)}
+                <span className="flex flex-col leading-tight">
+                  <span>{label.primary}</span>
+                  {/* Keeps the full room name for screen readers. */}
+                  {label.secondary ? <span className="sr-only"> - </span> : null}
+                  {label.secondary ? (
+                    <span className={`text-[0.7rem] font-medium ${selected ? "text-[#2b6cd4]/70" : "text-slate-400"}`}>
+                      {label.secondary}
+                    </span>
+                  ) : null}
+                </span>
                 <span
-                  className={`ml-2 rounded-full px-2 py-0.5 text-[0.7rem] font-bold ${
+                  className={`rounded-full px-2 py-0.5 text-[0.7rem] font-bold ${
                     selected ? "bg-[#e7f0ff] text-[#2b6cd4]" : "bg-slate-100 text-slate-500"
                   }`}
                 >
@@ -251,13 +301,13 @@ export function SessionList({ sessions, rooms: roomsProp, allSessions }: Session
               <div className="space-y-1 pt-1 md:text-right">
                 <p className="m-0 text-[1.75rem] font-semibold tracking-[-0.05em] text-slate-800">{slot.time}</p>
               </div>
-              <div className="relative md:pl-6 md:before:absolute md:before:bottom-[-1.5rem] md:before:left-0 md:before:top-0 md:before:w-px md:before:bg-slate-200 md:before:content-['']">
+              <div className="relative min-w-0 md:pl-6 md:before:absolute md:before:bottom-[-1.5rem] md:before:left-0 md:before:top-0 md:before:w-px md:before:bg-slate-200 md:before:content-['']">
                 <article
                   data-agenda-session={session.id}
                   className="rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-[0_1px_0_rgba(15,23,42,0.04)]"
                 >
                   <div className="flex items-start justify-between gap-4">
-                    <div className="space-y-3">
+                    <div className="min-w-0 space-y-3">
                       <div className="flex flex-wrap gap-2">
                         {savedActive ? (
                           <span className="rounded-md bg-slate-100 px-2 py-1 text-[0.6rem] font-bold uppercase tracking-[0.08em] text-slate-500">
@@ -265,8 +315,11 @@ export function SessionList({ sessions, rooms: roomsProp, allSessions }: Session
                           </span>
                         ) : null}
                         {session.track ? (
+                          // Long Sessionize category names wrap to three lines on a
+                          // phone; keep one line there; the dialog shows the full name.
                           <span
-                            className={`rounded-md px-2 py-1 text-[0.6rem] font-bold uppercase tracking-[0.08em] ${toneFor(
+                            title={session.track}
+                            className={`max-w-full truncate rounded-md px-2 py-1 text-[0.6rem] font-bold uppercase tracking-[0.08em] md:whitespace-normal ${toneFor(
                               session.track,
                               trackTone,
                               trackPalette
@@ -281,7 +334,7 @@ export function SessionList({ sessions, rooms: roomsProp, allSessions }: Session
                           {session.level}
                         </span>
                       </div>
-                      <h3 className="m-0 text-[1.95rem] font-semibold leading-tight tracking-[-0.045em] text-slate-900 md:text-[1.8rem]">
+                      <h3 className="m-0 text-[1.35rem] font-semibold leading-snug tracking-[-0.03em] text-slate-900 md:text-[1.8rem] md:leading-tight md:tracking-[-0.045em]">
                         <button
                           type="button"
                           onClick={() => modal.open(session.id)}

@@ -45,9 +45,9 @@ describe("Agenda page structure", () => {
     expect(html).toContain(messages.agenda.intro.replace("'", "&#x27;"));
     // Track names, level names, and toolbar labels are fixed English
     // taxonomy terms out of scope for translation.
-    expect(html).toContain("Tracks:");
-    expect(html).toContain("Levels:");
-    expect(html).toContain("All Tracks");
+    expect(html).toContain(`${messages.agenda.topicsLabel}:`);
+    expect(html).toContain(`${messages.agenda.levelsLabel}:`);
+    expect(html).toContain(messages.agenda.allTopics);
   });
 
   test("renders a tab per room, or none for a single-room event", () => {
@@ -56,7 +56,10 @@ describe("Agenda page structure", () => {
     const tabs = [...html.matchAll(/role="tab"/g)].length;
 
     expect(tabs).toBe(rooms.length > 1 ? rooms.length : 0);
-    for (const room of rooms) expect(html).toContain(room);
+    // Tabs split "Track 1 - Sala N117" across two lines, so match each part.
+    for (const room of rooms) {
+      for (const part of room.split(" - ")) expect(html).toContain(part);
+    }
   });
 
   test("shows exactly the first room's sessions on load", () => {
