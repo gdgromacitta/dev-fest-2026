@@ -41,7 +41,10 @@ describe("Venue page reference structure", () => {
   test("renders the design-scoped venue hero and details layout", async () => {
     const html = await renderVenuePage();
 
-    expect(html).toContain("Indirizzo");
+    expect(html).toContain("Ingressi");
+    expect(html).toContain("Via Vito Volterra 60");
+    expect(html).toContain("Via della Vasca Navale 89");
+    expect(html).toContain("Dip. Ing. Civile, Informatica e Tecnologie Aeronautiche");
     expect(html).toContain("Come arrivare");
     expect(html).toContain("Università degli Studi Roma Tre");
     expect(html).toContain("Registrati all&#x27;evento");
