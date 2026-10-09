@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import type { AgendaFilters } from "@/src/lib/agenda-filters";
 
 type FilterToolbarProps = {
@@ -23,10 +24,11 @@ const levelChipTone: Record<string, string> = {
 };
 
 export function FilterToolbar({ filters, tracks, levels, onFiltersChange }: FilterToolbarProps) {
+  const t = useTranslations("agenda");
   return (
     <section className="space-y-5">
       <div className="flex flex-wrap items-center gap-3">
-        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Tracks:</span>
+        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{t("topicsLabel")}:</span>
         <button
           type="button"
           className={`focus-ring rounded-full px-4 py-2 text-xs font-semibold transition-colors ${
@@ -34,7 +36,7 @@ export function FilterToolbar({ filters, tracks, levels, onFiltersChange }: Filt
           }`}
           onClick={() => onFiltersChange({ ...filters, track: "" })}
         >
-          All Tracks
+          {t("allTopics")}
         </button>
         {tracks.map((track) => {
           const selected = filters.track === track;
@@ -55,7 +57,7 @@ export function FilterToolbar({ filters, tracks, levels, onFiltersChange }: Filt
         })}
       </div>
       <div className="flex flex-wrap items-center gap-3">
-        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Levels:</span>
+        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{t("levelsLabel")}:</span>
         {levels.map((level) => {
           const selected = filters.level === level;
           return (
