@@ -41,3 +41,6 @@ next-env.d.ts
 
 # Agent Squad worktrees (claude/hooks/worktree.sh)
 .claude/worktrees/
+
+# Playwright MCP browser artifacts
+.playwright-mcp/
